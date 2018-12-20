@@ -1,0 +1,14 @@
+@charset "utf-8";
+body h1 {
+	color: #993399;
+	font-style: italic;
+	background-color: #99FF99;
+}
+
+input {
+	border-radius: 3px;
+}
+
+#form1 #botones{
+	alignment-adjust:central;
+}
