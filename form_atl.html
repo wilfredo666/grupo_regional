@@ -6,6 +6,22 @@
 <link href="css/atl.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<!--tabla - costo de valor agregado-->
+<table width="200" border="1">
+  <tr>
+    <td colspan="3"><label>COSTO DE VALOR AGREGADO</label></td>
+    </tr>
+  <tr>
+    <td><label>COSTO PROGRAMADO DEL PROYECTO</label></td>
+    <td><label>COSTO ESTIMADO DEL PROYECTO</label></td>
+    <td><label>DIFERENCIA</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield14" id="textfield14"></td>
+    <td><input type="text" name="textfield15" id="textfield15"></td>
+    <td><input type="text" name="textfield16" id="textfield16"></td>
+  </tr>
+</table>
 <h1>HOJA DE COSTO DE OPERACIONES COCHABAMBA - GRUPO REGIONAL S.R.L.</h1>
 <form id="form1" name="form1" method="post">
   <table width="1012" border="1">
@@ -70,8 +86,19 @@
       <td><input type="text" name="textfield5" id="textfield4"></td>
       <td><input type="number" name="number3" id="number3"></td>
     </tr>
+    <tr>
+    <td>SOPORTE LOGISTICO</td>
+    <td></td>
+    <td></td>
+    <td><input type="text" name="textfield17" id="textfield17"></td>
+    <td><input type="text" name="textfield18" id="textfield18"></td>
+    <td><input type="text" name="textfield19" id="textfield19"></td>
+    <td><input type="text" name="textfield20" id="textfield20"></td>
+    <td><input type="text" name="textfield21" id="textfield21"></td>
+    </tr>
   </table>
   <h2>2) MATERIALES Y SERVICIOS QUE INTERVIENEN EN LA OPERACION</h2>
+  <!--tabla 1 - materiales-->
   <table width="200" border="1">
   <tr>
     <td colspan="2"><label>MATERIALES</label></td>
@@ -99,12 +126,47 @@
     <td><input type="number" name="number6" id="number6"></td>
   </tr>
   <tr>
-    <td colspan="5"><label>SUB TOTAL</label></td>
+    <td colspan="5"><label>TOTAL</label></td>
     <td><input type="text" name="textfield7" id="textfield7"></td>
     <td><input type="text" name="textfield8" id="textfield8"></td>
   </tr>
 </table>
 	<h2>2.1) MATERIALES</h2>
+    <!--tabla 2 - servicios-->
+    <table width="200" border="1">
+  <tr>
+    <td colspan="2"><label>SERVICIOS</label></td>
+    <td colspan="5"><label>COSTO ESTIMADO DE SERVICIOS</label></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><label>SERVICIOS CONTRATADOS</label></td>
+    <td><label>NOMBRE DEL PROVEEDOR</label></td>
+    <td><label>DIAS</label></td>
+    <td><label>CANTIDAD ESTIMADA</label></td>
+    <td><label>COSTO UNITARIO</label></td>
+    <td><label>TIPO O FORMA</label></td>
+    <td><label>TOTTAL COSTO PROGRAMADO</label></td>
+    <td><label>PRECIO COTIZADO SIN F.E.E.</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield9" id="textfield9"></td>
+    <td><input type="text" name="textfield10" id="textfield10"></td>
+    <td><input type="number" name="number7" id="number7"></td>
+    <td><input type="number" name="number8" id="number8"></td>
+    <td><input type="number" name="number9" id="number9"></td>
+    <td><input type="text" name="textfield11" id="textfield11"></td>
+    <td><input type="number" name="number10" id="number10"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="6"><label>TOTAL</label></td>
+    <td><input type="text" name="textfield12" id="textfield12"></td>
+    <td><input type="text" name="textfield13" id="textfield13"></td>
+  </tr>
+</table>
+
+
 <!--bloque de botones-->
     <div id="botones">
     <input name="guardar" type="submit" value="Guardar">
