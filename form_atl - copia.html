@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Formulario ATL</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link href="css/atl.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+</head>
+<body>
+<!--tabla - costo de valor agregado-->
+<table width="200" border="1">
+  <tr>
+    <td colspan="3"><label>COSTO DE VALOR AGREGADO</label></td>
+    </tr>
+  <tr>
+    <td><label>COSTO PROGRAMADO DEL PROYECTO</label></td>
+    <td><label>COSTO ESTIMADO DEL PROYECTO</label></td>
+    <td><label>DIFERENCIA</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield14" id="textfield14"></td>
+    <td><input type="text" name="textfield15" id="textfield15"></td>
+    <td><input type="text" name="textfield16" id="textfield16"></td>
+  </tr>
+</table>
+<h1>HOJA DE COSTO DE OPERACIONES COCHABAMBA - GRUPO REGIONAL S.R.L.</h1>
+<form id="form1" name="form1" method="post">
+  <table width="1012" border="1">
+    <tr>
+      <td width="496"><label for="select3" >Cliente:</label>
+        <select name="select3" id="select3">
+      </select></td>
+      <td width="500"><label for="select">Codigo de proyecto:</label>
+        <select name="select" id="select">
+      </select></td>
+    </tr>
+    <tr>
+      <td><label for="textfield">Correo electronico (cliente):</label>
+      <input type="text" name="textfield" id="textfield"></td>
+      <td><label for="textfield2">Nombre del proyecto:</label>
+      <input type="text" name="textfield2" id="textfield2"></td>
+    </tr>
+    <tr>
+      <td><label for="date">Fecha de inicio del proyecto:</label>
+      <input type="date" name="date" id="date"></td>
+      <td><label for="date2">Fecha de conclucion del proyecto:</label>
+      <input type="date" name="date2" id="date2"></td>
+    </tr>
+    <tr>
+      <td><label for="number">Tiempo de credito (en dias):</label>
+      <input type="number" name="number" id="number"></td>
+      <td><label for="select2">Tipo de proyecto:</label>
+        <select name="select2" id="select2">
+          <option>EXTERNO</option>
+          <option>INTERNO</option>
+      </select></td>
+    </tr>
+  </table>
+  <h2>1) PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION</h2>
+  <table width="1013" border="1">
+    <tr>
+      <td width="117"><label>DETALLE</label></td>
+      <td width="81"><label>NOMBRE DEL PERSONAL</label></td>
+      <td width="83"><label>TIEMPO</label></td>
+      <td width="111"><label>TIEMPO PROGRAMADO</label></td>
+      <td width="128"><label>CANTIDAD DE PERSONAS</label></td>
+      <td width="192"><label>TASA PRESUPUESTADA</label></td>
+      <td width="111"><label>COSTO TOTAL PROGRAMADO</label></td>
+      <td width="138"><label>PRECIO COTIZADO SIN F.E.E</label></td>
+    </tr>
+    <tr>
+      <td>
+        <select name="select4" id="select4">
+          <option>EJECUTIVO DE CUENTAS</option>
+          <option>ENCARGADO LOGISTICO</option>
+          <option>SUPERVISOR</option>
+        </select>
+      </span></td>
+      <td><input type="text"></td>
+      <td><select name="select5" id="select5">
+        <option>DIAS</option>
+        <option>HORAS</option>
+      </select></td>
+      <td><input type="text" name="textfield3" id="textfield3"></td>
+      <td><input type="number" name="number2" id="number2"></td>
+      <td><input type="text" name="textfield4" id="textfield4"></td>
+      <td><input type="text" name="textfield5" id="textfield4"></td>
+      <td><input type="number" name="number3" id="number3"></td>
+    </tr>
+    <tr>
+    <td colspan="3">SOPORTE LOGISTICO</td>
+    <td><input type="text" name="textfield17" id="textfield17"></td>
+    <td><input type="text" name="textfield18" id="textfield18"></td>
+    <td><input type="text" name="textfield19" id="textfield19"></td>
+    <td><input type="text" name="textfield20" id="textfield20"></td>
+    <td><input type="text" name="textfield21" id="textfield21"></td>
+    </tr>
+  </table>
+  <h2>2) MATERIALES Y SERVICIOS QUE INTERVIENEN EN LA OPERACION</h2>
+  <!--tabla 1 - materiales-->
+  <table width="200" border="1">
+  <tr>
+    <td colspan="2"><label>MATERIALES</label></td>
+    <td colspan="4"><label>COSTO ESTIMADO EN MATERIALES</label></td>
+    <td></td>
+    </tr>
+  <tr>
+    <td><label>MATERIALES</label></td>
+    <td><label>NOMBRE DEL PROVEEDOR</label></td>
+    <td><label>CANTIDAD ESTIMADA</label></td>
+    <td><label>COSTO UNITARIO</label></td>
+    <td><label>DOCUMENTO</label></td>
+    <td><label>COSTO TOTAL ESTIMADO</label></td>
+    <td><label>PRECIO COTIZADO SIN F.E.E.</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield5" id="textfield5"></td>
+    <td><input type="text" name="textfield6" id="textfield6"></td>
+    <td><input type="number" name="number4" id="number4"></td>
+    <td><input type="number" name="number5" id="number5"></td>
+    <td><select name="select6" id="select6">
+      <option>FACTURA</option>
+      </select></td>
+    <td><input type="text"></td>
+    <td><input type="number" name="number6" id="number6"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><label>TOTAL</label></td>
+    <td><input type="text" name="textfield7" id="textfield7"></td>
+    <td><input type="text" name="textfield8" id="textfield8"></td>
+  </tr>
+</table>
+<h2>--</h2>
+    <!--tabla 2 - servicios-->
+    <table width="200" border="1">
+  <tr>
+    <td colspan="2"><label>SERVICIOS</label></td>
+    <td colspan="5"><label>COSTO ESTIMADO DE SERVICIOS</label></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><label>SERVICIOS CONTRATADOS</label></td>
+    <td><label>NOMBRE DEL PROVEEDOR</label></td>
+    <td><label>DIAS</label></td>
+    <td><label>CANTIDAD ESTIMADA</label></td>
+    <td><label>COSTO UNITARIO</label></td>
+    <td><label>TIPO O FORMA</label></td>
+    <td><label>TOTTAL COSTO PROGRAMADO</label></td>
+    <td><label>PRECIO COTIZADO SIN F.E.E.</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield9" id="textfield9"></td>
+    <td><input type="text" name="textfield10" id="textfield10"></td>
+    <td><input type="number" name="number7" id="number7"></td>
+    <td><input type="number" name="number8" id="number8"></td>
+    <td><input type="number" name="number9" id="number9"></td>
+    <td><input type="text" name="textfield11" id="textfield11"></td>
+    <td><input type="number" name="number10" id="number10"></td>
+    <td><input type="text" name="textfield28" id="textfield28"></td>
+  </tr>
+  <tr>
+    <td colspan="6"><label>TOTAL</label></td>
+    <td><input type="text" name="textfield12" id="textfield12"></td>
+    <td><input type="text" name="textfield13" id="textfield13"></td>
+  </tr>
+</table>
+
+<h2>SERVICIOS/PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2>
+<!--tabla - productos-->
+<h2>--</h2>
+<table width="200" border="1">
+  <tr>
+    <td><label>PRODUCTOS TERMINADOS TALLER</label></td>
+    <td><label>AREA DE PRODUCCION</label></td>
+    <td><label>CANTIDAD</label></td>
+    <td><label>COSTO UNITARIO</label></td>
+    <td><label>COSTO TOTAL</label></td>
+    <td><label>PRECIO COTIZADO SIN F.E.E</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield29" id="textfield29"></td>
+    <td><input type="text" name="textfield23" id="textfield23"></td>
+    <td></td>
+    <td><input type="number" name="number12" id="number12"></td>
+    <td><input type="text" name="textfield24" id="textfield24"></td>
+    <td><input type="number" name="number13" id="number13"></td>
+  </tr>
+  <tr>
+    <td colspan="3"><label>TOTAL</label></td>
+    <td><input type="text" name="textfield25" id="textfield25"></td>
+    <td><input type="text" name="textfield26" id="textfield26"></td>
+    <td><input type="text" name="textfield27" id="textfield27"></td>
+  </tr>
+</table>
+<!--tabla - equipos propios -->
+<h2>--</h2>
+<table width="200" border="1">
+  <tr>
+    <td><label>DETALLE DEL SERVICIO</label></td>
+    <td><label>AREA DE SERVICIO</label></td>
+    <td><label>CANTIDAD</label></td>
+    <td><label>COSTO UNITARIO</label></td>
+    <td><label>COSTO TOTAL</label></td>
+    <td><label>PRECIO COTIZADO SIN F.E.E</label></td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield29" id="textfield29"></td>
+    <td><input type="text" name="textfield30" id="textfield30"></td>
+    <td><input type="number" name="number14" id="number14"></td>
+    <td><input type="number" name="number15" id="number15"></td>
+    <td><input type="text" name="textfield31" id="textfield31"></td>
+    <td><input type="number" name="number16" id="number16"></td>
+  </tr>
+  <tr>
+    <td colspan="3"><label>TOTAL</label></td>
+    <td><input type="text" name="textfield32" id="textfield32"></td>
+    <td><input type="text" name="textfield33" id="textfield33"></td>
+    <td><input type="text" name="textfield34" id="textfield34"></td>
+  </tr>
+</table>
+<!--costos indirectos del proyecto -->
+<h2>COSTOS INDIRECTOS DEL PROYECTO</h2>
+<!--tabla - costos indirectos de operaciones -->
+<h2>--</h2>
+<table width="200" border="1">
+  <tr>
+    <td>COSTOS INDIRECTOS DE OPERACIONES</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>COSTO ACUMULADO PROGRAMADO</td>
+    <td>TASA DE APLICACIÓN</td>
+    <td>COSTO PROGRAMADO DE COSTOS INDIRECTOS</td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield35" id="textfield35"></td>
+    <td><input type="text" name="textfield36" id="textfield36"></td>
+    <td><input type="text" name="textfield37" id="textfield37"></td>
+  </tr>
+</table>
+<h2>--</h2>
+<!--tabla - costo financiero -->
+<table width="200" border="1">
+  <tr>
+    <td>COSTO FINANCIERO</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>TIEMPO PROGRAMADO</td>
+    <td>TASA FINANCIERA</td>
+    <td>COSTO TOTAL PROGRAMADO FINANCIERO</td>
+  </tr>
+  <tr>
+    <td><input type="text" name="textfield38" id="textfield38"></td>
+    <td><input type="text" name="textfield39" id="textfield39"></td>
+    <td><input type="text" name="textfield40" id="textfield40"></td>
+  </tr>
+</table>
+<!--bloque de botones-->
+    <div id="botones">
+    <input name="guardar" type="submit" value="Guardar">
+  <input name="salir" type="button" value="Salir">
+</div>
+</form>
+<script src="jquery/jquery-3.3.1.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
