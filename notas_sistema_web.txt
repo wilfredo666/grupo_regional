@@ -3,3 +3,5 @@ clave  y usuario por default para acceder:
 wilfredo
 
 slifer
+
+- version de boostrap usado: 4.2.1
