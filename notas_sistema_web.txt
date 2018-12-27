@@ -1,7 +1,9 @@
 clave  y usuario por default para acceder:
-
-wilfredo
-
-slifer
-
+administrador
+admin123
+----------------------------------
 - version de boostrap usado: 4.2.1
+----------------------------------
+clave para desbloquear las hojas de costo:
+shulob
+----------------------------------
