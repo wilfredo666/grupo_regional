@@ -2,3 +2,9 @@
 body{
     background: #fff;
 }
+td,tr{
+    text-align: center;
+}
+label{
+    border: 1px solid blue;
+}
