@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
-
         <h1>HOJA DE COSTO DE OPERACIONES COCHABAMBA - GRUPO REGIONAL S.R.L.</h1>
         <!--tabla - costo de valor agregado-->
         <table class="table">
@@ -37,7 +36,17 @@
                 <thead>
                     <tr>
                         <th scope="col"><label for="select3" >Cliente:</label></th>
-                        <th scope="col"><select name="select3" id="select3"></select></th>
+                        <th scope="col"><select name="select3" id="select3">
+                            <?php
+                            include 'conexion.php';
+                            $cliente=mysqli_query($con,"select nombre from cliente");
+                            while($fila=mysqli_fetch_array($cliente)){
+                            ?>
+                            <option value=""><?php echo $fila['nombre'];?></option>
+                            <?php
+                            }
+                            ?>
+                            </select></th>
                         <td scope="col"><label for="select">Codigo de proyecto:</label></td>
                         <th scope="col"><input type="text"></th>
                     </tr>
@@ -68,7 +77,7 @@
             </table>
             <!--tablas para la insercion de datos a calcular-->
             <h2>1) PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION</h2>
-            <table class="table" id="tablita1">
+            <table class="table">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col"><label>DETALLE</label></th>
@@ -83,38 +92,32 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><select onChange="actualizarTaza(0)"  name="staf0" id="staf0" >
+                        <td><select name="select4" id="select4">
                             <option>EJECUTIVO DE CUENTAS</option>
                             <option>ENCARGADO LOGISTICO</option>
                             <option>SUPERVISOR</option>
                             </select></td>
-                        <td><input type="text" id="detalle0"></td>
-                        <td><select onChange= "actualizarTaza(0)" name="dayorhour0" id="dayorhour0" >
+                        <td><input type="text"></td>
+                        <td><select name="select5" id="select5">
                             <option>DIAS</option>
                             <option>HORAS</option>
                             </select></td>
-                        <td><input type="number" name="time0" id="time0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();"></td>
-                        <td><input type="number" name="nrop0" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" ></td>
-                        <td><input type="text" name="tasa0" id="tasa0" value="" onkeyup="actualizarCostoTotal(0)" readonly></td>
-                        <td><input type="text" name="costop0" id="costop0" value="0" readonly></td>
-                        <td><input type="text" name="precioC0" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();"></td>
-                        <td><button type="button" class="btn btn-success" onClick="addRow()">agregar</button></td>
+                        <td><input type="text" name="textfield3" id="textfield3"></td>
+                        <td><input type="number" name="number2" id="number2"></td>
+                        <td><input type="text" name="textfield4" id="textfield4"></td>
+                        <td><input type="text" name="textfield5" id="textfield4"></td>
+                        <td><input type="number" name="number3" id="number3"></td>
+                        <td><button type="button" class="btn btn-success">agregar</button></td>
                     </tr>
-                </tbody>
-            </table>
-            <table class="table" style="width: 1700px;">
-                <tbody>
                     <tr>
-                        <td style="width: 558px;">SOPORTE LOGISTICO</td>
-                        <td><input style="width: 170px;" type="text"  id="totalTi" readonly></td>
-                        <td><input style="width: 170px;" type="text"  id="totalCa" readonly></td>
-                        <td><input type="text" id="totalTa" readonly></td>
-                        <td><input type="text" id="totalCo" readonly></td>
-                        <td ><input type="text" id="totalPr" readonly></td>
+                        <td colspan="3">SOPORTE LOGISTICO</td>
+                        <td><label for=""></label></td>
+                        <td><label for=""></label></td>
+                        <td><label for=""></label></td>
+                        <td><label for=""></label></td>
+                        <td><label for=""></label></td>
                     </tr>
                 </tbody>
-            </table>
-            <table class="table">
 
                 <thead class="thead-light">
                     <tr><td colspan="8"><h2>2) MATERIALES Y SERVICIOS QUE INTERVIENEN EN LA OPERACION</h2></td></tr>
@@ -149,7 +152,7 @@
                     </tr>
                     <tr>
                         <td colspan="5"><label>TOTAL</label></td>
-                        <td><label for="" value="0">0</label></td>
+                        <td><label for=""></label></td>
                         <td><label for=""></label></td>
                         <td></td>
                     </tr>
@@ -270,7 +273,7 @@
                         <th>F.E.E. VARIABLE</th>
                     </tr>
                     <tr>
-                        <td><label for=""></label></td>
+                        <td><label for="">-</label></td>
                         <td><input type="number"></td>
                     </tr>
                     <tr>
@@ -346,121 +349,6 @@
                 </div>
             </div>
         </form>
-
-        <script type="text/javascript">
-
-            //Ejecutivo de cuenta -> Hora: 30     Dia:240
-            //Encargado logistico -> Hora: 26     Dia: 208
-            var tasaEjecutivo = 30; //valor en horas
-            var tasaEncargado = 26; //valor en horas
-            var tasaPresupuestada = 0;
-            var c=0;
-            var vTasa = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-            var vCosto = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-            var vPre = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-            actualizarTaza(0);
-            function actualizarTaza(numero){
-                var staff = document.getElementById("staf"+numero).value;
-                var dayHour = document.getElementById("dayorhour"+numero).value;
-
-                if (staff=="EJECUTIVO DE CUENTAS") {
-                    if (dayHour=="DIAS")
-                        tasaPresupuestada=tasaEjecutivo*8; 
-                    if (dayHour=="HORAS")
-                        tasaPresupuestada=tasaEjecutivo; 
-                    vTasa[numero]=tasaPresupuestada.toFixed(2);
-                    document.getElementById("tasa"+numero).value =tasaPresupuestada.toFixed(2); 
-                }
-                if (staff=="ENCARGADO LOGISTICO") {
-                    if (dayHour=="DIAS")
-                        tasaPresupuestada=tasaEncargado*8;
-                    if (dayHour=="HORAS")
-                        tasaPresupuestada=tasaEncargado;
-                    document.getElementById("tasa"+numero).value =tasaPresupuestada.toFixed(2);
-                }
-                actualizarCostoTotal(numero);
-            }
-            function actualizarCostoTotal(numer){
-                var t = parseFloat(document.getElementById("time"+numer).value);
-                var nro = parseFloat(document.getElementById("nrop"+numer).value);
-                var tas = parseFloat(document.getElementById("tasa"+numer).value);
-                var pr =parseFloat(document.getElementById("precioC"+numer).value);
-                vPre[numer]=pr.toFixed(2);
-                var r=t*nro*tas;
-                vCosto[numer]=r.toFixed(2);
-                r=activacoma(r.toFixed(2));
-                document.getElementById("costop"+numer).value =r;
-                soporteLog();
-            }
-
-            function addRow(){
-                c=c+1;
-                var fila = '<tr>'+
-                    '<td>'+
-                    '<select onChange="actualizarTaza('+c+')"  name="staf'+c+'" id="staf'+c+'" >'+
-                    '<option>EJECUTIVO DE CUENTAS</option>'+
-                    '<option>ENCARGADO LOGISTICO</option>'+
-                    '<option>SUPERVISOR</option>'+
-                    '</select>'+
-                    '</td>'+
-                    '<td><input type="text" id="detalle'+c+'" ></td>'+
-                    '<td><select onChange= "actualizarTaza('+c+')" name="dayorhour'+c+'" id="dayorhour'+c+'" >'+
-                    '<option>DIAS</option>'+
-                    '<option>HORAS</option>'+
-                    '</select></td>'+
-                    '<td><input type="number" name="time'+c+'" id="time'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
-                    '<td><input type="number" name="nrop'+c+'" id="nrop'+c+'" value ="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
-                    '<td><input type="text" name="tasa'+c+'" id="tasa'+c+'" value="" onkeyup="actualizarCostoTotal('+c+')" readonly></td>'+
-                    '<td><input type="text" name="costop'+c+'" id="costop'+c+'" value="0" readonly></td>'+
-                    '<td><input type="text" name="precioC'+c+'" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
-                    '</tr>'
-
-                $('#tablita1').append(fila);
-                actualizarTaza(c);
-            }
-
-            function soporteLog(){
-                var acTime=0;
-                var acCant=0;
-                var acTasa=0;
-                var acCosto=0;
-                var acPrecio=0;
-                var i=0;
-                for(i=0;i<=c;i++){
-                    acTime+= parseInt(document.getElementById("time"+i).value);
-                    acCant+=parseInt(document.getElementById("nrop"+i).value);
-
-                    acTasa+= parseFloat(vTasa[i]);
-                    acCosto+=parseFloat(vCosto[i]);
-                    acPrecio+=parseFloat(vPre[i]);
-                }
-                document.getElementById("totalTi").value = acTime;
-                document.getElementById("totalCa").value = acCant;
-
-                acTasa=activacoma(acTasa.toFixed(2));
-                acCosto=activacoma(acCosto.toFixed(2));
-                acPrecio=activacoma(acPrecio.toFixed(2));
-                document.getElementById("totalTa").value = acTasa;
-                document.getElementById("totalCo").value = acCosto;
-                document.getElementById("totalPr").value = acPrecio;
-
-
-            }
-
-            function activacoma(nStr){
-                nStr += '';
-                var x = nStr.split('.');
-                var x1 = x[0];
-                var x2 = x.length > 1 ? '.' + x[1] : '';
-                var rgx = /(\d+)(\d{3})/;
-                while (rgx.test(x1)) {
-                    x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                }
-                return x1 + x2;
-            }
-
-        </script>
         <script src="jquery/jquery-3.3.1.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
     </body>

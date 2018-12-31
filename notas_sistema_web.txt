@@ -7,3 +7,5 @@ admin123
 clave para desbloquear las hojas de costo:
 shulob
 ----------------------------------
+tipo de dato para moneda en mysql es decimal, formato (10,2) que
+utiliza 10 digitos en total y toma 2 de ellos como decimal
