@@ -223,7 +223,7 @@
                     <!--SERVICIOS/PRODUCTOS PROPIOS DE GRUPO REGIONAL-->
                     <!--productos de taller-->
                     <thead class="thead-light">
-                        <tr><th colspan="8"><h2>SERVICIOS / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
+                        <tr><th colspan="8"><h2>3) SERVICIOS / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
                         <tr><th colspan="8"><h4>PRODUCTOS PROPIOS DE TALLER</h4></th></tr>
                         <tr>
                             <th scope="col">PRODUCTOS TERMINADOS DE TALLER</th>
@@ -310,9 +310,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>9999</td>
-                            <td>8888</td>
-                            <td>6666</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
@@ -327,9 +327,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>11111</td>
-                            <td>22222</td>
-                            <td>33333</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
@@ -344,9 +344,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>44444</td>
-                            <td>55555</td>
-                            <td>66666</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
