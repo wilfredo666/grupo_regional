@@ -129,7 +129,7 @@
                                 <td><input type="text" name="tasa0" id="tasa0" value="" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
                                 <td><input type="text" name="costop0" id="costop0" value="0" readonly class="form-control"></td>
 
-                                <td><button type="button" class="btn btn-success" onClick="addRow()">agregar</button></td>
+                                <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
                             </tr>
                             <tr>
                                 <th colspan="4" class="text-center">MANO DE OBRA DIRECTA</th>
@@ -170,7 +170,7 @@
                                     </select></td>
                                 <td><input type="text" class="form-control" readonly></td>
                                 <td><input type="text" class="form-control" readonly></td>
-                                <td><button type="button" class="btn btn-success">agregar</button></td>
+                                <td><button type="button" class="btn btn-success">+</button></td>
 
                             </tr>
                             <tr>
@@ -219,7 +219,7 @@
                                 <option value="">ALMACEN</option>
                                 </select></td>
                             <td><input type="text" class="form-control" readonly></td>
-                            <td><button type="button" class="btn btn-success">agregar</button></td>
+                            <td><button type="button" class="btn btn-success">+</button></td>
                             <tr>
                                 <th>TOTAL</th>
                                 <td></td>
@@ -264,7 +264,7 @@
                                 <option value="">ALQUILER SIN RECIBO</option>
                                 </select></td>
                             <td><input type="text" class="form-control" readonly></td>
-                            <td><button type="button" class="btn btn-success">agregar</button></td>
+                            <td><button type="button" class="btn btn-success">+</button></td>
                             <tr>
                                 <th>TOTAL</th>
                                 <td></td>
@@ -280,13 +280,79 @@
                         <!--tabla - producto propio de taller-->
                         <thead class="thead-light">
                            <tr>
-                               <th colspan="8"><h2>SERVICIO / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th>
+                               <th colspan="8"><h2>4) SERVICIO / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th>
                            </tr>
                            <tr>
-                               <th colspan="8"><h4>5) PRODUCTOS PROPIOS DE TALLER</h4></th>
+                               <th colspan="8"><h4>PRODUCTOS PROPIOS DE TALLER</h4></th>
                            </tr>
                             <tr>
                                 <th colspan="3">PRODUCTOS TERMINADOS</th>
+                                <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
+                                <th>CANTIDAD</th>
+                                <th>COSTO UNITARIO</th>
+                                <th>TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td colspan="3"><input type="text" class="form-control"></td>
+                            <td colspan="2"><select name="" id="" class="form-control">
+                                <option value="">---</option>
+                            </select></td>
+                            <td><input type="number" class="form-control"></td>
+                            <td><input type="number" class="form-control"></td>
+                            <td><input type="text" class="form-control" readonly></td>
+                            <td><button type="button" class="btn btn-success">+</button></td>
+                            <tr>
+                                <th>TOTAL</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                                <td><label for="">0</label></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                        </tbody>
+                        <!--tabla - servicio de operacion propio-->
+                         <thead class="thead-light">
+                           <tr>
+                               <th colspan="8"><h4>SERVICIO DE OPERACION PROPIO - ATL</h4></th>
+                           </tr>
+                            <tr>
+                                <th colspan="3">DETALLE</th>
+                                <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
+                                <th>CANTIDAD</th>
+                                <th>COSTO UNITARIO</th>
+                                <th>TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td colspan="3"><input type="text" class="form-control"></td>
+                            <td colspan="2"><select name="" id="" class="form-control">
+                                <option value="">---</option>
+                            </select></td>
+                            <td><input type="number" class="form-control"></td>
+                            <td><input type="number" class="form-control"></td>
+                            <td><input type="text" class="form-control" readonly></td>
+                            <td><button type="button" class="btn btn-success">+</button></td>
+                            <tr>
+                                <th>TOTAL</th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                                <td><label for="">0</label></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                        </tbody>
+                        <!--tabla - equipos propios-->
+                        <thead class="thead-light">
+                           <tr>
+                               <th colspan="8"><h4>EQUIPOS PROPIOS - ALMACEN GR</h4></th>
+                           </tr>
+                            <tr>
+                                <th colspan="3">DETALLE</th>
                                 <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
                                 <th>CANTIDAD</th>
                                 <th>COSTO UNITARIO</th>
@@ -334,7 +400,7 @@
                         </tbody>
                         <thead class="thead-light">
                             <tr>
-                                <th colspan="3"><h5>COSTO INDIRECTOS DE OPERACIONES</h5></th>
+                                <th colspan="3"><h5>COSTO INDIRECTOS DEL PROYECTO</h5></th>
                             </tr>
                             <tr>
                                 <th>COSTO ACUMULADO PROGRAMADO</th>
@@ -382,9 +448,7 @@
                         </tbody>
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col">TOTAL EJECUTADO</th>
-                                <th scope="col">TOTAL F.E.E</th>
+                                <th colspan="3" scope="col">TOTAL PRESUPUESTADO</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -408,13 +472,31 @@
                                 <td><label for=""></label>0</td>
                                 <td><label for=""></label>0</td>
                             </tr>
+                        </tbody>
+                        <thead class="thead-light">
                             <tr>
-                                <td></td>
-                                <td>Costo total para enviar al cliente</td>
-                                <td></td>
+                                <th colspan="3">TOTAL PROFORMA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>PERSONAL ACTIVO</th>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>MATERIAL Y SERVICIOS</th>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <th>TOTAL</th>
+                                <td>0</td>
+                                <td>0</td>
                             </tr>
                         </tbody>
                     </table>
+                    <button type="button" class="btn btn-primary">ESTRUCTURA DE COSTOS POR ACTIVACION</button>
                 </div>
             </div>
             <!--bloque de botones-->

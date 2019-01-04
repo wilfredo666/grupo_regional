@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
-        <div class="container">
+        <!--<div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h3>Menu Principal</h3>
@@ -18,8 +18,8 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-4"><a href="form_atl.php">Hoja de costos atl</a></div>
-                        <div class="col-md-4"><a href=""></a>Hoja de costos btl</div>
-                        <div class="col-md-4"><a href=""></a>Hoja de costos taller</div>
+                        <div class="col-md-4"><a href="form_btl.php">Hoja de costos btl</a></div>
+                        <div class="col-md-4"><a href="">Hoja de costos taller</a></div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">-</div>
@@ -30,6 +30,53 @@
                 </div>
                 <div class="col-md-3">--</div>
             </div>
-        </div>
+        </div>-->
+        <div class="container">
+<br>
+<div class="col-md-3"></div>
+<div class="col-md-6">
+  <table class="table table-bordered table-hover" width="500" align="center">
+    <tr>
+      <th class="success" colspan="3"><div align="center"><font face="consolas" size="6" color="GRAY">Menu Administrador</font></div></th>
+    </tr>
+    <tr>
+      <td align="center">
+          <a href="" class="btn btn-primary" target="CUERPO">
+          <img src="../Imagenes/estudiante.jpg" height="100" width="100"><br>Estudiantes
+          </a>
+      </td>
+
+      <td align="center">
+        <a href="menu_personal.php?id=<?php echo $i[0];?>" class="btn btn-info" target="CUERPO">
+        <img src="../Imagenes/docente.jpg" width="100" height="100"><br>Personal
+        </a>
+      </td>
+
+      <td align="center">
+        <a href="menu_cobros.php?id=<?php echo $i[0];?>" class="btn btn-warning" target="CUERPO">
+        <img src="../Imagenes/cobros.jpg" width="100" height="100"><br>Cobros
+        </a>
+      </td>
+    </tr>
+    <tr>
+		<td></td>
+    <td width="111" align="center">
+      <a href="../index.php?logout" class="btn btn-success">
+    <img src="../Imagenes/salir.jpg" width="100" height="80"><br>SALIR
+    </a>
+    </td>
+    <td></td>
+    </tr>
+  </table>
+  <!--<center><input type="button" name="button" id="button" value="Salir" onclick = "location='index.php'" /></center>-->
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="col-md-3"></div>
+</div>
     </body>
 </html>
