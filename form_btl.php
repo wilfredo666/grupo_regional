@@ -207,7 +207,7 @@
                             <td colspan="2"><input type="text" class="form-control"></td>
                             <td><select name="" id="" class="form-control">
                                 <option value="">---</option>
-                            </select></td>
+                                </select></td>
                             <td><select name="" id="" class="form-control">
                                 <option value="">PIEZAS</option>
                                 </select></td>
@@ -231,7 +231,7 @@
                                 <td><label for="">0</label></td>
                             </tr>
                         </tbody>
-                         <!--tabla - servicios-->
+                        <!--tabla - servicios-->
                         <thead class="thead-light">
                             <tr>
                                 <th colspan="4">SERVICIOS</th>
@@ -251,7 +251,7 @@
                             <td colspan="2"><input type="text" class="form-control"></td>
                             <td><select name="" id="" class="form-control">
                                 <option value="">---</option>
-                            </select></td>
+                                </select></td>
                             <td><select name="" id="" class="form-control">
                                 <option value="">PIEZAS</option>
                                 </select></td>
@@ -279,12 +279,12 @@
                         <!--Servicio/productos propios de grupo regional-->
                         <!--tabla - producto propio de taller-->
                         <thead class="thead-light">
-                           <tr>
-                               <th colspan="8"><h2>4) SERVICIO / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th>
-                           </tr>
-                           <tr>
-                               <th colspan="8"><h4>PRODUCTOS PROPIOS DE TALLER</h4></th>
-                           </tr>
+                            <tr>
+                                <th colspan="8"><h2>4) SERVICIO / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th>
+                            </tr>
+                            <tr>
+                                <th colspan="8"><h4>PRODUCTOS PROPIOS DE TALLER</h4></th>
+                            </tr>
                             <tr>
                                 <th colspan="3">PRODUCTOS TERMINADOS</th>
                                 <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
@@ -297,7 +297,7 @@
                             <td colspan="3"><input type="text" class="form-control"></td>
                             <td colspan="2"><select name="" id="" class="form-control">
                                 <option value="">---</option>
-                            </select></td>
+                                </select></td>
                             <td><input type="number" class="form-control"></td>
                             <td><input type="number" class="form-control"></td>
                             <td><input type="text" class="form-control" readonly></td>
@@ -314,10 +314,10 @@
                             </tr>
                         </tbody>
                         <!--tabla - servicio de operacion propio-->
-                         <thead class="thead-light">
-                           <tr>
-                               <th colspan="8"><h4>SERVICIO DE OPERACION PROPIO - ATL</h4></th>
-                           </tr>
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="8"><h4>SERVICIO DE OPERACION PROPIO - ATL</h4></th>
+                            </tr>
                             <tr>
                                 <th colspan="3">DETALLE</th>
                                 <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
@@ -330,7 +330,7 @@
                             <td colspan="3"><input type="text" class="form-control"></td>
                             <td colspan="2"><select name="" id="" class="form-control">
                                 <option value="">---</option>
-                            </select></td>
+                                </select></td>
                             <td><input type="number" class="form-control"></td>
                             <td><input type="number" class="form-control"></td>
                             <td><input type="text" class="form-control" readonly></td>
@@ -348,9 +348,9 @@
                         </tbody>
                         <!--tabla - equipos propios-->
                         <thead class="thead-light">
-                           <tr>
-                               <th colspan="8"><h4>EQUIPOS PROPIOS - ALMACEN GR</h4></th>
-                           </tr>
+                            <tr>
+                                <th colspan="8"><h4>EQUIPOS PROPIOS - ALMACEN GR</h4></th>
+                            </tr>
                             <tr>
                                 <th colspan="3">DETALLE</th>
                                 <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
@@ -363,7 +363,7 @@
                             <td colspan="3"><input type="text" class="form-control"></td>
                             <td colspan="2"><select name="" id="" class="form-control">
                                 <option value="">---</option>
-                            </select></td>
+                                </select></td>
                             <td><input type="number" class="form-control"></td>
                             <td><input type="number" class="form-control"></td>
                             <td><input type="text" class="form-control" readonly></td>
@@ -496,7 +496,115 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-primary">ESTRUCTURA DE COSTOS POR ACTIVACION</button>
+                    <a href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal">ESTRUCTURA DE COSTOS POR ACTIVACION</a>
+                    <div class="modal fade bd-example-modal-lg" id="estructura_activacion">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">Escojer personal:</div>
+                                        </div>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Empleado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td><div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Cargo:</div>
+                                                        </div>
+                                                        <label for="" class="form-control">-</label>
+                                                        </div></td>
+                                                    <td colspan="3"><div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">Cantidad:</div>
+                                                        </div>
+                                                        <label for="" class="form-control">-</label>
+                                                        </div></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Costo liquito pagable</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">Crossing-impuestos por servicios</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Carga impositiva</th>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Retenciones IUE servicios</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Retenciones IT servicios</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Servicio de respaldo administrativo</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Costo financiero</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>F.E.E. Grupo Regional</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                            </tbody>
+                                            <tr>
+                                                <th>=Impuesto de facturacion en favor del cliente</th>
+                                                <td></td>
+                                                <td></td>
+                                                <td><label for="">0</label></td>
+                                            </tr>
+                                            <tr>
+                                                <td>(+)Grossing-up Tributario</td>
+                                                <td><label for="">0</label></td>
+                                                <td></td>
+                                                <td><label for="">0</label></td>
+                                            </tr>
+                                            <tr>
+                                                <td>IVA</td>
+                                                <td><label for="">0</label></td>
+                                            </tr>
+                                            <tr>
+                                                <td>IT</td>
+                                                <td><label for="">0</label></td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3">=TOTAL PRECIO FACTURADO DEL SERVICIO</th>
+                                                <td><label for="">0</label></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!--bloque de botones-->
