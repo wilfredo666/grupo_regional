@@ -115,21 +115,21 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="3"><select onChange="actualizarTaza(0)"  name="staf0" id="staf0" class="form-control">
+                                <td colspan="3"><select name="det0" id="det0" class="form-control">
                                     <option>EJECUTIVO DE CUENTAS</option>
                                     <option>ENCARGADO LOGISTICO</option>
                                     <option>SUPERVISOR</option>
                                     </select></td>
-                                <td><select onChange= "actualizarTaza(0)" name="dayorhour0" id="dayorhour0" class="form-control">
+                                <td><select onChange= "subTotal(0)" name="tie0" id="tie0" class="form-control">
                                     <option>DIAS</option>
                                     <option>HORAS</option>
                                     </select></td>
-                                <td><input type="number" name="time0" id="time0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                <td><input type="number" name="nrop0" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                <td><input type="text" name="tasa0" id="tasa0" value="" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
-                                <td><input type="text" name="costop0" id="costop0" value="0" readonly class="form-control"></td>
+                                <td><input type="number" name="t1_tip0" id="t1_tip0" value="0" onkeyup="subTotal(0)" onClick="this.select();" class="form-control"></td>
+                                <td><input type="number" name="t1_can0" id="t1_can0" value ="0" onkeyup="t1_subTotal(0)" onClick="this.select();" class="form-control"></td>
+                                <td><input type="text" name="t1_tas0" id="t1_tas0" readonly class="form-control" ></td>
+                                <td><input type="text" name="t1_cos0" id="t1_cos0" readonly class="form-control"></td>
 
-                                <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
+                                <td><button type="button" class="btn btn-success" onClick="addRow_t1()">+</button></td>
                             </tr>
                             <tr>
                                 <th colspan="4" class="text-center">MANO DE OBRA DIRECTA</th>
@@ -613,6 +613,7 @@
                 <input name="salir" type="button" value="Salir" class="btn btn-success">
             </div>
         </form>
+         <script type="text/javascript" src="jquery/form_btl.js"></script>
         <script src="jquery/jquery-3.3.1.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
     </body>
