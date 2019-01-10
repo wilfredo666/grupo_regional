@@ -1,8 +1,24 @@
-/*.col-9 td{
+/*
+.col-9 #t1,#t2,#t3,#t4,#t5{
+    width: 95.6%;
+}
+.col-9 #t1 th{
+    width: 40%;
+}
+.col-9 #t2 th{
+    width: 65%;
+}
+.col-9 #t3 th{
+    width: 78%;
+}
+.col-9 #t4 th{
+    width: 40%;
+}
+.col-9 td{
     border: none;
     width: 12.5%;
 }
-#t1 th,td{
-    border: 1px yellow solid;
-    width: 12.5%;
+#botones input{
+    margin: 5px 15px 5px 15px; arriba, derecha,abajo, izquierda
 }
+*/
