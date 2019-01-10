@@ -1,0 +1,8 @@
+/*.col-9 td{
+    border: none;
+    width: 12.5%;
+}
+#t1 th,td{
+    border: 1px yellow solid;
+    width: 12.5%;
+}
