@@ -246,7 +246,7 @@
                         <!--productos de taller-->
                         <thead class="thead-light">
                             <tr><th colspan="8"><h2>3) SERVICIOS / PRODUCTOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
-                            <tr><th colspan="8"><h4>PRODUCTOS PROPIOS DE TALLER</h4></th></tr>
+                            <tr><th colspan="8">PRODUCTOS PROPIOS DE TALLER</th></tr>
                             <tr>
                                 <th scope="col">PRODUCTOS TERMINADOS DE TALLER</th>
                                 <th scope="col">AREA DE PRODUCCION</th>
@@ -287,7 +287,7 @@
                     <!--equipos propios -->
                     <table class="table table-sm" id="tablita5"> 
                         <thead class="thead-light">
-                            <tr><td colspan="8"><h4>EQUIPOS PROPIOS</h4></td></tr>
+                            <tr><th colspan="8">EQUIPOS PROPIOS</th></tr>
                             <tr>
                                 <th scope="col">
                                     DETALLE DEL SERVICIO</th>
