@@ -14,7 +14,7 @@
             <div class="col-sm-12" id="tabla">
                 <h1>Tablas dinamicas con ajax, mysql, php</h1>
                 <caption>
-                    <button class="btn btn-primary"  data-toggle="modal" data-target="#modalNuevo">+ Agregar nuevo </svg></button>
+                    <button class="btn btn-primary"  data-toggle="modal" data-target="#modalNuevo" data-dismiss="modal">+ Agregar nuevo </svg></button>
                 </caption>
             <table class="table">
                 <thead>
@@ -32,6 +32,7 @@
                     $consulta = "select * from usuario";
                     $usuario = mysqli_query($con,$consulta);
                     while($fila=mysqli_fetch_row($usuario)){
+                    $datos=$fila[0]."||".$fila[1]."||".$fila[2]."||".$fila[3]."||".$fila[4];
                     ?>
                     <tr>
                         <td><?php echo $fila[0]?></td>
@@ -39,8 +40,8 @@
                         <td><?php echo $fila[2]?></td>
                         <td><?php echo $fila[3]?></td>
                         <td><?php echo $fila[4]?></td>
-                        <td><button class="btn btn-warning" data-toggle="modal" data-target="#modalEdicion">Editar</button></td>
-                        <td><button class="btn btn-danger">Quitar</button></td>
+                        <td><button class="btn btn-warning" data-toggle="modal" data-target="#modalEdicion" onclick="editar_usuario('<?php echo $datos ?>')">Editar</button></td>
+                        <td><button class="btn btn-danger" onclick="preguntar('<?php echo $fila[0]?>')">Quitar</button></td>
                     </tr>
                     <?php
                     }
@@ -96,11 +97,13 @@
                         <input type="text" class="form-control" id="ci_usuariou">
                         <label for="">Nombre</label>
                         <input type="text" class="form-control" id="nombre_usuariou">
+                        <label for="">Clave</label>
+                        <input type="text" class="form-control" id="claveu">
                         <label for="">Nivel</label>
                         <input type="text" class="form-control" id="nivel_usuariou">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" id="actualizar_datos">Guardar</button>
+                        <button type="button" class="btn btn-warning" id="actualizar_datos" data-dismiss="modal">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -111,6 +114,7 @@
     <script src="bootstrap/js/bootstrap.js"></script>
     <script>
         $(document).ready(function(){
+            /*para agregar datos*/
             $('#agregarNuevo').click(function(){
                 id_usuario=$('#id_usuario').val();
                 ci_usuario=$('#ci_usuario').val();
@@ -119,8 +123,11 @@
                 nivel_usuario=$('#nivel_usuario').val();
                 agregar_usuario(id_usuario, ci_usuario, nombre_usuario, clave, nivel_usuario)
             })
-
-
+             /*para actualizar datos*/
+            $('#actualizar_datos').click(function(){
+                actualizarDatos();
+            })
+                
         })
     </script>
     </body>
