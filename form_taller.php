@@ -127,30 +127,36 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="2"><select onChange="actualizarTaza(0)"  name="staf0" id="staf0" class="form-control">
+                            <td colspan="2"><select onChange="t1_subTotal()" name="t1_deta" id="t1_deta" class="form-control">
                                 <option>DISEÑADORA</option>
                                 <option>AUXILIAR IMPRESION</option>
                                 <option>ENCARGADO DE TALLER</option>
                                 <option>PERSONAL DE TALLER</option>
                                 </select></td>
-                                <td><select onChange="actualizarTaza(0)"  name="staf0" id="staf0" class="form-control">
+                                <td><select onChange="t1_subTotal()" name="t1_tiem" id="t1_tiem" class="form-control">
                                 <option>HORAS</option>
                                 <option>DIAS</option>
                                 </select></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" class="form-control" readonly></td>
-                            <td colspan="2"><input type="number" class="form-control" readonly></td>
-                            <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
-                        </tr>
-                        <tr>
-                            <th colspan="3" class="text-center">SOPORTE LOGISTICO</th>
-                            <td><label for="">0</label></td>
-                            <td><label for="">0</label></td>
-                            <td><label for="">0</label></td>
-                            <td colspan="2"><label for="">0</label></td>
+                            <td><input type="number" id="t1_tieP" name="t1_tieP" value="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
+                            <td><input type="number" id="t1_cant" name="t1_cant" value="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
+                            <td><input type="text" id="t1_tasa" name="t1_tasa" class="form-control" readonly></td>
+                            <td colspan="2"><input type="text" id="t1_cost" name="t1_cost" class="form-control" readonly></td>
+                            <td><button type="button" class="btn btn-success" onClick="t1_addRow()">+</button></td>
                         </tr>
                     </tbody>
+                </table>
+                <table class="table table-sm" id="t1">
+                    <tbody>
+                        <tr>
+                            <th colspan="3" class="text-center">SOPORTE LOGISTICO</th>
+                            <td><label id="t1_tp">0</label></td>
+                            <td><label id="t1_ca">0</label></td>
+                            <td><label id="t1_ta">0</label></td>
+                            <td colspan="2"><label id="t1_co">0</label></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-sm" id="tablita2">
                     <thead class="thead-light">
                         <tr><th colspan="8"><h2>2) MATERIALES Y SERVICIOS INTERNOS QUE INTERVIENEN EN LA OPERACION</h2></th></tr>
                         <tr>
@@ -169,25 +175,31 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="2"><input type="text" name="textfield5" id="textfield5" class="form-control"></td>
-                            <td><input type="text" name="textfield6" id="textfield6" class="form-control"></td>
-                            <td><input type="text" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><select name="select6" id="select6" class="form-control">
+                            <td colspan="2"><input type="text" name="t2_mate" id="t2_mate" class="form-control"></td>
+                            <td><input type="text" name="t2_prov" id="t2_prov" class="form-control"></td>
+                            <td><input type="text" id="t2_unid" name="t2_unid" class="form-control"></td>
+                            <td><input type="number" id="t2_cant" name="t2_cant" value="0" onkeyup="t2_subTotal()" onClick="this.select();" class="form-control"></td>
+                            <td><input type="number" id="t2_cost" name="t2_cost" value="0" onkeyup="t2_subTotal()" onClick="this.select();" class="form-control"></td>
+                            <td><select name="t2_docu" id="t2_docu" onchange="t2_subTotal()" class="form-control">
                                 <option>FACTURA</option>
                                 <option>RECIBO</option>
                                 <option>ALMACEN</option>
                                 </select></td>
-                            <td><input type="text" class="form-control" readonly></td>
-                            <td><button type="button" class="btn btn-success">+</button></td>
-                        </tr>
-                        <tr>
-                            <th colspan="7" class="<text-center></text-center>">TOTAL</th>
-                            <td><label for="">0</label></td>
+                            <td><input type="text" id="t2_tota" name="t2_tota" class="form-control" readonly></td>
+                            <td><button type="button" onclick="t2_addRow()" class="btn btn-success">+</button></td>
                         </tr>
                     </tbody>
+                </table>
+                    <table class="table table-sm" id="t2">
+                        <tbody>
+                        <tr>
+                            <th colspan="7" class="<text-center></text-center>">TOTAL</th>
+                            <td><label id="t2_to"></label></td>
+                        </tr>
+                        </tbody>
+                    </table>
                     <!--tabla 2 - servicios-->
+                <table class="table table-sm" id="tablita3">
                     <thead class="thead-light">
                         <tr>
                             <th colspan="2"><label>SERVICIOS</label></th>
@@ -217,6 +229,11 @@
                             <td><input type="number" class="form-control" readonly></td>
                             <td><button type="button" class="btn btn-success">+</button></td>
                         </tr>
+                    </tbody>
+                </table>
+
+                <table class="table table-sm" id="t3">
+                    <tbody>
                         <tr>
                             <th colspan="7" class="text-center"><label>TOTAL</label></th>
                             <td><label for="">0</label></td>
@@ -340,5 +357,7 @@
                 <input name="salir" type="button" value="Salir" class="btn btn-success">
             </div>
         </form>
+        <script type="text/javascript" src="jquery/form_taller.js"></script>
+        <script src="jquery/jquery-3.3.1.js"></script>
     </body>
 </html>
