@@ -1,5 +1,4 @@
-
-    //Variables tablita 1 
+//Variables tablita 1 
     //Ejecutivo de cuenta -> Hora: 30     Dia:240
     //Encargado logistico -> Hora: 26     Dia: 208
     var tasaEjecutivo = 30; //valor en horas
@@ -103,7 +102,7 @@
                     '<td><input type="text" class="form-control" name="precioC'+c+'" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
                     '</tr>'
 
-                $('#tablita1').append(fila);
+                $('#tablita1').after(fila);
                 actualizarTaza(c);
             }
 
@@ -190,7 +189,7 @@
                             '<td></td>'+
                            '</tr>'
 
-                $('#tablita2').append(fila);
+                $('#tablita2').after(fila);
                 actualizarTotalT2(c2);
             }
 
@@ -257,7 +256,7 @@
                             '<td></td>'+
                         '</tr>'
 
-                $('#tablita3').append(fila);
+                $('#tablita3').after(fila);
                 actualizarTotalT3(c3);
             }
 
@@ -307,7 +306,7 @@
                             '<td></td>'+
                             '</tr>'
 
-                $('#tablita4').append(fila);
+                $('#tablita4').after(fila);
                 actualizarTotalT4(c4);
             }
             function t5_subTotal(a){
@@ -356,6 +355,14 @@
                             '<td></td>'+
                             '</tr>'
 
-                $('#tablita5').append(fila);
+                $('#tablita5').after(fila);
                 actualizarTotalT5(c5);
             }
+/*editados por wilfredo*/
+function codigo_proyecto(){
+    /*aqui los extrae del modal modal_generar_codigo.php*/
+    codigo=$('#area').val()+$('#ciudad').val()+$('#cliente').val();
+    $('#codigo').val(codigo)
+    /*aqui lleva el valor a form_atl.php*/
+    $('#form_codigo').val(codigo)
+}

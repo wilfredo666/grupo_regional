@@ -4,8 +4,19 @@ admin123
 ----------------------------------
 - version de boostrap usado: 4.2.1
 ----------------------------------
-clave para desbloquear las hojas de costo:
+clave para desbloquear las hojas de costo (excel):
 shulob
 ----------------------------------
 tipo de dato para moneda en mysql es decimal, formato (10,2) que
 utiliza 10 digitos en total y toma 2 de ellos como decimal
+
+-------------------
+15/01/19
+
+-terminar los calculos (costos indirectos)
+-agregar eliminar fila en form_atl (signo -)
+-
+                                <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
+
+-se puden crear varias filas dentro de una fila
+-no se pueden crear varias filas dentro de una fila

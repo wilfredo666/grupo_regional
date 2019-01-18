@@ -12,7 +12,7 @@
     <body>
         <div class="container">
             <div class="col-sm-12" id="tabla">
-                <h1>Tablas dinamicas con ajax, mysql, php</h1>
+                <h1>Reporte de usuarios - Grupo Regional</h1>
                 <caption>
                     <button class="btn btn-primary"  data-toggle="modal" data-target="#modalNuevo" data-dismiss="modal">+ Agregar nuevo </svg></button>
                 </caption>
@@ -109,7 +109,7 @@
             </div>
         </div>
         </div>
-    <script src="jquery/jquery-3.3.1.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
     <script src="alertifyjs/alertify.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script>

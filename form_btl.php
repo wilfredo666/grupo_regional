@@ -124,7 +124,7 @@
                                     <option>DIAS</option>
                                     <option>HORAS</option>
                                     </select></td>
-                                <td><input type="number" name="t1_tieP" id="t1_tieP" value="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
+                                <td><input type="number" name="t1_tieP" id="t1_tieP" value="0" onchange="t1_subTotal()" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
                                 <td><input type="number" name="t1_cant" id="t1_cant" value ="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
                                 <td><input type="text" name="t1_tasa" id="t1_tasa" readonly class="form-control" ></td>
                                 <td><input type="text" name="t1_cost" id="t1_cost" readonly class="form-control"></td>
@@ -657,8 +657,8 @@
                 <input name="salir" type="button" value="Salir" class="btn btn-success">
             </div>
         </form>
-        <script type="text/javascript" src="jquery/form_btl.js"></script>
-        <script src="jquery/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="js/form_btl.js"></script>
+        <script src="js/jquery-3.3.1.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
     </body>
 </html>
