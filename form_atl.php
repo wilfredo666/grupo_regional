@@ -13,7 +13,7 @@ include 'modal_generar_codigo.php'
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
-        <div class="container-fluid bg-primary">
+        <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
         <form action="guardar_form_atl.php" id="form1" name="form1" method="post">
@@ -118,21 +118,21 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr id="tablita1">
-                                        <td><select name="staf0" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
+                                        <td><select name="staf[0]" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
                                             <option>EJECUTIVO DE CUENTAS</option>
                                             <option>ENCARGADO LOGISTICO</option>
-                                            <option>SUPERVISOR</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" id="detalle0" class="form-control"></td>
+                                        <td><input type="text" id="detalle0" name="nom_personal0" class="form-control"></td>
                                         <td><select onChange= "actualizarTaza(0)" name="dayorhour0" id="dayorhour0" class="form-control">
+                                           <option>SELECCIONAR</option>
                                             <option>DIAS</option>
                                             <option>HORAS</option>
                                             </select>
                                         </td>
                                         <td><input type="number" name="time0" id="time0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
                                         <td><input type="number" name="nrop0" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                        <td><input type="text" name="tasa0" id="tasa0" value="" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
+                                        <td><input type="text" name="tasa0" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
                                         <td><input type="text" name="costop0" id="costop0" value="0" readonly class="form-control"></td>
                                         <td><input type="text" name="precioC0" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
                                         <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>

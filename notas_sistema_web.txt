@@ -18,5 +18,8 @@ utiliza 10 digitos en total y toma 2 de ellos como decimal
 -
                                 <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
 
--se puden crear varias filas dentro de una fila
+-se puden crear varias filas dentro de una columna
 -no se pueden crear varias filas dentro de una fila
+-agregar al registro de la basse de datos, fecha-hora y usuario
+-resolver el problema de la , y punto en la bd
+

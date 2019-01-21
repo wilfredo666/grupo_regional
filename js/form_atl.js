@@ -83,13 +83,12 @@
                 c=c+1;
                 var fila = '<tr>'+
                     '<td>'+
-                    '<select onChange="actualizarTaza('+c+')" class="form-control"  name="staf'+c+'" id="staf'+c+'" >'+
+                    '<select onChange="actualizarTaza('+c+')" class="form-control" name="staf['+c+']" id="staf'+c+'" >'+
                     '<option>EJECUTIVO DE CUENTAS</option>'+
                     '<option>ENCARGADO LOGISTICO</option>'+
-                    '<option>SUPERVISOR</option>'+
                     '</select>'+
                     '</td>'+
-                    '<td><input type="text" class="form-control" id="detalle'+c+'" ></td>'+
+                    '<td><input type="text" class="form-control" name="nom_personal'+c+'" id="detalle'+c+'" ></td>'+
                     '<td><select class="form-control" onChange= "actualizarTaza('+c+')" name="dayorhour'+c+'" id="dayorhour'+c+'" >'+
                     '<option>SELECCIONAR</option>'+
                     '<option>DIAS</option>'+
