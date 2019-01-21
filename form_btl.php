@@ -81,7 +81,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Tiempo de credito (en dias):</div>
                                 </div>
-                                <input type="number" class="form-control" name="number" id="number">
+                                <input type="number" class="form-control" name="tiempoC" id="tiempoC" onkeyup="costosExternos()" onclick="this.select()" value="0">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -89,7 +89,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Tipo de proyecto:</div>
                                 </div>
-                                <select class="form-control" name="select2" id="select2">
+                                <select class="form-control" name="exoin" id="exoin" onchange="costosExternos()">
                                     <option>EXTERNO</option>
                                     <option>INTERNO</option>
                                 </select>
@@ -430,16 +430,16 @@
                     <table class="table table-sm">
                         <thead class="thead-light">
                             <tr>
-                                <th>TOTAL CANTIDAD DEPERSONAS</th>
+                                <th>TOTAL CANTIDAD DE PERSONAS</th>
                                 <th>TOTAL CANTIDAD DE ACTIVACIONES</th>
                                 <th>TOTALES</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td><label id="tcp">0</label></td>
+                                <td><label id="tca">0</label></td>
+                                <td><label id="ttt">0</label></td>
                             </tr>
                         </tbody>
                         <thead class="thead-light">
@@ -454,9 +454,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td><label id="cap">0</label></td>
+                                <td><label id="tda">0</label></td>
+                                <td><label id="cpc">0</label></td>
                             </tr>
                         </tbody>
                         <thead class="thead-light">
@@ -471,9 +471,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td><label id="tio">0</label></td>
+                                <td><label id="taf">0</label></td>
+                                <td><label id="ctp">0</label></td>
                             </tr>
                         </tbody>
                         <thead class="thead-light">
@@ -485,9 +485,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><label for="">0</label></td>
+                                <td><label id="feeP">0</label></td>
                                 <td></td>
-                                <td><input type="number" class="form-control"></td>
+                                <td><input type="text" class="form-control" id="feeV" name="feeV" value="15%" onkeyup="costosExternos()"></td>
                             </tr>
                         </tbody>
                         <thead class="thead-light">
@@ -498,23 +498,23 @@
                         <tbody>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                                <td><label for=""></label>0</td>
-                                <td><label for=""></label>0</td>
+                                <td><label id="tp1">0</label></td>
+                                <td><label id=""></label>...</td>
                             </tr>
                             <tr>
                                 <th scope="row">F.E.E.</th>
-                                <td><label for=""></label>0</td>
-                                <td><label for=""></label>0</td>
+                                <td><label id="tp2">0</label></td>
+                                <td><label id=""></label>...</td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                                <td><label for=""></label>0</td>
-                                <td><label for=""></label>0</td>
+                                <td><label id="tp3">0</label></td>
+                                <td><label id=""></label>...</td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                <td><label for=""></label>0</td>
-                                <td><label for=""></label>0</td>
+                                <td><label id="tp4">0</label></td>
+                                <td><label id=""></label>...</td>
                             </tr>
                         </tbody>
                         <thead class="thead-light">
@@ -526,17 +526,17 @@
                             <tr>
                                 <th>PERSONAL ACTIVO</th>
                                 <td>0</td>
-                                <td>0</td>
+                                <td>...</td>
                             </tr>
                             <tr>
                                 <th>MATERIAL Y SERVICIOS</th>
                                 <td>0</td>
-                                <td>0</td>
+                                <td>...</td>
                             </tr>
                             <tr>
                                 <th>TOTAL</th>
                                 <td>0</td>
-                                <td>0</td>
+                                <td>...</td>
                             </tr>
                         </tbody>
                     </table>
