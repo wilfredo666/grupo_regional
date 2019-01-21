@@ -67,7 +67,7 @@ var t7_acTo=0;
                 res = parseFloat(nuevo).toFixed(2);
                 return res;   
             }
-                   function t1_subTotal(){
+            function t1_subTotal(){
                 var ti = document.getElementById("t1_tiem").value
                 var ca = parseFloat(document.getElementById("t1_cant").value)
                 var tip = parseFloat(document.getElementById("t1_tieP").value)
@@ -98,7 +98,7 @@ var t7_acTo=0;
                                ' <td><label id="t1_ca'+c1+'">'+ca+'</td>'+
                                ' <td><label id="t1_ta'+c1+'">'+ta+'</td>'+
                                ' <td><label id="t1_co'+c1+'">'+co+'</td>'+
-                               ' <td><button type="button" class="btn btn-danger" id='+c1+' onClick="t1_deleted(this.id)">x</button></td>'+
+                               ' <td><button type="button" class="btn btn-danger" id='+c1+' onClick="t1_deleted(this.id)">-</button></td>'+
                            ' </tr>'
                 $('#tablita1').append(fila)
                 document.getElementById("t1_deta").value="EJECUTIVO DE CUENTAS";
@@ -138,9 +138,11 @@ var t7_acTo=0;
                 document.getElementById("t1_ca").innerHTML= t1_acCa;
                 document.getElementById("t1_ta").innerHTML= activacoma(t1_acTa.toFixed(2));
                 document.getElementById("t1_co").innerHTML= activacoma(t1_acCo.toFixed(2));
+                costosExternos();
             }
-//TABLITA 2
-             function t2_subTotal(){
+            //TABLITA 2
+            function t2_subTotal()
+            {
                 var cap = parseInt(document.getElementById("t2_cant").value)
                 var can = parseInt(document.getElementById("t2_canA").value)
                 var pag = parseFloat(document.getElementById("t2_pago").value)
@@ -169,7 +171,7 @@ var t7_acTo=0;
                                 '<td><label id="t2_ci'+c2+'">'+ci+'</label></td>'+
                                 '<td><label id="t2_t1'+c2+'">'+t1+'</label></td>'+
                                 '<td><label id="t2_t2'+c2+'">'+t2+'</label></td>'+
-                                '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">x</button></td>'+
+                                '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">-</button></td>'+
                             '</tr>'
                 $('#tablita2').append(fila)
                 document.getElementById("t2_pers").value= ""
@@ -217,6 +219,7 @@ var t7_acTo=0;
                 document.getElementById("t2_pa").innerHTML=activacoma(t2_acPag.toFixed(2));
                 document.getElementById("t2_t1").innerHTML=activacoma(t2_acTot1.toFixed(2));
                 document.getElementById("t2_t2").innerHTML=activacoma(t2_acTot2.toFixed(2));
+                costosExternos();
             }
 
             //TABLITA 3
@@ -253,7 +256,7 @@ var t7_acTo=0;
                                 '<td><label id="t3_co'+c3+'">'+co+'</label></td>'+
                                 '<td><label id="t3_do'+c3+'">'+doc+'</label></td>'+
                                 '<td><label id="t3_to'+c3+'">'+to+'</label></td>'+
-                                '<td><button type="button" id='+c3+' class="btn btn-danger" onClick="t3_deleted(this.id)">x</button></td>'+
+                                '<td><button type="button" id='+c3+' class="btn btn-danger" onClick="t3_deleted(this.id)">-</button></td>'+
                             '</tr>'
                 $('#tablita3').append(fila)
                 document.getElementById("t3_mate").value=""
@@ -291,6 +294,7 @@ var t7_acTo=0;
                 document.getElementById("t3_ca").innerHTML=activacoma(t3_acCan);
                 document.getElementById("t3_co").innerHTML=activacoma(t3_acCos.toFixed(2));
                 document.getElementById("t3_to").innerHTML=activacoma(t3_acTot.toFixed(2));
+                costosExternos();
             }
 
             //TABLITA 4
@@ -334,7 +338,7 @@ var t7_acTo=0;
                                 '<td><label id="t4_co'+c4+'">'+co+'</label></td>'+
                                 '<td><label id="t4_do'+c4+'">'+doc+'</label></td>'+
                                 '<td><label id="t4_to'+c4+'">'+to+'</label></td>'+
-                                '<td><button type="button" id='+c4+' class="btn btn-danger" onClick="t4_deleted(this.id)">x</button></td>'+
+                                '<td><button type="button" id='+c4+' class="btn btn-danger" onClick="t4_deleted(this.id)">-</button></td>'+
                             '</tr>'
                 $('#tablita4').append(fila)
                 document.getElementById("t4_serv").value=""
@@ -372,10 +376,11 @@ var t7_acTo=0;
                 document.getElementById("t4_ca").innerHTML=activacoma(t4_acCan);
                 document.getElementById("t4_co").innerHTML=activacoma(t4_acCos.toFixed(2));
                 document.getElementById("t4_to").innerHTML=activacoma(t4_acTot.toFixed(2));
+                costosExternos();
             }
 
 //TABLITA 5
-             function t5_subTotal(){
+            function t5_subTotal(){
                 var ca = parseInt(document.getElementById("t5_cant").value)
                 var co = parseFloat(document.getElementById("t5_cost").value)
                 var res = ca*co;
@@ -396,7 +401,7 @@ var t7_acTo=0;
                                ' <td><label id="t5_ca'+c5+'">'+ca+'</td>'+
                                ' <td><label id="t5_co'+c5+'">'+co+'</td>'+
                                ' <td><label id="t5_to'+c5+'">'+to+'</td>'+
-                               ' <td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">x</button></td>'+
+                               ' <td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">-</button></td>'+
                            ' </tr>'
                 $('#tablita5').append(fila)
                 document.getElementById("t5_prod").value="";
@@ -428,14 +433,17 @@ var t7_acTo=0;
                 document.getElementById("t5_ca").innerHTML= t5_acCa;
                 document.getElementById("t5_co").innerHTML= activacoma(t5_acCo.toFixed(2));
                 document.getElementById("t5_to").innerHTML= activacoma(t5_acTo.toFixed(2));
+                costosExternos();
             }
-//TABLITA 6
-             function t6_subTotal(){
+
+            function t6_subTotal()
+             {
                 var ca = parseInt(document.getElementById("t6_cant").value)
                 var co = parseFloat(document.getElementById("t6_cost").value)
                 var res = ca*co;
                 document.getElementById("t6_tota").value = activacoma(res.toFixed(2));
             }
+    
             
             function t6_addRow(){
                 c6=c6+1;
@@ -451,7 +459,7 @@ var t7_acTo=0;
                                ' <td><label id="t6_ca'+c6+'">'+ca+'</td>'+
                                ' <td><label id="t6_co'+c6+'">'+co+'</td>'+
                                ' <td><label id="t6_to'+c6+'">'+to+'</td>'+
-                               ' <td><button type="button" class="btn btn-danger" id='+c6+' onClick="t6_deleted(this.id)">x</button></td>'+
+                               ' <td><button type="button" class="btn btn-danger" id='+c6+' onClick="t6_deleted(this.id)"></button></td>'+
                            ' </tr>'
                 $('#tablita6').append(fila)
                 document.getElementById("t6_prod").value="";
@@ -483,6 +491,7 @@ var t7_acTo=0;
                 document.getElementById("t6_ca").innerHTML= t6_acCa;
                 document.getElementById("t6_co").innerHTML= activacoma(t6_acCo.toFixed(2));
                 document.getElementById("t6_to").innerHTML= activacoma(t6_acTo.toFixed(2));
+                costosExternos();
             }
 
   //tablita 7
@@ -539,6 +548,96 @@ var t7_acTo=0;
                 document.getElementById("t7_ca").innerHTML= t7_acCa;
                 document.getElementById("t7_co").innerHTML= activacoma(t7_acCo.toFixed(2));
                 document.getElementById("t7_to").innerHTML= activacoma(t7_acTo.toFixed(2));
+                costosExternos();
             }
 
             
+            function costosExternos(){
+                var costoTotalProyecto =0;
+                //TOTALES
+                var cp1 = convertToFloat($('#t1_ca').text());
+                var cp2 = convertToFloat($('#t2_cp').text());
+                var ca1 = convertToFloat($('#t2_ca').text());
+                var cantidadPersonas = parseInt(cp1) + parseInt(cp2);
+                $('#tcp').text(activacoma(cantidadPersonas.toFixed(2)));    //total cantidad de personas
+                var cantidadActivaciones = parseInt(ca1) * parseInt(cp2);
+                $('#tca').text(activacoma(cantidadActivaciones));    //total cantidad de activaciones
+
+                $('#ttt').text($('#t2_t2').text());    //Totales
+                
+                //COSTOS INDIRECTOS DEL PROYECTO
+                var to1 = convertToFloat($('#t1_co').text());
+                var to4 = convertToFloat($('#t4_to').text());
+                var to7 = convertToFloat($('#t7_to').text());
+                var tot = convertToFloat($('#ttt').text());
+                var costoAcumuladoP = parseFloat(to1) + parseFloat(to4) + parseFloat(to7) + parseFloat(tot);
+                $('#cap').text(activacoma(costoAcumuladoP.toFixed(2))) ; //costo acumulado programado
+                $('#tda').text("0.13") // tasa de aplicacion FALTA HACER EL CALCULO
+                var capp = convertToFloat($('#cap').text());
+                var taff = convertToFloat($('#tda').text());
+                var costoprog = parseFloat(capp) * parseFloat(taff)
+                $('#cpc').text(activacoma(costoprog.toFixed(2))) // costo programado de costos indirectos
+
+                //COSTOS FINANCIEROS
+
+                $('#tio').text($('#tiempoC').val());    // Tiempo programado
+                var tasaF  = 0.17;
+                var horasAnio = 2496;
+                var tasaHoraAnio = parseFloat(tasaF) / parseFloat(horasAnio)
+                var tasaFinanciera = tasaHoraAnio *8;
+                tasaFinanciera = tasaFinanciera*100;
+                $('#taf').text((tasaFinanciera.toFixed(5)));         // Tasa financiera
+
+                var tiem = parseInt($('#tio').text());
+                var costoFinanciero = tiem*(tasaFinanciera/100)*(costoAcumuladoP+costoprog) //OJO FALTA SUMAR GASTOS AUXILIARES
+                $('#ctp').text(activacoma(costoFinanciero.toFixed(2))) //costo total programado financiero
+
+
+                //TOTAL PRESUPUESTADO
+                var to5 = convertToFloat($('#t5_to').text());
+                var to6 = convertToFloat($('#t6_to').text());
+                costoTotalProyecto = parseFloat(costoprog + costoFinanciero + t1 + t4 + t5 +t6 + t7 + tiem);
+                $('#tp1').text(activacoma(costoTotalProyecto.toFixed(2)));  //costo total del proyecto
+
+                //FEE
+                var feep = 0;
+                if(costoTotalProyecto<50000){
+                    feep = 0.16;
+                }
+                else
+                    feep = 0.15;
+                feep=feep*100;
+                $('#feeP').text(feep+'%');  //FEE PROGRAMADO
+
+
+                var exoin = $('#exoin').val()
+                 var feev = $('#feeV').val()
+                 var FE =0;
+                if(exoin=="INTERNO"){
+                    $('#tp2').text($('#tp1').text());
+                    $('#tp3').text($('#tp1').text());
+                    $('#tp4').text($('#tp1').text());
+                }
+                if(exoin=="EXTERNO"){
+                    var b;
+                    var feev2="";
+                    for(b=0 ; b<feev.length ; b++){
+                        if(feev[b]!='%')
+                            feev2 = feev2+feev[b];
+                    }
+                    var porcentaje = parseFloat(feev2);
+                    if(feeP==0)
+                        FE = costoTotalProyecto * (porcentaje/100)
+                    else
+                        FE = costoTotalProyecto * (porcentaje/100)
+                    $('#tp2').text(activacoma(FE.toFixed(2))) //FEE PROGRAMADO en total presupuestado
+
+                    var proyectoFee = FE + costoTotalProyecto;
+                    $('#tp3').text(activacoma(proyectoFee.toFixed(2))); //COSTO PROYECTO MAS FEE
+
+                    var costoMasImpuestos = proyectoFee/0.84;
+                    $('#tp4').text(activacoma(costoMasImpuestos.toFixed(2))); //Costo del proyecto mas impuestos
+
+                }
+
+            }
