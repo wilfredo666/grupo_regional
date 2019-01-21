@@ -9,11 +9,12 @@ include 'modal_generar_codigo.php'
         <title>Formulario ATL</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <script type="text/javascript" src="js/form_atl.js"></script>
-        <link href="css/al.css" rel="stylesheet" type="text/css">
+        <link href="css/atl.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
+
     <body>
-        <div class="container-fluid bg-success">
+        <div class="container-fluid bg-primary">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
         <form action="guardar_form_atl.php" id="form1" name="form1" method="post">
@@ -81,7 +82,7 @@ include 'modal_generar_codigo.php'
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Tiempo de credito (en dias):</div>
                                     </div>
-                                    <input type="number" class="form-control" name="tiempo_credito" id="number">
+                                    <input type="number" class="form-control" name="tiempo_credito" id="number" onclick="this.select()" value="0" onkeyup="costosExternos()">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -89,7 +90,7 @@ include 'modal_generar_codigo.php'
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Tipo de proyecto:</div>
                                     </div>
-                                    <select class="form-control" name="tipo_proyecto" id="select2">
+                                    <select class="form-control" name="exoin" id="exoin" onchange="costosExternos()">
                                         <option>EXTERNO</option>
                                         <option>INTERNO</option>
                                     </select>
@@ -118,14 +119,15 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr id="tablita1">
-                                        <td><select name="staf[0]" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
+                                        <td><select name="staf0" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
                                             <option>EJECUTIVO DE CUENTAS</option>
                                             <option>ENCARGADO LOGISTICO</option>
+                                            <option>SUPERVISOR</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" id="detalle0" name="nom_personal0" class="form-control"></td>
+                                        <td><input type="text" id="detalle0" class="form-control"></td>
                                         <td><select onChange= "actualizarTaza(0)" name="dayorhour0" id="dayorhour0" class="form-control">
-                                           <option>SELECCIONAR</option>
+                                            <option>SELECCIONAR</option>
                                             <option>DIAS</option>
                                             <option>HORAS</option>
                                             </select>
@@ -334,9 +336,9 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">0</td>
+                                        <td class="text-center"><label id="costoVA">0</label></td>
+                                        <td class="text-center"><label id="costoED">0</label></td>
+                                        <td class="text-center"><label id="diferencia">0</label></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -351,9 +353,9 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">0</td>
+                                        <td class="text-center"><label id="costoAp">0</label></td>
+                                        <td class="text-center"><label id="tasaDa"></label></td>
+                                        <td class="text-center"><label id="costoPd">0</label></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -368,9 +370,9 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">0</td>
-                                        <td class="text-center">0</td>
+                                        <td class="text-center"><label id="tiempoPr">0</td>
+                                        <td class="text-center"><label id="tasaFi">0</td>
+                                        <td class="text-center"><label id="costoTo">0</td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -382,9 +384,9 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><label for="">0</label></td>
+                                        <td><label id="feeP">0</label></td>
                                         <td></td>
-                                        <td><input type="number" class="form-control"></td>
+                                        <td><input type="text" class="form-control" id="feeV" name="feeV" value="10%" onkeyup="costosExternos()"></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -397,23 +399,23 @@ include 'modal_generar_codigo.php'
                                 <tbody>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                                        <td><label for=""></label>0</td>
-                                        <td><label for=""></label>0</td>
+                                        <td><label id="totalE1">0</label></td>
+                                        <td><label id="totalF1">0</label></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">F.E.E.</th>
-                                        <td><label for=""></label>0</td>
-                                        <td><label for=""></label>0</td>
+                                        <td><label id="totalE2">0</label></td>
+                                        <td><label id="totalF2">0</label></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                                        <td><label for=""></label>0</td>
-                                        <td><label for=""></label>0</td>
+                                        <td><label id="totalE3">0</label></td>
+                                        <td><label id="totalF3">0</label></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                        <td><label for=""></label>0</td>
-                                        <td><label for=""></label>0</td>
+                                        <td><label id="totalE4">0</label></td>
+                                        <td><label id="totalF4">0</label></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -437,6 +439,6 @@ include 'modal_generar_codigo.php'
                 </form>
             <script src="js/jquery-3.3.1.js"></script>
             <script src="bootstrap/js/bootstrap.js"></script>
-
+           
             </body>
         </html>
