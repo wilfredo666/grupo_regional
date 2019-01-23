@@ -23,3 +23,125 @@ utiliza 10 digitos en total y toma 2 de ellos como decimal
 -agregar al registro de la basse de datos, fecha-hora y usuario
 -resolver el problema de la , y punto en la bd
 
+para registro de multiple de tabla
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+
+/*materiales que intervienen en la operacion*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*servicios que intervienen en la operacion*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*productos propios de taller*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*equipos propios*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*costo de valor agregado*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*costos indirectos de operaciones*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*costo financiero*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+
+/*total ejecutado & total F.E.E.*/
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+$=$_POST[''];
+for($i=0;$i<sizeof($);$i++){
+    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
+}
+echo $cod_proyecto;
+echo $detalle[$i];
+echo $nom_personal[$i];
+echo $tiempo[$i];
+echo $t_programado[$i];
+echo $cant_personas[$i];
+echo $t_presupuestaria[$i];
+echo $tot_pro_mod[$i];
+echo $pre_cot_sin_fee[$i];
+    echo '<br>';
+
+410 1 01
+410 1 011
+4221010001

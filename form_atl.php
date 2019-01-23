@@ -14,7 +14,7 @@ include 'modal_generar_codigo.php'
     </head>
 
     <body>
-        <div class="container-fluid bg-primary">
+        <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
         <form action="guardar_form_atl.php" id="form1" name="form1" method="post">
@@ -119,24 +119,23 @@ include 'modal_generar_codigo.php'
                                 </thead>
                                 <tbody>
                                     <tr id="tablita1">
-                                        <td><select name="staf0" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
+                                        <td><select name="staf[0]" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
                                             <option>EJECUTIVO DE CUENTAS</option>
                                             <option>ENCARGADO LOGISTICO</option>
-                                            <option>SUPERVISOR</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" id="detalle0" class="form-control"></td>
-                                        <td><select onChange= "actualizarTaza(0)" name="dayorhour0" id="dayorhour0" class="form-control">
+                                        <td><input type="text" name="detalle[0]" id="detalle0" class="form-control"></td>
+                                        <td><select onChange= "actualizarTaza(0)" name="dayorhour[0]" id="dayorhour0" class="form-control">
                                             <option>SELECCIONAR</option>
                                             <option>DIAS</option>
                                             <option>HORAS</option>
                                             </select>
                                         </td>
-                                        <td><input type="number" name="time0" id="time0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                        <td><input type="number" name="nrop0" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                        <td><input type="text" name="tasa0" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
-                                        <td><input type="text" name="costop0" id="costop0" value="0" readonly class="form-control"></td>
-                                        <td><input type="text" name="precioC0" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
+                                        <td><input type="number" name="time[0]" id="time0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
+                                        <td><input type="number" name="nrop[0]" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
+                                        <td><input type="text" name="tasa[0]" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
+                                        <td><input type="text" name="costop[0]" id="costop0" value="0" readonly class="form-control"></td>
+                                        <td><input type="text" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
                                         <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
                                     </tr>
                                     <tr>
@@ -172,15 +171,15 @@ include 'modal_generar_codigo.php'
                                     </thead>
                                     <tbody>
                                         <tr  id="tablita2">
-                                            <td><input type="text" name="t2_mat0" id="t2_mat0" class="form-control"></td>
-                                            <td><input type="text" name="t2_nom0" id="t2_nom0" class="form-control"></td>
-                                            <td><input type="number" name="t2_can0" onkeyup="t2_subTotal(0)" id="t2_can0" value="0" class="form-control" onClick="this.select();"></td>
-                                            <td><input type="number" name="t2_cos0" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();"></td>
-                                            <td><select name="t2_doc0" id="t2_doc0" class="form-control">
+                                            <td><input type="text" name="t2_mat[0]" id="t2_mat0" class="form-control"></td>
+                                            <td><input type="text" name="t2_nom[0]" id="t2_nom0" class="form-control"></td>
+                                            <td><input type="number" name="t2_can[0]" onkeyup="t2_subTotal(0)" id="t2_can0" value="0" class="form-control" onClick="this.select();"></td>
+                                            <td><input type="number" name="t2_cos[0]" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();"></td>
+                                            <td><select name="t2_doc[0]" id="t2_doc0" class="form-control">
                                                 <option>FACTURA</option>
                                                 </select></td>
-                                            <td><input type="text" class="form-control" name="t2_tot0" id="t2_tot0" readonly></td>
-                                            <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre0" id="t2_pre0" value="0" class="form-control" onClick="this.select();"></td>
+                                            <td><input type="text" class="form-control" name="t2_tot[0]" id="t2_tot0" readonly></td>
+                                            <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();"></td>
                                             <td></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
                                         </tr>
@@ -215,19 +214,19 @@ include 'modal_generar_codigo.php'
                                     </thead>
                                     <tbody>
                                         <tr id="tablita3">
-                                            <td><input type="text" name="t3_ser0" id="t3_ser0" class="form-control"></td>
-                                            <td><input type="text" name="t3_nom0" id="t3_nom0" class="form-control"></td>
-                                            <td><input type="number" name="t3_dia0" id="t3_dia0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
-                                            <td><input type="number" name="t3_can0" id="t3_can0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
-                                            <td><input type="number" name="t3_cos0" id="t3_cos0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
-                                            <td><select name="t3_tip0" id="t3_tip0" onChange="t3_subTotal(0)"  class="form-control">
+                                            <td><input type="text" name="t3_ser[0]" id="t3_ser0" class="form-control"></td>
+                                            <td><input type="text" name="t3_nom[0]" id="t3_nom0" class="form-control"></td>
+                                            <td><input type="number" name="t3_dia[0]" id="t3_dia0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
+                                            <td><input type="number" name="t3_can[0]" id="t3_can0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
+                                            <td><input type="number" name="t3_cos[0]" id="t3_cos0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
+                                            <td><select name="t3_tip[0]" id="t3_tip0" onChange="t3_subTotal(0)"  class="form-control">
                                                 <option>FACTURA</option>
                                                 <option>RECIBO</option>
                                                 <option>SIN IMPUESTO</option>
                                                 <option>ALQUILER SIN RECIBO</option>
                                                 </select></td>
-                                            <td><input type="text" name="t3_tot0" id="t3_tot0" class="form-control" readonly></td>
-                                            <td><input type="number" name="t3_pre0" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
+                                            <td><input type="text" name="t3_tot[0]" id="t3_tot0" class="form-control" readonly></td>
+                                            <td><input type="number" name="t3_pre[0]" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t3();">+</button></td>
                                         </tr>
                                         <tr>
@@ -258,12 +257,12 @@ include 'modal_generar_codigo.php'
                                     </thead>
                                     <tbody>
                                         <tr id="tablita4">
-                                            <td><input type="text" name="t4_pro0" id="t4_pro0" class="form-control"></td>
-                                            <td><input type="text" name="t4_are0" id="t4_are0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can0" id="t4_can0"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos0" id="t4_cos0" class="form-control"></td>
-                                            <td><input type="text" name="t4_coT0" id="t4_coT0" class="form-control" readonly></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre0" id="t4_pre0" class="form-control"></td>
+                                            <td><input type="text" name="t4_pro[0]" id="t4_pro0" class="form-control"></td>
+                                            <td><input type="text" name="t4_are[0]" id="t4_are0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control"></td>
+                                            <td><input type="text" name="t4_coT[0]" id="t4_coT0" class="form-control" readonly></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
                                             <td></td>
                                             <td></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t4()">+</button></td>
@@ -298,12 +297,12 @@ include 'modal_generar_codigo.php'
                                     </thead>
                                     <tbody>             
                                         <tr  id="tablita5">
-                                            <td><input type="text" name="t5_det0" id="t5_det0" class="form-control"></td>
-                                            <td><input type="text" name="t5_are0" id="t5_are0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_can0" id="t5_can0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU0" id="t5_coU0" class="form-control"></td>
-                                            <td><input type="number" name="t5_coT0" id="t5_coT0" class="form-control" readonly></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre0" id="t5_pre0" class="form-control"></td>
+                                            <td><input type="text" name="t5_det[0]" id="t5_det0" class="form-control"></td>
+                                            <td><input type="text" name="t5_are[0]" id="t5_are0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_can[0]" id="t5_can0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU[0]" id="t5_coU0" class="form-control"></td>
+                                            <td><input type="number" name="t5_coT[0]" id="t5_coT0" class="form-control" readonly></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre[0]" id="t5_pre0" class="form-control"></td>
                                             <td></td>
                                             <td></td>
                                             <td scope="col"><button type="button" class="btn btn-success" onclick="addRow_t5()">+</button></td>

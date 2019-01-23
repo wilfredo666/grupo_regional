@@ -108,23 +108,22 @@
                 c=c+1;
                 var fila = '<tr>'+
                     '<td>'+
-                    '<select onChange="actualizarTaza('+c+')" class="form-control"  name="staf'+c+'" id="staf'+c+'" >'+
+                    '<select onChange="actualizarTaza('+c+')" class="form-control"  name="staf['+c+']" id="staf'+c+'" >'+
                     '<option>EJECUTIVO DE CUENTAS</option>'+
                     '<option>ENCARGADO LOGISTICO</option>'+
-                    '<option>SUPERVISOR</option>'+
                     '</select>'+
                     '</td>'+
-                    '<td><input type="text" class="form-control" id="detalle'+c+'" ></td>'+
-                    '<td><select class="form-control" onChange= "actualizarTaza('+c+')" name="dayorhour'+c+'" id="dayorhour'+c+'" >'+
+                    '<td><input type="text" class="form-control" name="detalle['+c+']" id="detalle'+c+'" ></td>'+
+                    '<td><select class="form-control" onChange= "actualizarTaza('+c+')" name="dayorhour['+c+']" id="dayorhour'+c+'" >'+
                     '<option>SELECCIONAR</option>'+
                     '<option>DIAS</option>'+
                     '<option>HORAS</option>'+
                     '</select></td>'+
-                    '<td><input type="number" class="form-control" name="time'+c+'" id="time'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
-                    '<td><input type="number" class="form-control" name="nrop'+c+'" id="nrop'+c+'" value ="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
-                    '<td><input type="text" class="form-control" name="tasa'+c+'" id="tasa'+c+'" value="" onkeyup="actualizarCostoTotal('+c+')" readonly></td>'+
-                    '<td><input type="text" class="form-control" name="costop'+c+'" id="costop'+c+'" value="0" readonly></td>'+
-                    '<td><input type="text" class="form-control" name="precioC'+c+'" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
+                    '<td><input type="number" class="form-control" name="time['+c+']" id="time'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
+                    '<td><input type="number" class="form-control" name="nrop['+c+']" id="nrop'+c+'" value ="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
+                    '<td><input type="text" class="form-control" name="tasa['+c+']" id="tasa'+c+'" value="" onkeyup="actualizarCostoTotal('+c+')" readonly></td>'+
+                    '<td><input type="text" class="form-control" name="costop['+c+']" id="costop'+c+'" value="0" readonly></td>'+
+                    '<td><input type="text" class="form-control" name="precioC['+c+']" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
                     '<td><button type="button" class="btn btn-danger" id='+c+' >-</button></td>'+
                     '</tr>'
                 $('#tablita1').after(fila);
@@ -191,15 +190,15 @@
             function addRow_t2(){
                 c2=c2+1;
                 var fila = '<tr>'+
-                            '<td><input type="text" name="t2_mat'+c2+'"  id="t2_mat'+c2+'" class="form-control"></td>'+
-                            '<td><input type="text" name="t2_nom'+c2+'" id="t2_nom'+c2+'" class="form-control"></td>'+
-                            '<td><input type="number" name="t2_can'+c2+'" id="t2_can'+c2+'" onkeyup="t2_subTotal('+c2+')" onClick="this.select()" value="0" class="form-control"></td>'+
-                            '<td><input type="number" name="t2_cos'+c2+'"id="t2_cos'+c2+'" onkeyup="t2_subTotal('+c2+')" onClick="this.select()" value="0" class="form-control"></td>'+
-                            '<td><select name="t2_doc'+c2+'" id="t2_doc'+c2+'" onkeyup="t2_subTotal('+c2+')" class="form-control">'+
+                            '<td><input type="text" name="t2_mat['+c2+']"  id="t2_mat'+c2+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t2_nom['+c2+']" id="t2_nom'+c2+'" class="form-control"></td>'+
+                            '<td><input type="number" name="t2_can['+c2+']" id="t2_can'+c2+'" onkeyup="t2_subTotal('+c2+')" onClick="this.select()" value="0" class="form-control"></td>'+
+                            '<td><input type="number" name="t2_cos['+c2+']"id="t2_cos'+c2+'" onkeyup="t2_subTotal('+c2+')" onClick="this.select()" value="0" class="form-control"></td>'+
+                            '<td><select name="t2_doc['+c2+']" id="t2_doc'+c2+'" onkeyup="t2_subTotal('+c2+')" class="form-control">'+
                                 '<option>FACTURA</option>'+
                                 '</select></td>'+
-                            '<td><input type="text" class="form-control" id="t2_tot'+c2+'" readonly></td>'+
-                            '<td><input type="number" name="t2_pre'+c2+'" id="t2_pre'+c2+'" onkeyup="t2_subTotal('+c2+')" value="0" class="form-control"></td>'+
+                            '<td><input type="text" class="form-control" name="t2_tot['+c2+']" id="t2_tot'+c2+'" readonly></td>'+
+                            '<td><input type="number" name="t2_pre['+c2+']" id="t2_pre'+c2+'" onkeyup="t2_subTotal('+c2+')" value="0" class="form-control"></td>'+
                             '<td></td>'+
                             '<td><button type="button" class="btn btn-danger" id='+c2+' onClick="">-</button></td>'+
                            '</tr>'
@@ -255,19 +254,19 @@
             function addRow_t3(){
                 c3=c3+1;
                 var fila = '<tr>'+
-                            '<td><input type="text" name="t3_ser'+c3+'" id="t3_ser'+c3+'" class="form-control"></td>'+
-                            '<td><input type="text" name="t3_nom'+c3+'" id="t3_nom'+c3+'" class="form-control"></td>'+
-                            '<td><input type="number" name="t3_dia'+c3+'" id="t3_dia'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
-                            '<td><input type="number" name="t3_can'+c3+'" id="t3_can'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
-                            '<td><input type="number" name="t3_cos'+c3+'" id="t3_cos'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
-                            '<td><select name="t3_tip'+c3+'" id="t3_tip'+c3+'" onChange="t3_subTotal('+c3+')" class="form-control">'+
+                            '<td><input type="text" name="t3_ser['+c3+']" id="t3_ser'+c3+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t3_nom['+c3+']" id="t3_nom'+c3+'" class="form-control"></td>'+
+                            '<td><input type="number" name="t3_dia['+c3+']" id="t3_dia'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
+                            '<td><input type="number" name="t3_can['+c3+']" id="t3_can'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
+                            '<td><input type="number" name="t3_cos['+c3+']" id="t3_cos'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
+                            '<td><select name="t3_tip['+c3+']" id="t3_tip'+c3+'" onChange="t3_subTotal('+c3+')" class="form-control">'+
                                 '<option>FACTURA</option>'+
                                 '<option>RECIBO</option>'+
                                 '<option>SIN IMPUESTO</option>'+
                                 '<option>ALQUILER SIN RECIBO</option>'+
                                 '</select></td>'+
-                            '<td><input type="text" name="t3_tot'+c3+'" id="t3_tot'+c3+'" class="form-control" readonly></td>'+
-                            '<td><input type="number" name="t3_pre'+c3+'" value="0" id="t3_pre'+c3+'" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
+                            '<td><input type="text" name="t3_tot['+c3+']" id="t3_tot'+c3+'" class="form-control" readonly></td>'+
+                            '<td><input type="number" name="t3_pre['+c3+']" value="0" id="t3_pre'+c3+'" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control"></td>'+
                             '<td><button type="button" class="btn btn-danger" id='+c3+' onClick="">-</button></td>'+
                         '</tr>'
 
@@ -310,12 +309,12 @@
             function addRow_t4(){
                 c4=c4+1;
                 var fila = '<tr>'+
-                            '<td><input type="text" name="t4_pro'+c4+'" id="t4_pro'+c4+'" class="form-control"></td>'+
-                            '<td><input type="text" name="t4_are'+c4+'" id="t4_are'+c4+'" class="form-control"></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" class="form-control" name="t4_can'+c4+'" id="t4_can'+c4+'"></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_cos'+c4+'" id="t4_cos'+c4+'" class="form-control"></td>'+
-                            '<td><input type="text" name="t4_coT'+c4+'" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre'+c4+'" id="t4_pre'+c4+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t4_pro['+c4+']" id="t4_pro'+c4+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t4_are['+c4+']" id="t4_are'+c4+'" class="form-control"></td>'+
+                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" class="form-control" name="t4_can['+c4+']" id="t4_can'+c4+'"></td>'+
+                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_cos['+c4+']" id="t4_cos'+c4+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t4_coT['+c4+']" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
+                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
                             '<td></td>'+
                             '<td></td>'+
                             '<td><button type="button" class="btn btn-danger" id='+c4+' onClick="">-</button></td>'+
@@ -359,12 +358,12 @@
             function addRow_t5(){
                 c5=c5+1;
                 var fila = '<tr>'+
-                            '<td><input type="text" name="t5_pro'+c5+'" id="t5_pro'+c5+'" class="form-control"></td>'+
-                            '<td><input type="text" name="t5_are'+c5+'" id="t5_are'+c5+'" class="form-control"></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can'+c5+'" id="t5_can'+c5+'"></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_coU'+c5+'" id="t5_coU'+c5+'" class="form-control"></td>'+
-                            '<td><input type="text" name="t5_coT'+c5+'" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre'+c5+'" id="t5_pre'+c5+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t5_pro['+c5+']" id="t5_pro'+c5+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t5_are['+c5+']" id="t5_are'+c5+'" class="form-control"></td>'+
+                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can['+c5+']" id="t5_can'+c5+'"></td>'+
+                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_coU['+c5+']" id="t5_coU'+c5+'" class="form-control"></td>'+
+                            '<td><input type="text" name="t5_coT['+c5+']" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
+                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre['+c5+']" id="t5_pre'+c5+'" class="form-control"></td>'+
                             '<td></td>'+
                             '<td></td>'+
                             '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="">-</button></td>'+
@@ -525,8 +524,16 @@
 /*editados por wilfredo*/
 function codigo_proyecto(){
     /*aqui los extrae del modal modal_generar_codigo.php*/
-    codigo=$('#area').val()+$('#ciudad').val()+$('#cliente').val();
-    $('#codigo').val(codigo)
+    /*codigo aleatorio*/
+    ultimo_codigo_int=$('#ultimo_codigo_atl').val()
+    ultimo_codigo_str=String(ultimo_codigo_int),
+    ultimo_codigo_str2=ultimo_codigo_str,
+        inicio=4,
+        fin=6,
+    ultimo_codigo_str3=ultimo_codigo_str2.substring(fin);
+    alert(ultimo_codigo_str3);
+/*    codigo=$('#area').val()+$('#ciudad').val()+$('#cliente').val()+ultimo_codigo_str;
+    $('#codigo').val(codigo)*/
     /*aqui lleva el valor a form_atl.php*/
-    $('#form_codigo').val(codigo)
+/*    $('#form_codigo').val(codigo)*/
 }

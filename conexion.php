@@ -30,12 +30,14 @@ function mostrar_centro_costos(){
     echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
     }
 }
-function correlativo_codigo_proyecto_atl(){
+function ultimo_codigo_proyecto(){
     global $con;
     $sql="select max(codigo_hoja_costos) from hoja_costos_atl";
     $codigo=mysqli_query($con,$sql);
     $row = mysqli_fetch_row($codigo);
-    echo $row[0] + 5;
+    echo '<input id="ultimo_codigo_atl" type="hidden" value='.$row[0].'>';
+    echo $row[0];
 }
-/*echo correlativo_codigo_proyecto_atl();/* --> asi se puede revisar */
+ultimo_codigo_proyecto();
+/*correlativo_codigo_proyecto_atl();/* --> asi se puede revisar basta con llamar a la funcion*/
 ?>
