@@ -527,13 +527,12 @@ function codigo_proyecto(){
     /*codigo aleatorio*/
     ultimo_codigo_int=$('#ultimo_codigo_atl').val()
     ultimo_codigo_str=String(ultimo_codigo_int),
-    ultimo_codigo_str2=ultimo_codigo_str,
         inicio=4,
         fin=6,
-    ultimo_codigo_str3=ultimo_codigo_str2.substring(fin);
-    alert(ultimo_codigo_str3);
-/*    codigo=$('#area').val()+$('#ciudad').val()+$('#cliente').val()+ultimo_codigo_str;
-    $('#codigo').val(codigo)*/
+    ultimo_codigo_str2=ultimo_codigo_str.substring(fin);
+    /*alert(ultimo_codigo_str2);*/
+    codigo=$('#area').val()+$('#ciudad').val()+$('#cliente').val()+ultimo_codigo_str2;
+    $('#codigo').val(codigo)
     /*aqui lleva el valor a form_atl.php*/
-/*    $('#form_codigo').val(codigo)*/
+    $('#form_codigo').val(codigo)
 }

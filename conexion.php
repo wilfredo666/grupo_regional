@@ -11,7 +11,7 @@ function mostrar_cliente(){
     $sql="select * from cliente";
     $cliente=mysqli_query($con,$sql);
     while($fila=mysqli_fetch_array($cliente)){
-    echo '<option value='.$fila['codigo'].'>'.$fila['nombre'].'</option>';
+        echo '<option value='.$fila['codigo'].'>'.$fila['nombre'].'</option>';
     }
 }
 function mostrar_ciudad(){
@@ -19,7 +19,7 @@ function mostrar_ciudad(){
     $sql="select * from ciudad";
     $ciudad=mysqli_query($con,$sql);
     while($fila=mysqli_fetch_array($ciudad)){
-    echo '<option value='.$fila[0].'>'.$fila[1].'</option>';
+        echo '<option value='.$fila[0].'>'.$fila[1].'</option>';
     }
 }
 function mostrar_centro_costos(){
@@ -27,17 +27,30 @@ function mostrar_centro_costos(){
     $sql="select * from centro_costos";
     $ciudad=mysqli_query($con,$sql);
     while($fila=mysqli_fetch_array($ciudad)){
-    echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
+        echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
     }
 }
 function ultimo_codigo_proyecto(){
     global $con;
-    $sql="select max(codigo_hoja_costos) from hoja_costos_atl";
-    $codigo=mysqli_query($con,$sql);
-    $row = mysqli_fetch_row($codigo);
-    echo '<input id="ultimo_codigo_atl" type="hidden" value='.$row[0].'>';
-    echo $row[0];
+    $sql="SELECT codigo_hoja_costos FROM hoja_costos_atl WHERE id_hoja_costos=(SELECT MAX(id_hoja_costos) FROM hoja_costos_atl)";
+    $ultimo_registro=mysqli_fetch_row(mysqli_query($con,$sql));
+    $codigo=$ultimo_registro[0] + 1;
+    echo '<input id="ultimo_codigo_atl" type="hidden" value='.$codigo.'>';
 }
-ultimo_codigo_proyecto();
+function reporte_atl(){
+    global $con;
+    $sql="SELECT codigo_hoja_costos, nombre, nombre_proyecto, fecha_hora_creacion, nombre_usuario, estado from hoja_costos_atl JOIN usuario ON hoja_costos_atl.id_usuario=usuario.id_usuario JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo";
+    $r_atl=mysqli_query($con,$sql);
+    while($campo=mysqli_fetch_array($r_atl)){
+        echo '<tr>';
+        echo '<td>'.$campo[0].'</td>';
+        echo '<td>'.$campo[1].'</td>';
+        echo '<td>'.$campo[2].'</td>';
+        echo '<td>'.$campo[3].'</td>';
+        echo '<td>'.$campo[4].'</td>';
+        echo '<td>'.$campo[5].'</td>';
+        echo '</tr>';
+    }
+}
 /*correlativo_codigo_proyecto_atl();/* --> asi se puede revisar basta con llamar a la funcion*/
 ?>

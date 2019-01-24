@@ -1,3 +1,7 @@
+<?php
+    include 'conexion.php';
+    $usuario=$_GET["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,19 +23,19 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-6 col-md-6">
-                                    <a href="form_atl.php" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>ATL</a>
-                                    <a href="form_taller.php" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Taller</a>
-                                    <a href="form_btl.php" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>BTL</a>
-                                    <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>BTL 2</a>
+                                    <a href="form_atl.php?id=<?php echo $usuario; ?>" class="btn btn-success btn-lg" role="button"><span class="glyphicon glyphicon-list-alt"></span> <br/>ATL</a>
+                                    <a href="form_taller.php?id=<?php echo $usuario; ?>" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-bookmark"></span> <br/>Taller</a>
+                                    <a href="form_btl.php?id=<?php echo $usuario; ?>" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>BTL</a>
+                                    <a href="#.php?id=<?php echo $usuario; ?>" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>BTL 2</a>
                                 </div>
                                 <div class="col-xs-6 col-md-6">
-                                    <a href="pruebas2.php" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Reportes</a>
+                                    <a href="reportes.php?id=<?php echo $usuario; ?>" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Reportes</a>
                                     <a href="#" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>Pendientes</a>
                                     <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>-</a>
                                     <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>-</a>
                                 </div>
                             </div>
-                            <a href="" class="btn btn-danger btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span>Salir</a>
+                            <a href="salir.php" class="btn btn-danger btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span>Salir</a>
                         </div>
                     </div>
                 </div>

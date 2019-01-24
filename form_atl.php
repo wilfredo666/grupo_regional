@@ -1,6 +1,7 @@
 <?php
 include 'conexion.php';
-include 'modal_generar_codigo.php'
+include 'modal_generar_codigo.php';
+$usuario=$_GET['id'];
 ?>
 <!doctype html>
 <html>
@@ -17,7 +18,7 @@ include 'modal_generar_codigo.php'
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_atl.php" id="form1" name="form1" method="post">
+        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
