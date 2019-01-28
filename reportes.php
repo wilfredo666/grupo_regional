@@ -8,6 +8,7 @@ $empleado=$_GET['id'];
         <meta charset="UTF-8">
         <title>Reportes hojas de costo</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <script type="text/javascript" src="js/form_atl.js"></script>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
@@ -17,7 +18,7 @@ $empleado=$_GET['id'];
                    <!--tabla ATL-->
                     <thead>
                         <tr class="table-success">
-                            <th colspan="6" style="text-align:center">ATL</th>
+                            <th colspan="8" style="text-align:center">ATL</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -25,7 +26,9 @@ $empleado=$_GET['id'];
                             <th>Nombre Proyecto</th>
                             <th>Fecha de creacion</th>
                             <th>Responsable</th>
-                            <th>Estado</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +37,7 @@ $empleado=$_GET['id'];
                     <!--tabla BTL-->
                      <thead>
                         <tr class="table-primary">
-                            <th colspan="6" style="text-align:center">BTL - personal eventual</th>
+                            <th colspan="8" style="text-align:center">BTL - personal eventual</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -42,7 +45,9 @@ $empleado=$_GET['id'];
                             <th>Nombre Proyecto</th>
                             <th>Fecha de creacion</th>
                             <th>Responsable</th>
-                            <th>Estado</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +56,7 @@ $empleado=$_GET['id'];
                     <!--tabla BTL 2-->
                     <thead>
                         <tr class="table-primary">
-                            <th colspan="6" style="text-align:center">BTL - personal indefinido</th>
+                            <th colspan="8" style="text-align:center">BTL - personal indefinido</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -59,7 +64,9 @@ $empleado=$_GET['id'];
                             <th>Nombre Proyecto</th>
                             <th>Fecha de creacion</th>
                             <th>Responsable</th>
-                            <th>Estado</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +75,7 @@ $empleado=$_GET['id'];
                     <!--tabla taller-->
                     <thead>
                         <tr class="table-warning">
-                            <th colspan="6" style="text-align:center">Taller</th>
+                            <th colspan="8" style="text-align:center">Taller</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -76,7 +83,9 @@ $empleado=$_GET['id'];
                             <th>Nombre Proyecto</th>
                             <th>Fecha de creacion</th>
                             <th>Responsable</th>
-                            <th>Estado</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
