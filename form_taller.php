@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <link href="css/atl.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+        <script type="text/javascript" src="js/form_taller.js"></script>
+        <script src="js/jquery-3.3.1.js"></script>
     </head>
     <body>
         <div class="container">
@@ -81,7 +83,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Tiempo de credito (en dias):</div>
                             </div>
-                            <input type="number" class="form-control" name="number" id="number">
+                            <input type="number" class="form-control" name="tiempoCredito" id="tiempoCredito" onkeyup="costosExternos()" value="0">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -89,7 +91,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Tipo de proyecto:</div>
                             </div>
-                            <select class="form-control" name="select2" id="select2">
+                            <select class="form-control" name="tipo" id="tipo" onchange="costosExternos()">
                                 <option>EXTERNO</option>
                                 <option>INTERNO</option>
                             </select>
@@ -100,7 +102,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Ubicacion:</div>
                             </div>
-                            <select class="form-control" name="select2" id="select2">
+                            <select class="form-control" name="dir" id="dir" onchange="costosExternos();">
                                 <option>COCHABAMBA</option>
                                 <option>SANTA CRUZ</option>
                             </select>
@@ -131,7 +133,9 @@
                                 <option>DISEÑADORA</option>
                                 <option>AUXILIAR IMPRESION</option>
                                 <option>ENCARGADO DE TALLER</option>
-                                <option>PERSONAL DE TALLER</option>
+                                <option>EJECUTIVO DE CUENTA</option>
+                                <option>AUXILIAR DE TALLER</option>
+                                
                                 </select></td>
                                 <td><select onChange="t1_subTotal()" name="t1_tiem" id="t1_tiem" class="form-control">
                                 <option>HORAS</option>
@@ -194,7 +198,7 @@
                         <tbody>
                         <tr>
                             <th colspan="7" class="<text-center></text-center>">TOTAL</th>
-                            <td><label id="t2_to"></label></td>
+                            <td><label id="t2_to">0</label></td>
                         </tr>
                         </tbody>
                     </table>
@@ -216,18 +220,18 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="2"><input type="text" class="form-control"></td>
-                            <td colspan="2"><input type="text" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><select name="" id="" class="form-control">
-                                <option value="">FACTURA</option>
-                                <option value="">RECIBO</option>
-                                <option value="">VALORADO</option>
-                                <option value="">ALQUILER CON RECIBO</option>
+                            <td colspan="2"><input type="text" id="t3_serv" name="t3_serv" class="form-control"></td>
+                            <td colspan="2"><input type="text" id="t3_nomb" name="t3_nomb" class="form-control"></td>
+                            <td><input type="number" class="form-control" id="t3_cant" onkeyup="t3_subTotal()" onclick="this.select()" value=0 name="t3_cant"></td>
+                            <td><input type="number" class="form-control" id="t3_cost" onkeyup="t3_subTotal()" onclick="this.select()" value=0 name="t3_cost"></td>
+                            <td><select class="form-control" id="t3_docu" onchange="t3_subTotal()" name="t3_docu">
+                                <option>FACTURA</option>
+                                <option>RECIBO</option>
+                                <option>VALORADO</option>
+                                <option>ALQUILER CON RECIBO</option>
                                 </select></td>
-                            <td><input type="number" class="form-control" readonly></td>
-                            <td><button type="button" class="btn btn-success">+</button></td>
+                            <td><input type="number" name="t3_coTo" id="t3_coTo" class="form-control" readonly></td>
+                            <td><button type="button" class="btn btn-success" onclick="t3_addRow()">+</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -236,7 +240,7 @@
                     <tbody>
                         <tr>
                             <th colspan="7" class="text-center"><label>TOTAL</label></th>
-                            <td><label for="">0</label></td>
+                            <td><label id="t3_to">0</label></td>
                         </tr>
                     </tbody>
                 </table>
@@ -246,19 +250,19 @@
                 <table class="table table-sm">
                     <thead class="thead-light">
                         <tr>
-                            <th colspan="3"><h5>COSTO DE VALOR AGREGADO</h5></th>
+                            <th colspan="3"><h5>PUNTO DE REFERENCIA</h5></th>
                         </tr>
                         <tr>
-                            <th>COSTO DE VALOR AGREGADO</th>
-                            <th>COSTO ESTIMADO DEL PROYECTO</th>
+                            <th>PRECIO DE HOJA COSTO</th>
+                            <th>PRECIO PDF</th>
                             <th>DIFERENCIA</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td><label id="hoja">0</label></td>
+                            <td><label id="pdf">0</label></td>
+                            <td><label id="dif">0</label></td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
@@ -273,9 +277,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td><label id="cap">0</label></td>
+                            <td><label id="tda">0</label></td>
+                            <td><label id="cpd">0</label></td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
@@ -290,9 +294,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
+                            <td><label id="tip">0</label></td>
+                            <td><label id="taf">0</label></td>
+                            <td><label id="ctp">0</label></td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
@@ -304,9 +308,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><label for="">0</label></td>
+                            <td><label id="feeP"></label></td>
                             <td></td>
-                            <td><input type="number" class="form-control"></td>
+                            <td><input type="text" id="feeV" onkeyup="costosExternos()" class="form-control" value="30%"></td>
                         </tr>
                     </tbody>
                     <thead class="thead-light">
@@ -319,23 +323,23 @@
                     <tbody>
                         <tr>
                             <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                            <td><label for=""></label>0</td>
-                            <td><label for=""></label>0</td>
+                            <td><label id="to1">0</label></td>
+                            <td><label>...</label></td>
                         </tr>
                         <tr>
                             <th scope="row">F.E.E.</th>
-                            <td><label for=""></label>0</td>
-                            <td><label for=""></label>0</td>
+                            <td><label id="to2">0</label></td>
+                            <td><label>...</label></td>
                         </tr>
                         <tr>
                             <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                            <td><label for=""></label>0</td>
-                            <td><label for=""></label>0</td>
+                            <td><label id="to3">0</label></td>
+                            <td><label>...</label></td>
                         </tr>
                         <tr>
                             <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                            <td><label for=""></label>0</td>
-                            <td><label for=""></label>0</td>
+                            <td><label id="to4">0</label></td>
+                            <td><label>...</label></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -344,8 +348,8 @@
                         </tr>
                         <tr>
                             <th>Costo total para enviar al cliente</th>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
+                            <td><input type="number" class="form-control" onclick="this.select()" id="cant" value="0.00" onkeyup="costosExternos();"></td>
+                            <td><input type="number" class="form-control" onclick="this.select()" id="prize" value="0.00" onkeyup="costosExternos();"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -357,7 +361,6 @@
                 <input name="salir" type="button" value="Salir" class="btn btn-success">
             </div>
         </form>
-        <script type="text/javascript" src="jquery/form_taller.js"></script>
-        <script src="jquery/jquery-3.3.1.js"></script>
+        
     </body>
 </html>
