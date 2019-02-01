@@ -396,8 +396,8 @@
                         </tbody>
                     </table>
                     <a href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal">ESTRUCTURA DE COSTOS POR PERSONAL</a>
-                    <div class="modal fade bd-example-modal-lg" id="estructura_activacion">
-                        <div class="modal-dialog modal-lg">
+                    <div class="modal fade" id="estructura_activacion">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <div class="input-group">
@@ -411,7 +411,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <table class="table">
+                                        <table class="table table-sm">
                                             <tbody>
                                                 <tr>
                                                     <td><div class="input-group">
@@ -428,82 +428,166 @@
                                                         </div></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Costo liquito pagable</td>
+                                                    <td>Costo liquido por supervisor (liquito pagable)</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td><label for="">0</label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="4">Crossing-impuestos por servicios</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Carga impositiva</th>
-                                                    <td></td>
-                                                    <td><label for="">0</label></td>
-                                                    <td><label for="">0</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Retenciones IUE servicios</td>
-                                                    <td><label for="">0</label></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Retenciones IT servicios</td>
-                                                    <td><label for="">0</label></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Servicio de respaldo administrativo</td>
+                                                    <td>Bonos extras</td>
                                                     <td></td>
                                                     <td></td>
                                                     <td><label for="">0</label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Costo financiero</td>
+                                                    <td>(+) Grossing-up Costos Laborales - Patronales</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>0</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Aportes laborales</th>
+                                                    <td>999999</td>
+                                                    <td><label for="">999999</label></td>
+                                                    <td><label for="">999999</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fondo de Capitalización Individual</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Prima riesgo comun</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Comisión AFP</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Aporte solidario</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Aportes Patronales</th>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Caja Nacional de Salud</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Aporte solidario</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>AFP´s</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Previsión Aguinaldo</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Provisión Indemnización</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Prevision segundo aguinaldo</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Seguro de accidente</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Vacaciones</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Prevision de desahucio</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Prevision de subsidio</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(+) Gastos administrativos y de gestión</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(+) Costo financiero</td>
                                                     <td><label for="">0</label></td>
                                                     <td></td>
                                                     <td><label for="">0</label></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>F.E.E. Grupo Regional</td>
+                                                    <td>(+) Beneficios Grupo Regional</td>
                                                     <td><label for="">0</label></td>
                                                     <td></td>
                                                     <td><label for="">0</label></td>
                                                 </tr>
-                                            </tbody>
-                                            <tr>
-                                                <th>=Impuesto de facturacion en favor del cliente</th>
-                                                <td></td>
-                                                <td></td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>(+)Grossing-up Tributario</td>
-                                                <td><label for="">0</label></td>
-                                                <td></td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>IVA</td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>IT</td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
+                                                <tr>
+                                                    <th colspan="3">=TOTAL PRECIO FACTURADO DEL SERVICIO</th>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(+)Grossing-up Tributario</td>
+                                                    <td><label for="">0</label></td>
+                                                    <td></td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>IVA</td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>IT</td>
+                                                    <td><label for="">0</label></td>
+                                                </tr>                                                                          <tr>
                                                 <th colspan="3">=TOTAL PRECIO FACTURADO DEL SERVICIO</th>
                                                 <td><label for="">0</label></td>
-                                            </tr>
+                                                </tr>
+                                            </tbody>
+
                                         </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <!--bloque de botones-->
