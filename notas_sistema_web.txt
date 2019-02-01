@@ -11,17 +11,9 @@ tipo de dato para moneda en mysql es decimal, formato (10,2) que
 utiliza 10 digitos en total y toma 2 de ellos como decimal
 
 -------------------
-15/01/19
-
--terminar los calculos (costos indirectos)
--agregar eliminar fila en form_atl (signo -)
--
-                                <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
-
 -se puden crear varias filas dentro de una columna
 -no se pueden crear varias filas dentro de una fila
 -agregar al registro de la basse de datos, fecha-hora y usuario
--resolver el problema de la , y punto en la bd
 
 para registro de multiple de tabla
 $=$_POST[''];
@@ -35,71 +27,22 @@ for($i=0;$i<sizeof($);$i++){
     mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
 }
 
-
-
-
-
-
-/*costo de valor agregado*/
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-for($i=0;$i<sizeof($);$i++){
-    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
-}
-
-/*costos indirectos de operaciones*/
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-for($i=0;$i<sizeof($);$i++){
-    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
-}
-
-/*costo financiero*/
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-for($i=0;$i<sizeof($);$i++){
-    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
-}
-
-/*total ejecutado & total F.E.E.*/
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-$=$_POST[''];
-for($i=0;$i<sizeof($);$i++){
-    mysqli_query($con,"insert into (,,,)values('$[]','$[]','$[]')");
-}
-
-echo $cod_proyecto;
-echo $detalle[$i];
-echo $nom_personal[$i];
-echo $tiempo[$i];
-echo $t_programado[$i];
-echo $cant_personas[$i];
-echo $t_presupuestaria[$i];
-echo $tot_pro_mod[$i];
-echo $pre_cot_sin_fee[$i];
-    echo '<br>';
 ---juntando mas de una tabla en join----
 SELECT codigo_hoja_costos, nombre, nombre_proyecto, fecha_hora_creacion, nombre_usuario, estado from hoja_costos_atl
 JOIN usuario ON hoja_costos_atl.id_usuario=usuario.id_usuario
 JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo
+
+-----------------------
+(01/02/2019)
+observaciones form_ATL
+
+1.-Costo de valor agregado no igual al excel
+2.-Boton para eliminar fila
+3.-Evitar que haga submitt al precionar boton-enter
+4.-Quitar el formato de comas (,) como separador de miles
+5.-Agregar calculos con recibo en tabla-meteriales y servicios que intervienen en la operacion
+6.-Calculos en el apartado servicios contratados con opciones: recibo y alquiler sin recibo no igualan al excel
+7.-Calculos en el apartado costos indirectos de operaciones no igualan al excel
+8.-Calculos en el apartado costo financiero de operaciones no igualan al excel
+9.-Revisar el F.E.E. programado
 

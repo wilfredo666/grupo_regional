@@ -166,6 +166,7 @@ $usuario=$_GET['id'];
                                             <th scope="col"><label>COSTO TOTAL ESTIMADO</label></th>
                                             <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -176,6 +177,7 @@ $usuario=$_GET['id'];
                                             <td><input type="number" name="t2_cos[0]" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();"></td>
                                             <td><select name="t2_doc[0]" id="t2_doc0" class="form-control">
                                                 <option>FACTURA</option>
+                                                <option>RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" class="form-control" name="t2_tot[0]" id="t2_tot0" readonly></td>
                                             <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();"></td>
@@ -195,7 +197,7 @@ $usuario=$_GET['id'];
                                     <!--tabla 2 - servicios-->
                                     <thead class="thead-light">
                                         <tr>
-                                            <th colspan="2"><label>SERVICIOS</label></th>
+                                            <th colspan="2"><label>SERVICIOS CONTRATADOS</label></th>
                                             <th colspan="6"><label>COSTO ESTIMADO DE SERVICIOS</label></th>
                                             <th></th>
                                         </tr>
@@ -328,7 +330,7 @@ $usuario=$_GET['id'];
                                         <th colspan="3"><h5>COSTO DE VALOR AGREGADO</h5></th>
                                     </tr>
                                     <tr>
-                                        <th>COSTO DE VALOR AGREGADO</th>
+                                        <th>COSTO PROGRAMADO DEL PROYECTO</th>
                                         <th>COSTO ESTIMADO DEL PROYECTO</th>
                                         <th>DIFERENCIA</th>
                                     </tr>
