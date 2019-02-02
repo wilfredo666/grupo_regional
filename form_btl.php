@@ -95,6 +95,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">Ubicacion:</div>
+                            </div>
+                            <select class="form-control" name="dir" id="dir" onchange="costosExternos();">
+                                <option>COCHABAMBA</option>
+                                <option>SANTA CRUZ</option>
+                            </select>
+                        </div>
+                    </div>
                     </div>
                     <!--tablas para la insercion de datos a calcular-->
                     <br>
@@ -133,7 +144,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="tabble table-sm" id="t1" width="1100">
+                    <table class="table table-sm" id="t1" width="1100">
                         <tbody>
                             <tr>
                                 <th class="text-center" width="240">MANO DE OBRA DIRECTA</th>

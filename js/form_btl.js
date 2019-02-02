@@ -78,8 +78,8 @@ var t7_acTo=0;
                 if (ti=="HORAS") 
                     valorTasa=26
                 var t1_costoT = tip*ca*valorTasa;
-                document.getElementById("t1_tasa").value = activacoma(valorTasa.toFixed(2));
-                document.getElementById("t1_cost").value = activacoma(t1_costoT.toFixed(2));
+                document.getElementById("t1_tasa").value = valorTasa.toFixed(2);
+                document.getElementById("t1_cost").value = t1_costoT.toFixed(2);
             }
             
             function t1_addRow(){
@@ -136,8 +136,8 @@ var t7_acTo=0;
             function t1_totales(){
                 document.getElementById("t1_ti").innerHTML= t1_acTi;
                 document.getElementById("t1_ca").innerHTML= t1_acCa;
-                document.getElementById("t1_ta").innerHTML= activacoma(t1_acTa.toFixed(2));
-                document.getElementById("t1_co").innerHTML= activacoma(t1_acCo.toFixed(2));
+                document.getElementById("t1_ta").innerHTML= t1_acTa.toFixed(2);
+                document.getElementById("t1_co").innerHTML= t1_acCo.toFixed(2);
                 costosExternos();
             }
             //TABLITA 2
@@ -150,8 +150,8 @@ var t7_acTo=0;
                 var total1 = pag / 0.845
                 var total2 = cap*can*(total1.toFixed(2));
                
-                document.getElementById("t2_tot1").value = activacoma(total1.toFixed(2));
-                document.getElementById("t2_tot2").value = activacoma(total2.toFixed(2));
+                document.getElementById("t2_tot1").value = total1.toFixed(2);
+                document.getElementById("t2_tot2").value = total2.toFixed(2);
             }
             
             function t2_addRow(){
@@ -216,9 +216,9 @@ var t7_acTo=0;
 
                 document.getElementById("t2_cp").innerHTML=t2_acCap;
                 document.getElementById("t2_ca").innerHTML=t2_acCan;
-                document.getElementById("t2_pa").innerHTML=activacoma(t2_acPag.toFixed(2));
-                document.getElementById("t2_t1").innerHTML=activacoma(t2_acTot1.toFixed(2));
-                document.getElementById("t2_t2").innerHTML=activacoma(t2_acTot2.toFixed(2));
+                document.getElementById("t2_pa").innerHTML=t2_acPag.toFixed(2);
+                document.getElementById("t2_t1").innerHTML=t2_acTot1.toFixed(2);
+                document.getElementById("t2_t2").innerHTML=t2_acTot2.toFixed(2);
                 costosExternos();
             }
 
@@ -235,7 +235,7 @@ var t7_acTo=0;
                 if(doc=="RECIBO"){
                   val = (can*cos)/0.92;
                 }
-                document.getElementById("t3_tota").value = activacoma(val.toFixed(2))
+                document.getElementById("t3_tota").value = val.toFixed(2)
             }
             
             function t3_addRow(){
@@ -291,9 +291,9 @@ var t7_acTo=0;
             function t3_totales()
             {
 
-                document.getElementById("t3_ca").innerHTML=activacoma(t3_acCan);
-                document.getElementById("t3_co").innerHTML=activacoma(t3_acCos.toFixed(2));
-                document.getElementById("t3_to").innerHTML=activacoma(t3_acTot.toFixed(2));
+                document.getElementById("t3_ca").innerHTML=t3_acCan
+                document.getElementById("t3_co").innerHTML=t3_acCos.toFixed(2)
+                document.getElementById("t3_to").innerHTML=t3_acTot.toFixed(2)
                 costosExternos();
             }
 
@@ -317,7 +317,7 @@ var t7_acTo=0;
                   val = (can*cos)/0.87;
                 }
                 
-                document.getElementById("t4_tota").value = activacoma(val.toFixed(2))
+                document.getElementById("t4_tota").value = val.toFixed(2)
             }
             
             function t4_addRow(){
@@ -373,9 +373,9 @@ var t7_acTo=0;
             function t4_totales()
             {
 
-                document.getElementById("t4_ca").innerHTML=activacoma(t4_acCan);
-                document.getElementById("t4_co").innerHTML=activacoma(t4_acCos.toFixed(2));
-                document.getElementById("t4_to").innerHTML=activacoma(t4_acTot.toFixed(2));
+                document.getElementById("t4_ca").innerHTML=t4_acCan
+                document.getElementById("t4_co").innerHTML=t4_acCos.toFixed(2)
+                document.getElementById("t4_to").innerHTML=t4_acTot.toFixed(2)
                 costosExternos();
             }
 
@@ -384,7 +384,7 @@ var t7_acTo=0;
                 var ca = parseInt(document.getElementById("t5_cant").value)
                 var co = parseFloat(document.getElementById("t5_cost").value)
                 var res = ca*co;
-                document.getElementById("t5_tota").value = activacoma(res.toFixed(2));
+                document.getElementById("t5_tota").value = res.toFixed(2)
             }
             
             function t5_addRow(){
@@ -431,8 +431,8 @@ var t7_acTo=0;
             }
             function t5_totales(){
                 document.getElementById("t5_ca").innerHTML= t5_acCa;
-                document.getElementById("t5_co").innerHTML= activacoma(t5_acCo.toFixed(2));
-                document.getElementById("t5_to").innerHTML= activacoma(t5_acTo.toFixed(2));
+                document.getElementById("t5_co").innerHTML= t5_acCo.toFixed(2)
+                document.getElementById("t5_to").innerHTML= t5_acTo.toFixed(2)
                 costosExternos();
             }
 
@@ -441,7 +441,7 @@ var t7_acTo=0;
                 var ca = parseInt(document.getElementById("t6_cant").value)
                 var co = parseFloat(document.getElementById("t6_cost").value)
                 var res = ca*co;
-                document.getElementById("t6_tota").value = activacoma(res.toFixed(2));
+                document.getElementById("t6_tota").value = res.toFixed(2)
             }
     
             
@@ -489,8 +489,8 @@ var t7_acTo=0;
             }
             function t6_totales(){
                 document.getElementById("t6_ca").innerHTML= t6_acCa;
-                document.getElementById("t6_co").innerHTML= activacoma(t6_acCo.toFixed(2));
-                document.getElementById("t6_to").innerHTML= activacoma(t6_acTo.toFixed(2));
+                document.getElementById("t6_co").innerHTML= t6_acCo.toFixed(2)
+                document.getElementById("t6_to").innerHTML= t6_acTo.toFixed(2)
                 costosExternos();
             }
 
@@ -499,7 +499,7 @@ var t7_acTo=0;
                 var ca = parseInt(document.getElementById("t7_cant").value)
                 var co = parseFloat(document.getElementById("t7_cost").value)
                 var res = ca*co;
-                document.getElementById("t7_tota").value = activacoma(res.toFixed(2));
+                document.getElementById("t7_tota").value = res.toFixed(2)
             }
             
             function t7_addRow(){
@@ -546,8 +546,8 @@ var t7_acTo=0;
             }
             function t7_totales(){
                 document.getElementById("t7_ca").innerHTML= t7_acCa;
-                document.getElementById("t7_co").innerHTML= activacoma(t7_acCo.toFixed(2));
-                document.getElementById("t7_to").innerHTML= activacoma(t7_acTo.toFixed(2));
+                document.getElementById("t7_co").innerHTML= t7_acCo.toFixed(2)
+                document.getElementById("t7_to").innerHTML= t7_acTo.toFixed(2)
                 costosExternos();
             }
 
@@ -559,24 +559,34 @@ var t7_acTo=0;
                 var cp2 = convertToFloat($('#t2_cp').text());
                 var ca1 = convertToFloat($('#t2_ca').text());
                 var cantidadPersonas = parseInt(cp1) + parseInt(cp2);
-                $('#tcp').text(activacoma(cantidadPersonas.toFixed(2)));    //total cantidad de personas
+                $('#tcp').text(cantidadPersonas.toFixed(2))             //total cantidad de personas
                 var cantidadActivaciones = parseInt(ca1) * parseInt(cp2);
-                $('#tca').text(activacoma(cantidadActivaciones));    //total cantidad de activaciones
+                $('#tca').text(cantidadActivaciones)    //total cantidad de activaciones
 
                 $('#ttt').text($('#t2_t2').text());    //Totales
                 
                 //COSTOS INDIRECTOS DEL PROYECTO
                 var to1 = convertToFloat($('#t1_co').text());
+                
+                var to3 = convertToFloat($('#t3_to').text());               
                 var to4 = convertToFloat($('#t4_to').text());
                 var to7 = convertToFloat($('#t7_to').text());
                 var tot = convertToFloat($('#ttt').text());
-                var costoAcumuladoP = parseFloat(to1) + parseFloat(to4) + parseFloat(to7) + parseFloat(tot);
-                $('#cap').text(activacoma(costoAcumuladoP.toFixed(2))) ; //costo acumulado programado
-                $('#tda').text("0.13") // tasa de aplicacion FALTA HACER EL CALCULO
+                var costoAcumuladoP = parseFloat(to1) + parseFloat(to4) + parseFloat(to7) + parseFloat(tot) + parseFloat(to3);
+                $('#cap').text(costoAcumuladoP.toFixed(2)) //costo acumulado programado
+                ubi = $('#dir').val()
+                var tasa=0;
+                if(ubi=="COCHABAMBA"){
+                    tasa = 0.17
+                }
+                if(ubi=="SANTA CRUZ"){
+                    tasa = 0.21
+                }
+                $('#tda').text(tasa) // tasa de aplicacion
                 var capp = convertToFloat($('#cap').text());
                 var taff = convertToFloat($('#tda').text());
                 var costoprog = parseFloat(capp) * parseFloat(taff)
-                $('#cpc').text(activacoma(costoprog.toFixed(2))) // costo programado de costos indirectos
+                $('#cpc').text(costoprog.toFixed(2)) // costo programado de costos indirectos
 
                 //COSTOS FINANCIEROS
 
@@ -590,14 +600,14 @@ var t7_acTo=0;
 
                 var tiem = parseInt($('#tio').text());
                 var costoFinanciero = tiem*(tasaFinanciera/100)*(costoAcumuladoP+costoprog) //OJO FALTA SUMAR GASTOS AUXILIARES
-                $('#ctp').text(activacoma(costoFinanciero.toFixed(2))) //costo total programado financiero
+                $('#ctp').text(costoFinanciero.toFixed(2)) //costo total programado financiero
 
 
                 //TOTAL PRESUPUESTADO
                 var to5 = convertToFloat($('#t5_to').text());
                 var to6 = convertToFloat($('#t6_to').text());
-                costoTotalProyecto = parseFloat(costoprog + costoFinanciero + t1 + t4 + t5 +t6 + t7 + tiem);
-                $('#tp1').text(activacoma(costoTotalProyecto.toFixed(2)));  //costo total del proyecto
+                costoTotalProyecto = parseFloat(costoprog) + parseFloat(costoFinanciero) + parseFloat(costoAcumuladoP) + parseFloat(to5) + parseFloat(to6);
+                $('#tp1').text(costoTotalProyecto.toFixed(2))  //costo total del proyecto
 
                 //FEE
                 var feep = 0;
@@ -627,16 +637,16 @@ var t7_acTo=0;
                     }
                     var porcentaje = parseFloat(feev2);
                     if(feeP==0)
-                        FE = costoTotalProyecto * (porcentaje/100)
+                        FE = costoTotalProyecto * (feep/100)
                     else
                         FE = costoTotalProyecto * (porcentaje/100)
-                    $('#tp2').text(activacoma(FE.toFixed(2))) //FEE PROGRAMADO en total presupuestado
+                    $('#tp2').text(FE.toFixed(2)) //FEE PROGRAMADO en total presupuestado
 
                     var proyectoFee = FE + costoTotalProyecto;
-                    $('#tp3').text(activacoma(proyectoFee.toFixed(2))); //COSTO PROYECTO MAS FEE
+                    $('#tp3').text(proyectoFee.toFixed(2)) //COSTO PROYECTO MAS FEE
 
                     var costoMasImpuestos = proyectoFee/0.84;
-                    $('#tp4').text(activacoma(costoMasImpuestos.toFixed(2))); //Costo del proyecto mas impuestos
+                    $('#tp4').text(costoMasImpuestos.toFixed(2)) //Costo del proyecto mas impuestos
 
                 }
 

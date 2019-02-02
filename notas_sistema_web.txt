@@ -36,13 +36,13 @@ JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo
 (01/02/2019)
 observaciones form_ATL
 
-1.-Costo de valor agregado no igual al excel
-2.-Boton para eliminar fila
-3.-Evitar que haga submitt al precionar boton-enter
-4.-Quitar el formato de comas (,) como separador de miles
-5.-Agregar calculos con recibo en tabla-meteriales y servicios que intervienen en la operacion
-6.-Calculos en el apartado servicios contratados con opciones: recibo y alquiler sin recibo no igualan al excel
-7.-Calculos en el apartado costos indirectos de operaciones no igualan al excel
-8.-Calculos en el apartado costo financiero de operaciones no igualan al excel
-9.-Revisar el F.E.E. programado
+1.-Costo de valor agregado no igual al excel (corregido)
+2.-Boton para eliminar fila (corregido)
+3.-Evitar que haga submitt al precionar boton-enter (pendiente)
+4.-Quitar el formato de comas (,) como separador de miles (corregido)
+5.-Agregar calculos con recibo en tabla-meteriales y servicios que intervienen en la operacion (corregido)
+6.-Calculos en el apartado servicios contratados con opciones: recibo y alquiler sin recibo no igualan al excel (corregido)
+7.-Calculos en el apartado costos indirectos de operaciones no igualan al excel (corregido)
+8.-Calculos en el apartado costo financiero de operaciones no igualan al excel (corregido)
+9.-Revisar el F.E.E. programado (corregido)
 
