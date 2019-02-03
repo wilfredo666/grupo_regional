@@ -175,7 +175,7 @@ $usuario=$_GET['id'];
                                             <td><input type="text" name="t2_nom[0]" id="t2_nom0" class="form-control"></td>
                                             <td><input type="number" name="t2_can[0]" onkeyup="t2_subTotal(0)" id="t2_can0" value="0" class="form-control" onClick="this.select();"></td>
                                             <td><input type="number" name="t2_cos[0]" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();"></td>
-                                            <td><select name="t2_doc[0]" id="t2_doc0" class="form-control">
+                                            <td><select name="t2_doc[0]" id="t2_doc0" onchange="t2_subTotal(0)" class="form-control">
                                                 <option>FACTURA</option>
                                                 <option>RECIBO</option>
                                                 </select></td>
@@ -387,7 +387,7 @@ $usuario=$_GET['id'];
                                     <tr>
                                         <td><label id="feeP">0</label></td>
                                         <td></td>
-                                        <td><input type="text" class="form-control" id="feeV" name="feeV" value="10%" onkeyup="costosExternos()"></td>
+                                        <td><input type="text" class="form-control" id="feeV" name="feeV" value="10" onkeyup="costosExternos()"></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
