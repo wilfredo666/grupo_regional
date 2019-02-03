@@ -30,7 +30,28 @@ function mostrar_centro_costos(){
         echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
     }
 }
-function ultimo_codigo_proyecto(){
+function ultimo_codigo_proyecto_atl(){
+    global $con;
+    $sql="SELECT codigo_hoja_costos FROM hoja_costos_atl WHERE id_hoja_costos=(SELECT MAX(id_hoja_costos) FROM hoja_costos_atl)";
+    $ultimo_registro=mysqli_fetch_row(mysqli_query($con,$sql));
+    $codigo=$ultimo_registro[0] + 1;
+    echo '<input id="ultimo_codigo_atl" type="hidden" value='.$codigo.'>';
+}
+function ultimo_codigo_proyecto_taller(){
+    global $con;
+    $sql="SELECT codigo_hoja_costos FROM hoja_costos_atl WHERE id_hoja_costos=(SELECT MAX(id_hoja_costos) FROM hoja_costos_atl)";
+    $ultimo_registro=mysqli_fetch_row(mysqli_query($con,$sql));
+    $codigo=$ultimo_registro[0] + 1;
+    echo '<input id="ultimo_codigo_atl" type="hidden" value='.$codigo.'>';
+}
+function ultimo_codigo_proyecto_btl(){
+    global $con;
+    $sql="SELECT codigo_hoja_costos FROM hoja_costos_atl WHERE id_hoja_costos=(SELECT MAX(id_hoja_costos) FROM hoja_costos_atl)";
+    $ultimo_registro=mysqli_fetch_row(mysqli_query($con,$sql));
+    $codigo=$ultimo_registro[0] + 1;
+    echo '<input id="ultimo_codigo_atl" type="hidden" value='.$codigo.'>';
+}
+function ultimo_codigo_proyecto_btl2(){
     global $con;
     $sql="SELECT codigo_hoja_costos FROM hoja_costos_atl WHERE id_hoja_costos=(SELECT MAX(id_hoja_costos) FROM hoja_costos_atl)";
     $ultimo_registro=mysqli_fetch_row(mysqli_query($con,$sql));

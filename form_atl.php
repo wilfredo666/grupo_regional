@@ -1,6 +1,6 @@
 <?php
 include 'conexion.php';
-include 'modal_generar_codigo.php';
+include 'modal_generar_codigo_atl.php';
 $usuario=$_GET['id'];
 ?>
 <!doctype html>
@@ -42,7 +42,7 @@ $usuario=$_GET['id'];
                                         <div class="input-group-text">Codigo de proyecto:</div>
                                     </div>
                                     <input name="cod_proyecto" type="text" class="form-control" id="form_codigo">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto" onclick="">Generar</button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto_atl" onclick="">Generar</button>
                                 </div>
                             </div>
                             <div class="col-sm-6">
