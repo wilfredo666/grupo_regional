@@ -1,6 +1,6 @@
 <?php
 include 'conexion.php';
-include 'modal_generar_codigo.php';
+include 'modal_generar_codigo_taller.php';
 $usuario=$_GET['id'];
 ?>
 <!doctype html>
@@ -40,7 +40,7 @@ $usuario=$_GET['id'];
                                     <div class="input-group-text">Codigo de proyecto:</div>
                                 </div>
                                 <input name="cod_proyecto" type="text" class="form-control" id="form_codigo">
-                                <buttom type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto" onclick="">Generar</buttom>
+                                <buttom type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto_taller" onclick="">Generar</buttom>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -108,31 +108,31 @@ $usuario=$_GET['id'];
                     </div>
                     <!--tablas para la inserccion de datos a calcular-->
                     <br>
-                    <table class="table table-sm" id="tablita1">
+                    <table class="table table-sm">
                         <!--Materiales y servicios que intervienen en la operacion-->
                         <!--tabala 1 - materiales-->
                         <thead class="thead-light">
                             <tr>
-                                <th colspan="8"><h2>1) PERSONAL INTERNO QUE INTERVIENE EN LA OPERACION</h2></th>
+                                <th colspan="9"><h2>1) PERSONAL INTERNO QUE INTERVIENE EN LA OPERACION</h2></th>
                             </tr>
                             <tr>
-                                <th colspan="2" scope="col" >DETALLE</th>
+                                <th colspan="3" scope="col">DETALLE</th>
                                 <th scope="col">TIEMPO</th>
                                 <th scope="col">TIEMPO PROGRAMADO</th>
                                 <th scope="col">CANTIDAD DE PERSONAS</th>
                                 <th scope="col">TASA PRESUPUESTARIA</th>
-                                <th colspan="2" scope="col">COSTO TOTAL PROGRAMADO DE M.O.D.</th>
+                                <th scope="col">COSTO TOTAL PROGRAMADO DE M.O.D.</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="2"><select onChange="t1_subTotal()" name="t1_deta" id="t1_deta" class="form-control">
+                            <tr id="tablita1">
+                                <td colspan="3"><select onChange="t1_subTotal()" name="t1_deta" id="t1_deta" class="form-control">
                                     <option>DISEÑADORA</option>
                                     <option>AUXILIAR IMPRESION</option>
                                     <option>ENCARGADO DE TALLER</option>
                                     <option>EJECUTIVO DE CUENTA</option>
                                     <option>AUXILIAR DE TALLER</option>
-
                                     </select></td>
                                 <td><select onChange="t1_subTotal()" name="t1_tiem" id="t1_tiem" class="form-control">
                                     <option>HORAS</option>
@@ -141,27 +141,25 @@ $usuario=$_GET['id'];
                                 <td><input type="number" id="t1_tieP" name="t1_tieP" value="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
                                 <td><input type="number" id="t1_cant" name="t1_cant" value="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
                                 <td><input type="text" id="t1_tasa" name="t1_tasa" class="form-control" readonly></td>
-                                <td colspan="2"><input type="text" id="t1_cost" name="t1_cost" class="form-control" readonly></td>
+                                <td><input type="text" id="t1_cost" name="t1_cost" class="form-control" readonly></td>
                                 <td><button type="button" class="btn btn-success" onClick="t1_addRow()">+</button></td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm" id="t1">
-                        <tbody>
                             <tr>
                                 <th colspan="3" class="text-center">SOPORTE LOGISTICO</th>
+                                <td></td>
                                 <td><label id="t1_tp">0</label></td>
                                 <td><label id="t1_ca">0</label></td>
                                 <td><label id="t1_ta">0</label></td>
-                                <td colspan="2"><label id="t1_co">0</label></td>
+                                <td><label id="t1_co">0</label></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-sm" id="tablita2">
+                    <table class="table table-sm">
                         <thead class="thead-light">
-                            <tr><th colspan="8"><h2>2) MATERIALES Y SERVICIOS INTERNOS QUE INTERVIENEN EN LA OPERACION</h2></th></tr>
+                            <tr><th colspan="9"><h2>2) MATERIALES Y SERVICIOS INTERNOS QUE INTERVIENEN EN LA OPERACION</h2></th></tr>
                             <tr>
-                                <th scope="col" colspan="3"><label>MATERIALES</label></th>
+                                <th scope="col" colspan="4"><label>MATERIALES</label></th>
                                 <th scope="col" colspan="5"><label>COSTOS</label></th>
                             </tr>
                             <tr>
@@ -172,10 +170,11 @@ $usuario=$_GET['id'];
                                 <th scope="col">COSTO UNITARIO</th>
                                 <th scope="col">DOCUMENTO</th>
                                 <th scope="col">COSTO TOTAL ESTIMADO</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="tablita2">
                                 <td colspan="2"><input type="text" name="t2_mate" id="t2_mate" class="form-control"></td>
                                 <td><input type="text" name="t2_prov" id="t2_prov" class="form-control"></td>
                                 <td><input type="text" id="t2_unid" name="t2_unid" class="form-control"></td>
@@ -189,18 +188,15 @@ $usuario=$_GET['id'];
                                 <td><input type="text" id="t2_tota" name="t2_tota" class="form-control" readonly></td>
                                 <td><button type="button" onclick="t2_addRow()" class="btn btn-success">+</button></td>
                             </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm" id="t2">
-                        <tbody>
                             <tr>
                                 <th colspan="7" class="<text-center></text-center>">TOTAL</th>
                                 <td><label id="t2_to">0</label></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
                     <!--tabla 2 - servicios-->
-                    <table class="table table-sm" id="tablita3">
+                    <table class="table table-sm">
                         <thead class="thead-light">
                             <tr>
                                 <th colspan="2"><label>SERVICIOS</label></th>
@@ -216,7 +212,7 @@ $usuario=$_GET['id'];
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="tablita3">
                                 <td colspan="2"><input type="text" id="t3_serv" name="t3_serv" class="form-control"></td>
                                 <td colspan="2"><input type="text" id="t3_nomb" name="t3_nomb" class="form-control"></td>
                                 <td><input type="number" class="form-control" id="t3_cant" onkeyup="t3_subTotal()" onclick="this.select()" value=0 name="t3_cant"></td>
@@ -230,11 +226,6 @@ $usuario=$_GET['id'];
                                 <td><input type="number" name="t3_coTo" id="t3_coTo" class="form-control" readonly></td>
                                 <td><button type="button" class="btn btn-success" onclick="t3_addRow()">+</button></td>
                             </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="table table-sm" id="t3">
-                        <tbody>
                             <tr>
                                 <th colspan="7" class="text-center"><label>TOTAL</label></th>
                                 <td><label id="t3_to">0</label></td>

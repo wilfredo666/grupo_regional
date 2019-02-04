@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <title></title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <script type="text/javascript" src="js/form_atl.js"></script>
+        <script type="text/javascript" src="js/cod_proyecto.js"></script>
     </head>
     <body>
-        <div class="modal fade bd-example-modal-lg" id="generar_codigo_proyecto">
+        <div class="modal fade bd-example-modal-lg" id="generar_codigo_proyecto_taller">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -35,7 +35,7 @@
                                 <select name="" id="cliente" class="form-control" onchange="codigo_proyecto()">
                                     <?php mostrar_cliente(); ?>
                                 </select>
-                                <?php ultimo_codigo_proyecto(); ?>
+                                <?php ultimo_codigo_proyecto_taller(); ?>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label">Codigo</label>

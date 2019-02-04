@@ -46,3 +46,7 @@ observaciones form_ATL
 8.-Calculos en el apartado costo financiero de operaciones no igualan al excel (corregido)
 9.-Revisar el F.E.E. programado (corregido)
 
+observaciones form_TALLER
+
+1.- 
+

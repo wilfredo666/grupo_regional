@@ -1,0 +1,14 @@
+ayuda php
+---------
+*timestamp en campo db, para saber la fecha y hora en la que secreo la consulta
+*el boton submit no puede ir en un div.row diferente del que contiene los datoa a enviar
+*los nombres de las variables pueden ser las mismas que de los campos de la bd y de los campos en el form html
+-para registrar:
+$consulta_guardar="insert into tabla(,,,,) values('$','$','$','$','$','$','$','$')";
+mysqli_query($con,$consulta_guardar);
+
+-usar comillas simples '' cuando se usan funciones javascript que envian cadena en html
+
+preguntar('<?php echo $fila[0]?>')"
+
+-cuando usas funciones de un archivo externo en js, la direccion del archivo se debe colocar en el head
