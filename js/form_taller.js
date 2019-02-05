@@ -103,7 +103,7 @@ var r1 = 0;
                                ' <td><label id="t1_ca'+c1+'">'+ca+'</td>'+
                                ' <td><label id="t1_ta'+c1+'">'+ta+'</td>'+
                                ' <td><label id="t1_co'+c1+'">'+co+'</td>'+
-                               ' <td><button type="button" class="btn btn-danger" id='+c1+' onClick="t1_deleted(this.id)">x</button></td>'+
+                               ' <td><button type="button" class="btn btn-danger" id='+c1+' onClick="t1_deleted(this.id)">-</button></td>'+
                            ' </tr>'
                 $('#tablita1').after(fila)
                 document.getElementById("t1_deta").value="DISEÑADORA";
@@ -178,7 +178,7 @@ var r1 = 0;
                                 '<td><label id="t2_co'+c2+'">'+co+'</label></td>'+
                                 '<td><label id="t2_do'+c2+'">'+doc+'</label></td>'+
                                 '<td><label id="t2_to'+c2+'">'+to+'</label></td>'+
-                                '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">x</button></td>'+
+                                '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">-</button></td>'+
                             '</tr>'
                 $('#tablita2').after(fila)
                 document.getElementById("t2_mate").value=""

@@ -201,6 +201,7 @@ $usuario=$_GET['id'];
                             <tr>
                                 <th colspan="2"><label>SERVICIOS</label></th>
                                 <th colspan="6"><label>COSTOS</label></th>
+                                <th></th>
                             </tr>
                             <tr>
                                 <th colspan="2" scope="col">SERVICIOS CONTRATADOS</th>
@@ -209,6 +210,7 @@ $usuario=$_GET['id'];
                                 <th scope="col">COSTO DE SERVICIO</th>
                                 <th scope="col">DOCUMENTO</th>
                                 <th scope="col">COSTO TOTAL ESTIMADO DEL SERVICIO</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -276,7 +278,7 @@ $usuario=$_GET['id'];
                             </tr>
                             <tr>
                                 <th>TIEMPO PROGRAMADO</th>
-                                <th>TASA FINANCIERA</th>
+                                <th>TASA FINANCIERA (%)</th>
                                 <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
                             </tr>
                         </thead>
@@ -289,9 +291,9 @@ $usuario=$_GET['id'];
                         </tbody>
                         <thead class="thead-light">
                             <tr>
-                                <th>F.E.E. PROGRAMADO</th>
+                                <th>F.E.E. PROGRAMADO (%)</th>
                                 <th></th>
-                                <th>F.E.E. VARIABLE</th>
+                                <th>F.E.E. VARIABLE (%)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -304,30 +306,30 @@ $usuario=$_GET['id'];
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">TOTAL EJECUTADO</th>
-                                <th scope="col">TOTAL F.E.E</th>
+                                <th scope="col">TOTAL PRESUPUESTADO</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO</th>
                                 <td><label id="to1">0</label></td>
-                                <td><label>...</label></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">F.E.E.</th>
                                 <td><label id="to2">0</label></td>
-                                <td><label>...</label></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
                                 <td><label id="to3">0</label></td>
-                                <td><label>...</label></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
                                 <td><label id="to4">0</label></td>
-                                <td><label>...</label></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td></td>

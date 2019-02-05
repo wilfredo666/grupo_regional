@@ -35,7 +35,7 @@
                                 <select name="" id="cliente" class="form-control" onchange="codigo_proyecto()">
                                     <?php mostrar_cliente(); ?>
                                 </select>
-                                <?php ultimo_codigo_proyecto(); ?>
+                                <?php ultimo_codigo_proyecto_btl(); ?>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label">Codigo</label>

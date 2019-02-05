@@ -48,5 +48,11 @@ observaciones form_ATL
 
 observaciones form_TALLER
 
-1.- 
+1.- Materiales y servicios que intervienen en la operacion/materiales/costo total estimado (con documento factura)--no iguala al excel
+2.- Materiales y servicios que intervienen en la operacion/servicios/costo total (con documento factura, recibo, alguiler con recibo)--no iguala al excel
+3.- cuando se quita item:
+	-Costos indirectos de operaciones/costo acumulado programado--no iguala al excel
+	-Costos indirectos de operaciones/costo programado de costos indirectos--no iguala al excel
+	-Costo financiero/costo total programado--no iguala al excel
+	-Todo "total presupuestado"--no iguala al excel
 

@@ -1,3 +1,8 @@
+<?php
+include 'conexion.php';
+include 'modal_generar_codigo_btl.php';
+$usuario=$_GET['id'];
+?>
 <!doctype html>
 <html>
     <head>
@@ -8,7 +13,7 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid bg-primary">
             <h1>HOJA DE COSTO DE ACTIVACIONES Y SERVICIOS BTL</h1>
         </div>
         <form id="form1" name="form1" method="post">
@@ -23,15 +28,7 @@
                                     <div class="input-group-text">Cliente:</div>
                                 </div>
                                 <select name="select3" id="select3" class="form-control">
-                                    <?php
-                                    include 'conexion.php';
-                                    $cliente=mysqli_query($con,"select nombre from cliente");
-                                    while($fila=mysqli_fetch_array($cliente)){
-                                    ?>
-                                    <option value=""><?php echo $fila['nombre'];?></option>
-                                    <?php
-                                    }
-                                    ?>
+                                    <?php mostrar_cliente();?>
                                 </select>
                             </div>
                         </div>
@@ -40,8 +37,8 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Codigo de proyecto:</div>
                                 </div>
-                                <input type="text" class="form-control">
-                                <buttom class="btn btn-success">Generar</buttom>
+                                <input name="cod_proyecto" type="text" class="form-control" id="form_codigo">
+                                <buttom type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto_btl" onclick="">Generar</buttom>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -552,8 +549,8 @@
                         </tbody>
                     </table>
                     <a href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal">ESTRUCTURA DE COSTOS POR ACTIVACION</a>
-                    <div class="modal fade bd-example-modal-lg" id="estructura_activacion">
-                        <div class="modal-dialog modal-lg">
+                    <div class="modal fade" id="estructura_activacion">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <div class="input-group">
@@ -663,9 +660,14 @@
                 </div>
             </div>
             <!--bloque de botones-->
-            <div class="row">
-                <input name="guardar" type="submit" value="Guardar" class="btn btn-success">
-                <input name="salir" type="button" value="Salir" class="btn btn-success">
+            <div class="row" id="botones">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-6">
+                    <input type="submit" value="Guardar" class="btn btn-info">
+                    <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"> </a>
+
+                </div>
+                <div class="col-sm-2"></div>
             </div>
         </form>
         <script type="text/javascript" src="js/form_btl.js"></script>
