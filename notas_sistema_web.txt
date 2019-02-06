@@ -33,8 +33,8 @@ JOIN usuario ON hoja_costos_atl.id_usuario=usuario.id_usuario
 JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo
 
 -----------------------
-(01/02/2019)
 observaciones form_ATL
+(01/02/2019)
 
 1.-Costo de valor agregado no igual al excel (corregido)
 2.-Boton para eliminar fila (corregido)
@@ -46,6 +46,10 @@ observaciones form_ATL
 8.-Calculos en el apartado costo financiero de operaciones no igualan al excel (corregido)
 9.-Revisar el F.E.E. programado (corregido)
 
+(06/02/19)
+
+1.-Boton para eliminar fila
+2.-Calculos en el apartado: productos propios de taller/costo total --- no calcula (se elimino "precio cotizado sin fee)
 observaciones form_TALLER
 
 1.- Materiales y servicios que intervienen en la operacion/materiales/costo total estimado (con documento factura)--no iguala al excel

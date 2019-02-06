@@ -337,7 +337,7 @@
                             '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" class="form-control" name="t4_can['+c4+']" id="t4_can'+c4+'"></td>'+
                             '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_cos['+c4+']" id="t4_cos'+c4+'" class="form-control"></td>'+
                             '<td><input type="text" name="t4_coT['+c4+']" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
-                            '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
+                            '<td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
                             '<td></td>'+
                             '<td></td>'+
                             '<td></td>'+
