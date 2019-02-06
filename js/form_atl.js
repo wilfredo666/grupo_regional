@@ -511,6 +511,9 @@
                             feev2 = feev2+feev[b];
                     }
                     var porcentaje = parseFloat(feev2);
+                    if(porcentaje==0){
+                        porcentaje=0.17
+                    }
                     if(feeP==0)
                         FEE = preciosF * (porcentaje)
                     else

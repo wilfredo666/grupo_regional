@@ -387,7 +387,7 @@ $usuario=$_GET['id'];
                                     <tr>
                                         <td><label id="feeP">0</label></td>
                                         <td></td>
-                                        <td><input type="text" class="form-control" id="feeV" name="feeV" value="10" onkeyup="costosExternos()"></td>
+                                        <td><input type="text" class="form-control" id="feeV" name="feeV" value="0" onkeyup="costosExternos()"></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
