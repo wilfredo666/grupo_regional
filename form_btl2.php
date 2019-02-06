@@ -591,9 +591,14 @@
                 </div>
             </div>
             <!--bloque de botones-->
-            <div class="row">
-                <input name="guardar" type="submit" value="Guardar" class="btn btn-success">
-                <input name="salir" type="button" value="Salir" class="btn btn-success">
+             <div class="row" id="botones">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-6">
+                    <input type="submit" value="Guardar" class="btn btn-info">
+                    <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"> </a>
+
+                </div>
+                <div class="col-sm-2"></div>
             </div>
         </form>
         <script type="text/javascript" src="js/form_btl.js"></script>

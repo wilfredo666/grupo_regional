@@ -7,7 +7,7 @@
         <script type="text/javascript" src="js/cod_proyecto.js"></script>
     </head>
     <body>
-        <div class="modal fade bd-example-modal-lg" id="generar_codigo_proyecto">
+        <div class="modal fade bd-example-modal-lg" id="generar_codigo_proyecto_btl">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">

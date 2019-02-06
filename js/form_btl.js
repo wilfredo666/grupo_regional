@@ -100,7 +100,7 @@ var t7_acTo=0;
                                ' <td><label id="t1_co'+c1+'">'+co+'</td>'+
                                ' <td><button type="button" class="btn btn-danger" id='+c1+' onClick="t1_deleted(this.id)">-</button></td>'+
                            ' </tr>'
-                $('#tablita1').append(fila)
+                $('#tablita1').after(fila)
                 document.getElementById("t1_deta").value="EJECUTIVO DE CUENTAS";
                 document.getElementById("t1_tiem").value="DIAS";
                 document.getElementById("t1_tieP").value=0;
@@ -173,7 +173,7 @@ var t7_acTo=0;
                                 '<td><label id="t2_t2'+c2+'">'+t2+'</label></td>'+
                                 '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">-</button></td>'+
                             '</tr>'
-                $('#tablita2').append(fila)
+                $('#tablita2').after(fila)
                 document.getElementById("t2_pers").value= ""
                 document.getElementById("t2_cant").value=0
                 document.getElementById("t2_canA").value=0
@@ -258,7 +258,7 @@ var t7_acTo=0;
                                 '<td><label id="t3_to'+c3+'">'+to+'</label></td>'+
                                 '<td><button type="button" id='+c3+' class="btn btn-danger" onClick="t3_deleted(this.id)">-</button></td>'+
                             '</tr>'
-                $('#tablita3').append(fila)
+                $('#tablita3').after(fila)
                 document.getElementById("t3_mate").value=""
                 //document.getElementById("t3_prov").value="---"
                 //document.getElementById("t3_unid").value="PIEZAS"
@@ -340,7 +340,7 @@ var t7_acTo=0;
                                 '<td><label id="t4_to'+c4+'">'+to+'</label></td>'+
                                 '<td><button type="button" id='+c4+' class="btn btn-danger" onClick="t4_deleted(this.id)">-</button></td>'+
                             '</tr>'
-                $('#tablita4').append(fila)
+                $('#tablita4').after(fila)
                 document.getElementById("t4_serv").value=""
                 //document.getElementById("t3_prov").value="---"
                 //document.getElementById("t3_unid").value="PIEZAS"
@@ -403,7 +403,7 @@ var t7_acTo=0;
                                ' <td><label id="t5_to'+c5+'">'+to+'</td>'+
                                ' <td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">-</button></td>'+
                            ' </tr>'
-                $('#tablita5').append(fila)
+                $('#tablita5').after(fila)
                 document.getElementById("t5_prod").value="";
                 document.getElementById("t5_unid").value="---";
                 document.getElementById("t5_cant").value=0;
@@ -461,7 +461,7 @@ var t7_acTo=0;
                                ' <td><label id="t6_to'+c6+'">'+to+'</td>'+
                                ' <td><button type="button" class="btn btn-danger" id='+c6+' onClick="t6_deleted(this.id)"></button></td>'+
                            ' </tr>'
-                $('#tablita6').append(fila)
+                $('#tablita6').after(fila)
                 document.getElementById("t6_prod").value="";
                 document.getElementById("t6_unid").value="---";
                 document.getElementById("t6_cant").value=0;
@@ -518,7 +518,7 @@ var t7_acTo=0;
                                ' <td><label id="t7_to'+c7+'">'+to+'</td>'+
                                ' <td><button type="button" class="btn btn-danger" id='+c7+' onClick="t7_deleted(this.id)">x</button></td>'+
                            ' </tr>'
-                $('#tablita7').append(fila)
+                $('#tablita7').after(fila)
                 document.getElementById("t7_prod").value="";
                 document.getElementById("t7_unid").value="---";
                 document.getElementById("t7_cant").value=0;
