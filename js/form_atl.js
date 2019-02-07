@@ -474,15 +474,15 @@
                     $('#totalF1').text(preciosF.toFixed(2)) //Costo total del proyecto (FEE)
                 }
                 //segunda fila
-                var feeP = 0;
-                if(te1<5000)
+                var feeP = 0.10;
+                /*if(te1<5000)
                     feeP = 0.17
                 else
                 if(te1<50000)
                     feeP = 0.16
                 else
                 if(te1>50000)
-                    feeP = 0.15
+                    feeP = 0.15*/
                 $('#feeP').text((feeP*100).toFixed(0)+'%') //F.E.E. programado
                 /*$('#feeV').text("10%");   //F.E.V (onload)*/
 
@@ -511,13 +511,11 @@
                             feev2 = feev2+feev[b];
                     }
                     var porcentaje = parseFloat(feev2);
-                    if(porcentaje==0){
-                        porcentaje=0.17
-                    }
+                    
                     if(feeP==0)
-                        FEE = preciosF * (porcentaje)
+                        FEE = preciosF * (porcentaje/100)
                     else
-                        FEE = preciosF * (porcentaje)
+                        FEE = preciosF * (porcentaje/100)
                     $('#totalF2').text(FEE.toFixed(2)) //FEE FEE
                 }  
                 
