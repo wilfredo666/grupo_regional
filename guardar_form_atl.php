@@ -79,11 +79,14 @@ $t5_can=$_POST['t5_can'];
 $t5_coU=$_POST['t5_coU'];
 $t5_coT=$_POST['t5_coT'];
 $t5_pre=$_POST['t5_pre'];
-if($t5_coT[0]>0){
+if($t5_can[0]>0){
     for($i=0;$i<sizeof($t5_det);$i++){
         mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','[$i]','[$i]','[$i]','[$i]','[$i]')");
     }  
 }
-
+/*costo de valor agragado*/
+/*costo indirecto de operaciones*/
+/*costo financiero*/
+/*costos totales*/
 header("location: menu.php?id=$usuario");
 ?>

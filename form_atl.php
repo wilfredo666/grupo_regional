@@ -136,7 +136,7 @@ $usuario=$_GET['id'];
                                         <td><input type="number" name="nrop[0]" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
                                         <td><input type="text" name="tasa[0]" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
                                         <td><input type="text" name="costop[0]" id="costop0" value="0" readonly class="form-control"></td>
-                                        <td><input type="text" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
+                                        <td><input type="text" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control" step="0.01"></td>
                                         <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
                                     </tr>
                                     <tr>
@@ -174,13 +174,13 @@ $usuario=$_GET['id'];
                                             <td><input type="text" name="t2_mat[0]" id="t2_mat0" class="form-control"></td>
                                             <td><input type="text" name="t2_nom[0]" id="t2_nom0" class="form-control"></td>
                                             <td><input type="number" name="t2_can[0]" onkeyup="t2_subTotal(0)" id="t2_can0" value="0" class="form-control" onClick="this.select();"></td>
-                                            <td><input type="number" name="t2_cos[0]" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();"></td>
+                                            <td><input type="number" name="t2_cos[0]" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
                                             <td><select name="t2_doc[0]" id="t2_doc0" onchange="t2_subTotal(0)" class="form-control">
                                                 <option>FACTURA</option>
                                                 <option>RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" class="form-control" name="t2_tot[0]" id="t2_tot0" value="0" readonly></td>
-                                            <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();"></td>
+                                            <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
                                             <td></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
                                         </tr>
@@ -218,8 +218,8 @@ $usuario=$_GET['id'];
                                             <td><input type="text" name="t3_ser[0]" id="t3_ser0" class="form-control"></td>
                                             <td><input type="text" name="t3_nom[0]" id="t3_nom0" class="form-control"></td>
                                             <td><input type="number" name="t3_dia[0]" id="t3_dia0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
-                                            <td><input type="number" name="t3_can[0]" id="t3_can0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
-                                            <td><input type="number" name="t3_cos[0]" id="t3_cos0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
+                                            <td><input type="number" name="t3_can[0]" id="t3_can0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" ></td>
+                                            <td><input type="number" name="t3_cos[0]" id="t3_cos0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" step="0.01"></td>
                                             <td><select name="t3_tip[0]" id="t3_tip0" onChange="t3_subTotal(0)"  class="form-control">
                                                 <option>FACTURA</option>
                                                 <option>RECIBO</option>
@@ -227,7 +227,7 @@ $usuario=$_GET['id'];
                                                 <option>ALQUILER SIN RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" name="t3_tot[0]" id="t3_tot0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" name="t3_pre[0]" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
+                                            <td><input type="number" name="t3_pre[0]" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" step="0.01"></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t3();">+</button></td>
                                         </tr>
                                         <tr>
@@ -260,7 +260,7 @@ $usuario=$_GET['id'];
                                         <tr id="tablita4">
                                             <td><input type="text" name="t4_pro[0]" id="t4_pro0" class="form-control"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control" step="0.01"></td>
                                             <td><input type="text" name="t4_coT[0]" id="t4_coT0" value="0" class="form-control" readonly></td>
                                             <td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
                                             <td></td>
@@ -285,8 +285,7 @@ $usuario=$_GET['id'];
                                     <thead class="thead-light">
                                         <tr><th colspan="9">EQUIPOS PROPIOS</th></tr>
                                         <tr>
-                                            <th scope="col">
-                                                DETALLE</th>
+                                            <th scope="col">DETALLE</th>
                                             <th scope="col">CANTIDAD</th>
                                             <th scope="col">COSTO UNITARIO</th>
                                             <th scope="col">COSTO TOTAL</th>
@@ -301,9 +300,9 @@ $usuario=$_GET['id'];
                                         <tr  id="tablita5">
                                             <td><input type="text" name="t5_det[0]" id="t5_det0" class="form-control"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_can[0]" id="t5_can0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU[0]" id="t5_coU0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU[0]" id="t5_coU0" class="form-control" step="0.01"></td>
                                             <td><input type="number" name="t5_coT[0]" id="t5_coT0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre[0]" id="t5_pre0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre[0]" id="t5_pre0" class="form-control" step="0.01"></td>
                                             <td></td>
                                             <td></td>
                                             <td scope="col"><button type="button" class="btn btn-success" onclick="addRow_t5()">+</button></td>
@@ -355,7 +354,7 @@ $usuario=$_GET['id'];
                                 <tbody>
                                     <tr>
                                         <td class="text-center"><label id="costoAp">0</label></td>
-                                        <td class="text-center"><label id="tasaDa"></label></td>
+                                        <td class="text-center"><label id="tasaDa">0</label></td>
                                         <td class="text-center"><label id="costoPd">0</label></td>
                                     </tr>
                                 </tbody>
@@ -432,8 +431,7 @@ $usuario=$_GET['id'];
                         <div class="col-sm-4"></div>
                         <div class="col-sm-6">
                             <input type="submit" value="Guardar" class="btn btn-info">
-                            <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"> </a>
-                            
+                            <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"></a>
                         </div>
                         <div class="col-sm-2"></div>
                     </div>           
