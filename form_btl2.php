@@ -112,7 +112,7 @@
                             <tr>
                                 <th scope="col">PREVISION SEGUNDO AGUINALDO</th>  
                                 <th scope="col">SEGURO DE ACCIDENTE</th>
-                                <th scope="col">VACAIONES</th>
+                                <th scope="col">VACACIONES</th>
                                 <th scope="col">PREVISION DE SUBSIDIO</th>
                                 <th scope="col">PREVICION DE DESAHUCIO</th>
                                 <th scope="col">BONO META</th>
@@ -122,14 +122,14 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="patron1" name="patron1" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="patron2" name="patron2" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="patron3" name="patron3" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="patron4" name="patron4" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="patron5" name="patron5" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="bono1" name="bono1" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="bono2" name="bono2" onkeyup="t1_totales()" class="form-control"></td>
+                                <td><input type="number" value="0" onclick="this.select()" id="bono3" name="bono3" onkeyup="t1_totales()" class="form-control"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -147,8 +147,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="2"><select class="form-control">
+                            <tr id="t2">
+                                <td colspan="2"><select class="form-control" id="t2_ciud" name="t2_ciud">
                                     <option>LA PAZ</option>
                                     <option>ORURO</option>
                                     <option>POTOSI</option>
@@ -159,19 +159,19 @@
                                     <option>BENI</option>
                                     <option>SANTA CRUZ</option>
                                     </select></td>
-                                <td colspan="2"><input type="text" class="form-control"></td>
-                                <td><input type="number" value="0" class="form-control"></td>
-                                <td><input type="number" value="0" class="form-control"></td>
-                                <td><input type="number" value="0" class="form-control" readonly></td>
-                                <td><input type="number" value="0" class="form-control" readonly></td>
-                                <td><button type="button" class="btn btn-success" onClick="">+</button></td>
+                                <td colspan="2"><input type="text" id="t2_desc" name="t2_desc"  class="form-control"></td>
+                                <td><input type="number" id="t2_cant" name="t2_cant" onclick="this.select()" onkeyup="t2_subTotal()" value="0" class="form-control"></td>
+                                <td><input type="number" id="t2_liqu" name="t2_liqu" onclick="this.select()" onkeyup="t2_subTotal()" value="0" class="form-control"></td>
+                                <td><input type="text" id="t2_tot1" name="t2_tot1" value="0" class="form-control" readonly></td>
+                                <td><input type="text" id="t2_tot2" name="t2_tot2" value="0" class="form-control" readonly></td>
+                                <td><button type="button" class="btn btn-success" onclick="t2_addRow()">+</button></td>
                             </tr>
                             <tr>
                                 <th colspan="4"><label>TOTAL</label></th>
-                                <td><label id="">0</label></td>
-                                <td><label id="">0</label></td>
-                                <td><label id="">0</label></td>
-                                <td><label id="">0</label></td>
+                                <td><label id="t2_ca">0</label></td>
+                                <td><label id="t2_li">0</label></td>
+                                <td><label id="t2_t1">0</label></td>
+                                <td><label id="t2_t2">0</label></td>
                             </tr>
                         </tbody>
                     </table>
@@ -199,27 +199,30 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr id="t3">
                             <td colspan="2"><input type="text" name="t3_mate" id="t3_mate" class="form-control"></td>
                             <td><select name="t3_unid" id="t3_unid" class="form-control">
                                 <option>PIEZAS</option>
                                 </select></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" value="0" class="form-control"></td>
-                            <td><input type="number" value="0" class="form-control"></td>
-                            <td><select class="form-control">
+                            <td><input type="number" value="0" id="t3_cant" name="t3_cant" onclick="this.select()" onkeyup="t3_subTotal()" class="form-control"></td>
+                            <td><input type="number" value="0" id="t3_cost" name="t3_cost" onclick="this.select()" onkeyup="t3_subTotal()" class="form-control"></td>
+                            <td><input type="text" value="0" id="t3_subt" name="t3_subt" class="form-control" readonly></td>
+                            <td><select class="form-control" id="t3_docu" name="t3_docu" onchange="t3_subTotal()">
                                 <option>FACTURA</option>
                                 <option>RECIBO</option>
                                 <option>ALMACEN</option>
                                 </select></td>
-                            <td><input type="number" class="form-control" readonly></td>
-                            <td><button type="button" class="btn btn-success" onClick="">+</button></td>
+                            
+                            <td><input type="text" class="form-control" id="t3_tota" name="t3_tota" readonly></td>
+                            <td><button type="button" class="btn btn-success" onclick="t3_addRow()">+</button></td>
+                            </tr>
                             <tr>
                                 <th>TOTAL</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><label id="t3_co">0</label></td>
+                                <td><label id="t3_su">0</label></td>
                                 <td></td>
                                 <td><label id="t3_to">0</label></td>
                             </tr>
@@ -248,28 +251,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td colspan="2"><input type="text" name="t3_mate" id="t3_mate" class="form-control"></td>
-                            <td><input type="number" class="form-control"></td>
-                            <td><input type="number" value="0" class="form-control"></td>
-                            <td><input type="number" value="0" class="form-control"></td>
-                            <td><select class="form-control">
+                            <tr id="t4">
+                            <td colspan="2"><input type="text" name="t4_serv" id="t4_serv" class="form-control"></td>
+                            <td><input type="number" value="0" id="t4_cant" name="t4_cant" onclick="this.select()" onkeyup="t4_subTotal()" class="form-control"></td>
+                            <td><input type="number" value="0" id="t4_prec" name="t4_prec" onclick="this.select()" onkeyup="t4_subTotal()" class="form-control"></td>
+                            <td><input type="text" value="0" id="t4_subt" name="t4_subt" class="form-control" readonly></td>
+                            <td><select class="form-control" id="t4_docu" name="t4_docu" onchange="t4_subTotal()">
                                 <option>FACTURA</option>
                                 <option>RECIBO</option>
                                 <option>SIN IMPUESTO</option>
                                 <option>ALQUILER SIN RECIBO</option>
                                 <option>VIATICO</option>
                                 </select></td>
-                            <td><input type="number" class="form-control" readonly></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-success" onClick="">+</button></td>
+                            <td><input type="text" id="t4_tota" name="t4_tota" class="form-control" readonly></td>
+                            
+                            <td><button type="button" class="btn btn-success" onclick="t4_addRow()">+</button></td>
+                            </tr>
                             <tr>
                                 <th>TOTAL</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><label id="t3_co">0</label></td>
+                                <td><label id="t4_su">0</label></td>
                                 <td></td>
-                                <td><label id="t3_to">0</label></td>
+                                <td><label id="t4_to">0</label></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -291,7 +296,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td colspan="4"><select name="" class="form-control">
+                            <tr id="t5">
+                            <td colspan="4"><select id="t5_pers" name="t5_pers" class="form-control">
                                 <option>SERVICIOS GERENCIA GENERAL</option>
                                 <option>SUPERVISION JEFATURA ACTIVACIONES Y BTL</option>
                                 <option>SERVICIO DE RECURSOS HUMANOS Y PLANTILLAJE</option>
@@ -299,16 +305,17 @@
                                 <option>PAPELERIA Y MATERIALES</option>
                                 <option>SERVICIOS BASICOS</option>
                                 </select></td>
-                            <td colspan="2"><input type="number" class="form-control"></td>
-                            <td colspan="2"><input type="number" class="form-control"></td>
-                            <td><button type="button" class="btn btn-success" onclick="t4_addRow()">+</button></td>
+                            <td colspan="2"><input type="text" value="0" name="t5_porc" id="t5_porc" onclick="this.select()" onkeyup="t5_subTotal()" class="form-control"></td>
+                            <td colspan="2"><input type="text" value="0" name="t5_cost" id="t5_cost" class="form-control" readonly></td>
+                            <td><button type="button" class="btn btn-success" onclick="t5_addRow()">+</button></td>
+                            </tr>
                             <tr>
                                 <th>TOTAL</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td colspan="2"><label id="t4_co">0</label></td>
-                                <td colspan="2"><label id="t4_to">0</label></td>
+                                <td colspan="2"><label id="t5_t1">0</label></td>
+                                <td colspan="2"><label id="t5_t2">0</label></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -364,7 +371,7 @@
                             <tr>
                                 <th scope="row">F.E.E. PROGRAMADO</th>
                                 <td><label id="tp2">0</label></td>
-                                <td><input type="number" class="form-control"></td>
+                                <td><input type="text" id="feeV" value="13%" onkeyup="costosExternos()" class="form-control"></td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
@@ -591,17 +598,12 @@
                 </div>
             </div>
             <!--bloque de botones-->
-             <div class="row" id="botones">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-6">
-                    <input type="submit" value="Guardar" class="btn btn-info">
-                    <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"> </a>
-
-                </div>
-                <div class="col-sm-2"></div>
+            <div class="row">
+                <input name="guardar" type="submit" value="Guardar" class="btn btn-success">
+                <input name="salir" type="button" value="Salir" class="btn btn-success">
             </div>
         </form>
-        <script type="text/javascript" src="js/form_btl.js"></script>
+        <script type="text/javascript" src="js/form_btl2.js"></script>
         <script src="js/jquery-3.3.1.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
     </body>
