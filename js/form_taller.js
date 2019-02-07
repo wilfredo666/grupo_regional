@@ -151,7 +151,10 @@ var r1 = 0;
                 var cos = parseFloat(document.getElementById("t2_cost").value)
                 var doc = document.getElementById("t2_docu").value
                 var val=0;
-                if((doc=="FACTURA")||(doc=="ALMACEN")){
+                if(doc=="FACTURA"){
+                  val = (can*cos)*0.87
+                }
+                if(doc=="ALMACEN"){
                   val = can*cos
                 }
                 if(doc=="RECIBO"){
@@ -159,7 +162,6 @@ var r1 = 0;
                 }
                 document.getElementById("t2_tota").value =  val.toFixed(2)
             }
-            
             function t2_addRow(){
                 c2=c2+1
                 var ma = document.getElementById("t2_mate").value
@@ -230,24 +232,24 @@ var r1 = 0;
                 Valorados: 1
                 Alquiler con recibos: 0.84
                 */
-                if(doc=="FACTURA"){
-                  val = 0.87;
+                if(doc=="RECIBO"){
+                  val = 0.845;
                   val = (can * cos) / val;
                 }
                 else
-                    if(doc=="RECIBO"){
-                      val = 0.845;
+                    if(doc=="FACTURA"){
+                      val = 0.87;
                       val = can * cos * val;
                     }
                     else 
                         if(doc=="VALORADO"){
                             val = 1;
-                            val = (can * cos) / val;
+                            val = (can * cos) * val;
                         }
                         else
                             if(doc=="ALQUILER CON RECIBO"){
                                 val = 0.84;
-                                val = can * cos * val;
+                                val = (can * cos)/ val;
                             }
 
                 document.getElementById("t3_coTo").value = val.toFixed(2)
@@ -344,13 +346,13 @@ var r1 = 0;
                 $('#to1').text(totalProyecto.toFixed(2));   //COSTO TOTAL DEL PROYECTO
 
                 //FEE
-                if(to1<=5000)
+                if(totalProyecto<=5000)
                     feeP = 0.17
                 else
-                if(to1<=50000)
+                if(totalProyecto<=50000)
                     feeP = 0.16
                 else
-                if(to1>50000)
+                if(totalProyecto>50000)
                     feeP = 0.15
                 $('#feeP').text((feeP*100).toFixed(0)+'%') //F.E.E. programado
                                                             //FEEV Typeado por usuario

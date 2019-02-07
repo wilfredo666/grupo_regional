@@ -48,13 +48,15 @@ observaciones form_ATL
 
 (06/02/19)
 
-1.-Boton para eliminar fila
-2.-Calculos en el apartado: productos propios de taller/costo total --- no calcula (se elimino "precio cotizado sin fee)
-observaciones form_TALLER
+1.-Boton para eliminar fila(?)
+2.-Calculos en el apartado: productos propios de taller/costo total --- no calcula (se elimino "precio cotizado sin fee) (?)
 
-1.- Materiales y servicios que intervienen en la operacion/materiales/costo total estimado (con documento factura)--no iguala al excel
-2.- Materiales y servicios que intervienen en la operacion/servicios/costo total (con documento factura, recibo, alguiler con recibo)--no iguala al excel
-3.- cuando se quita item:
+
+observaciones form_TALLER 
+
+1.- Materiales y servicios que intervienen en la operacion/materiales/costo total estimado (con documento factura)--no iguala al excel (Corregido)
+2.- Materiales y servicios que intervienen en la operacion/servicios/costo total (con documento factura, recibo, alguiler con recibo)--no iguala al excel (Corregido)
+3.- cuando se quita item: (?)
 	-Costos indirectos de operaciones/costo acumulado programado--no iguala al excel
 	-Costos indirectos de operaciones/costo programado de costos indirectos--no iguala al excel
 	-Costo financiero/costo total programado--no iguala al excel
