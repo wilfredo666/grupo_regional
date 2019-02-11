@@ -81,7 +81,7 @@ $t5_coT=$_POST['t5_coT'];
 $t5_pre=$_POST['t5_pre'];
 if($t5_can[0]>0){
     for($i=0;$i<sizeof($t5_det);$i++){
-        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','[$i]','[$i]','[$i]','[$i]','[$i]')");
+        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t5_det[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
     }  
 }
 /*costo de valor agragado*/

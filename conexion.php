@@ -1,5 +1,6 @@
 <?php
 $con=mysqli_connect("localhost", "root", "", "grupo_regional");
+$empleado=$_GET['id'];
 /*if(!$con){
     echo 'Erro de conexion a la base de datos';
 }
@@ -60,6 +61,7 @@ function ultimo_codigo_proyecto_btl2(){
 }
 function reporte_atl(){
     global $con;
+    global $empleado;
     $sql="SELECT id_hoja_costos, codigo_hoja_costos, nombre, nombre_proyecto, fecha_hora_creacion, nombre_usuario, estado from hoja_costos_atl JOIN usuario ON hoja_costos_atl.id_usuario=usuario.id_usuario JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo";
     $r_atl=mysqli_query($con,$sql);
     while($campo=mysqli_fetch_array($r_atl)){
@@ -70,10 +72,12 @@ function reporte_atl(){
         echo '<td>'.$campo[4].'</td>';
         echo '<td>'.$campo[5].'</td>';
         echo '<td><a href="pdf_atl.php?id='.$campo[0].'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
-        echo '<td><button type="button" class="btn btn-warning">Editar</button></td>';
+        echo '<td><a href="form_edicion_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-warning">Editar</button></td>';
         echo '<td><button type="button" class="btn btn-danger">Eliminar</button></td>';
         echo '</tr>';
     }
 }
+/*datos insertados atl*/
+
 /*correlativo_codigo_proyecto_atl();/* --> asi se puede revisar basta con llamar a la funcion*/
 ?>
