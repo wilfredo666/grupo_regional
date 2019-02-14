@@ -4,7 +4,7 @@ include 'modal_generar_codigo_atl.php';
 $usuario=$_GET['id'];
 ?>
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Formulario ATL</title>

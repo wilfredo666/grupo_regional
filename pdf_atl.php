@@ -1,7 +1,10 @@
 <?php
 include 'conexion.php';
 require 'fpdf/fpdf.php';
-$id_hoja_costos_atl=$_GET['id'];
+$id_hoja_costos_atl=$_GET['id_hoja_costos'];
+$usuario=$_GET['id'];
+/*datos de empleado*/
+$dat_empleado=mysqli_fetch_array(mysqli_query($con,"SELECT * FROM empleado JOIN usuario ON empleado.ci=usuario.ci_empleado JOIN datos_laborales ON datos_laborales.ci_empleado=empleado.ci where id_usuario=$usuario"));
 
 /*consulta*/
 $atl=mysqli_fetch_array(mysqli_query($con,"select nombre, nombre_proyecto from hoja_costos_atl JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo WHERE id_hoja_costos=$id_hoja_costos_atl"));
@@ -16,8 +19,9 @@ $servicios=mysqli_query($con,"select * from servicios_contratados_atl where id_h
 $productos=mysqli_query($con,"select * from producto_propio_taller_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
 /*consulta - equipos propios*/
 $equipos=mysqli_query($con,"select * from equipo_propio_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
-
-$fe=strftime("%A %d de %B del %Y");
+/*fecha*/
+setlocale(LC_ALL, "es_ES");
+$fe=strftime("Fecha: %A %d de %B del %Y");
 
 /*carta para hoja de costos atl*/
 class PDF extends FPDF{
@@ -25,23 +29,24 @@ class PDF extends FPDF{
         $this->Image('imagenes/grupo_regional.jpg',5,5,30);
         $this->SetFont('Arial','B',15);
         $this->Cell(30);
-        $this->Cell(120,10,'Grupo Regional S.R.L.',0,0,'C');
+        /*$this->Cell(120,10,'Grupo Regional S.R.L.',0,0,'C');*/
         $this->Ln(20);
     }
     function Footer(){
-        $this->SetY(-45);
-        $this->Cell(190,6,'Atentamente',0,1,"C");
-        $this->SetY(-39);
-        $this->Cell(190,6,'persona',0,1,"C");
-        $this->SetY(-33);
-        $this->Cell(190,6,'puesto',0,1,"C");
-        $this->SetY(-27);
-        $this->Cell(190,6,'correo',1,1,"C");
-        $this->SetY(-21);
-        $this->Cell(190,6,'www.gruporegional.com',1,1,"C");
-        $this->SetY(-15);
+        global $dat_empleado;
+        $this->SetY(-90);
+        $this->Cell(45,5,'Atentamente',0,1,"C");
+        $this->SetY(-85);
+        $this->Cell(45,5,$dat_empleado[2].' '.$dat_empleado[4].' '.$dat_empleado[5],0,1,"C");
+        $this->SetY(-80);
+        $this->Cell(45,5,$dat_empleado[24],0,1,"C");
+        $this->SetY(-75);
+        $this->Cell(45,5,$dat_empleado[23],0,1,"C");
+        $this->SetY(-70);
+        $this->Cell(45,5,'www.gruporegional.com',0,1,"C");
+        /*$this->SetY(-15);
         $this->SetFont('Arial','I',8);
-        $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
+        $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');*/
     }
     function ImprovedTable($cabecera)
     {
@@ -56,10 +61,11 @@ class PDF extends FPDF{
         /*$this->Cell(array_sum($w),0,'','T');*/
     }
 }
-
-$pdf = new PDF();
+//utf8_decode()
+$pdf = new PDF('P','mm','letter');
 $pdf->AliasNbPages();
 $pdf->AddPage();
+$pdf->Image('imagenes/membretado.jpg',0,0,230,280);
 $pdf->SetFont('Times','',12);
 $pdf->SetX(140);
 $pdf->Cell(60,10,$fe,0,1,"R");
@@ -73,7 +79,11 @@ $pdf->Cell(60,10,'Detalle por utilitarios:',0,1,"L");
 $cabecera = array('Item', 'Dias', 'Cantidad', 'Costo unitario (Bs)', 'Costo total (Bs)');
 $pdf->ImprovedTable($cabecera);
 /*personal directo*/
-
+$t_cos_tot1=0;
+$t_cos_tot2=0;
+$t_cos_tot3=0;
+$t_cos_tot4=0;
+$t_cos_tot5=0;
 while($row1=mysqli_fetch_array($per_directo)){
     $pdf->Cell(75,6,$row1[2],'LR');
     $pdf->Cell(20,6,$row1[5],'R');
@@ -81,6 +91,7 @@ while($row1=mysqli_fetch_array($per_directo)){
     $pdf->Cell(40,6,$row1[9]/$row1[6]/$row1[5],'R',0,'R');
     $pdf->Cell(40,6,$row1[9],'R',0,'R');
     $pdf->Ln();
+    $t_cos_tot1=$t_cos_tot1+$row1[9];
 }
 
 /*meteriales*/
@@ -91,6 +102,7 @@ while($row2=mysqli_fetch_array($materiles)){
     $pdf->Cell(40,6,$row2[8]/$row2[4],'R',0,'R');
     $pdf->Cell(40,6,$row2[8],'R',0,'R');
     $pdf->Ln();
+    $t_cos_tot2=$t_cos_tot2+$row2[8];
 }
 /*servicios*/
 while($row3=mysqli_fetch_array($servicios)){
@@ -100,6 +112,7 @@ while($row3=mysqli_fetch_array($servicios)){
     $pdf->Cell(40,6,$row3[9]/$row3[5],'R',0,'R');
     $pdf->Cell(40,6,$row3[9],'R',0,'R');
     $pdf->Ln();
+    $t_cos_tot3=$t_cos_tot3+$row3[9];
 }
 /*productos propios*/
 while($row4=mysqli_fetch_array($productos)){
@@ -109,6 +122,7 @@ while($row4=mysqli_fetch_array($productos)){
     $pdf->Cell(40,6,$row4[6]/$row4[3],'R',0,'R');
     $pdf->Cell(40,6,$row4[6],'R',0,'R');
     $pdf->Ln();
+    $t_cos_tot4=$t_cos_tot4+$row4[6];
 }
 /*equipos propios*/
 while($row5=mysqli_fetch_array($equipos)){
@@ -118,21 +132,22 @@ while($row5=mysqli_fetch_array($equipos)){
     $pdf->Cell(40,6,$row5[6]/$row5[3],'R',0,'R');
     $pdf->Cell(40,6,$row5[6],'R',0,'R');
     $pdf->Ln();
+    $t_cos_tot5=$t_cos_tot5+$row5[6];
 }
 
 $pdf->Cell(115,6,'','T',0,"C");
 $pdf->SetX(125);
 $pdf->Cell(40,6,'Subtotal = ',1,0,"C");
 $pdf->SetX(165);
-$pdf->Cell(40,6,' ',1,1,"C");
+$pdf->Cell(40,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5,1,1,"C");
 $pdf->SetX(125);
-$pdf->Cell(40,6,'F.E.E. 17% = ',1,0,"C");
+$pdf->Cell(40,6,'F.E.E.(17%) = ',1,0,"C");
 $pdf->SetX(165);
-$pdf->Cell(40,6,' ',1,1,"C");
+$pdf->Cell(40,6,'0',1,1,"C");
 $pdf->SetX(125);
 $pdf->Cell(40,6,'Total = ',1,0,"C");
 $pdf->SetX(165);
-$pdf->Cell(40,6,' ',1,1,"C");
+$pdf->Cell(40,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+0,1,1,"C");
 $pdf->Ln();
 
 $pdf->Output();

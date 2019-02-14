@@ -1,6 +1,9 @@
 <?php
 $con=mysqli_connect("localhost", "root", "", "grupo_regional");
 $empleado=$_GET['id'];
+mysqli_query($con,"SET charset 'utf8'");
+mysqli_set_charset($con,'utf-8');
+header("Content-Type: text/html;charset=utf-8");
 /*if(!$con){
     echo 'Erro de conexion a la base de datos';
 }
@@ -71,7 +74,7 @@ function reporte_atl(){
         echo '<td>'.$campo[3].'</td>';
         echo '<td>'.$campo[4].'</td>';
         echo '<td>'.$campo[5].'</td>';
-        echo '<td><a href="pdf_atl.php?id='.$campo[0].'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
+        echo '<td><a href="pdf_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
         echo '<td><a href="form_edicion_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-warning">Editar</button></td>';
         echo '<td><button type="button" class="btn btn-danger">Eliminar</button></td>';
         echo '</tr>';

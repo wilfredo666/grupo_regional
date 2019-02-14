@@ -1,5 +1,7 @@
 <?php
 include 'conexion.php';
+mysqli_set_charset($con,'utf-8');
+header("Content-Type: text/html;charset=utf-8");
 
 /*datos iniciales - hoja de costos*/
 $cliente=$_POST["cliente"];
