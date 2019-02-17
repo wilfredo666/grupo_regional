@@ -41,8 +41,7 @@
     
     var tasaAplicacion = 0.17;
     //t2_subTotal(0);
-     //actualizarTaza(0);
-
+    //actualizarTaza(0);
             function activacoma(nStr){
                 nStr += '';
                 var x = nStr.split('.');
@@ -122,7 +121,7 @@
                     '</select></td>'+
                     '<td><input type="number" class="form-control" name="time['+c+']" id="time'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();" step="0.01"></td>'+
                     '<td><input type="number" class="form-control" name="nrop['+c+']" id="nrop'+c+'" value ="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();" step="0.01"></td>'+
-                    '<td><input type="text" class="form-control" name="tasa['+c+']" id="tasa'+c+'" value="" onkeyup="actualizarCostoTotal('+c+')" readonly></td>'+
+                    '<td><input type="text" class="form-control" name="tasa['+c+']" id="tasa'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" readonly></td>'+
                     '<td><input type="text" class="form-control" name="costop['+c+']" id="costop'+c+'" value="0" readonly></td>'+
                     '<td><input type="text" class="form-control" name="precioC['+c+']" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
                     '<td><button type="button" class="btn btn-danger" onclick="t1_deleted('+c+')" id='+c+' >-</button></td>'+
@@ -415,6 +414,7 @@
                 $("#fila5"+d).remove();
                 //c1=c1-1;
             }
+
             function costosExternos(){
                 //costos indirectos de operaciones
 
@@ -544,7 +544,8 @@
                 }
                 
                 //COSTO DE VALOR AGREGADO
-                $('#costoVA').text($('#totalE4').text()); // Costo de valor agregado
+                document.getElementById("costoVA").value=$('#totalE4').text()
+                /*$('#costoVA').text($('#totalE4').text());*/ // Costo programado del proyecto
                 $('#costoED').text($('#totalF4').text()); // Costo estimado del proyecto
                 var dif = parseFloat(tf4) - parseFloat(te4);
                 $('#diferencia').text(dif.toFixed(2))

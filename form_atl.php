@@ -9,7 +9,6 @@ $usuario=$_GET['id'];
         <meta charset="utf-8">
         <title>Formulario ATL</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <script type="text/javascript" src="js/form_atl.js"></script>
         <link href="css/atl.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
@@ -336,7 +335,8 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center"><label id="costoVA">0</label></td>
+                                       <td><input type="text" class="form-control" id="costoVA"></td>
+                                        <!--<td class="text-center"><label id="costoVA">0</label></td>-->
                                         <td class="text-center"><label id="costoED">0</label></td>
                                         <td class="text-center"><label id="diferencia">0</label></td>
                                     </tr>
@@ -370,7 +370,7 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center"><label id="tiempoPr">0</td>
+                                        <td class="text-center"><label id="tiempoPr" name="tiempaso">0</td>
                                         <td class="text-center"><label id="tasaFi">0</td>
                                         <td class="text-center"><label id="costoTo">0</td>
                                     </tr>
@@ -437,8 +437,9 @@ $usuario=$_GET['id'];
                     </div>           
                 </div>
                 </form>
+            <script type="text/javascript" src="js/form_atl.js"></script>
             <script src="js/jquery-3.3.1.js"></script>
             <script src="bootstrap/js/bootstrap.js"></script>
-           
+
             </body>
         </html>
