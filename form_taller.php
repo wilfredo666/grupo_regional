@@ -29,7 +29,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Cliente:</div>
                                 </div>
-                                <select name="select3" id="select3" class="form-control">
+                                <select name="cliente" id="select3" class="form-control">
                                     <?php mostrar_cliente();?>
                                 </select>
                             </div>
@@ -48,7 +48,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Correo electronico (cliente):</div>
                                 </div>
-                                <input type="text" class="form-control" name="textfield" id="textfield">
+                                <input type="text" class="form-control" name="email_cliente" id="textfield">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -56,7 +56,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Nombre del proyecto:</div>
                                 </div>
-                                <input type="text" class="form-control" name="textfield2" id="textfield2">
+                                <input type="text" class="form-control" name="nom_proyecto" id="textfield2">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -64,7 +64,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Fecha de inicio del proyecto:</div>
                                 </div>
-                                <input type="date" class="form-control" name="date" id="date">
+                                <input type="date" class="form-control" name="fecha_inicio" id="date">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -72,7 +72,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Fecha de conclucion del proyecto:</div>
                                 </div>
-                                <input type="date" class="form-control" name="date2" id="date2">
+                                <input type="fecha_fin" class="form-control" name="date2" id="date2">
                             </div>
                         </div>
                         <div class="col-sm-6">
