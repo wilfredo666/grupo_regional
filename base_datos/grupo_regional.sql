@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-02-2019 a las 21:27:43
+-- Tiempo de generación: 17-02-2019 a las 20:32:31
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.0.23
 
@@ -311,7 +311,7 @@ CREATE TABLE `costo_valor_agregado_atl` (
 
 CREATE TABLE `datos_laborales` (
   `id_datos_laborales` int(11) NOT NULL,
-  `ci_empleado` varchar(30) NOT NULL,
+  `ci_empleado` varchar(15) NOT NULL,
   `telefono_corporativo` int(11) NOT NULL,
   `correo_corporativo` varchar(100) NOT NULL,
   `cargo` varchar(100) NOT NULL,
@@ -334,7 +334,7 @@ CREATE TABLE `datos_laborales` (
 --
 
 INSERT INTO `datos_laborales` (`id_datos_laborales`, `ci_empleado`, `telefono_corporativo`, `correo_corporativo`, `cargo`, `afp_entidad`, `nua`, `cod_delta`, `sucursal`, `id_centro_costos`, `tipo_contrato`, `fecha_ingreso`, `fecha_retiro`, `motivo`, `haber_basico`, `cuenta_bcp`, `cuenta_mercantil`) VALUES
-(1, '7904767', 0, 'sistemas@gruporegional.com', 'encargado de sistemas', '', 0, 0, '', 0, '', '0000-00-00', '0000-00-00', '', '3151.25', '', '');
+(1, '7904767', 0, 'sistemas@gruporegional.com', 'Encargado de sistemas', '', 0, 0, '', 0, '', '0000-00-00', '0000-00-00', '', '3151.25', '', '');
 
 -- --------------------------------------------------------
 
@@ -414,25 +414,24 @@ CREATE TABLE `equipo_propio_taller` (
 
 CREATE TABLE `hoja_costos_atl` (
   `id_hoja_costos` int(11) NOT NULL,
-  `codigo_hoja_costos` varchar(10) NOT NULL,
-  `cliente` varchar(3) NOT NULL,
-  `correo_cliente` varchar(50) NOT NULL,
+  `codigo_hoja_costos` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `cliente` varchar(3) CHARACTER SET utf8 NOT NULL,
+  `correo_cliente` varchar(50) CHARACTER SET utf8 NOT NULL,
   `fecha_inicio` date NOT NULL,
   `tiempo_credito` int(11) NOT NULL,
-  `nombre_proyecto` varchar(30) NOT NULL,
+  `nombre_proyecto` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fecha_fin` date NOT NULL,
-  `tipo_proyecto` varchar(30) NOT NULL,
+  `tipo_proyecto` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fecha_hora_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_usuario` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `hoja_costos_atl`
 --
 
 INSERT INTO `hoja_costos_atl` (`id_hoja_costos`, `codigo_hoja_costos`, `cliente`, `correo_cliente`, `fecha_inicio`, `tiempo_credito`, `nombre_proyecto`, `fecha_fin`, `tipo_proyecto`, `fecha_hora_creacion`, `id_usuario`, `estado`) VALUES
-(1, '4000120001', '02', 'correo@hotmail.com', '2019-01-01', 30, 'p1', '2019-01-03', 'INTERNO', '2019-01-24 13:34:46', 3, 1),
 (9, '4111010002', '01', '', '2019-01-01', 30, 'proyecto', '2019-01-01', 'EXTERNO', '2019-02-08 13:01:57', 3, 1);
 
 -- --------------------------------------------------------
@@ -480,7 +479,7 @@ CREATE TABLE `materiales_atl` (
 --
 
 INSERT INTO `materiales_atl` (`id_materiales`, `id_hoja_costos_atl`, `descripcion_material`, `nombre_proveedor`, `cantidad_estimada`, `costo_unitario`, `tipo_documento`, `costo_total_estimado`, `precio_cotizado_sin_fee`) VALUES
-(4, 9, 'salteÃ±as', '', 100, '7.00', 'FACTURA', '609.00', '800.00'),
+(4, 9, 'salteñas', '', 100, '7.00', 'FACTURA', '609.00', '800.00'),
 (5, 9, 'vasos desechables', '', 100, '0.08', 'FACTURA', '6.96', '10.00'),
 (6, 9, 'refrescos', 'jugos pil', 13, '12.00', 'FACTURA', '135.72', '169.00');
 
@@ -689,7 +688,8 @@ ALTER TABLE `costo_valor_agregado_atl`
 -- Indices de la tabla `datos_laborales`
 --
 ALTER TABLE `datos_laborales`
-  ADD PRIMARY KEY (`id_datos_laborales`);
+  ADD PRIMARY KEY (`id_datos_laborales`),
+  ADD KEY `ci_empleado` (`ci_empleado`);
 
 --
 -- Indices de la tabla `empleado`
@@ -851,7 +851,7 @@ ALTER TABLE `equipo_propio_taller`
 -- AUTO_INCREMENT de la tabla `hoja_costos_atl`
 --
 ALTER TABLE `hoja_costos_atl`
-  MODIFY `id_hoja_costos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_hoja_costos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_costos_taller`
@@ -910,6 +910,12 @@ ALTER TABLE `usuario`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `datos_laborales`
+--
+ALTER TABLE `datos_laborales`
+  ADD CONSTRAINT `datos_laborales_ibfk_1` FOREIGN KEY (`ci_empleado`) REFERENCES `empleado` (`ci`);
 
 --
 -- Filtros para la tabla `equipo_propio_atl`
