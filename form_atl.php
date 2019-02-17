@@ -335,10 +335,10 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                       <td><input type="text" class="form-control" id="costoVA"></td>
+                                       <td><input type="number" class="form-control" id="costoVA" step="0.01"></td>
                                         <!--<td class="text-center"><label id="costoVA">0</label></td>-->
-                                        <td class="text-center"><label id="costoED">0</label></td>
-                                        <td class="text-center"><label id="diferencia">0</label></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="costoED" step="0.01"></label></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="diferencia" step="0.01"></label></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">

@@ -72,7 +72,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Fecha de conclucion del proyecto:</div>
                                 </div>
-                                <input type="fecha_fin" class="form-control" name="date2" id="date2">
+                                <input type="date" class="form-control" name="fecha_fin" id="date2">
                             </div>
                         </div>
                         <div class="col-sm-6">
