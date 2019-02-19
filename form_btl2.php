@@ -210,6 +210,7 @@ $usuario=$_GET['id'];
                             <tr id="t3">
                                 <td colspan="2"><input type="text" name="t3_mate" id="t3_mate" class="form-control"></td>
                                 <td><select name="t3_unid" id="t3_unid" class="form-control">
+                                    <option>---</option>
                                     <option>PIEZAS</option>
                                     </select></td>
                                 <td><input type="number" value="0" id="t3_cant" name="t3_cant" onclick="this.select()" onkeyup="t3_subTotal()" class="form-control"step="0.01"></td>
@@ -298,8 +299,9 @@ $usuario=$_GET['id'];
                                 <th colspan="9"><h4>PERSONAL, MATERIALES Y SERVICIOS</h4></th>
                             </tr>
                             <tr>
-                                <th colspan="4">PERSONAL</th>
-                                <th colspan="4">COSTOS</th>
+                                <th colspan="4">DETALLE</th>
+                                <th colspan="2">COSTO (%)</th>
+                                <th colspan="2">TOTAL</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -339,7 +341,7 @@ $usuario=$_GET['id'];
                             <tr>
                                 <th>COSTO ACUMULADO PROGRAMADO</th>
                                 <th>TASA DE APLICACIÓN</th>
-                                <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
+                                <th>TOTAL COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -374,12 +376,12 @@ $usuario=$_GET['id'];
 <tbody>
     <tr>
         <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-        <td><input type="number" class="form-control" id="tp1" name="tp1" step="0.01"></label></td>
+        <td><input type="number" class="form-control" id="tp1" name="tp1" step="0.01"></td>
 </tr>
 <tr>
     <th scope="row">F.E.E. PROGRAMADO</th>
-    <td><input type="number" class="form-control" id="tp2" name="tp2" step="0.01"></label></td>
-<td><input type="text" id="feeV" value="13%" onkeyup="costosExternos()" class="form-control"></td>
+    <td><input type="number" class="form-control" id="tp2" name="tp2" step="0.01" readonly></td>
+<td><input type="text" id="feeV" value="13%" onkeyup="costosExternos()" class="form-control" readonly></td>
 </tr>
 <tr>
     <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>

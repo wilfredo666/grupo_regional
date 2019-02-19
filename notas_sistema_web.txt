@@ -15,6 +15,9 @@ utiliza 10 digitos en total y toma 2 de ellos como decimal
 -no se pueden crear varias filas dentro de una fila
 -agregar al registro de la basse de datos, fecha-hora y usuario
 
+-------------------
+-no utilizar tipo UNICO como clave foranea en base de datos ya que no permite repetir el mismo id
+
 para registro de multiple de tabla
 $=$_POST[''];
 $=$_POST[''];
