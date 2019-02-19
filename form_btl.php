@@ -349,28 +349,25 @@ $usuario=$_GET['id'];
                                 <th colspan="9"><h4>SERVICIO DE OPERACION PROPIO - ATL</h4></th>
                             </tr>
                             <tr>
-                                <th colspan="3">DETALLE</th>
-                                <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
+                                <th colspan="4">DETALLE</th>
                                 <th>CANTIDAD</th>
                                 <th>COSTO UNITARIO</th>
                                 <th>TOTAL</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr id="tablita6">
-                                <td colspan="3"><input type="text" id="t6_prod" name="t6_prod" class="form-control"></td>
-                                <td colspan="2"><select name="t6_unid" id="t6_unid" class="form-control">
-                                    <option>---</option>
-                                    </select></td>
+                                <td colspan="4"><input type="text" id="t6_prod" name="t6_prod" class="form-control"></td>
                                 <td><input type="number" id="t6_cant" name="t6_cant" onClick="this.select()" onkeyup="t6_subTotal()" value="0" class="form-control"></td>
                                 <td><input type="number" id="t6_cost" name="t6_cost" onClick="this.select()" onkeyup="t6_subTotal()" value="0" class="form-control" step="0.01"></td>
                                 <td><input type="text" id="t6_tota" name="t6_tota" class="form-control" readonly></td>
+                                <td></td>
                                 <td><button type="button" class="btn btn-success" onclick="t6_addRow()">+</button></td>
                             </tr>
                             <tr>
                                 <th>TOTAL</th>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

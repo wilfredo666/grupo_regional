@@ -17,7 +17,7 @@ $usuario=$_GET['id'];
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
+        <form action="guardar_form_btl2.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
@@ -370,16 +370,16 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center"><input type="number" class="form-control" id="tiempoPr" name="tiempaso" step="0.01"></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01"></td>
                                         <td class="text-center"><input type="number" class="form-control" id="tasaFi" step="0.01"></td>
                                         <td class="text-center"><input type="number" class="form-control" id="costoTo" step="0.01"></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>F.E.E. PROGRAMADO</th>
+                                        <th>F.E.E. PROGRAMADO(%)</th>
                                         <th></th>
-                                        <th>F.E.E. VARIABLE</th>
+                                        <th>F.E.E. VARIABLE(%)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -414,8 +414,8 @@ $usuario=$_GET['id'];
                                     </tr>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                        <td><input type="number" class="form-control" id="totalE4" name="totalE4" step="0.01"></label></td>
-                                        <td><input type="number" class="form-control" id="totalF4" name="totalF4" step="0.01"></label></td>
+                                        <td><input type="text" class="form-control" id="totalE4" name="totalE4"></label></td>
+                                        <td><input type="text" class="form-control" id="totalF4" name="totalF4" step="0.01"></label></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -440,6 +440,5 @@ $usuario=$_GET['id'];
             <script type="text/javascript" src="js/form_atl.js"></script>
             <script src="js/jquery-3.3.1.js"></script>
             <script src="bootstrap/js/bootstrap.js"></script>
-
             </body>
         </html>

@@ -441,9 +441,11 @@
                 
                 total = parseFloat(t1_costoT)+parseFloat(t2_costoT)+parseFloat(t3_costoT)+parseFloat(t5_costoT)
                 costoProg = total * tasaAplicacion
-                $('#costoAp').text(total.toFixed(2)) //Costo acumulado programado
+                /*$('#costoAp').text(total.toFixed(2))*/ //Costo acumulado programado
+                document.getElementById("costoAp").value=total.toFixed(2)
                 //$('#tasaDa').text(tasaAplicacion)                //tasa de aplicacion(onLoad)
-                $('#costoPd').text((costoProg).toFixed(2)) //costo programado de C.I.
+                /*$('#costoPd').text((costoProg).toFixed(2))*/ //costo programado de C.I.
+                document.getElementById("costoPd").value=(costoProg).toFixed(2)
                 
                 //costo financiero
                 var exoin = $('#exoin').val()
@@ -451,7 +453,8 @@
                 var tasaFinanciera = 0.0544872; //EN PORCENTAJE SOLO ES TASA/100
                 var tiempoP = $('#number').val()
                 var costoPF = (tasaFinanciera/100) * tiempoP * (total+costoProg)
-                $('#tiempoPr').text(tiempoP) //tiempo programado
+               /*$('#tiempoPr').text(tiempoP)*/ //tiempo programado
+                document.getElementById("tiempoPr").value=tiempoP
                 //$('#tasaFi').text("0.05%")  // tasa financiera(onLoad)
                 $('#costoTo').text(costoPF.toFixed(2))  //costo total programado financiero
 
@@ -459,15 +462,20 @@
                 //tercera fila
                 te1 = parseFloat(costoProg) + parseFloat(costoPF) + parseFloat(total)+parseFloat(t4_costoT)
                 te1 = te1.toFixed(2)
-                $('#totalE1').text(te1)  //Costo total del proyecto (ejecutado)
+                /*$('#totalE1').text(te1)*/  //Costo total del proyecto (ejecutado)
+                document.getElementById("totalE1").value=te1
                 var preciosF = 0;
                 if(exoin=="INTERNO"){
                      $('#totalF1').text(te1)
-                     $('#totalE2').text($('#totalE1').text())
-                     $('#totalF2').text($('#totalE1').text())
-                     $('#totalE3').text($('#totalE1').text())
-                     $('#totalE4').text($('#totalE1').text())
-                     $('#totalF4').text($('#totalE1').text())
+                     /*$('#totalE2').text($('#totalE1').val())*/
+                    document.getElementById("totalF1").value=$('#totalE1').val()
+                     /*$('#totalF2').text($('#totalE1').val())*/
+                    document.getElementById("totalF2").value=$('#totalE1').val()
+                     /*$('#totalE3').text($('#totalE1').val())*/
+                    document.getElementById("totalE3").value=$('#totalE1').val()
+                     /*$('#totalE4').text($('#totalE1').val())*/
+                    document.getElementById("totalE4").value=$('#totalE1').val()
+                     $('#totalF4').text($('#totalE1').val())
                 }
                 if(exoin=="EXTERNO"){
                      preciosF = parseFloat(j1)+parseFloat(j2)+parseFloat(j3)+parseFloat(j4)+parseFloat(j5)
@@ -483,7 +491,8 @@
                 else
                 if(te1>50000)
                     feeP = 0.15*/
-                $('#feeP').text((feeP*100).toFixed(0)+'%') //F.E.E. programado
+                /*$('#feeP').text((feeP*100).toFixed(0)+'%')*/ //F.E.E. programado
+                document.getElementById("feeP").value=(feeP*100).toFixed(0);
                 /*$('#feeV').text("10%");   //F.E.V (onload)*/
 
                 //cuarta fila
@@ -535,7 +544,8 @@
                     
                 if(exoin=="EXTERNO"){
                     te4 = parseFloat(te3/0.84);
-                    $('#totalE4').text(te4.toFixed(2))  // costo total del proyecto + impuestos
+                    /*$('#totalE4').text(te4.toFixed(2))*/  // costo total del proyecto + impuestos
+                    document.getElementById("totalE4").value=te4.toFixed(2)
                 }
                 
                 if(exoin=="EXTERNO"){
@@ -546,16 +556,20 @@
                 //COSTO DE VALOR AGREGADO
                 document.getElementById("costoVA").value=$('#totalE4').text()
                 /*$('#costoVA').text($('#totalE4').text());*/ // Costo programado del proyecto
-                $('#costoED').text($('#totalF4').text()); // Costo estimado del proyecto
+                document.getElementById("costoED").value=$('#totalE4').text()
+                /*$('#costoED').text($('#totalF4').text());*/ // Costo estimado del proyecto
                 var dif = parseFloat(tf4) - parseFloat(te4);
+                document.getElementById("diferencia").value=dif.toFixed(2)
                 $('#diferencia').text(dif.toFixed(2))
-
+                
                 inicio()
                
           }
         function inicio(){
-            $('#tasaDa').text(tasaAplicacion);
-            $("#tasaFi").text("0.05%")  // tasa financiera(onLoad)
+            /*$('#tasaDa').text(tasaAplicacion);*/
+            document.getElementById("tasaDa").value=tasaAplicacion
+            /*$("#tasaFi").text("0.05%")*/ // tasa financiera(onLoad)
+            document.getElementById("tasaFi").value="0.05%";
             //$("#feeV").val("10%");
           }
             
