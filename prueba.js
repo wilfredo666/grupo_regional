@@ -1,11 +1,22 @@
 /*acceder elemento mediante etiqueta*/
-var tg1 = document.getElementsByTagName("h1")[1];
+var tg1 = document.getElementsByTagName("h1")[0];
 var link= document.getElementsByTagName("a")[0];
 console.log(tg1);
 console.log(link.href); // acceso a un contenido especifico
 /*acceder elemento por medio de su id*/
 document.getElementById("lb1").innerHTML="holaa mundo para el label";
 document.getElementById("ip1").value="entonces es una prueba";
+/*acceder al elemento mediante su id y luego su etiqueta*/
+sel1=document.getElementById("sel1")
+op1=sel1.getElementsByTagName("option")[1].innerHTML
+
+sel2=document.getElementById("sel2")
+sel2.getElementsByTagName("option")[1].innerHTML=op1
+
+console.log(op1)
+function cambio(){
+   alert(document.getElementById("ip1").value)
+}
 function calculo(){
     n1=document.getElementById("num1").value
     n2=document.getElementById("num2").value

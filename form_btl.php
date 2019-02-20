@@ -46,7 +46,7 @@ $usuario=$_GET['id'];
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Correo electronico (cliente):</div>
                                 </div>
-                                <input type="text" class="form-control" name=email_cliente" id="textfield">
+                                <input type="text" class="form-control" name="email_cliente" id="textfield">
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -149,7 +149,7 @@ $usuario=$_GET['id'];
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-sm">
+                    <table class="table table-sm" id="t2">
                         <thead class="thead-light">
                             <tr><th colspan="9"><h2>2) PERSONAL EXTERNO DIRECTO QUE INTERVIENE EN EL PROYECTO</h2></th></tr>
                             <tr>
@@ -165,7 +165,7 @@ $usuario=$_GET['id'];
                         </thead>
                         <tbody>
                             <tr id="tablita2">
-                                <td colspan="2"><input type="text" name="t2_pers" id="t2_pers" class="form-control"></td>
+                                <td colspan="2"><input type="text" name="t2_pers[0]" id="t2_pers0" class="form-control"></td>
                                 <td><input type="number" value="0" class="form-control" onkeyup="t2_subTotal()" name="t2_cant" id="t2_cant" ></td>
                                 <td><input type="number" value="0" name="t2_canA" id="t2_canA" onkeyup="t2_subTotal()" class="form-control"></td>
                                 <td><input type="number" value="0" name="t2_pago" id="t2_pago" onkeyup="t2_subTotal()"  class="form-control" step="0.01"></td>
@@ -327,7 +327,7 @@ $usuario=$_GET['id'];
                                 <option>---</option>
                                 </select></td>
                             <td><input type="number" id="t5_cant" name="t5_cant" onClick="this.select()" onkeyup="t5_subTotal()" value="0" class="form-control"></td>
-                            <td><input type="number" id="t5_cost" name="t5_cost" onClick="this.select()" onkeyup="t5_subTotal()" value="0" class="form-control step="0.01"></td>
+                            <td><input type="number" id="t5_cost" name="t5_cost" onClick="this.select()" onkeyup="t5_subTotal()" value="0" class="form-control" step="0.01"></td>
                             <td><input type="text" id="t5_tota" name="t5_tota" class="form-control" readonly></td>
                             <td><button type="button" class="btn btn-success" onclick="t5_addRow()">+</button></td>
                             <tr>
@@ -489,23 +489,23 @@ $usuario=$_GET['id'];
                         <tbody>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                                <td><input type="number" class="form-control" id="tp1" name="tp1" step="0.01"></label></td>
-                                <td><label id=""></label>...</td>
+                                <td><input type="number" class="form-control" id="tp1" name="tp1" step="0.01"></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">F.E.E.</th>
-                                <td><input type="number" class="form-control" id="tp2" name="tp2" step="0.01"></label></td>
-                                <td><label id=""></label>...</td>
+                                <td><input type="number" class="form-control" id="tp2" name="tp2" step="0.01"></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                                <td><input type="number" class="form-control" id="tp3" name="tp3" step="0.01"></label></td>
-                                <td><label id=""></label>...</td>
+                                <td><input type="number" class="form-control" id="tp3" name="tp3" step="0.01"></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                <td><input type="number" class="form-control" id="tp4" name="tp4" step="0.01"></label></td>
-                                <td><label id=""></label>...</td>
+                                <td><input type="number" class="form-control" id="tp4" name="tp4" step="0.01"></td>
+                                <td></td>
                             </tr>
                         </tbody>
                         <thead class="thead-light">
@@ -517,21 +517,21 @@ $usuario=$_GET['id'];
                             <tr>
                                 <th scope="row">PERSONAL ACTIVO</th>
                                 <td><input type="number" class="form-control" id="tp5" name="tp5"></td>
-                                <td>...</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>MATERIAL Y SERVICIOS</th>
                                 <td><input type="number" class="form-control" id="tp6" name="tp6" step="0.01"></td>
-                                <td>...</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <th>TOTAL</th>
                                 <td><input type="number" class="form-control" id="tp7" name="tp7" step="0.01"></td>
-                                <td>...</td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
-                    <a href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal">ESTRUCTURA DE COSTOS POR ACTIVACION</a>
+                    <a href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal" onclick="cargar_personal_externo()">ESTRUCTURA DE COSTOS POR ACTIVACION</a>
                     <div class="modal fade" id="estructura_activacion">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -540,8 +540,7 @@ $usuario=$_GET['id'];
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">Escojer personal:</div>
                                         </div>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">Empleado</option>
+                                        <select name="empleado_ext" id="empleado_ext" class="form-control">
                                         </select>
                                     </div>
                                 </div>
@@ -554,7 +553,7 @@ $usuario=$_GET['id'];
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">Cargo:</div>
                                                         </div>
-                                                        <label for="" class="form-control">-</label>
+                                                        <label for="" id="" class="form-control">-</label>
                                                         </div></td>
                                                     <td colspan="3"><div class="input-group">
                                                         <div class="input-group-prepend">
