@@ -456,7 +456,7 @@
                /*$('#tiempoPr').text(tiempoP)*/ //tiempo programado
                 document.getElementById("tiempoPr").value=tiempoP
                 //$('#tasaFi').text("0.05%")  // tasa financiera(onLoad)
-                $('#costoTo').text(costoPF.toFixed(2))  //costo total programado financiero
+                $('#costoTo').val(costoPF.toFixed(2))  //costo total programado financiero
 
 
                 //tercera fila
@@ -466,7 +466,7 @@
                 document.getElementById("totalE1").value=te1
                 var preciosF = 0;
                 if(exoin=="INTERNO"){
-                     $('#totalF1').text(te1)
+                     $('#totalF1').val(te1)
                      /*$('#totalE2').text($('#totalE1').val())*/
                     document.getElementById("totalF1").value=$('#totalE1').val()
                      /*$('#totalF2').text($('#totalE1').val())*/
@@ -475,11 +475,11 @@
                     document.getElementById("totalE3").value=$('#totalE1').val()
                      /*$('#totalE4').text($('#totalE1').val())*/
                     document.getElementById("totalE4").value=$('#totalE1').val()
-                     $('#totalF4').text($('#totalE1').val())
+                     $('#totalF4').val($('#totalE1').val())
                 }
                 if(exoin=="EXTERNO"){
                      preciosF = parseFloat(j1)+parseFloat(j2)+parseFloat(j3)+parseFloat(j4)+parseFloat(j5)
-                    $('#totalF1').text(preciosF.toFixed(2)) //Costo total del proyecto (FEE)
+                    $('#totalF1').val(preciosF.toFixed(2)) //Costo total del proyecto (FEE)
                 }
                 //segunda fila
                 var feeP = 0.10;
@@ -505,7 +505,7 @@
                     else
                         FEE = te1 * feeP
                     te2 = FEE;
-                    $('#totalE2').text(FEE.toFixed(2)) //FEE EJECUTADO
+                    $('#totalE2').val(FEE.toFixed(2)) //FEE EJECUTADO
                 }  
 
                 //EXTRACCION DE INPUT
@@ -525,17 +525,17 @@
                         FEE = preciosF * (porcentaje/100)
                     else
                         FEE = preciosF * (porcentaje/100)
-                    $('#totalF2').text(FEE.toFixed(2)) //FEE FEE
+                    $('#totalF2').val(FEE.toFixed(2)) //FEE FEE
                 }  
                 
                 //quinta fila
                 var te3 = 0;
                     
                 if(exoin=="EXTERNO"){
-                    var val1 = convertToFloat($('#totalE1').text());
-                    var val2 = convertToFloat($('#totalE2').text());
+                    var val1 = convertToFloat($('#totalE1').val());
+                    var val2 = convertToFloat($('#totalE2').val());
                     te3 = parseFloat(val1) + parseFloat(val2);
-                    $('#totalE3').text(te3.toFixed(2))  // costo total del proyecto + FEE (ejecutado)
+                    $('#totalE3').val(te3.toFixed(2))  // costo total del proyecto + FEE (ejecutado)
                 }
                 
                 //6ta fila
@@ -550,17 +550,17 @@
                 
                 if(exoin=="EXTERNO"){
                     tf4 = parseFloat(preciosF + FEE);
-                    $('#totalF4').text(tf4.toFixed(2))
+                    $('#totalF4').val(tf4.toFixed(2))
                 }
                 
                 //COSTO DE VALOR AGREGADO
-                document.getElementById("costoVA").value=$('#totalE4').text()
+                document.getElementById("costoVA").value=$('#totalE4').val()
                 /*$('#costoVA').text($('#totalE4').text());*/ // Costo programado del proyecto
-                document.getElementById("costoED").value=$('#totalE4').text()
+                document.getElementById("costoED").value=$('#totalE4').val()
                 /*$('#costoED').text($('#totalF4').text());*/ // Costo estimado del proyecto
                 var dif = parseFloat(tf4) - parseFloat(te4);
                 document.getElementById("diferencia").value=dif.toFixed(2)
-                $('#diferencia').text(dif.toFixed(2))
+                $('#diferencia').val(dif.toFixed(2))
                 
                 inicio()
                
@@ -569,7 +569,7 @@
             /*$('#tasaDa').text(tasaAplicacion);*/
             document.getElementById("tasaDa").value=tasaAplicacion
             /*$("#tasaFi").text("0.05%")*/ // tasa financiera(onLoad)
-            document.getElementById("tasaFi").value="0.05%";
+            document.getElementById("tasaFi").value="0.05";
             //$("#feeV").val("10%");
           }
             
