@@ -559,11 +559,11 @@ var t7_acTo=0;
                 var cp2 = convertToFloat($('#t2_cp').text());
                 var ca1 = convertToFloat($('#t2_ca').text());
                 var cantidadPersonas = parseInt(cp1) + parseInt(cp2);
-                $('#tcp').text(cantidadPersonas.toFixed(2))             //total cantidad de personas
+                $('#tcp').val(cantidadPersonas.toFixed(2))             //total cantidad de personas
                 var cantidadActivaciones = parseInt(ca1) * parseInt(cp2);
-                $('#tca').text(cantidadActivaciones)    //total cantidad de activaciones
+                $('#tca').val(cantidadActivaciones)    //total cantidad de activaciones
 
-                $('#ttt').text($('#t2_t2').text());    //Totales
+                $('#ttt').val($('#t2_t2').text());    //Totales
                 
                 //COSTOS INDIRECTOS DEL PROYECTO
                 var to1 = convertToFloat($('#t1_co').text());
@@ -571,9 +571,9 @@ var t7_acTo=0;
                 var to3 = convertToFloat($('#t3_to').text());               
                 var to4 = convertToFloat($('#t4_to').text());
                 var to7 = convertToFloat($('#t7_to').text());
-                var tot = convertToFloat($('#ttt').text());
+                var tot = convertToFloat($('#ttt').val());
                 var costoAcumuladoP = parseFloat(to1) + parseFloat(to4) + parseFloat(to7) + parseFloat(tot) + parseFloat(to3);
-                $('#cap').text(costoAcumuladoP.toFixed(2)) //costo acumulado programado
+                $('#cap').val(costoAcumuladoP.toFixed(2)) //costo acumulado programado
                 ubi = $('#dir').val()
                 var tasa=0;
                 if(ubi=="COCHABAMBA"){
@@ -582,32 +582,32 @@ var t7_acTo=0;
                 if(ubi=="SANTA CRUZ"){
                     tasa = 0.21
                 }
-                $('#tda').text(tasa) // tasa de aplicacion
-                var capp = convertToFloat($('#cap').text());
-                var taff = convertToFloat($('#tda').text());
+                $('#tda').val(tasa) // tasa de aplicacion
+                var capp = convertToFloat($('#cap').val());
+                var taff = convertToFloat($('#tda').val());
                 var costoprog = parseFloat(capp) * parseFloat(taff)
-                $('#cpc').text(costoprog.toFixed(2)) // costo programado de costos indirectos
+                $('#cpc').val(costoprog.toFixed(2)) // costo programado de costos indirectos
 
                 //COSTOS FINANCIEROS
 
-                $('#tio').text($('#tiempoC').val());    // Tiempo programado
+                $('#tio').val($('#tiempoC').val());    // Tiempo programado
                 var tasaF  = 0.17;
                 var horasAnio = 2496;
                 var tasaHoraAnio = parseFloat(tasaF) / parseFloat(horasAnio)
                 var tasaFinanciera = tasaHoraAnio *8;
                 tasaFinanciera = tasaFinanciera*100;
-                $('#taf').text((tasaFinanciera.toFixed(5)));         // Tasa financiera
+                $('#taf').val((tasaFinanciera.toFixed(5)));         // Tasa financiera
 
-                var tiem = parseInt($('#tio').text());
+                var tiem = parseInt($('#tio').val());
                 var costoFinanciero = tiem*(tasaFinanciera/100)*(costoAcumuladoP+costoprog) //OJO FALTA SUMAR GASTOS AUXILIARES
-                $('#ctp').text(costoFinanciero.toFixed(2)) //costo total programado financiero
+                $('#ctp').val(costoFinanciero.toFixed(2)) //costo total programado financiero
 
 
                 //TOTAL PRESUPUESTADO
                 var to5 = convertToFloat($('#t5_to').text());
                 var to6 = convertToFloat($('#t6_to').text());
                 costoTotalProyecto = parseFloat(costoprog) + parseFloat(costoFinanciero) + parseFloat(costoAcumuladoP) + parseFloat(to5) + parseFloat(to6);
-                $('#tp1').text(costoTotalProyecto.toFixed(2))  //costo total del proyecto
+                $('#tp1').val(costoTotalProyecto.toFixed(2))  //costo total del proyecto
 
                 //FEE
                 var feep = 0;
@@ -617,16 +617,16 @@ var t7_acTo=0;
                 else
                     feep = 0.15;
                 feep=feep*100;
-                $('#feeP').text(feep+'%');  //FEE PROGRAMADO
+                $('#feeP').val(feep+'%');  //FEE PROGRAMADO
 
 
                 var exoin = $('#exoin').val()
                  var feev = $('#feeV').val()
                  var FE =0;
                 if(exoin=="INTERNO"){
-                    $('#tp2').text($('#tp1').text());
-                    $('#tp3').text($('#tp1').text());
-                    $('#tp4').text($('#tp1').text());
+                    $('#tp2').val($('#tp1').val());
+                    $('#tp3').val($('#tp1').val());
+                    $('#tp4').val($('#tp1').val());
                 }
                 if(exoin=="EXTERNO"){
                     var b;
@@ -640,13 +640,13 @@ var t7_acTo=0;
                         FE = costoTotalProyecto * (feep/100)
                     else
                         FE = costoTotalProyecto * (porcentaje/100)
-                    $('#tp2').text(FE.toFixed(2)) //FEE PROGRAMADO en total presupuestado
+                    $('#tp2').val(FE.toFixed(2)) //FEE PROGRAMADO en total presupuestado
 
                     var proyectoFee = FE + costoTotalProyecto;
-                    $('#tp3').text(proyectoFee.toFixed(2)) //COSTO PROYECTO MAS FEE
+                    $('#tp3').val(proyectoFee.toFixed(2)) //COSTO PROYECTO MAS FEE
 
                     var costoMasImpuestos = proyectoFee/0.84;
-                    $('#tp4').text(costoMasImpuestos.toFixed(2)) //Costo del proyecto mas impuestos
+                    $('#tp4').val(costoMasImpuestos.toFixed(2)) //Costo del proyecto mas impuestos
 
                 }
 
