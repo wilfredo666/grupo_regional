@@ -324,9 +324,9 @@ var r1 = 0;
                     tasa = 0.21
                 }
                 r1 = parseFloat(tasa * sum);
-                $('#cap').text(sum.toFixed(2));         //COSTO ACUMULADO PROGRAMADO
-                $('#tda').text(tasa.toFixed(2));        //TASA DE APLICACION 
-                $('#cpd').text(r1.toFixed(2));          //COSTO PROGRAMADO DE COSTOS INDIRECTOS
+                $('#cap').val(sum.toFixed(2));         //COSTO ACUMULADO PROGRAMADO
+                $('#tda').val(tasa.toFixed(2));        //TASA DE APLICACION 
+                $('#cpd').val(r1.toFixed(2));          //COSTO PROGRAMADO DE COSTOS INDIRECTOS
 
                 //COSTO FINANCIERO
                 var credito = $('#tiempoCredito').val();
@@ -337,13 +337,13 @@ var r1 = 0;
                 tasaFinanciera = tasaFinanciera*100;
                 var costototalpro = (tasaFinanciera/100)*parseFloat(credito)*(sum+r1);
 
-                $('#tip').text(credito);                   // Tiempo programado
-                $('#taf').text((tasaFinanciera.toFixed(4))+"%");    //Tasa financiera
-                $('#ctp').text(costototalpro.toFixed(2));           //costo total programado financiero
+                $('#tip').val(credito);                   // Tiempo programado
+                $('#taf').val((tasaFinanciera.toFixed(4))+"%");    //Tasa financiera
+                $('#ctp').val(costototalpro.toFixed(2));           //costo total programado financiero
 
                 //COSTO TOTAL DEL PROYECTO
                 var totalProyecto = sum+costototalpro+r1;
-                $('#to1').text(totalProyecto.toFixed(2));   //COSTO TOTAL DEL PROYECTO
+                $('#to1').val(totalProyecto.toFixed(2));   //COSTO TOTAL DEL PROYECTO
 
                 //FEE
                 if(totalProyecto<=5000)
@@ -378,23 +378,23 @@ var r1 = 0;
                     }
                     var proyectoFeee = feeep+totalProyecto;
                     var conImpuestos = proyectoFeee/0.84;
-                    $('#to2').text(feeep.toFixed(2)); //FEE total ejecutado
-                    $('#to3').text(proyectoFeee.toFixed(2)); //COSTO PROYECTO MAS FEEE
-                    $('#to4').text(conImpuestos.toFixed(2)); //COSTO TOTAL DEL PROYECTO CON IMPUESTOS
+                    $('#to2').val(feeep.toFixed(2)); //FEE total ejecutado
+                    $('#to3').val(proyectoFeee.toFixed(2)); //COSTO PROYECTO MAS FEEE
+                    $('#to4').val(conImpuestos.toFixed(2)); //COSTO TOTAL DEL PROYECTO CON IMPUESTOS
 
                 }   
                 if(clase=="INTERNO"){
-                    $('#to2').text($('#to1').text());
-                    $('#to3').text($('#to1').text());
-                    $('#to4').text($('#to1').text());
+                    $('#to2').val($('#to1').val());
+                    $('#to3').val($('#to1').val());
+                    $('#to4').val($('#to1').val());
                     
                 }
 
                 //PUNTO DE REFERENCIA
-                $('#hoja').text($('#to4').text());  // PRECIO DE HOJA DE COSTO
-                $('#pdf').text($('#prize').val());    //PRECIO PDF
+                $('#hoja').val($('#to4').val());  // PRECIO DE HOJA DE COSTO
+                $('#pdf').val($('#prize').val());    //PRECIO PDF
 
                 var price = parseFloat($('#prize').val())
                 var diferencia = price - conImpuestos;
-                 $('#dif').text(diferencia.toFixed(2));
+                 $('#dif').val(diferencia.toFixed(2));
             }
