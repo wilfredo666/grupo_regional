@@ -12,3 +12,12 @@ mysqli_query($con,$consulta_guardar);
 preguntar('<?php echo $fila[0]?>')"
 
 -cuando usas funciones de un archivo externo en js, la direccion del archivo se debe colocar en el head
+
+                                '<td colspan="2"><label id="t2_pe'+c2+'">'+pe+'</label></td>'+
+                                '<td><label id="t2_cp'+c2+'">'+cp+'</label></td>'+
+                                '<td><label id="t2_ca'+c2+'">'+ca+'</label></td>'+
+                                '<td><label id="t2_pa'+c2+'">'+pa+'</label></td>'+
+                                '<td><label id="t2_ci'+c2+'">'+ci+'</label></td>'+
+                                '<td><label id="t2_t1'+c2+'">'+t1+'</label></td>'+
+                                '<td><label id="t2_t2'+c2+'">'+t2+'</label></td>'+
+                                '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">-</button></td>'+

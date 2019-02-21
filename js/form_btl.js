@@ -199,7 +199,7 @@ function t2_addRow(){
         '</tr>'
     $('#tablita2').after(fila)
     /*sirve para volver a colocar los input a valores iniciales*/
-/*    document.getElementById("t2_pers").value=""
+    /*    document.getElementById("t2_pers").value=""
     document.getElementById("t2_cant").value=0
     document.getElementById("t2_canA").value=0
     document.getElementById("t2_pago").value=0
@@ -208,7 +208,7 @@ function t2_addRow(){
     document.getElementById("t2_tot2").value=0*/
 
     //totales
-/*    t2_acCap+=parseInt(cp)
+    /*    t2_acCap+=parseInt(cp)
     t2_acCan+=parseInt(ca)
     t2_acPag+=parseFloat(convertToFloat(pa))
     t2_acTot1+=parseFloat(convertToFloat(t1))
@@ -677,27 +677,45 @@ function costosExternos(){
 
 }
 /*agregado por wilfredo*/
+function borrar_personal_externo(){
+    /*opteniendo el select-option donde van los empleados externos*/
+    emp_ext=document.getElementById('empleado_ext')
+    
+    while(emp_ext.firstChild){
+          emp_ext.removeChild(emp_ext.firstChild)
+          }
+    /*contando la cantidad de option agragados en el modal*/
+    contar_option=emp_ext.getElementsByTagName('option').length +1
+/*    console.log(emp_ext.getElementsByTagName('option')[1].value)*/
+    /*emp_ext.removeChild('option')*/
+    /*for(i=0;i<contar_option;i++){*/
+        /*removiendo los options agragados previamente para remover los items previos insertados*/
+       /* emp_ext.parentNode.removeChild('option')*/
+        /*emp_ext.getElementsByTagName('option')[i].remove()*/
+            /*emp_ext.removeChild('option')*/
+    /*}*/
+}
 function cargar_personal_externo(){
     /*contando el total de elementos del arreglo personal externo*/
     tot_emp_ext=document.getElementById('t2').rows.length -3
     /*ciclo que recorrera todos los elementos*/
     for(i=0;i<tot_emp_ext;i++){
         /*opteniendo el personal externo de la tabla*/
-    ext_emp=document.getElementById('t2_pers'+i).value
-        /*opteniendo el select-option donde iran los empleados externos*/
-    emp_ext=document.getElementById('empleado_ext')
-        var option='<option value="">'+ext_emp+'</option>'
-        $('#empleado_ext').append(option)
-    /*emp_ext.getElementsByTagName('option')[i].innerHTML=ext_emp*/
+        ext_emp=document.getElementById('t2_pers'+i).value
+        /*llevar a los option*/
+        /*opcion 1*/
+        var option='<select name="empleado_ext" id="empleado_ext" class="form-control">'+
+'<option value="">'+ext_emp+'</option>'+'</select>'
+        $('#per').append(option)
     }
-    /*para cargar toda las lista
-    1.-contar todos los elementos
-    2.-crear un for para que recorra todos los elementos
-    3.-en le for debera cargar todos los elemtos al select
-    */
 
     /*opteniendo el select-option donde iran los empleados externos*/
     /*emp_ext=document.getElementById('empleado_ext')
-    emp_ext.getElementsByTagName('option')[0].innerHTML="ext_emp"*/
+    /*llevar a los option*/
+    /*opcion 2*/
+    /*emp_ext.getElementsByTagName('option')[0].innerHTML="ext_emp"*/
 
+}
+function probando(){
+    alert('hola')
 }

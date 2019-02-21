@@ -429,231 +429,235 @@ $usuario=$_GET['id'];
                         <tbody>
                             <tr>
                                 <td><input type="number" class="form-control" id="tcp" name="tcp" step="0.01"></label></td>
-                                <td><input type="number" class="form-control" id="tca" name="tca" step="0.01"></label></td>
-                                <td><input type="number" class="form-control" id="ttt" name="ttt" step="0.01"></label></td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-light">
-                            <tr>
-                                <th colspan="3"><h5>COSTO INDIRECTOS DEL PROYECTO</h5></th>
-                            </tr>
-                            <tr>
-                                <th>COSTO ACUMULADO PROGRAMADO</th>
-                                <th>TASA DE APLICACIÓN</th>
-                                <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="number" class="form-control" id="cap" name="cap" step="0.01"></label></td>
-                                <td><input type="number" class="form-control" id="tda" name="tda" step="0.01"></label></td>
-                                <td><input type="number" class="form-control" id="cpc" name="cpc" step="0.01"></label></td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-light">
-                            <tr>
-                                <th colspan="3"><h5>COSTO FINANCIERO</h5></th>
-                            </tr>
-                            <tr>
-                                <th>TIEMPO PROGRAMADO</th>
-                                <th>TASA FINANCIERA</th>
-                                <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="number" class="form-control" id="tio" name="tio" step="0.01"></label></td>
-                                <td><input type="number" class="form-control" id="taf" name="taf" step="0.00001"></label></td>
-                                <td><input type="number" class="form-control" id="ctp" name="ctp" step="0.01"></label></td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-light">
-                            <tr>
-                                <th>F.E.E. PROGRAMADO</th>
-                                <th></th>
-                                <th>F.E.E. VARIABLE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text" class="form-control" id="feeP" name="feeP" step="0.01"></label></td>
-                                <td></td>
-                                <td><input type="text" class="form-control" id="feeV" name="feeV" value="15%" onkeyup="costosExternos()"></td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-light">
-                            <tr>
-                                <th colspan="3" scope="col">TOTAL PRESUPUESTADO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                                <td><input type="number" class="form-control" id="tp1" name="tp1" step="0.01"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">F.E.E.</th>
-                                <td><input type="number" class="form-control" id="tp2" name="tp2" step="0.01"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                                <td><input type="number" class="form-control" id="tp3" name="tp3" step="0.01"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                <td><input type="number" class="form-control" id="tp4" name="tp4" step="0.01"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-light">
-                            <tr>
-                                <th colspan="3">TOTAL PROFORMA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">PERSONAL ACTIVO</th>
-                                <td><input type="number" class="form-control" id="tp5" name="tp5"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>MATERIAL Y SERVICIOS</th>
-                                <td><input type="number" class="form-control" id="tp6" name="tp6" step="0.01"></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th>TOTAL</th>
-                                <td><input type="number" class="form-control" id="tp7" name="tp7" step="0.01"></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <a href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal" onclick="cargar_personal_externo()">ESTRUCTURA DE COSTOS POR ACTIVACION</a>
-                    <div class="modal fade" id="estructura_activacion">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">Escojer personal:</div>
-                                        </div>
-                                        <select name="empleado_ext" id="empleado_ext" class="form-control">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td><div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Cargo:</div>
-                                                        </div>
-                                                        <label for="" id="" class="form-control">-</label>
-                                                        </div></td>
-                                                    <td colspan="3"><div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <div class="input-group-text">Cantidad:</div>
-                                                        </div>
-                                                        <label for="" class="form-control">-</label>
-                                                        </div></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Costo liquito pagable</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td><label for="">0</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4">Crossing-impuestos por servicios</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Carga impositiva</th>
-                                                    <td></td>
-                                                    <td><label for="">0</label></td>
-                                                    <td><label for="">0</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Retenciones IUE servicios</td>
-                                                    <td><label for="">0</label></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Retenciones IT servicios</td>
-                                                    <td><label for="">0</label></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Servicio de respaldo administrativo</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td><label for="">0</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Costo financiero</td>
-                                                    <td><label for="">0</label></td>
-                                                    <td></td>
-                                                    <td><label for="">0</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>F.E.E. Grupo Regional</td>
-                                                    <td><label for="">0</label></td>
-                                                    <td></td>
-                                                    <td><label for="">0</label></td>
-                                                </tr>
-                                            </tbody>
-                                            <tr>
-                                                <th>=Impuesto de facturacion en favor del cliente</th>
-                                                <td></td>
-                                                <td></td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>(+)Grossing-up Tributario</td>
-                                                <td><label for="">0</label></td>
-                                                <td></td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>IVA</td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <td>IT</td>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                            <tr>
-                                                <th colspan="3">=TOTAL PRECIO FACTURADO DEL SERVICIO</th>
-                                                <td><label for="">0</label></td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <td><input type="number" class="form-control" id="tca" name="tca" step="0.01"></label></td>
+            <td><input type="number" class="form-control" id="ttt" name="ttt" step="0.01"></label></td>
+    </tr>
+</tbody>
+<thead class="thead-light">
+    <tr>
+        <th colspan="3"><h5>COSTO INDIRECTOS DEL PROYECTO</h5></th>
+    </tr>
+    <tr>
+        <th>COSTO ACUMULADO PROGRAMADO</th>
+        <th>TASA DE APLICACIÓN</th>
+        <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><input type="number" class="form-control" id="cap" name="cap" step="0.01"></label></td>
+<td><input type="number" class="form-control" id="tda" name="tda" step="0.01"></label></td>
+<td><input type="number" class="form-control" id="cpc" name="cpc" step="0.01"></label></td>
+</tr>
+</tbody>
+<thead class="thead-light">
+    <tr>
+        <th colspan="3"><h5>COSTO FINANCIERO</h5></th>
+    </tr>
+    <tr>
+        <th>TIEMPO PROGRAMADO</th>
+        <th>TASA FINANCIERA</th>
+        <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><input type="number" class="form-control" id="tio" name="tio" step="0.01"></label></td>
+<td><input type="number" class="form-control" id="taf" name="taf" step="0.00001"></label></td>
+<td><input type="number" class="form-control" id="ctp" name="ctp" step="0.01"></label></td>
+</tr>
+</tbody>
+<thead class="thead-light">
+    <tr>
+        <th>F.E.E. PROGRAMADO</th>
+        <th></th>
+        <th>F.E.E. VARIABLE</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><input type="text" class="form-control" id="feeP" name="feeP" step="0.01"></label></td>
+<td></td>
+<td><input type="text" class="form-control" id="feeV" name="feeV" value="15%" onkeyup="costosExternos()"></td>
+</tr>
+</tbody>
+<thead class="thead-light">
+    <tr>
+        <th colspan="3" scope="col">TOTAL PRESUPUESTADO</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <th scope="row">COSTO TOTAL DEL PROYECTO</th>
+        <td><input type="number" class="form-control" id="tp1" name="tp1" step="0.01"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">F.E.E.</th>
+        <td><input type="number" class="form-control" id="tp2" name="tp2" step="0.01"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
+        <td><input type="number" class="form-control" id="tp3" name="tp3" step="0.01"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
+        <td><input type="number" class="form-control" id="tp4" name="tp4" step="0.01"></td>
+        <td></td>
+    </tr>
+</tbody>
+<thead class="thead-light">
+    <tr>
+        <th colspan="3">TOTAL PROFORMA</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <th scope="row">PERSONAL ACTIVO</th>
+        <td><input type="number" class="form-control" id="tp5" name="tp5"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>MATERIAL Y SERVICIOS</th>
+        <td><input type="number" class="form-control" id="tp6" name="tp6" step="0.01"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>TOTAL</th>
+        <td><input type="number" class="form-control" id="tp7" name="tp7" step="0.01"></td>
+        <td></td>
+    </tr>
+</tbody>
+</table>
+<a data-backdrop="static" data-keyboard="false" href="#estructura_activacion" type="button" class="btn btn-primary btn-lg" data-toggle="modal" onclick="cargar_personal_externo()">ESTRUCTURA DE COSTOS POR ACTIVACION</a>
+
+<div class="modal fade" id="estructura_activacion">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="input-group">
+                    <div class="input-group-prepend" id="per">
+                        <div class="input-group-text">Escojer personal:</div>
                     </div>
-
+                    <!--<select name="empleado_ext" id="empleado_ext" class="form-control">
+                    </select>-->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" onclick="borrar_personal_externo()">&times;</span>
+                    </button>
                 </div>
             </div>
-            <!--bloque de botones-->
-            <div class="row" id="botones">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-6">
-                    <input type="submit" value="Guardar" class="btn btn-info">
-                    <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"> </a>
-
+            <div class="modal-body">
+                <div class="row">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Cargo:</div>
+                                    </div>
+                                    <label for="" id="" class="form-control">-</label>
+                                    </div></td>
+                                <td colspan="3"><div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Cantidad:</div>
+                                    </div>
+                                    <label for="" class="form-control">-</label>
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td>Costo liquito pagable</td>
+                                <td></td>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Crossing-impuestos por servicios</td>
+                            </tr>
+                            <tr>
+                                <th>Carga impositiva</th>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                            <tr>
+                                <td>Retenciones IUE servicios</td>
+                                <td><label for="">0</label></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Retenciones IT servicios</td>
+                                <td><label for="">0</label></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Servicio de respaldo administrativo</td>
+                                <td></td>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                            <tr>
+                                <td>Costo financiero</td>
+                                <td><label for="">0</label></td>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                            <tr>
+                                <td>F.E.E. Grupo Regional</td>
+                                <td><label for="">0</label></td>
+                                <td></td>
+                                <td><label for="">0</label></td>
+                            </tr>
+                        </tbody>
+                        <tr>
+                            <th>=Impuesto de facturacion en favor del cliente</th>
+                            <td></td>
+                            <td></td>
+                            <td><label for="">0</label></td>
+                        </tr>
+                        <tr>
+                            <td>(+)Grossing-up Tributario</td>
+                            <td><label for="">0</label></td>
+                            <td></td>
+                            <td><label for="">0</label></td>
+                        </tr>
+                        <tr>
+                            <td>IVA</td>
+                            <td><label for="">0</label></td>
+                        </tr>
+                        <tr>
+                            <td>IT</td>
+                            <td><label for="">0</label></td>
+                        </tr>
+                        <tr>
+                            <th colspan="3">=TOTAL PRECIO FACTURADO DEL SERVICIO</th>
+                            <td><label for="">0</label></td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="col-sm-2"></div>
             </div>
-        </form>
-        <script type="text/javascript" src="js/form_btl.js"></script>
-        <script src="js/jquery-3.3.1.js"></script>
-        <script src="bootstrap/js/bootstrap.js"></script>
-    </body>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+<!--bloque de botones-->
+<div class="row" id="botones">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6">
+        <input type="submit" value="Guardar" class="btn btn-info">
+        <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"> </a>
+
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+</form>
+<script type="text/javascript" src="js/form_btl.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+</body>
 </html>
