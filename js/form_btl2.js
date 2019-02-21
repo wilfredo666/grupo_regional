@@ -303,7 +303,7 @@ var t5_acTot=0;
 
             function t5_subTotal(){
                 var por = document.getElementById("t5_porc").value
-                var valor = parseFloat($('#cpc').text())
+                var valor = parseFloat($('#cpc').val())
                 var i=0;
                 var nuevo="";
                 for(i=0;i<por.length;i++)
@@ -367,9 +367,9 @@ var t5_acTot=0;
                 var gastosAux=0; //SIN HOJA DE GASTOS AUXILIARES
                 var totales = to2 + to3 + to4 + gastosAux;
 
-                $('#cap').text(totales.toFixed(2));         //Costo acumulado programado
-                $('#tda').text("0.17");                     //Tasa de aplicacion
-                $('#cpc').text((totales*0.17).toFixed(2));  //Costo programado de costos indirectos
+                $('#cap').val(totales.toFixed(2));         //Costo acumulado programado
+                $('#tda').val("0.17");                     //Tasa de aplicacion
+                $('#cpc').val((totales*0.17).toFixed(2));  //Costo programado de costos indirectos
                 
 
                 //COSTO FINANCIERO
@@ -382,14 +382,14 @@ var t5_acTot=0;
                 var totalGastosAdministrativos = 0;         //SIN HOJA DE GASTOS AUXILIARES
                 var costototalpro = credito*(tasaFinanciera/100)*(totalGastosAdministrativos+(to2+to3+to4))
 
-                $('#tio').text(credito);                   // Tiempo programado
-                $('#taf').text((tasaFinanciera.toFixed(4))+"%");    //Tasa financiera
-                $('#ctp').text(costototalpro.toFixed(2));           //costo total programado financiero
+                $('#tio').val(credito);                   // Tiempo programado
+                $('#taf').val((tasaFinanciera.toFixed(4))+"%");    //Tasa financiera
+                $('#ctp').val(costototalpro.toFixed(2));           //costo total programado financiero
 
                 //COSTO TOTAL DEL PROYECTO
                 var meses=12;
                 var totalProyecto = (costototalpro+totalGastosAdministrativos+to2)+((to3+to4)/meses);
-                $('#tp1').text(totalProyecto.toFixed(2));   //COSTO TOTAL DEL PROYECTO
+                $('#tp1').val(totalProyecto.toFixed(2));   //COSTO TOTAL DEL PROYECTO
 
 
                 //TOTALES
@@ -402,11 +402,11 @@ var t5_acTot=0;
                     }
                     var porcentaje = parseFloat(feev2);
                     var feep = (porcentaje/100)*totalProyecto;
-                    $('#tp2').text(feep.toFixed(2)); //FEEP DEL TOTAL PRESUPUESTADO
+                    $('#tp2').val(feep.toFixed(2)); //FEEP DEL TOTAL PRESUPUESTADO
 
                     var proyectoFee = feep+totalProyecto;
-                    $('#tp3').text(proyectoFee.toFixed(2)); //COSTO PROYECTO MAS FEEE
+                    $('#tp3').val(proyectoFee.toFixed(2)); //COSTO PROYECTO MAS FEEE
                     var conImpuestos = proyectoFee/0.84;
-                    $('#tp4').text(conImpuestos.toFixed(2)); //COSTO TOTAL DEL PROYECTO CON IMPUESTOS
+                    $('#tp4').val(conImpuestos.toFixed(2)); //COSTO TOTAL DEL PROYECTO CON IMPUESTOS
 
             }

@@ -364,7 +364,7 @@ $usuario=$_GET['id'];
 <tbody>
     <tr>
         <td><input type="number" class="form-control" id="tio" name="tio" step="0.01"></label></td>
-<td><input type="number" class="form-control" id="taf" name="taf" step="0.01"></label></td>
+<td><input type="text" class="form-control" id="taf" name="taf" ></label></td>
 <td><input type="number" class="form-control" id="ctp" name="ctp" step="0.01"></label></td>
 </tr>
 </tbody>
