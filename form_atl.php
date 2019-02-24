@@ -17,7 +17,7 @@ $usuario=$_GET['id'];
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_btl2.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
+        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post" onKeyPress="return disableEnterKey(event)">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
@@ -41,7 +41,7 @@ $usuario=$_GET['id'];
                                         <div class="input-group-text">Codigo de proyecto:</div>
                                     </div>
                                     <input name="cod_proyecto" type="text" class="form-control" id="form_codigo">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto_atl" onclick="">Generar</button>
+                                    <button data-backdrop="static" type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto_atl" onclick="">Generar</button>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -335,10 +335,10 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                       <td><input type="number" class="form-control" id="costoVA" name="costoVA" step="0.01"></td>
+                                       <td><input type="number" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
                                         <!--<td class="text-center"><label id="costoVA">0</label></td>-->
-                                        <td class="text-center"><input type="number" class="form-control" id="costoED" name="costoED" step="0.01"></label></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="diferencia" name="diferencia" step="0.01"></label></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="costoED" name="costoED" step="0.01" readonly></label></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly></label></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -353,9 +353,9 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center"><input type="number" class="form-control" id="costoAp" name="costoAp" step="0.01"></label></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="tasaDa" name="tasaDa" step="0.01"></label></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="costoPd" name="costoPd" step="0.01"></label></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="costoAp" name="costoAp" step="0.01" readonly></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="tasaDa" name="tasaDa" step="0.01" readonly></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="costoPd" name="costoPd" step="0.01" readonly></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -370,9 +370,9 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="text-center"><input type="number" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01"></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="tasaFi" step="0.01"></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="costoTo" step="0.01"></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01" readonly></td>
+                                        <td class="text-center" readonly><input type="number" class="form-control" id="tasaFi" step="0.01" readonly></td>
+                                        <td class="text-center"><input type="number" class="form-control" id="costoTo" step="0.01" readonly></td>
                                     </tr>
                                 </tbody>
                                 <thead class="thead-light">
@@ -384,7 +384,7 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><input type="number" class="form-control" id="feeP" name="feeP" step="0.01"></label></td>
+                                        <td><input type="number" class="form-control" id="feeP" name="feeP" step="0.01" readonly></td>
                                         <td></td>
                                         <td><input type="number" class="form-control" id="feeV" name="feeV" value="0" onkeyup="costosExternos()" step="0.01"></td>
                                     </tr>
@@ -399,23 +399,23 @@ $usuario=$_GET['id'];
                                 <tbody>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                                        <td><input type="number" class="form-control" id="totalE1" name="totalE1" step="0.01"></label></td>
-                                        <td><input type="number" class="form-control" id="totalF1" name="totalF1" step="0.01"></label></td>
+                                        <td><input type="number" class="form-control" id="totalE1" name="totalE1" step="0.01" readonly></td>
+                                        <td><input type="number" class="form-control" id="totalF1" name="totalF1" step="0.01" readonly></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">F.E.E.</th>
-                                        <td><input type="number" class="form-control" id="totalE2" name="totalE2" step="0.01"></label></td>
-                                        <td><input type="number" class="form-control" id="totalF2" name="totalF2" step="0.01"></label></td>
+                                        <td><input type="number" class="form-control" id="totalE2" name="totalE2" step="0.01" readonly></td>
+                                        <td><input type="number" class="form-control" id="totalF2" name="totalF2" step="0.01" readonly></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                                        <td><input type="number" class="form-control" id="totalE3" name="totalE3" step="0.01"></label></td>
-                                        <td><input type="number" class="form-control" id="totalF3" name="totalF3" step="0.01"></label></td>
+                                        <td><input type="number" class="form-control" id="totalE3" name="totalE3" step="0.01" readonly></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                        <td><input type="text" class="form-control" id="totalE4" name="totalE4"></label></td>
-                                        <td><input type="text" class="form-control" id="totalF4" name="totalF4" step="0.01"></label></td>
+                                        <td><input type="text" class="form-control" id="totalE4" name="totalE4" readonly></td>
+                                        <td><input type="text" class="form-control" id="totalF4" name="totalF4" step="0.01" readonly></td>
                                     </tr>
                                     <tr>
                                         <td></td>

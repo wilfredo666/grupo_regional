@@ -49,6 +49,8 @@ observaciones form_ATL
 8.-Calculos en el apartado costo financiero de operaciones no igualan al excel (corregido)
 9.-Revisar el F.E.E. programado (corregido)
 
+(22/02/19)
+
 (06/02/19)
 
 1.-Apartado: materiales y servicios que intervienen en la operacion/materiales/costo total estimado --- no iguala al excel condocumento factura	y recibo (posible error con redondeo de decimales, colocar cantidad=100 && costo unitario=0.08 para comprobar)
@@ -62,6 +64,30 @@ observaciones form_TALLER
 	-Costos indirectos de operaciones/costo programado de costos indirectos--no iguala al excel
 	-Costo financiero/costo total programado--no iguala al excel
 	-Todo "total presupuestado"--no iguala al excel
+
+ayuda php
+---------
+*timestamp en campo db, para saber la fecha y hora en la que secreo la consulta
+*el boton submit no puede ir en un div.row diferente del que contiene los datoa a enviar
+*los nombres de las variables pueden ser las mismas que de los campos de la bd y de los campos en el form html
+-para registrar:
+$consulta_guardar="insert into tabla(,,,,) values('$','$','$','$','$','$','$','$')";
+mysqli_query($con,$consulta_guardar);
+
+-usar comillas simples '' cuando se usan funciones javascript que envian cadena en html
+
+preguntar('<?php echo $fila[0]?>')"
+
+-cuando usas funciones de un archivo externo en js, la direccion del archivo se debe colocar en el head
+
+                                '<td colspan="2"><label id="t2_pe'+c2+'">'+pe+'</label></td>'+
+                                '<td><label id="t2_cp'+c2+'">'+cp+'</label></td>'+
+                                '<td><label id="t2_ca'+c2+'">'+ca+'</label></td>'+
+                                '<td><label id="t2_pa'+c2+'">'+pa+'</label></td>'+
+                                '<td><label id="t2_ci'+c2+'">'+ci+'</label></td>'+
+                                '<td><label id="t2_t1'+c2+'">'+t1+'</label></td>'+
+                                '<td><label id="t2_t2'+c2+'">'+t2+'</label></td>'+
+                                '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">-</button></td>'+
 
     
 

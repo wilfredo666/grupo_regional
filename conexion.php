@@ -74,7 +74,7 @@ function reporte_atl(){
         echo '<td>'.$campo[3].'</td>';
         echo '<td>'.$campo[4].'</td>';
         echo '<td>'.$campo[5].'</td>';
-        echo '<td><a href="pdf_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
+        echo '<td><a href="pdf_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-primary" disabled="true">PDF</button></a></td>';
         echo '<td><a href="form_edicion_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-warning">Editar</button></td>';
         echo '<td><a href="eli_hoja_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
         echo '</tr>';

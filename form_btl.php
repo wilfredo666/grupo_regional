@@ -538,11 +538,11 @@ $usuario=$_GET['id'];
         <div class="modal-content">
             <div class="modal-header">
                 <div class="input-group">
-                    <div class="input-group-prepend" id="per">
+                    <div class="input-group-prepend" id="">
                         <div class="input-group-text">Escojer personal:</div>
                     </div>
-                    <!--<select name="empleado_ext" id="empleado_ext" class="form-control">
-                    </select>-->
+                    <select name="empleado_ext" id="empleado_ext" class="form-control">
+                    </select>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" onclick="borrar_personal_externo()">&times;</span>
                     </button>

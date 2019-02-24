@@ -680,7 +680,7 @@ function costosExternos(){
 function borrar_personal_externo(){
     /*opteniendo el select-option donde van los empleados externos*/
     emp_ext=document.getElementById('empleado_ext')
-    
+    /*removiendo los option*/
     while(emp_ext.firstChild){
           emp_ext.removeChild(emp_ext.firstChild)
           }
@@ -704,9 +704,10 @@ function cargar_personal_externo(){
         ext_emp=document.getElementById('t2_pers'+i).value
         /*llevar a los option*/
         /*opcion 1*/
-        var option='<select name="empleado_ext" id="empleado_ext" class="form-control">'+
-'<option value="">'+ext_emp+'</option>'+'</select>'
-        $('#per').append(option)
+        /*var option='<select name="empleado_ext" id="empleado_ext" class="form-control">'+
+'<option value="">'+ext_emp+'</option>'+'</select>'*/
+        var option='<option value="">'+ext_emp+'</option>'+'</select>'
+        $('#empleado_ext').append(option)
     }
 
     /*opteniendo el select-option donde iran los empleados externos*/
