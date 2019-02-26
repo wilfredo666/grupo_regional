@@ -364,7 +364,7 @@ $usuario=$_GET['id'];
                                     </tr>
                                     <tr>
                                         <th>TIEMPO PROGRAMADO</th>
-                                        <th>TASA FINANCIERA</th>
+                                        <th>TASA FINANCIERA(%)</th>
                                         <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
                                     </tr>
                                 </thead>

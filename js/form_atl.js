@@ -554,14 +554,12 @@ function costosExternos(){
     }
 
     //COSTO DE VALOR AGREGADO
-    document.getElementById("costoVA").value=$('#totalE4').val()
-    /*$('#costoVA').text($('#totalE4').text());*/ // Costo programado del proyecto
-    document.getElementById("costoED").value=$('#totalE4').val()
-    /*$('#costoED').text($('#totalF4').text());*/ // Costo estimado del proyecto
+    document.getElementById("costoVA").value=$('#totalE4').val()// Costo programado del proyecto
+    var totalF1=$('#totalF1').val()
+    var totalF2=$('#totalF2').val()
+    document.getElementById("costoED").value=(parseFloat(totalF1)-parseFloat(totalF2)).toFixed(2)// Costo estimado del proyecto
     var dif = parseFloat(tf4) - parseFloat(te4);
     document.getElementById("diferencia").value=dif.toFixed(2)
-    $('#diferencia').val(dif.toFixed(2))
-
     inicio()
 
 }

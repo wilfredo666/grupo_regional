@@ -50,7 +50,7 @@ observaciones form_ATL
 9.-Revisar el F.E.E. programado (corregido)
 
 (22/02/19)
-
+1.-limitar al boton cerrado de modal generar
 (06/02/19)
 
 1.-Apartado: materiales y servicios que intervienen en la operacion/materiales/costo total estimado --- no iguala al excel condocumento factura	y recibo (posible error con redondeo de decimales, colocar cantidad=100 && costo unitario=0.08 para comprobar)
