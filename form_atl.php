@@ -103,7 +103,7 @@ $usuario=$_GET['id'];
                             <table class="table table-sm">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th colspan="9"><h2>1) PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION</h2></th>
+                                        <th colspan="10"><h2>1) PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION</h2></th>
                                     </tr>
                                     <tr>
                                         <th scope="col">DETALLE</th>
@@ -113,6 +113,7 @@ $usuario=$_GET['id'];
                                         <th scope="col">CANTIDAD DE PERSONAS</th>
                                         <th scope="col">TASA PRESUPUESTARIA</th>
                                         <th scope="col">COSTO TOTAL PROGRAMADO DE M.O.D.</th>
+                                        <th scope="col">COSTO SUGERIGO</th>
                                         <th scope="col">PRECIO COTIZADO SIN F.E.E</th>
                                         <th></th>
                                     </tr>
@@ -135,6 +136,7 @@ $usuario=$_GET['id'];
                                         <td><input type="number" name="nrop[0]" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
                                         <td><input type="number" name="tasa[0]" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control" step="0.01"></td>
                                         <td><input type="number" name="costop[0]" id="costop0" value="0" readonly class="form-control" step="0.01"></td>
+                                        <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                         <td><input type="number" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control" step="0.01"></td>
                                         <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
                                     </tr>
@@ -144,6 +146,7 @@ $usuario=$_GET['id'];
                                         <td id="totalCa">0</td>
                                         <td id="totalTa">0</td>
                                         <td id="totalCo">0</td>
+                                        <td></td>
                                         <td id="totalPr">0</td>
                                         <td></td>
                                     </tr
@@ -151,18 +154,19 @@ $usuario=$_GET['id'];
                             </table>
                                 <table class="table table-sm">
                                     <thead class="thead-light">
-                                        <tr><th colspan="9"><h2>2) MATERIALES Y SERVICIOS QUE INTERVIENEN EN LA OPERACION</h2></th></tr>
+                                        <tr><th colspan="10"><h2>2) MATERIALES Y SERVICIOS QUE INTERVIENEN EN LA OPERACION</h2></th></tr>
                                         <tr>
                                             <th scope="col" colspan="2"><label>MATERIALES</label></th>
-                                            <th scope="col" colspan="7"><label>COSTO ESTIMADO EN MATERIALES</label></th>
+                                            <th scope="col" colspan="8"><label>COSTO ESTIMADO EN MATERIALES</label></th>
                                         </tr>
                                         <tr>
-                                            <th scope="col"><label>MATERIALES</label></th>
+                                            <th scope="col">MATERIALES</th>
                                             <th scope="col"><label>NOMBRE DEL PROVEEDOR</label></th>
                                             <th scope="col"><label>CANTIDAD ESTIMADA</label></th>
                                             <th scope="col"><label>COSTO UNITARIO</label></th>
                                             <th scope="col"><label>DOCUMENTO</label></th>
                                             <th scope="col"><label>COSTO TOTAL ESTIMADO</label></th>
+                                            <th scope="col">COSTO SUGERIGO</th>
                                             <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
                                             <th></th>
                                             <th></th>
@@ -179,6 +183,7 @@ $usuario=$_GET['id'];
                                                 <option>RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" class="form-control" name="t2_tot[0]" id="t2_tot0" value="0" readonly></td>
+                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
                                             <td></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
@@ -186,6 +191,7 @@ $usuario=$_GET['id'];
                                         <tr>
                                             <th colspan="5">TOTAL</th>
                                             <td><label  id="t2_costoT">0</label></td>
+                                            <td></td>
                                             <td><label id="t2_precioT">0</label></td>
                                             <td></td>
                                             <td></td>
@@ -197,7 +203,7 @@ $usuario=$_GET['id'];
                                     <thead class="thead-light">
                                         <tr>
                                             <th colspan="2"><label>SERVICIOS CONTRATADOS</label></th>
-                                            <th colspan="6"><label>COSTO ESTIMADO DE SERVICIOS</label></th>
+                                            <th colspan="8"><label>COSTO ESTIMADO DE SERVICIOS</label></th>
                                             <th></th>
                                         </tr>
                                         <tr>
@@ -208,7 +214,9 @@ $usuario=$_GET['id'];
                                             <th scope="col"><label>COSTO UNITARIO</label></th>
                                             <th scope="col"><label>TIPO O FORMA</label></th>
                                             <th scope="col"><label>TOTAL COSTO PROGRAMADO</label></th>
+                                            <th scope="col">COSTO SUGERIGO</th>
                                             <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -226,12 +234,14 @@ $usuario=$_GET['id'];
                                                 <option>ALQUILER SIN RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" name="t3_tot[0]" id="t3_tot0" value="0" class="form-control" readonly></td>
+                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" name="t3_pre[0]" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" step="0.01"></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t3();">+</button></td>
                                         </tr>
                                         <tr>
                                             <th colspan="6"><label>TOTAL</label></th>
                                             <td><label  id="t3_costoT">0</label></td>
+                                            <td></td>
                                             <td><label id="t3_precioT">0</label></td>
                                             <td></td>
                                         </tr>
@@ -241,12 +251,13 @@ $usuario=$_GET['id'];
                                     <!--PRODUCTOS/EQUIPOS PROPIOS DE GRUPO REGIONAL-->
                                     <!--productos de taller-->
                                     <thead class="thead-light">
-                                        <tr><th colspan="9"><h2>3) PRODUCTOS / EQUIPOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
-                                        <tr><th colspan="9">PRODUCTOS PROPIOS DE TALLER</th></tr>
+                                        <tr><th colspan="10"><h2>3) PRODUCTOS / EQUIPOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
+                                        <tr><th colspan="10">PRODUCTOS PROPIOS DE TALLER</th></tr>
                                         <tr>
                                             <th scope="col">PRODUCTOS TERMINADOS DE TALLER</th>
                                             <th scope="col">CANTIDAD</th>
                                             <th scope="col">COSTO UNITARIO</th>
+                                            <th scope="col">COSTO SUGERIGO</th>
                                             <th scope="col">COSTO TOTAL</th>
                                             <th scope="col"></th>
                                             <th cope="col"></th>
@@ -261,6 +272,7 @@ $usuario=$_GET['id'];
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control" step="0.01"></td>
                                             <td><input type="text" name="t4_coT[0]" id="t4_coT0" value="0" class="form-control" readonly></td>
+                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
                                             <td></td>
                                             <td></td>
@@ -270,6 +282,7 @@ $usuario=$_GET['id'];
                                         <tr>
                                             <th colspan="2"><label>TOTAL</label></th>
                                             <td><label id="t4_costoU">0</label></td>
+                                            <td></td>
                                             <td><label id="t4_costoT">0</label></td>
                                             <td><label id="t4_precioT" style="display:none;">0</label></td>
                                             <td></td>
@@ -282,12 +295,13 @@ $usuario=$_GET['id'];
                                 <!--equipos propios -->
                                 <table class="table table-sm"> 
                                     <thead class="thead-light">
-                                        <tr><th colspan="9">EQUIPOS PROPIOS</th></tr>
+                                        <tr><th colspan="10">EQUIPOS PROPIOS</th></tr>
                                         <tr>
                                             <th scope="col">DETALLE</th>
                                             <th scope="col">CANTIDAD</th>
                                             <th scope="col">COSTO UNITARIO</th>
                                             <th scope="col">COSTO TOTAL</th>
+                                            <th scope="col">COSTO SUGERIGO</th>
                                             <th scope="col">PRECIO COTIZADO SIN F.E.E</th>
                                             <th scope="col"></th>
                                             <th scope="col"></th>
@@ -301,6 +315,7 @@ $usuario=$_GET['id'];
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_can[0]" id="t5_can0" class="form-control"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU[0]" id="t5_coU0" class="form-control" step="0.01"></td>
                                             <td><input type="number" name="t5_coT[0]" id="t5_coT0" value="0" class="form-control" readonly></td>
+                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre[0]" id="t5_pre0" class="form-control" step="0.01"></td>
                                             <td></td>
                                             <td></td>
@@ -310,6 +325,7 @@ $usuario=$_GET['id'];
                                             <th colspan="2">TOTAL</th>
                                             <td><label id="t5_costoU">0</label></td>
                                             <td><label id="t5_costoT">0</label></td>
+                                            <td></td>
                                             <td><label id="t5_precioT">0</label></td>
                                             <td></td>
                                             <td></td>
