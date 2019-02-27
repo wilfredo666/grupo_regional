@@ -12,7 +12,7 @@ $empleado=$_GET['id'];
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <table class="table">
                    <!--tabla ATL-->
@@ -24,8 +24,13 @@ $empleado=$_GET['id'];
                             <th>Codigo Proyecto</th>
                             <th>Cliente</th>
                             <th>Nombre Proyecto</th>
-                            <th>Fecha de creacion</th>
+                            <th>Fecha de cotizacion</th>
                             <th>Responsable</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de conclucion</th>
+                            <th>Fecha de facturacion</th>
+                            <th>Monto presupuestado</th>
+                            <th>Monto cotizado</th>
                             <th></th>
                             <th></th>
                             <th></th>

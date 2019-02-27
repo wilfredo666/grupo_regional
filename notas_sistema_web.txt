@@ -5,7 +5,8 @@ admin123
 - version de boostrap usado: 4.2.1
 ----------------------------------
 clave para desbloquear las hojas de costo (excel):
-shulob
+-ATL: shulob
+-Taller: 1Bolivia!
 ----------------------------------
 tipo de dato para moneda en mysql es decimal, formato (10,2) que
 utiliza 10 digitos en total y toma 2 de ellos como decimal
@@ -90,6 +91,35 @@ preguntar('<?php echo $fila[0]?>')"
                                 '<td><button type="button" id='+c2+' class="btn btn-danger" onClick="t2_deleted(this.id)">-</button></td>'+
 
     
+--------------------------------
+1.- fecha de inicio se genera cuando se genera el cod. proyecto (ok)
+2.- reporte/fecha de inicio de proyecto
+3.- fecha de conclucion de proyecto ---> cuando se termina el proyecto (manual)
+4.- fecha de facturacion (añadir a reporte) a partir del dia que se emite la factura (manual)
+5.- diferencia entre fech. terminacion y facturacion
+fecha de coti - fecha de ini - fecha de conclucion -fecha de factur. - monto cotizado - mont.presupuestado - presupuesto
+fecha proyecto - fecha de evento
+
+total ejecutado --- es el costo real del proyecyo una vez terminado el proyecto---llenado por contabilidad
+*letra roja en caso de ser negativo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

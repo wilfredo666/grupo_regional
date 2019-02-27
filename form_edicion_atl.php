@@ -103,6 +103,23 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     </select>
                                 </div>
                             </div>
+                            
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Fecha de facturacion:</div>
+                                    </div>
+                                    <input type="date" class="form-control" name="fecha_facturacion" id="">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Numero de factura:</div>
+                                    </div>
+                                    <input type="text" class="form-control" name="num_factura" id="">
+                                </div>
+                            </div>
                         </div>
                         <br>
                         <!--tablas para la insercion de datos a calcular-->

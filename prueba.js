@@ -23,3 +23,18 @@ function calculo(){
     document.getElementById("res").value=parseInt(n1)*parseInt(n2)
     /*se puede realizar operaciones indiferente del tipo de input (text o number) siempre y cuando se transforme en int en la funsion js, cuando se coloco el input de tipo number simplemente limita evitando la introduccion de letras*/
 }
+function fecha_actual(){
+    f=new Date()
+    y=f.getFullYear()
+    m=f.getMonth()+1
+    d=f.getDate()
+    if(d<10){
+         d='0'+d; //agrega cero si el menor de 10
+    }
+   
+  if(m<10){
+     m='0'+m; //agrega cero si el menor de 10 
+  }
+    /*$('#fecha').val(y+"-"+m+"-"+d)*/
+    document.getElementById("fecha").value=y+"-"+m+"-"+d
+}

@@ -66,7 +66,7 @@ $usuario=$_GET['id'];
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Fecha de inicio del proyecto:</div>
                                     </div>
-                                    <input type="date" class="form-control" name="fecha_inicio" id="date">
+                                    <input type="date" class="form-control" name="fecha_inicio" id="date" readonly>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -74,7 +74,7 @@ $usuario=$_GET['id'];
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Fecha de conclucion del proyecto:</div>
                                     </div>
-                                    <input type="date" class="form-control" name="fecha_fin" id="date2">
+                                    <input type="date" class="form-control" name="fecha_fin" id="date2" data-placement="top" title="Insertar una vez concluido el proyecto">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -335,110 +335,122 @@ $usuario=$_GET['id'];
                                 </thead>
                                 <tbody>
                                     <tr>
-                                       <td><input type="number" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
+                                        <td><input type="number" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
                                         <!--<td class="text-center"><label id="costoVA">0</label></td>-->
                                         <td class="text-center"><input type="number" class="form-control" id="costoED" name="costoED" step="0.01" readonly></label></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly></label></td>
-                                    </tr>
-                                </tbody>
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th colspan="3"><h5>COSTO INDIRECTOS DE OPERACIONES</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <th>COSTO ACUMULADO PROGRAMADO</th>
-                                        <th>TASA DE APLICACIÓN</th>
-                                        <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center"><input type="number" class="form-control" id="costoAp" name="costoAp" step="0.01" readonly></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="tasaDa" name="tasaDa" step="0.01" readonly></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="costoPd" name="costoPd" step="0.01" readonly></td>
-                                    </tr>
-                                </tbody>
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th colspan="3"><h5>COSTO FINANCIERO</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <th>TIEMPO PROGRAMADO</th>
-                                        <th>TASA FINANCIERA(%)</th>
-                                        <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center"><input type="number" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01" readonly></td>
-                                        <td class="text-center" readonly><input type="number" class="form-control" id="tasaFi" step="0.01" readonly></td>
-                                        <td class="text-center"><input type="number" class="form-control" id="costoTo" step="0.01" readonly></td>
-                                    </tr>
-                                </tbody>
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th>F.E.E. PROGRAMADO(%)</th>
-                                        <th></th>
-                                        <th>F.E.E. VARIABLE(%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" class="form-control" id="feeP" name="feeP" step="0.01" readonly></td>
-                                        <td></td>
-                                        <td><input type="number" class="form-control" id="feeV" name="feeV" value="0" onkeyup="costosExternos()" step="0.01"></td>
-                                    </tr>
-                                </tbody>
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">TOTAL EJECUTADO</th>
-                                        <th scope="col">TOTAL F.E.E</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                                        <td><input type="number" class="form-control" id="totalE1" name="totalE1" step="0.01" readonly></td>
-                                        <td><input type="number" class="form-control" id="totalF1" name="totalF1" step="0.01" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">F.E.E.</th>
-                                        <td><input type="number" class="form-control" id="totalE2" name="totalE2" step="0.01" readonly></td>
-                                        <td><input type="number" class="form-control" id="totalF2" name="totalF2" step="0.01" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                                        <td><input type="number" class="form-control" id="totalE3" name="totalE3" step="0.01" readonly></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                                        <td><input type="text" class="form-control" id="totalE4" name="totalE4" readonly></td>
-                                        <td><input type="text" class="form-control" id="totalF4" name="totalF4" step="0.01" readonly></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Costo total para enviar al cliente</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!--bloque de botones-->
-                    <div class="row" id="botones">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-6">
-                            <input type="submit" value="Guardar" class="btn btn-info">
-                            <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"></a>
-                        </div>
-                        <div class="col-sm-2"></div>
-                    </div>           
-                </div>
-                </form>
-            <script type="text/javascript" src="js/form_atl.js"></script>
-            <script src="js/jquery-3.3.1.js"></script>
-            <script src="bootstrap/js/bootstrap.js"></script>
-            </body>
-        </html>
+                            <td class="text-center"><input type="number" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly></label></td>
+                    </tr>
+                </tbody>
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="3"><h5>COSTO INDIRECTOS DE OPERACIONES</h5></th>
+                </tr>
+                <tr>
+                    <th>COSTO ACUMULADO PROGRAMADO</th>
+                    <th>TASA DE APLICACIÓN</th>
+                    <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center"><input type="number" class="form-control" id="costoAp" name="costoAp" step="0.01" readonly></td>
+                    <td class="text-center"><input type="number" class="form-control" id="tasaDa" name="tasaDa" step="0.01" readonly></td>
+                    <td class="text-center"><input type="number" class="form-control" id="costoPd" name="costoPd" step="0.01" readonly></td>
+                </tr>
+            </tbody>
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="3"><h5>COSTO FINANCIERO</h5></th>
+                </tr>
+                <tr>
+                    <th>TIEMPO PROGRAMADO</th>
+                    <th>TASA FINANCIERA(%)</th>
+                    <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center"><input type="number" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01" readonly></td>
+                    <td class="text-center" readonly><input type="number" class="form-control" id="tasaFi" step="0.01" readonly></td>
+                    <td class="text-center"><input type="number" class="form-control" id="costoTo" step="0.01" readonly></td>
+                </tr>
+            </tbody>
+            <thead class="thead-light">
+                <tr>
+                    <th>F.E.E. PROGRAMADO(%)</th>
+                    <th></th>
+                    <th>F.E.E. VARIABLE(%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="number" class="form-control" id="feeP" name="feeP" step="0.01" readonly></td>
+                    <td></td>
+                    <td><input type="number" class="form-control" id="feeV" name="feeV" value="0" onkeyup="costosExternos()" step="0.01"></td>
+                </tr>
+            </tbody>
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">TOTAL EJECUTADO</th>
+                    <th scope="col">TOTAL F.E.E</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">COSTO TOTAL DEL PROYECTO</th>
+                    <td><input type="number" class="form-control" id="totalE1" name="totalE1" step="0.01" readonly></td>
+                    <td><input type="number" class="form-control" id="totalF1" name="totalF1" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <th scope="row">F.E.E.</th>
+                    <td><input type="number" class="form-control" id="totalE2" name="totalE2" step="0.01" readonly></td>
+                    <td><input type="number" class="form-control" id="totalF2" name="totalF2" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
+                    <td><input type="number" class="form-control" id="totalE3" name="totalE3" step="0.01" readonly></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
+                    <td><input type="text" class="form-control" id="totalE4" name="totalE4" readonly></td>
+                    <td><input type="text" class="form-control" id="totalF4" name="totalF4" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Costo total para enviar al cliente</td>
+                    <td></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="titulo">
+    Tooltip on top
+</button>
+<!--bloque de botones-->
+<div class="row" id="botones">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6">
+        <input type="submit" value="Guardar" class="btn btn-info">
+        <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"></a>
+    </div>
+    <div class="col-sm-2"></div>
+</div>           
+</div>
+</form>
+<script>
+
+</script>
+<script type="text/javascript" src="js/form_atl.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<script src="bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
