@@ -118,6 +118,7 @@ $usuario=$_GET['id'];
                                 <th scope="col">TIEMPO PROGRAMADO</th>
                                 <th scope="col">CANTIDAD DE PERSONAS</th>
                                 <th scope="col">TASA PRESUPUESTARIA</th>
+                                <th scope="col">COSTO SUGERIGO</th>
                                 <th scope="col">COSTO TOTAL PROGRAMADO DE M.O.D.</th>
                                 <th></th>
                             </tr>
@@ -135,6 +136,7 @@ $usuario=$_GET['id'];
                                 <td><input type="number" name="t1_tieP" id="t1_tieP" value="0" onchange="t1_subTotal()" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
                                 <td><input type="number" name="t1_cant" id="t1_cant" value ="0" onkeyup="t1_subTotal()" onClick="this.select();" class="form-control"></td>
                                 <td><input type="text" name="t1_tasa" id="t1_tasa" readonly class="form-control" ></td>
+                                <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                 <td><input type="text" name="t1_cost" id="t1_cost" readonly class="form-control"></td>
                                 <td><button type="button" class="btn btn-success" onClick="t1_addRow()">+</button></td>
                             </tr>
@@ -159,6 +161,7 @@ $usuario=$_GET['id'];
                                 <th scope="col">PAGO POR ACTIVACION</th>
                                 <th scope="col">REGION/CIUDAD</th>
                                 <th scope="col">TOTAL ACT. MAS CARGA IMPOSITIVA C/U</th>
+                                <th scope="col">COSTO SUGERIGO</th>
                                 <th scope="col">TOTAL ACT. MAS CARGA IMPOSITIVA GLOBAL</th>
                                 <th></th>
                             </tr>
@@ -181,6 +184,7 @@ $usuario=$_GET['id'];
                                     <option>SANTA CRUZ</option>
                                     </select></td>
                                 <td><input type="text" name="t2_tot1" id="t2_tot1" class="form-control" readonly></td>
+                                <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                 <td><input type="text" name="t2_tot2" id="t2_tot2" class="form-control" readonly></td>
                                 <td><button type="button" class="btn btn-success" onClick="t2_addRow()">+</button></td>
                             </tr>
@@ -215,6 +219,7 @@ $usuario=$_GET['id'];
                                 <th>CANTIDAD ESTIMADA</th>
                                 <th>COSTO UNITARIO</th>
                                 <th>DOCUMENTO</th>
+                                <th>COSTO SUGERIGO</th>
                                 <th>TOTAL</th>
                                 <th></th>
                             </tr>
@@ -235,6 +240,7 @@ $usuario=$_GET['id'];
                                     <option>RECIBO</option>
                                     <option>ALMACEN</option>
                                     </select></td>
+                                <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                 <td><input type="text" name="t3_tota" id="t3_tota" class="form-control" readonly></td>
                                 <td><button type="button" class="btn btn-success" onClick="t3_addRow()">+</button></td>
                             </tr>
@@ -265,6 +271,7 @@ $usuario=$_GET['id'];
                                 <th>CANTIDAD</th>
                                 <th>COSTO UNITARIO</th>
                                 <th>DOCUMENTO</th>
+                                <th>COSTO SUGERIGO</th>
                                 <th>TOTAL CLIENTE</th>
                                 <th></th>
                             </tr>
@@ -287,6 +294,7 @@ $usuario=$_GET['id'];
                                     <option>ALQUILER SIN RECIBO</option>
                                     <option>VIATICOS</option>
                                     </select></td>
+                                <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                 <td><input type="text" name="t4_tota" id="t4_tota" class="form-control" readonly></td>
                                 <td><button type="button" class="btn btn-success" onclick="t4_addRow()">+</button></td>
                             </tr>
@@ -317,6 +325,7 @@ $usuario=$_GET['id'];
                                 <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
                                 <th>CANTIDAD</th>
                                 <th>COSTO UNITARIO</th>
+                                <th>COSTO SUGERIGO</th>
                                 <th>TOTAL</th>
                                 <th></th>
                             </tr>
@@ -328,6 +337,7 @@ $usuario=$_GET['id'];
                                 </select></td>
                             <td><input type="number" id="t5_cant" name="t5_cant" onClick="this.select()" onkeyup="t5_subTotal()" value="0" class="form-control"></td>
                             <td><input type="number" id="t5_cost" name="t5_cost" onClick="this.select()" onkeyup="t5_subTotal()" value="0" class="form-control" step="0.01"></td>
+                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                             <td><input type="text" id="t5_tota" name="t5_tota" class="form-control" readonly></td>
                             <td><button type="button" class="btn btn-success" onclick="t5_addRow()">+</button></td>
                             <tr>
@@ -352,6 +362,7 @@ $usuario=$_GET['id'];
                                 <th colspan="4">DETALLE</th>
                                 <th>CANTIDAD</th>
                                 <th>COSTO UNITARIO</th>
+                                <th>COSTO SUGERIGO</th>
                                 <th>TOTAL</th>
                                 <th></th>
                                 <th></th>
@@ -362,6 +373,7 @@ $usuario=$_GET['id'];
                                 <td colspan="4"><input type="text" id="t6_prod" name="t6_prod" class="form-control"></td>
                                 <td><input type="number" id="t6_cant" name="t6_cant" onClick="this.select()" onkeyup="t6_subTotal()" value="0" class="form-control"></td>
                                 <td><input type="number" id="t6_cost" name="t6_cost" onClick="this.select()" onkeyup="t6_subTotal()" value="0" class="form-control" step="0.01"></td>
+                                <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                 <td><input type="text" id="t6_tota" name="t6_tota" class="form-control" readonly></td>
                                 <td></td>
                                 <td><button type="button" class="btn btn-success" onclick="t6_addRow()">+</button></td>
@@ -388,6 +400,7 @@ $usuario=$_GET['id'];
                                 <th colspan="2">UNIDAD DE MEDIDA</th> <!--AQUI ME QUEDE-->
                                 <th>CANTIDAD</th>
                                 <th>COSTO UNITARIO</th>
+                                <th>COSTO SUGERIGO</th>
                                 <th>TOTAL</th>
                                 <th></th>
                             </tr>
@@ -400,6 +413,7 @@ $usuario=$_GET['id'];
                                     </select></td>
                                 <td><input type="number" id="t7_cant" name="t7_cant" onClick="this.select()" onkeyup="t7_subTotal()" value="0" class="form-control"></td>
                                 <td><input type="number" id="t7_cost" name="t7_cost" onClick="this.select()" onkeyup="t7_subTotal()" value="0" class="form-control"></td>
+                                <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                 <td><input type="text" id="t7_tota" name="t7_tota" class="form-control" readonly></td>
                                 <td><button type="button" class="btn btn-success" onclick="t7_addRow()">+</button></td>
                             </tr>
