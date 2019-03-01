@@ -20,7 +20,7 @@ function cambio(){
 function calculo(){
     n1=document.getElementById("num1").value
     n2=document.getElementById("num2").value
-    document.getElementById("res").value=parseInt(n1)*parseInt(n2)
+    document.getElementById("res").value=parseFloat(n1)*parseFloat(n2)
     /*se puede realizar operaciones indiferente del tipo de input (text o number) siempre y cuando se transforme en int en la funsion js, cuando se coloco el input de tipo number simplemente limita evitando la introduccion de letras*/
 }
 function fecha_actual(){
@@ -37,4 +37,8 @@ function fecha_actual(){
   }
     /*$('#fecha').val(y+"-"+m+"-"+d)*/
     document.getElementById("fecha").value=y+"-"+m+"-"+d
+}
+/*funciones*/
+function suma(a,b){
+    
 }

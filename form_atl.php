@@ -17,7 +17,7 @@ $usuario=$_GET['id'];
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post" onKeyPress="return disableEnterKey(event)">
+        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
@@ -136,7 +136,7 @@ $usuario=$_GET['id'];
                                         <td><input type="number" name="nrop[0]" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
                                         <td><input type="number" name="tasa[0]" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control" step="0.01"></td>
                                         <td><input type="number" name="costop[0]" id="costop0" value="0" readonly class="form-control" step="0.01"></td>
-                                        <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
+                                        <td><input type="number" name="cs[0]" id="cs0" class="form-control" step="0.01" value="0" readonly></td>
                                         <td><input type="number" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control" step="0.01"></td>
                                         <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
                                     </tr>
@@ -183,10 +183,10 @@ $usuario=$_GET['id'];
                                                 <option>RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" class="form-control" name="t2_tot[0]" id="t2_tot0" value="0" readonly></td>
-                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
+                                            <td><input type="number" name="t2_cs[0]" id="t2_cs0" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
                                             <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
+                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td><!--addRow_t2()-->
                                         </tr>
                                         <tr>
                                             <th colspan="5">TOTAL</th>
@@ -234,7 +234,7 @@ $usuario=$_GET['id'];
                                                 <option>ALQUILER SIN RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" name="t3_tot[0]" id="t3_tot0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
+                                            <td><input type="number" name="t3_cs[0]" id="t3_cs0" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" name="t3_pre[0]" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" step="0.01"></td>
                                             <td><button type="button" class="btn btn-success" onclick="addRow_t3();">+</button></td>
                                         </tr>
@@ -271,8 +271,8 @@ $usuario=$_GET['id'];
                                             <td><input type="text" name="t4_pro[0]" id="t4_pro0" class="form-control"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control" step="0.01"></td>
+                                            <td><input type="number" name="t4_cs[0]" id="t4_cs0" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="text" name="t4_coT[0]" id="t4_coT0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
                                             <td></td>
                                             <td></td>
@@ -315,7 +315,7 @@ $usuario=$_GET['id'];
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_can[0]" id="t5_can0" class="form-control"></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU[0]" id="t5_coU0" class="form-control" step="0.01"></td>
                                             <td><input type="number" name="t5_coT[0]" id="t5_coT0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" name="" id="" class="form-control" step="0.01" value="0" readonly></td>
+                                            <td><input type="number" name="t5_cs[0]" id="t5_cs0" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre[0]" id="t5_pre0" class="form-control" step="0.01"></td>
                                             <td></td>
                                             <td></td>
@@ -461,12 +461,6 @@ $usuario=$_GET['id'];
 </script>
 <script type="text/javascript" src="js/form_atl.js"></script>
 <script src="js/jquery-3.3.1.js"></script>
-<script src="bootstrap/js/bootstrap.bundle.js"></script>
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-</script>
 <script src="bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
