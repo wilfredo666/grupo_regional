@@ -186,7 +186,7 @@ $usuario=$_GET['id'];
                                             <td><input type="number" name="t2_cs[0]" id="t2_cs0" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
                                             <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td><!--addRow_t2()-->
+                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
                                         </tr>
                                         <tr>
                                             <th colspan="5">TOTAL</th>
