@@ -18,7 +18,7 @@ $empleado=$_GET['id'];
                    <!--tabla ATL-->
                     <thead>
                         <tr class="table-success">
-                            <th colspan="8" style="text-align:center">ATL</th>
+                            <th colspan="13" style="text-align:center">Eventos - ATL</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -40,7 +40,7 @@ $empleado=$_GET['id'];
                         <?php reporte_atl(); ?>
                     </tbody>
                     <!--tabla BTL-->
-                     <thead>
+                     <!--<thead>
                         <tr class="table-primary">
                             <th colspan="8" style="text-align:center">BTL - personal eventual</th>
                         </tr>
@@ -57,9 +57,9 @@ $empleado=$_GET['id'];
                     </thead>
                     <tbody>
 
-                    </tbody>
+                    </tbody>-->
                     <!--tabla BTL 2-->
-                    <thead>
+<!--                    <thead>
                         <tr class="table-primary">
                             <th colspan="8" style="text-align:center">BTL - personal indefinido</th>
                         </tr>
@@ -75,10 +75,9 @@ $empleado=$_GET['id'];
                         </tr>
                     </thead>
                     <tbody>
-
-                    </tbody>
+                    </tbody>-->
                     <!--tabla taller-->
-                    <thead>
+                   <!-- <thead>
                         <tr class="table-warning">
                             <th colspan="8" style="text-align:center">Taller</th>
                         </tr>
@@ -95,7 +94,7 @@ $empleado=$_GET['id'];
                     </thead>
                     <tbody>
                             
-                    </tbody>
+                    </tbody>-->
                 </table>
             </div>
         </div>

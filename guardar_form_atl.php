@@ -17,7 +17,7 @@ $usuario=$_GET['id'];
 $consulta_guardar="insert into hoja_costos_atl(codigo_hoja_costos,cliente,correo_cliente,fecha_inicio,tiempo_credito,nombre_proyecto,fecha_fin,tipo_proyecto,id_usuario,estado) values('$cod_proyecto','$cliente','$email_cliente','$fecha_inicio','$tiempo_credito','$nom_proyecto','$fecha_fin','$tipo_proyecto','$usuario',1)";
 mysqli_query($con,$consulta_guardar);
 
-/*recuperando el ultimo registro*/
+/*recuperando el ultimo registro de hoja de costos*/
 $ultimo_registro=mysqli_fetch_row(mysqli_query($con,"SELECT MAX(id_hoja_costos) FROM hoja_costos_atl"));
 
 /*personal directo que interviene en la operacion*/
@@ -86,9 +86,37 @@ if($t5_can[0]>0){
         mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t5_det[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
     }  
 }
-/*costo de valor agragado*/
-/*costo indirecto de operaciones*/
+/*costo de valor agragado + costos indirectos + costo financiero + fee programado, fee variable + costo tottal del proyecto, fee, costo tottal del proyecto mas fee, costo tottal del proyecto mas impuesto*/
+
+/*cosoto de valor agregado*/
+$costoVA=$_POST['costoVA'];
+$costoED=$_POST['costoED'];
+$diferencia=$_POST['diferencia'];
+/*costos indirectos de operaciones*/
+$costoAp=$_POST['costoAp'];
+$tasaDa=$_POST['tasaDa'];
+$costoPd=$_POST['costoPd'];
 /*costo financiero*/
-/*costos totales*/
+$tiempoPr=$_POST['tiempoPr'];
+$tasaFi=$_POST['tasaFi'];
+$costoTo=$_POST['costoTo'];
+
+$feeP=$_POST['feeP'];
+$feeV=$_POST['feeV'];
+
+$totalE1=$_POST['totalE1'];
+$totalF1=$_POST['totalF1'];
+$totalE2=$_POST['totalE2'];
+$totalF2=$_POST['totalF2'];
+$totalE3=$_POST['totalE3'];
+$totalE4=$_POST['totalE4'];
+$totalF4=$_POST['totalF4'];
+
+
+$consulta_guardar2="insert into costos_totales_atl(id_hoja_costos_atl,costo_programado_proyecto,costo_estimado_proyecto,
+diferencia,costo_acumulado_programado,tas_apliacacion,costo_programado_costos_indirectos,tiempo_programado,tasa_fiannciera,total_programado_financiero,fee_programado,fee_variable,costo_total_proyecto_ejcutado,costo_total_proyecto_feevariable,fee_ejecutado,fee_feevariable,costo_total_proyecto_mas_feeejecutado,costo_total_proyecto_mas_impuestos_ejecutado,costo_total_proyecto_mas_impuestos_feevariable)values('$ultimo_registro[0]','$costoVA','$costoED','$diferencia','$costoAp','$tasaDa','$costoPd','$tiempoPr','$tasaFi','$costoTo','$feeP','$feeV','$totalE1','$totalF1','$totalE2','$totalF2','$totalE3','$totalE4','$totalF4')";
+
+mysqli_query($con,$consulta_guardar2);
+
 header("location: menu.php?id=$usuario");
 ?>

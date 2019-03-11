@@ -3,7 +3,7 @@ function codigo_proyecto(){
     /*codigo aleatorio*/
     ultimo_codigo_int=$('#ultimo_codigo').val()
     ultimo_codigo_str=String(ultimo_codigo_int),
-        inicio=4,
+        ini=4,
         fin=6,
         ultimo_codigo_str2=ultimo_codigo_str.substring(fin);
     /*alert(ultimo_codigo_str2);*/
@@ -27,7 +27,4 @@ function fecha_actual(){
         m='0'+m; //agrega cero si el menor de 10 
     }
     $('#date').val(y+"-"+m+"-"+d)
-}
-function p(){
-    alert("prueba")
 }

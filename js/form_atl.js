@@ -42,6 +42,8 @@ var t5_costoUnitario = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var tasaAplicacion = 0.17;
 //t2_subTotal(0);
 //actualizarTaza(0);
+
+
 function activacoma(nStr){
     nStr += '';
     var x = nStr.split('.');
@@ -102,6 +104,8 @@ function actualizarCostoTotal(numer){
     r=r.toFixed(2);
     document.getElementById("costop"+numer).value =r;
     totales1();
+    prorrateo(r);
+    document.getElementById("cs"+numer).value=prorrateo(r); 
 }
 
 function addRow(){
@@ -112,7 +116,7 @@ function addRow(){
         '<option>EJECUTIVO DE CUENTAS</option>'+
         '<option>ENCARGADO LOGISTICO</option>'+
         '</select>'+
-        '</td>'+
+        '</td>'+  
         '<td><input type="text" class="form-control" name="detalle['+c+']" id="detalle'+c+'" ></td>'+
         '<td><select class="form-control" onChange= "actualizarTaza('+c+')" name="dayorhour['+c+']" id="dayorhour'+c+'" >'+
         '<option>SELECCIONAR</option>'+
@@ -183,6 +187,7 @@ function t2_subTotal(u){
     costoT = costoT.toFixed(2);
     document.getElementById("t2_tot"+u).value =  costoT;
     actualizarTotalT2();
+    document.getElementById("t2_cs"+u).value=prorrateo(costoT)
 }
 
 function actualizarTotalT2(){
@@ -254,6 +259,7 @@ function t3_subTotal(o){
 
     document.getElementById("t3_tot"+o).value =  costoT.toFixed(2);
     actualizarTotalT3();
+    document.getElementById("t3_cs"+o).value=prorrateo(costoT)
 }
 
 function actualizarTotalT3(){
@@ -338,9 +344,9 @@ function addRow_t4(){
         '<td><input type="text" name="t4_pro['+c4+']" id="t4_pro'+c4+'" class="form-control"></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" class="form-control" name="t4_can['+c4+']" id="t4_can'+c4+'" step="0.01"></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_cos['+c4+']" id="t4_cos'+c4+'" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t4_cs['+c4+']" id="t4_cs'+c4+'" class="form-control" step="0.01" value="0" readonly></td>'+
         '<td><input type="text" name="t4_coT['+c4+']" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
         '<td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
+        '<td></td>'+
         '<td></td>'+
         '<td></td>'+
         '<td></td>'+
@@ -370,8 +376,9 @@ function t5_subTotal(a){
     t5_precio[a] = pre.toFixed(2);
 
     costoT = costoT.toFixed(2)
-    document.getElementById("t5_coT"+a).value =  costoT;
+    document.getElementById("t5_coT"+a).value =  costoT; 
     actualizarTotalT5();
+    document.getElementById("t5_cs"+a).value=prorrateo(costoT)
 }
 
 function actualizarTotalT5(){
@@ -399,8 +406,8 @@ function addRow_t5(){
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can['+c5+']" id="t5_can'+c5+'" step="0.01"></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_coU['+c5+']" id="t5_coU'+c5+'" class="form-control" step="0.01"></td>'+
         '<td><input type="text" name="t5_coT['+c5+']" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t5_cs['+c5+']" id="t5_cs'+c5+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre['+c5+']" id="t5_pre'+c5+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="hidden" name="t5_cs['+c5+']" id="t5_cs'+c5+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="hidden" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre['+c5+']" id="t5_pre'+c5+'" class="form-control" step="0.01"></td>'+
         '<td></td>'+
         '<td></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">-</button></td>'+
@@ -454,7 +461,6 @@ function costosExternos(){
 
     //costo financiero
     var exoin = $('#exoin').val()
-
     var tasaFinanciera = 0.0544872; //EN PORCENTAJE SOLO ES TASA/100
     var tiempoP = $('#number').val()
     var costoPF = (tasaFinanciera/100) * tiempoP * (total+costoProg)
@@ -487,7 +493,16 @@ function costosExternos(){
         $('#totalF1').val(preciosF.toFixed(2)) //Costo total del proyecto (FEE)
     }
     //segunda fila
-    var feeP = 0.10;
+    
+    if(parseFloat(document.getElementById("totalE1").value)<5000){
+        var feeP = 0.16;
+    }
+    else if(parseFloat(document.getElementById("totalE1").value)<50000){
+        var feeP = 0.15;     
+    }
+    else{
+        var feeP = 0.14;
+    }
     /*if(te1<5000)
                     feeP = 0.17
                 else
@@ -577,8 +592,14 @@ function inicio(){
 }
 /*agregados por wilfredo*/
 function prorrateo(costo){
-    
+    var tot_costos1=parseFloat(document.getElementById("totalCo").innerHTML)+parseFloat(document.getElementById("t2_costoT").innerHTML)+parseFloat(document.getElementById("t3_costoT").innerHTML)+parseFloat(document.getElementById("t4_costoT").innerHTML)+parseFloat(document.getElementById("t5_costoT").innerHTML)
+    var tot_costos3=parseFloat(document.getElementById("totalE4").value)-parseFloat(document.getElementById("totalE3").value)
+    var tot_costos2=parseFloat(document.getElementById("costoPd").value)+parseFloat(document.getElementById("costoTo").value)
+    var pro=tot_costos2/tot_costos1*parseFloat(costo)+parseFloat(costo)+tot_costos3
+    return pro.toFixed(2);
+    console.log(tot_costos1)
+    console.log(tot_costos2)
+    console.log(tot_costos3)
 }
 function prueba(){
-    alert("hola mundo")
 }

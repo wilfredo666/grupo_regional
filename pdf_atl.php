@@ -6,9 +6,11 @@ $usuario=$_GET['id'];
 /*datos de empleado*/
 $dat_empleado=mysqli_fetch_array(mysqli_query($con,"SELECT * FROM empleado JOIN usuario ON empleado.ci=usuario.ci_empleado JOIN datos_laborales ON datos_laborales.ci_empleado=empleado.ci where id_usuario=$usuario"));
 
-/*consulta*/
-$atl=mysqli_fetch_array(mysqli_query($con,"select nombre, nombre_proyecto from hoja_costos_atl JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo WHERE id_hoja_costos=$id_hoja_costos_atl"));
+/*consulta - cliente, nombre proyecto y tipo de proyecto*/
+$atl=mysqli_fetch_array(mysqli_query($con,"select nombre, nombre_proyecto, tipo_proyecto from hoja_costos_atl JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo WHERE id_hoja_costos=$id_hoja_costos_atl"));
 
+/*consulta - costos*/
+$cos_totales=mysqli_fetch_array(mysqli_query($con,"select * from costos_totales_atl where id_hoja_costos_atl=$id_hoja_costos_atl"));
 /*consulta - personal directo que interviene en la operacion*/
 $per_directo=mysqli_query($con,"select * from personal_directo_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
 /*consulta - materiales que interviene en la operacion*/
@@ -86,10 +88,10 @@ $t_cos_tot4=0;
 $t_cos_tot5=0;
 while($row1=mysqli_fetch_array($per_directo)){
     $pdf->Cell(75,6,$row1[2],'LR');
-    $pdf->Cell(20,6,$row1[5],'R');
-    $pdf->Cell(20,6,$row1[6],'R',0,'R');
-    $pdf->Cell(40,6,$row1[9]/$row1[6]/$row1[5],'R',0,'R');
-    $pdf->Cell(40,6,$row1[9],'R',0,'R');
+    $pdf->Cell(20,6,$row1[5],'R',0,'C');
+    $pdf->Cell(20,6,$row1[6],'R',0,'C');
+    $pdf->Cell(40,6,$row1[9]/$row1[6]/$row1[5],'R',0,'C');
+    $pdf->Cell(40,6,$row1[9],'R',0,'C');
     $pdf->Ln();
     $t_cos_tot1=$t_cos_tot1+$row1[9];
 }
@@ -99,7 +101,7 @@ while($row2=mysqli_fetch_array($materiles)){
     $pdf->Cell(75,6,$row2[2],'LR');
     $pdf->Cell(20,6,'','R');
     $pdf->Cell(20,6,$row2[4],'R',0,'R');
-    $pdf->Cell(40,6,$row2[8]/$row2[4],'R',0,'R');
+    $pdf->Cell(40,6,$row2[8]/$row2[4],'R',0,'C');
     $pdf->Cell(40,6,$row2[8],'R',0,'R');
     $pdf->Ln();
     $t_cos_tot2=$t_cos_tot2+$row2[8];
@@ -109,7 +111,7 @@ while($row3=mysqli_fetch_array($servicios)){
     $pdf->Cell(75,6,$row3[2],'LR');
     $pdf->Cell(20,6,'','R');
     $pdf->Cell(20,6,$row3[5],'R',0,'R');
-    $pdf->Cell(40,6,$row3[9]/$row3[5],'R',0,'R');
+    $pdf->Cell(40,6,$row3[9]/$row3[5],'R',0,'C');
     $pdf->Cell(40,6,$row3[9],'R',0,'R');
     $pdf->Ln();
     $t_cos_tot3=$t_cos_tot3+$row3[9];
@@ -119,7 +121,7 @@ while($row4=mysqli_fetch_array($productos)){
     $pdf->Cell(75,6,$row4[2],'LR');
     $pdf->Cell(20,6,'','R');
     $pdf->Cell(20,6,$row4[3],'R',0,'R');
-    $pdf->Cell(40,6,$row4[6]/$row4[3],'R',0,'R');
+    $pdf->Cell(40,6,$row4[6]/$row4[3],'R',0,'C');
     $pdf->Cell(40,6,$row4[6],'R',0,'R');
     $pdf->Ln();
     $t_cos_tot4=$t_cos_tot4+$row4[6];
@@ -129,7 +131,7 @@ while($row5=mysqli_fetch_array($equipos)){
     $pdf->Cell(75,6,$row5[2],'LR');
     $pdf->Cell(20,6,'','R');
     $pdf->Cell(20,6,$row5[3],'R',0,'R');
-    $pdf->Cell(40,6,$row5[6]/$row5[3],'R',0,'R');
+    $pdf->Cell(40,6,$row5[6]/$row5[3],'R',0,'C');
     $pdf->Cell(40,6,$row5[6],'R',0,'R');
     $pdf->Ln();
     $t_cos_tot5=$t_cos_tot5+$row5[6];
@@ -139,18 +141,25 @@ $pdf->Cell(115,6,'','T',0,"C");
 $pdf->SetX(125);
 $pdf->Cell(40,6,'Subtotal = ',1,0,"C");
 $pdf->SetX(165);
-$pdf->Cell(40,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5,1,1,"C");
+if($atl[2]=="EXTERNO"){
+    $pdf->Cell(40,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5,1,1,"C");
+}else{
+    $pdf->Cell(40,6,$cos_totales[13],1,1,"C");
+}
 $pdf->SetX(125);
-$pdf->Cell(40,6,'F.E.E.(17%) = ',1,0,"C");
+$pdf->Cell(40,6,'F.E.E.('.$cos_totales[12].'%) = ',1,0,"C");
 $pdf->SetX(165);
-$pdf->Cell(40,6,'0',1,1,"C");
+$pdf->Cell(40,6,$cos_totales[16],1,1,"C");
 $pdf->SetX(125);
 $pdf->Cell(40,6,'Total = ',1,0,"C");
 $pdf->SetX(165);
-$pdf->Cell(40,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+0,1,1,"C");
+if($atl[2]=="EXTERNO"){
+    $pdf->Cell(40,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+$cos_totales[16],1,1,"C");
+}else{
+    $pdf->Cell(40,6,$cos_totales[13],1,1,"C");
+}
 $pdf->Ln();
 
 $pdf->Output();
-
 
 ?>
