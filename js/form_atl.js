@@ -442,8 +442,10 @@ function costosExternos(){
     var t1_precioT = document.getElementById("totalPr").innerHTML
     var t2_precioT = document.getElementById("t2_precioT").innerHTML
     var t3_precioT = document.getElementById("t3_precioT").innerHTML
-    var t4_precioT = document.getElementById("t4_precioT").innerHTML
-    var t5_precioT = document.getElementById("t5_precioT").innerHTML
+    /*var t4_precioT = document.getElementById("t4_precioT").innerHTML*/
+    var t4_precioT = document.getElementById("t4_costoT").innerHTML
+    /*var t5_precioT = document.getElementById("t5_precioT").innerHTML*/
+    var t5_precioT = document.getElementById("t5_costoT").innerHTML
 
     var j1 = convertToFloat(t1_precioT)
     var j2 = convertToFloat(t2_precioT)
@@ -478,7 +480,7 @@ function costosExternos(){
     var preciosF = 0;
     if(exoin=="INTERNO"){
         $('#totalF1').val(te1)
-        /*$('#totalE2').text($('#totalE1').val())*/
+        $('#totalE2').val(te1)
         document.getElementById("totalF1").value=$('#totalE1').val()
         /*$('#totalF2').text($('#totalE1').val())*/
         document.getElementById("totalF2").value=$('#totalE1').val()
@@ -577,7 +579,7 @@ function costosExternos(){
     document.getElementById("costoVA").value=$('#totalE4').val()// Costo programado del proyecto
     var totalF1=$('#totalF1').val()
     var totalF2=$('#totalF2').val()
-    document.getElementById("costoED").value=(parseFloat(totalF1)-parseFloat(totalF2)).toFixed(2)// Costo estimado del proyecto
+    document.getElementById("costoED").value=(parseFloat(totalF1)+parseFloat(totalF2)).toFixed(2)// Costo estimado del proyecto
     var dif = parseFloat(tf4) - parseFloat(te4);
     document.getElementById("diferencia").value=dif.toFixed(2)
     inicio()
@@ -600,6 +602,12 @@ function prorrateo(costo){
     console.log(tot_costos1)
     console.log(tot_costos2)
     console.log(tot_costos3)
+}
+function resticcion(){
+    if (document.getElementById('diferencia').value<0){
+        alert ("Su proyecto se encuentra en perdida, verificar porfavor!!")
+        return false
+        }
 }
 function prueba(){
 }

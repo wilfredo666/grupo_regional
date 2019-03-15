@@ -42,3 +42,6 @@ function fecha_actual(){
 function suma(a,b){
     
 }
+function mostrar(){
+    alert(document.getElementById('num3').value)
+}

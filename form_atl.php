@@ -17,7 +17,7 @@ $usuario=$_GET['id'];
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
+        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post" onsubmit=" return resticcion()">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
@@ -354,7 +354,7 @@ $usuario=$_GET['id'];
                                         <td><input type="number" value="0" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
                                         <!--<td class="text-center"><label id="costoVA">0</label></td>-->
                                         <td class="text-center"><input type="number" value="0" class="form-control" id="costoED" name="costoED" step="0.01" readonly></label></td>
-                            <td class="text-center"><input type="number" value="0" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly></label></td>
+                            <td class="text-center"><input type="number" value="0" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly min="0"></label></td>
                     </tr>
                 </tbody>
             <thead class="thead-light">
@@ -448,7 +448,7 @@ $usuario=$_GET['id'];
     <div class="col-sm-6">
         <input type="submit" value="Guardar" class="btn btn-info">
         <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"></a>
-        <input type="button" value="prueba" onclick="prueba()">
+        <input type="hidden" value="prueba" onclick="resticcion()">
     </div>
     <div class="col-sm-2"></div>
 </div>           
