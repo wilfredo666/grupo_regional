@@ -322,7 +322,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             <td><input type="number" name="t3_can[<?php echo $i3;?>]" id="t3_can<?php echo $i3;?>" value="<?php echo $row3[5];?>" onClick="this.select()" onkeyup="t3_subTotal(0<?php echo $i3;?>)" class="form-control" ></td>
                                             <td><input type="number" name="t3_cos[<?php echo $i3;?>]" id="t3_cos0" value="<?php echo $row3[6];?>" onClick="this.select()" onkeyup="t3_subTotal(<?php echo $i3;?>)" class="form-control" step="0.01"></td>
                                             <td><select name="t3_tip[<?php echo $i3;?>]" id="t3_tip<?php echo $i3;?>" onChange="t3_subTotal(<?php echo $i3;?>)"  class="form-control">
-                                               <option><?php echo $row3[7];?></option>
+                                                <option><?php echo $row3[7];?></option>
                                                 <option>FACTURA</option>
                                                 <option>RECIBO</option>
                                                 <option>SIN IMPUESTO</option>
@@ -363,11 +363,11 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     </thead>
                                     <tbody>
                                         <tr id="tablita4">
-                                            <td><input type="text" name="t4_pro[<?php echo $i4;?>]" id="t4_pro<?php echo $i4;?>" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" class="form-control" name="t4_can[<?php echo $i4;?>]" id="t4_can<?php echo $i4;?>"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_cos[<?php echo $i4;?>]" id="t4_cos<?php echo $i4;?>" class="form-control" step="0.01"></td>
-                                            <td><input type="text" name="t4_coT[<?php echo $i4;?>]" id="t4_coT<?php echo $i4;?>" value="<?php echo $i4;?>" class="form-control" readonly></td>
-                                            <td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_pre[<?php echo $i4;?>]" id="t4_pre<?php echo $i4;?>" class="form-control"></td>
+                                            <td><input type="text" name="t4_pro[0]" id="t4_pro0" class="form-control"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
+                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control" step="0.01"></td>
+                                            <td><input type="text" name="t4_coT[0]" id="t4_coT0" value="0" class="form-control" readonly></td>
+                                            <td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -381,15 +381,15 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             $i4=$i4+1;
                                         ?>
                                         <tr id="tablita4">
-                                            <td><input type="text" name="t4_pro[0]" id="t4_pro0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control" step="0.01"></td>
-                                            <td><input type="text" name="t4_coT[0]" id="t4_coT0" value="0" class="form-control" readonly></td>
-                                            <td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
+                                            <td><input type="text" name="t4_pro[<?php echo $i4;?>]" id="t4_pro<?php echo $i4;?>" class="form-control" value="<?php echo $row4[2];?>"></td>
+                                            <td><input type="number" value="<?php echo $row4[3];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" class="form-control" name="t4_can[<?php echo $i4;?>]" id="t4_can<?php echo $i4;?>"></td>
+                                            <td><input type="number" value="<?php echo $row4[4];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_cos[<?php echo $i4;?>]" id="t4_cos<?php echo $i4;?>" class="form-control" step="0.01"></td>
+                                            <td><input type="text" name="t4_coT[<?php echo $i4;?>]" id="t4_coT<?php echo $i4;?>" value="<?php echo $row4[5];?>" class="form-control" readonly></td>
+                                            <td><input type="hidden" value="<?php echo $row4[6];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_pre[<?php echo $i4;?>]" id="t4_pre<?php echo $i4;?>" class="form-control"></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t4()">+</button></td>
+                                            <td><button type="button" class="btn btn-danger" id='<?php echo $i4;?>' onClick="t4_deleted(this.id)">-</button></td>
                                         </tr>
                                         <?php
                                         }
@@ -433,126 +433,150 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             <td></td>
                                             <td scope="col"><button type="button" class="btn btn-success" onclick="addRow_t5()">+</button></td>
                                         </tr>
-                                        <tr>
-                                            <th colspan="2">TOTAL</th>
-                                            <td><label id="t5_costoU">0</label></td>
-                                            <td><label id="t5_costoT">0</label></td>
-                                            <td><label id="t5_precioT">0</label></td>
+                                        <?php
+                                        $i5=0;
+                                        $sql5="select * from equipo_propio_atl where id_hoja_costos_atl=$id_hoja_costos";
+                                        $equipos=mysqli_query($con,$sql5);
+                                        while($row5=mysqli_fetch_array($equipos)){
+                                            $i5=$i5+1;
+                                        ?>
+                                        <tr  id="tablita5">
+                                            <td><input type="text" name="t5_det[<?php echo $i5;?>]" id="t5_det<?php echo $i5;?>" class="form-control" value="<?php echo $row5[2];?>"></td>
+                                            <td><input type="number" value="<?php echo $row5[3];?>" onClick="this.select()" onkeyup="t5_subTotal(<?php echo $i5;?>)" name="t5_can[<?php echo $i5;?>]" id="t5_can<?php echo $i5;?>" class="form-control"></td>
+                                            <td><input type="number" value="<?php echo $row5[4];?>" onClick="this.select()" onkeyup="t5_subTotal(<?php echo $i5;?>)" name="t5_coU[<?php echo $i5;?>]" id="t5_coU<?php echo $i5;?>" class="form-control" step="0.01"></td>
+                                            <td><input type="number" name="t5_coT[<?php echo $i5;?>]" id="t5_coT<?php echo $i5;?>" value="<?php echo $row5[5];?>" class="form-control" readonly></td>
+                                            <td><input type="number" value="<?php echo $row5[6];?>" onClick="this.select()" onkeyup="t5_subTotal(<?php echo $i5;?>)" name="t5_pre[<?php echo $i5;?>]" id="t5_pre<?php echo $i5;?>" class="form-control" step="0.01"></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                </div>
-                        </div>
-                        <!--formulario parte 2-->
-                        <div class="col-3">
-                            <table class="table table-sm">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th colspan="3"><h5>COSTO DE VALOR AGREGADO</h5></th>
+                                            <td scope="col"><button type="button" class="btn btn-danger" id='<?php echo $i5;?>' onClick="t5_deleted(this.id)">-</button></td></td>
                                     </tr>
-                                    <tr>
-                                        <th>COSTO PROGRAMADO DEL PROYECTO</th>
-                                        <th>COSTO ESTIMADO DEL PROYECTO</th>
-                                        <th>DIFERENCIA</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="number" value="0" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
-                                        <!--<td class="text-center"><label id="costoVA">0</label></td>-->
-                                        <td class="text-center"><input type="number" value="0" class="form-control" id="costoED" name="costoED" step="0.01" readonly></label></td>
-                            <td class="text-center"><input type="number" value="0" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly min="0"></label></td>
-                    </tr>
-                </tbody>
-            <thead class="thead-light">
-                <tr>
-                    <th colspan="3"><h5>COSTO INDIRECTOS DE OPERACIONES</h5></th>
-                </tr>
-                <tr>
-                    <th>COSTO ACUMULADO PROGRAMADO</th>
-                    <th>TASA DE APLICACIÓN</th>
-                    <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-center"><input type="number" value="0" class="form-control" id="costoAp" name="costoAp" step="0.01" readonly></td>
-                    <td class="text-center"><input type="number" value="0" class="form-control" id="tasaDa" name="tasaDa" step="0.01" readonly></td>
-                    <td class="text-center"><input type="number" value="0" class="form-control" id="costoPd" name="costoPd" step="0.01" readonly></td>
-                </tr>
-            </tbody>
-            <thead class="thead-light">
-                <tr>
-                    <th colspan="3"><h5>COSTO FINANCIERO</h5></th>
-                </tr>
-                <tr>
-                    <th>TIEMPO PROGRAMADO</th>
-                    <th>TASA FINANCIERA(%)</th>
-                    <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-center"><input type="number" value="0" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01" readonly></td>
-                    <td class="text-center" readonly><input type="number" value="0" class="form-control" name="tasaFi" id="tasaFi" step="0.01" readonly></td>
-                    <td class="text-center"><input type="number" value="0" class="form-control" id="costoTo" name="costoTo" step="0.01" readonly></td>
-                </tr>
-            </tbody>
-            <thead class="thead-light">
-                <tr>
-                    <th>F.E.E. PROGRAMADO(%)</th>
-                    <th></th>
-                    <th>F.E.E. VARIABLE(%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="number" value="0" class="form-control" id="feeP" name="feeP" step="0.01" readonly></td>
-                    <td></td>
-                    <td><input type="number" class="form-control" id="feeV" name="feeV" value="0" onkeyup="costosExternos()" step="0.01"></td>
-                </tr>
-            </tbody>
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">TOTAL EJECUTADO</th>
-                    <th scope="col">TOTAL F.E.E</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">COSTO TOTAL DEL PROYECTO</th>
-                    <td><input type="number" value="0" class="form-control" id="totalE1" name="totalE1" step="0.01" readonly></td>
-                    <td><input type="number" value="0" class="form-control" id="totalF1" name="totalF1" step="0.01" readonly></td>
-                </tr>
-                <tr>
-                    <th scope="row">F.E.E.</th>
-                    <td><input type="number" value="0" class="form-control" id="totalE2" name="totalE2" step="0.01" readonly></td>
-                    <td><input type="number" value="0" class="form-control" id="totalF2" name="totalF2" step="0.01" readonly></td>
-                </tr>
-                <tr>
-                    <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
-                    <td><input type="number" value="0" class="form-control" id="totalE3" name="totalE3" step="0.01" readonly></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
-                    <td><input type="text" value="0" class="form-control" id="totalE4" name="totalE4" readonly></td>
-                    <td><input type="text" value="0" class="form-control" id="totalF4" name="totalF4" step="0.01" readonly></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Costo total para enviar al cliente</td>
-                    <td></td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
-    </div>
+                                <?php
+                                        }
+                                ?>
+                                <tr>
+                                    <th colspan="2">TOTAL</th>
+                                    <td><label id="t5_costoU">0</label></td>
+                                    <td><label id="t5_costoT">0</label></td>
+                                    <td><label id="t5_precioT">0</label></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+                <!--formulario parte 2-->
+                <!--consulta para traer los costos-->
+                <?php
+                $sql6="select * from costos_totales_atl where id_hoja_costos_atl=$id_hoja_costos";
+                $costos=mysqli_fetch_row(mysqli_query($con,$sql6));
+                ?>
+                <div class="col-3">
+                    <table class="table table-sm">
+                        <thead class="thead-light">
+                            <tr>
+                                <th colspan="3"><h5>COSTO DE VALOR AGREGADO</h5></th>
+                            </tr>
+                            <tr>
+                                <th>COSTO PROGRAMADO DEL PROYECTO</th>
+                                <th>COSTO ESTIMADO DEL PROYECTO</th>
+                                <th>DIFERENCIA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="number" value="<?php echo $costos[2]?>" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
+                                <td class="text-center"><input type="number" value="<?php echo $costos[3]?>" class="form-control" id="costoED" name="costoED" step="0.01" readonly></label></td>
+                    <td class="text-center"><input type="number" value="<?php echo $costos[4]?>" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly min="0"></label></td>
+            </tr>
+        </tbody>
+    <thead class="thead-light">
+        <tr>
+            <th colspan="3"><h5>COSTO INDIRECTOS DE OPERACIONES</h5></th>
+        </tr>
+        <tr>
+            <th>COSTO ACUMULADO PROGRAMADO</th>
+            <th>TASA DE APLICACIÓN</th>
+            <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center"><input type="number" value="<?php echo $costos[5]?>" class="form-control" id="costoAp" name="costoAp" step="0.01" readonly></td>
+            <td class="text-center"><input type="number" value="<?php echo $costos[6]?>" class="form-control" id="tasaDa" name="tasaDa" step="0.01" readonly></td>
+            <td class="text-center"><input type="number" value="<?php echo $costos[7]?>" class="form-control" id="costoPd" name="costoPd" step="0.01" readonly></td>
+        </tr>
+    </tbody>
+    <thead class="thead-light">
+        <tr>
+            <th colspan="3"><h5>COSTO FINANCIERO</h5></th>
+        </tr>
+        <tr>
+            <th>TIEMPO PROGRAMADO</th>
+            <th>TASA FINANCIERA(%)</th>
+            <th>COSTO TOTAL PROGRAMADO FINANCIERO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center"><input type="number" value="<?php echo $costos[8]?>" class="form-control" id="tiempoPr" name="tiempoPr" step="0.01" readonly></td>
+            <td class="text-center"><input type="number" value="<?php echo $costos[9]?>" class="form-control" name="tasaFi" id="tasaFi" step="0.01" readonly></td>
+            <td class="text-center"><input type="number" value="<?php echo $costos[10]?>" class="form-control" id="costoTo" name="costoTo" step="0.01" readonly></td>
+        </tr>
+    </tbody>
+    <thead class="thead-light">
+        <tr>
+            <th>F.E.E. PROGRAMADO(%)</th>
+            <th></th>
+            <th>F.E.E. VARIABLE(%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="number" value="<?php echo $costos[11]?>" class="form-control" id="feeP" name="feeP" step="0.01" readonly></td>
+            <td></td>
+            <td><input type="number" class="form-control" id="feeV" name="feeV" value="<?php echo $costos[12]?>" onkeyup="costosExternos()" step="0.01"></td>
+        </tr>
+    </tbody>
+    <thead class="thead-light">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">TOTAL EJECUTADO</th>
+            <th scope="col">TOTAL F.E.E</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">COSTO TOTAL DEL PROYECTO</th>
+            <td><input type="number" value="<?php echo $costos[13]?>" class="form-control" id="totalE1" name="totalE1" step="0.01" readonly></td>
+            <td><input type="number" value="<?php echo $costos[14]?>" class="form-control" id="totalF1" name="totalF1" step="0.01" readonly></td>
+        </tr>
+        <tr>
+            <th scope="row">F.E.E.</th>
+            <td><input type="number" value="<?php echo $costos[15]?>" class="form-control" id="totalE2" name="totalE2" step="0.01" readonly></td>
+            <td><input type="number" value="<?php echo $costos[16]?>" class="form-control" id="totalF2" name="totalF2" step="0.01" readonly></td>
+        </tr>
+        <tr>
+            <th scope="row">COSTO TOTAL DEL PROYECTO MAS F.E.E.</th>
+            <td><input type="number" value="<?php echo $costos[17]?>" class="form-control" id="totalE3" name="totalE3" step="0.01" readonly></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">COSTO TOTAL DEL PROYECTO MAS IMPUESTO</th>
+            <td><input type="text" value="<?php echo $costos[18]?>" class="form-control" id="totalE4" name="totalE4" readonly></td>
+            <td><input type="text" value="<?php echo $costos[19]?>" class="form-control" id="totalF4" name="totalF4" step="0.01" readonly></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Costo total para enviar al cliente</td>
+            <td></td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+</div>
 <!--bloque de botones-->
 <div class="row" id="botones">
     <div class="col-sm-4"></div>

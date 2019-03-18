@@ -63,6 +63,7 @@ class PDF extends FPDF{
         /*$this->Cell(array_sum($w),0,'','T');*/
     }
 }
+
 //utf8_decode()
 $pdf = new PDF('P','mm','letter');
 $pdf->AliasNbPages();
@@ -86,55 +87,67 @@ $t_cos_tot2=0;
 $t_cos_tot3=0;
 $t_cos_tot4=0;
 $t_cos_tot5=0;
+
 while($row1=mysqli_fetch_array($per_directo)){
-    $pdf->Cell(95,6,$row1[2],'LR');
-    $pdf->Cell(12,6,$row1[5],'R',0,'C');
-    $pdf->Cell(18,6,$row1[6],'R',0,'C');
-    $pdf->Cell(35,6,$row1[9]/$row1[6]/$row1[5],'R',0,'C');
-    $pdf->Cell(30,6,$row1[9],'R',0,'C');
-    $pdf->Ln();
-    $t_cos_tot1=$t_cos_tot1+$row1[9];
+    if($row1[9]!=0){
+        $pdf->Cell(95,6,$row1[2],'LR');
+        $pdf->Cell(12,6,$row1[5],'R',0,'C');
+        $pdf->Cell(18,6,$row1[6],'R',0,'C');
+        $pdf->Cell(35,6,$row1[9]/$row1[6]/$row1[5],'R',0,'C');
+        $pdf->Cell(30,6,$row1[9],'R',0,'C');
+        $pdf->Ln();
+        $t_cos_tot1=$t_cos_tot1+$row1[9];   
+    }
 }
 
 /*meteriales*/
 while($row2=mysqli_fetch_array($materiles)){
-    $pdf->Cell(95,6,$row2[2],'LR');
-    $pdf->Cell(12,6,'','C');
-    $pdf->Cell(18,6,$row2[4],'LR',0,'C');
-    $pdf->Cell(35,6,$row2[8]/$row2[4],'R',0,'C');
-    $pdf->Cell(30,6,$row2[8],'R',0,'C');
-    $pdf->Ln();
-    $t_cos_tot2=$t_cos_tot2+$row2[8];
+    if($row2[8]!=0){
+        $pdf->Cell(95,6,$row2[2],'LR');
+        $pdf->Cell(12,6,'','C');
+        $pdf->Cell(18,6,$row2[4],'LR',0,'C');
+        $pdf->Cell(35,6,$row2[8]/$row2[4],'R',0,'C');
+        $pdf->Cell(30,6,$row2[8],'R',0,'C');
+        $pdf->Ln();
+        $t_cos_tot2=$t_cos_tot2+$row2[8];   
+    }
 }
 /*servicios*/
 while($row3=mysqli_fetch_array($servicios)){
-    $pdf->Cell(95,6,$row3[2],'LR');
-    $pdf->Cell(12,6,$row3[4],'',0,'C');
-    $pdf->Cell(18,6,$row3[5],'LR',0,'C');
-    $pdf->Cell(35,6,$row3[9]/$row3[5],'R',0,'C');
-    $pdf->Cell(30,6,$row3[9],'R',0,'C');
-    $pdf->Ln();
-    $t_cos_tot3=$t_cos_tot3+$row3[9];
+    if($row3[9]!=0){
+        $pdf->Cell(95,6,$row3[2],'LR');
+        $pdf->Cell(12,6,$row3[4],'',0,'C');
+        $pdf->Cell(18,6,$row3[5],'LR',0,'C');
+        $pdf->Cell(35,6,$row3[9]/$row3[5],'R',0,'C');
+        $pdf->Cell(30,6,$row3[9],'R',0,'C');
+        $pdf->Ln();
+        $t_cos_tot3=$t_cos_tot3+$row3[9];
+    }
+
 }
 /*productos propios*/
 while($row4=mysqli_fetch_array($productos)){
-    $pdf->Cell(95,6,$row4[2],'LR');
-    $pdf->Cell(12,6,'','C');
-    $pdf->Cell(18,6,$row4[3],'LR',0,'C');
-    $pdf->Cell(35,6,$row4[4],'R',0,'C');
-    $pdf->Cell(30,6,$row4[5],'R',0,'C');
-    $pdf->Ln();
-    $t_cos_tot4=$t_cos_tot4+$row4[5];
+    if($row4[5]!=0){
+        $pdf->Cell(95,6,$row4[2],'LR');
+        $pdf->Cell(12,6,'','C');
+        $pdf->Cell(18,6,$row4[3],'LR',0,'C');
+        $pdf->Cell(35,6,$row4[4],'R',0,'C');
+        $pdf->Cell(30,6,$row4[5],'R',0,'C');
+        $pdf->Ln();
+        $t_cos_tot4=$t_cos_tot4+$row4[5];   
+    }
 }
 /*equipos propios*/
 while($row5=mysqli_fetch_array($equipos)){
-    $pdf->Cell(95,6,$row5[2],'LR');
-    $pdf->Cell(12,6,'','C');
-    $pdf->Cell(18,6,$row5[3],'LR',0,'C');
-    $pdf->Cell(35,6,$row5[4],'R',0,'C');
-    $pdf->Cell(30,6,$row5[5],'R',0,'C');
-    $pdf->Ln();
-    $t_cos_tot5=$t_cos_tot5+$row5[5];
+    if($row5[5]!=0){
+        $pdf->Cell(95,6,$row5[2],'LR');
+        $pdf->Cell(12,6,'','C');
+        $pdf->Cell(18,6,$row5[3],'LR',0,'C');
+        $pdf->Cell(35,6,$row5[4],'R',0,'C');
+        $pdf->Cell(30,6,$row5[5],'R',0,'C');
+        $pdf->Ln();
+        $t_cos_tot5=$t_cos_tot5+$row5[5];   
+    }
 }
 
 $pdf->Cell(125,6,'','T',0,"C");

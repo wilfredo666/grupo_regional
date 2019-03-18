@@ -131,7 +131,7 @@ function addRow(){
         '<td><input type="text" class="form-control" name="precioC['+c+']" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
         '<td><button type="button" class="btn btn-danger" onclick="t1_deleted('+c+')" id='+c+' >-</button></td>'+
         '</tr>'
-    $('#tablita1').after(fila);
+    $('#tablita1').before(fila);
     actualizarTaza(c);
 }
 function t1_deleted(d)
@@ -505,15 +505,6 @@ function costosExternos(){
     else{
         var feeP = 0.14;
     }
-    /*if(te1<5000)
-                    feeP = 0.17
-                else
-                if(te1<50000)
-                    feeP = 0.16
-                else
-                if(te1>50000)
-                    feeP = 0.15*/
-    /*$('#feeP').text((feeP*100).toFixed(0)+'%')*/ //F.E.E. programado
     document.getElementById("feeP").value=(feeP*100).toFixed(0);
     /*$('#feeV').text("10%");   //F.E.V (onload)*/
 

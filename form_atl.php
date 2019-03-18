@@ -119,7 +119,7 @@ $usuario=$_GET['id'];
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id="tablita1">
+                                    <tr>
                                         <td><select name="staf[0]" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
                                             <option>EJECUTIVO DE CUENTAS</option>
                                             <option>ENCARGADO LOGISTICO</option>
@@ -140,7 +140,7 @@ $usuario=$_GET['id'];
                                         <td><input type="number" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control" step="0.01"></td>
                                         <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
                                     </tr>
-                                    <tr>
+                                    <tr id="tablita1">
                                         <th colspan="3" >SOPORTE LOGISTICO</th>
                                         <td id="totalTi">0</td>
                                         <td id="totalCa">0</td>
