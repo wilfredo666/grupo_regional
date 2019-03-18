@@ -221,7 +221,7 @@ function addRow_t2(){
         '<td><button type="button" class="btn btn-danger" id='+c2+' onClick="t2_deleted('+c2+')">-</button></td>'+
         '</tr>'
 
-    $('#tablita2').after(fila);
+    $('#tablita2').before(fila);
     actualizarTotalT2();
 }
 function t2_deleted(d)
@@ -294,7 +294,7 @@ function addRow_t3(){
         '<td><button type="button" class="btn btn-danger" id='+c3+' onClick="t3_deleted('+c3+')">-</button></td>'+
         '</tr>'
 
-    $('#tablita3').after(fila);
+    $('#tablita3').before(fila);
     actualizarTotalT3(c3);
 }
 function t3_deleted(d)
@@ -318,6 +318,7 @@ function t4_subTotal(e){
     costoT = costoT.toFixed(2);
     document.getElementById("t4_coT"+e).value =  costoT;
     actualizarTotalT4();
+    document.getElementById("t4_cs"+e).value=prorrateo(costoT)
 }
 
 function actualizarTotalT4(){
@@ -345,15 +346,15 @@ function addRow_t4(){
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" class="form-control" name="t4_can['+c4+']" id="t4_can'+c4+'" step="0.01"></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_cos['+c4+']" id="t4_cos'+c4+'" class="form-control" step="0.01"></td>'+
         '<td><input type="text" name="t4_coT['+c4+']" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
-        '<td><input type="hidden" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
-        '<td></td>'+
+        '<td><input type="number" name="t4_cs['+c4+']" id="t4_cs'+c4+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
         '<td></td>'+
         '<td></td>'+
         '<td></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c4+' onClick="t4_deleted(this.id)">-</button></td>'+
         '</tr>'
 
-    $('#tablita4').after(fila);
+    $('#tablita4').before(fila);
     actualizarTotalT4(c4);
 }
 function t4_deleted(d)
@@ -379,6 +380,7 @@ function t5_subTotal(a){
     document.getElementById("t5_coT"+a).value =  costoT; 
     actualizarTotalT5();
     document.getElementById("t5_cs"+a).value=prorrateo(costoT)
+    document.getElementById("t3_cs"+a).value=prorrateo(costoT)
 }
 
 function actualizarTotalT5(){
@@ -406,14 +408,14 @@ function addRow_t5(){
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can['+c5+']" id="t5_can'+c5+'" step="0.01"></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_coU['+c5+']" id="t5_coU'+c5+'" class="form-control" step="0.01"></td>'+
         '<td><input type="text" name="t5_coT['+c5+']" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
-        '<td><input type="hidden" name="t5_cs['+c5+']" id="t5_cs'+c5+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="hidden" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre['+c5+']" id="t5_pre'+c5+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" name="t5_cs['+c5+']" id="t5_cs'+c5+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre['+c5+']" id="t5_pre'+c5+'" class="form-control" step="0.01"></td>'+
         '<td></td>'+
         '<td></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">-</button></td>'+
         '</tr>'
 
-    $('#tablita5').after(fila);
+    $('#tablita5').before(fila);
     actualizarTotalT5(c5);
 }
 function t5_deleted(d)
@@ -442,10 +444,10 @@ function costosExternos(){
     var t1_precioT = document.getElementById("totalPr").innerHTML
     var t2_precioT = document.getElementById("t2_precioT").innerHTML
     var t3_precioT = document.getElementById("t3_precioT").innerHTML
-    /*var t4_precioT = document.getElementById("t4_precioT").innerHTML*/
-    var t4_precioT = document.getElementById("t4_costoT").innerHTML
-    /*var t5_precioT = document.getElementById("t5_precioT").innerHTML*/
-    var t5_precioT = document.getElementById("t5_costoT").innerHTML
+    var t4_precioT = document.getElementById("t4_precioT").innerHTML
+    /*var t4_precioT = document.getElementById("t4_costoT").innerHTML*/
+    var t5_precioT = document.getElementById("t5_precioT").innerHTML
+    /*var t5_precioT = document.getElementById("t5_costoT").innerHTML*/
 
     var j1 = convertToFloat(t1_precioT)
     var j2 = convertToFloat(t2_precioT)
@@ -590,9 +592,6 @@ function prorrateo(costo){
     var tot_costos2=parseFloat(document.getElementById("costoPd").value)+parseFloat(document.getElementById("costoTo").value)
     var pro=tot_costos2/tot_costos1*parseFloat(costo)+parseFloat(costo)+tot_costos3
     return pro.toFixed(2);
-    console.log(tot_costos1)
-    console.log(tot_costos2)
-    console.log(tot_costos3)
 }
 function resticcion(){
     if (document.getElementById('diferencia').value<0){
