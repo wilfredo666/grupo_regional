@@ -128,7 +128,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                             <table class="table table-sm">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th colspan="9"><h2>1) PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION</h2></th>
+                                        <th colspan="10"><h2>1) PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION</h2></th>
                                     </tr>
                                     <tr>
                                         <th scope="col">DETALLE</th>
@@ -138,65 +138,50 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         <th scope="col">CANTIDAD DE PERSONAS</th>
                                         <th scope="col">TASA PRESUPUESTARIA</th>
                                         <th scope="col">COSTO TOTAL PROGRAMADO DE M.O.D.</th>
+                                        <th scope="col">COSTO SUGERIGO</th>
                                         <th scope="col">PRECIO COTIZADO SIN F.E.E</th>
-                                        <th></th>
+                                        <th><button type="button" class="btn btn-success" onClick="addRow()">+</button></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr id="tablita1">
-                                        <td><select name="staf[0]" onChange= "actualizarTaza(0)" id="staf0" class="form-control">
-                                            <option>EJECUTIVO DE CUENTAS</option>
-                                            <option>ENCARGADO LOGISTICO</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="text" name="detalle[0]" id="detalle0" class="form-control"></td>
-                                        <td><select onChange= "actualizarTaza(0)" name="dayorhour[0]" id="dayorhour0" class="form-control">
-                                            <option>SELECCIONAR</option>
-                                            <option>DIAS</option>
-                                            <option>HORAS</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="number" name="time[0]" id="time0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                        <td><input type="number" name="nrop[0]" id="nrop0" value ="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control"></td>
-                                        <td><input type="text" name="tasa[0]" id="tasa0" value="0" onkeyup="actualizarCostoTotal(0)" readonly class="form-control"></td>
-                                        <td><input type="text" name="costop[0]" id="costop0" value="0" readonly class="form-control"></td>
-                                        <td><input type="text" name="precioC[0]" id="precioC0" value="0" onkeyup="actualizarCostoTotal(0)" onClick="this.select();" class="form-control" step="0.01"></td>
-                                        <td><button type="button" class="btn btn-success" onClick="addRow()">+</button></td>
-                                    </tr>
                                     <?php
                                     $i=0;
                                     $sql="select * from personal_directo_atl where id_hoja_costos_atl=$id_hoja_costos";
                                     $personal_directo=mysqli_query($con,$sql);
                                     while($row=mysqli_fetch_array($personal_directo)){
                                         $i=$i+1;
-                                        echo '<tr>';
-                                        echo '<td><select name="staf['.$i.']" onChange= "actualizarTaza('.$i.')" id="staf'.$i.'" class="form-control">
-                                            <option>'.$row[2].'</option>
+                                    ?>
+                                        <tr>
+                                        <td><select name="staf[<?php echo $i;?>]" onChange= "actualizarTaza(<?php echo $i;?>)" id="staf<?php echo $i;?>" class="form-control">
+                                            <option><?php echo $row[2];?></option>
                                             <option>EJECUTIVO DE CUENTAS</option>
                                             <option>ENCARGADO LOGISTICO</option>
                                             </select>
-                                        </td>';
-                                        echo '<td><input type="text" name="detalle['.$i.']" id="detalle'.$i.'" class="form-control" value="'.$row[3].'"></td>';
-                                        echo '<td><select onChange= "actualizarTaza('.$i.')" name="dayorhour['.$i.']" id="dayorhour'.$i.'" class="form-control">
-                                            <option>'.$row[4].'</option>
+                                        </td>
+                                        <td><input type="text" name="detalle[<?php echo $i;?>]" id="detalle'.$i.'" class="form-control" value="<?php echo $row[3];?>"></td>
+                                        <td><select onChange= "actualizarTaza(<?php echo $i;?>)" name="dayorhour[<?php echo $i;?>]" id="dayorhour<?php echo $i;?>" class="form-control">
+                                            <option><?php echo $row[4];?></option>
                                             <option>DIAS</option>
                                             <option>HORAS</option>
                                             </select>
-                                        </td>';
-                                        echo '<td><input type="number" name="time['.$i.']" id="time'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" onClick="this.select();" class="form-control" value="'.$row[5].'"></td>';
-                                        echo '<td><input type="number" name="nrop['.$i.']" id="nrop'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" onClick="this.select();" class="form-control" value="'.$row[6].'"></td>';
-                                        echo '<td><input type="text" name="tasa[0]" id="tasa'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" readonly class="form-control" value="'.$row[7].'"></td>';
-                                        echo '<td><input type="text" name="costop['.$i.']" id="costop'.$i.'" readonly class="form-control" value="'.$row[8].'"></td>';
-                                        echo '<td><input type="text" name="precioC['.$i.']" id="precioC'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" onClick="this.select();" class="form-control" step="0.01" value="'.$row[9].'"></td>';
-                                        echo '</tr>';
+                                        </td>
+                                        <td><input type="number" name="time[<?php echo $i;?>]" id="time<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" value="<?php echo $row[5];?>"></td>
+                                        <td><input type="number" name="nrop[<?php echo $i;?>]" id="nrop<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" value="<?php echo $row[6];?>"></td>
+                                        <td><input type="text" name="tasa[<?php echo $i;?>]" id="tasa<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" readonly class="form-control" value="<?php echo $row[7];?>"></td>
+                                        <td><input type="text" name="costop[<?php echo $i;?>]" id="costop<?php echo $i;?>" readonly class="form-control" value="<?php echo $row[8];?>"></td>
+                                        <td><input type="number" name="cs[<?php echo $i;?>]" id="cs<?php echo $i;?>" class="form-control" step="0.01" value="0" readonly></td>
+                                        <td><input type="text" name="precioC[<?php echo $i;?>]" id="precioC<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" step="0.01" value="<?php echo $row[9];?>"></td>
+                                        </tr>
+                                        <?php
                                     }
                                     ?>
-                                    <tr>
+                                    <tr id="tablita1">
                                         <th colspan="3" >SOPORTE LOGISTICO</th>
                                         <td id="totalTi">0</td>
                                         <td id="totalCa">0</td>
                                         <td id="totalTa">0</td>
                                         <td id="totalCo">0</td>
+                                        <td></td>
                                         <td id="totalPr">0</td>
                                         <td></td>
                                     </tr
@@ -211,32 +196,18 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             <th scope="col" colspan="7"><label>COSTO ESTIMADO EN MATERIALES</label></th>
                                         </tr>
                                         <tr>
-                                            <th scope="col"><label>MATERIALES</label></th>
-                                            <th scope="col"><label>NOMBRE DEL PROVEEDOR</label></th>
-                                            <th scope="col"><label>CANTIDAD ESTIMADA</label></th>
-                                            <th scope="col"><label>COSTO UNITARIO</label></th>
-                                            <th scope="col"><label>DOCUMENTO</label></th>
-                                            <th scope="col"><label>COSTO TOTAL ESTIMADO</label></th>
-                                            <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th scope="col">MATERIALES</th>
+                                            <th scope="col">NOMBRE DEL PROVEEDOR</th>
+                                            <th scope="col">CANTIDAD ESTIMADA</th>
+                                            <th scope="col">COSTO UNITARIO</th>
+                                            <th scope="col">DOCUMENTO</th>
+                                            <th scope="col">COSTO TOTAL ESTIMADO</th>
+                                            <th scope="col">COSTO SUGERIGO</th>
+                                            <th scope="col">PRECIO COTIZADO SIN F.E.E.</th>
+                                            <th><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id="tablita2">
-                                            <td><input type="text" name="t2_mat[0]" id="t2_mat0" class="form-control"></td>
-                                            <td><input type="text" name="t2_nom[0]" id="t2_nom0" class="form-control"></td>
-                                            <td><input type="number" name="t2_can[0]" onkeyup="t2_subTotal(0)" id="t2_can0" value="0" class="form-control" onClick="this.select();"></td>
-                                            <td><input type="number" name="t2_cos[0]" onkeyup="t2_subTotal(0)" id="t2_cos0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
-                                            <td><select name="t2_doc[0]" id="t2_doc0" onchange="t2_subTotal(0)" class="form-control">
-                                                <option>FACTURA</option>
-                                                <option>RECIBO</option>
-                                                </select></td>
-                                            <td><input type="text" class="form-control" name="t2_tot[0]" id="t2_tot0" value="0" readonly></td>
-                                            <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
-                                        </tr>
                                         <?php
                                         $i2=0;
                                         $sql2="select * from materiales_atl where id_hoja_costos_atl=$id_hoja_costos";
@@ -255,18 +226,18 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                                 <option>RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" class="form-control" name="t2_tot[<?php echo $i2;?>]" id="t2_tot<?php echo $i2;?>" value="<?php echo $row2[7];?>" readonly></td>
+                                            <td><input type="number" name="cs[<?php echo $i2;?>]" id="cs<?php echo $i2;?>" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" name="t2_pre[<?php echo $i2;?>]" id="t2_pre<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" value="<?php echo $row2[8];?>" class="form-control" step="0.01"></td>
-                                            <td></td>
                                             <td><button type="button" class="btn btn-danger" id='<?php echo $i2;?>' onClick="t2_deleted(<?php echo $i2;?>)">-</button></td>
                                         </tr>
                                         <?php
                                         }
                                         ?>
-                                        <tr>
+                                        <tr id="tablita2">
                                             <th colspan="5">TOTAL</th>
                                             <td><label  id="t2_costoT">0</label></td>
-                                            <td><label id="t2_precioT">0</label></td>
                                             <td></td>
+                                            <td><label id="t2_precioT">0</label></td>
                                             <td></td>
                                         </tr>
                                     </tbody>
@@ -276,38 +247,23 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <thead class="thead-light">
                                         <tr>
                                             <th colspan="2"><label>SERVICIOS CONTRATADOS</label></th>
-                                            <th colspan="6"><label>COSTO ESTIMADO DE SERVICIOS</label></th>
-                                            <th></th>
+                                            <th colspan="8"><label>COSTO ESTIMADO DE SERVICIOS</label></th>
                                         </tr>
                                         <tr>
-                                            <th scope="col"><label>SERVICIOS CONTRATADOS</label></th>
-                                            <th scope="col"><label>NOMBRE DEL PROVEEDOR</label></th>
-                                            <th scope="col"><label>DIAS</label></th>
-                                            <th scope="col"><label>CANTIDAD ESTIMADA</label></th>
-                                            <th scope="col"><label>COSTO UNITARIO</label></th>
-                                            <th scope="col"><label>TIPO O FORMA</label></th>
-                                            <th scope="col"><label>TOTAL COSTO PROGRAMADO</label></th>
-                                            <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
-                                            <th></th>
+                                        <tr>
+                                            <th scope="col">SERVICIOS CONTRATADOS</th>
+                                            <th scope="col">NOMBRE DEL PROVEEDOR</th>
+                                            <th scope="col">DIAS</th>
+                                            <th scope="col">CANTIDAD ESTIMADA</th>
+                                            <th scope="col">COSTO UNITARIO</th>
+                                            <th scope="col">TIPO O FORMA</th>
+                                            <th scope="col">TOTAL COSTO PROGRAMADO</th>
+                                            <th scope="col">COSTO SUGERIGO</th>
+                                            <th scope="col">PRECIO COTIZADO SIN F.E.E.</th>
+                                            <th><button type="button" class="btn btn-success" onclick="addRow_t3();">+</button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id="tablita3">
-                                            <td><input type="text" name="t3_ser[0]" id="t3_ser0" class="form-control"></td>
-                                            <td><input type="text" name="t3_nom[0]" id="t3_nom0" class="form-control"></td>
-                                            <td><input type="number" name="t3_dia[0]" id="t3_dia0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control"></td>
-                                            <td><input type="number" name="t3_can[0]" id="t3_can0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" ></td>
-                                            <td><input type="number" name="t3_cos[0]" id="t3_cos0" value="0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" step="0.01"></td>
-                                            <td><select name="t3_tip[0]" id="t3_tip0" onChange="t3_subTotal(0)"  class="form-control">
-                                                <option>FACTURA</option>
-                                                <option>RECIBO</option>
-                                                <option>SIN IMPUESTO</option>
-                                                <option>ALQUILER SIN RECIBO</option>
-                                                </select></td>
-                                            <td><input type="text" name="t3_tot[0]" id="t3_tot0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" name="t3_pre[0]" value="0" id="t3_pre0" onClick="this.select()" onkeyup="t3_subTotal(0)" class="form-control" step="0.01"></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t3();">+</button></td>
-                                        </tr>
                                         <?php
                                         $i3=0;
                                         $sql3="select * from servicios_contratados_atl where id_hoja_costos_atl=$id_hoja_costos";
@@ -329,17 +285,18 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                                 <option>ALQUILER SIN RECIBO</option>
                                                 </select></td>
                                             <td><input type="text" name="t3_tot[<?php echo $i3;?>]" id="t3_tot<?php echo $i3;?>" value="<?php echo $row3[8];?>" class="form-control" readonly></td>
+                                            <td><input type="number" name="t3_cs[<?php echo $i3;?>]" id="t3_cs<?php echo $i3;?>" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" name="t3_pre[<?php echo $i3;?>]" value="<?php echo $row3[9];?>" id="t3_pre<?php echo $i3;?>" onClick="this.select()" onkeyup="t3_subTotal(<?php echo $i3;?>)" class="form-control" step="0.01"></td>
                                             <td><button type="button" class="btn btn-danger" id='<?php echo $i3;?>' onClick="t3_deleted(<?php echo $i3;?>)">-</button></td>
                                         </tr>
                                         <?php
                                         }
                                         ?>
-                                        <tr>
+                                        <tr id="tablita3">
                                             <th colspan="6"><label>TOTAL</label></th>
                                             <td><label  id="t3_costoT">0</label></td>
-                                            <td><label id="t3_precioT">0</label></td>
                                             <td></td>
+                                            <td><label id="t3_precioT">0</label></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -347,32 +304,19 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <!--PRODUCTOS/EQUIPOS PROPIOS DE GRUPO REGIONAL-->
                                     <!--productos de taller-->
                                     <thead class="thead-light">
-                                        <tr><th colspan="9"><h2>3) PRODUCTOS / EQUIPOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
-                                        <tr><th colspan="9">PRODUCTOS PROPIOS DE TALLER</th></tr>
+                                        <tr><th colspan="7"><h2>3) PRODUCTOS / EQUIPOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
+                                        <tr><th colspan="7">PRODUCTOS PROPIOS DE TALLER</th></tr>
                                         <tr>
                                             <th scope="col">PRODUCTOS TERMINADOS DE TALLER</th>
                                             <th scope="col">CANTIDAD</th>
                                             <th scope="col">COSTO UNITARIO</th>
                                             <th scope="col">COSTO TOTAL</th>
-                                            <th scope="col">PRECIO COTIZADO SIN F.E.E.</th>
-                                            <th cope="col"></th>
-                                            <th cope="col"></th>
-                                            <th cope="col"></th>
-                                            <th></th>
+                                            <th scope="col">COSTO SUGERIGO</th>
+                                            <th cope="col">PRECIO COTIZADO SIN F.E.E.</th>
+                                            <th cope="col"><button type="button" class="btn btn-success" onclick="addRow_t4()">+</button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id="tablita4">
-                                            <td><input type="text" name="t4_pro[0]" id="t4_pro0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" class="form-control" name="t4_can[0]" id="t4_can0"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_cos[0]" id="t4_cos0" class="form-control" step="0.01"></td>
-                                            <td><input type="text" name="t4_coT[0]" id="t4_coT0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal(0)" name="t4_pre[0]" id="t4_pre0" class="form-control"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t4()">+</button></td>
-                                        </tr>
                                         <?php
                                         $i4=0;
                                         $sql4="select * from producto_propio_taller_atl where id_hoja_costos_atl=$id_hoja_costos";
@@ -380,7 +324,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         while($row4=mysqli_fetch_array($producto)){
                                             $i4=$i4+1;
                                         ?>
-                                        <tr id="tablita4">
+                                        <tr>
                                             <td><input type="text" name="t4_pro[<?php echo $i4;?>]" id="t4_pro<?php echo $i4;?>" class="form-control" value="<?php echo $row4[2];?>"></td>
                                             <td><input type="number" value="<?php echo $row4[3];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" class="form-control" name="t4_can[<?php echo $i4;?>]" id="t4_can<?php echo $i4;?>"></td>
                                             <td><input type="number" value="<?php echo $row4[4];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_cos[<?php echo $i4;?>]" id="t4_cos<?php echo $i4;?>" class="form-control" step="0.01"></td>
@@ -394,7 +338,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         <?php
                                         }
                                         ?>
-                                        <tr>
+                                        <tr id="tablita4">
                                             <th colspan="2"><label>TOTAL</label></th>
                                             <td><label id="t4_costoU">0</label></td>
                                             <td><label id="t4_costoT">0</label></td>
