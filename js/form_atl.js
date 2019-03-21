@@ -347,9 +347,6 @@ function addRow_t4(){
         '<td><input type="text" name="t4_coT['+c4+']" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
         '<td><input type="number" name="t4_cs['+c4+']" id="t4_cs'+c4+'" class="form-control" step="0.01" value="0" readonly></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre['+c4+']" id="t4_pre'+c4+'" class="form-control"></td>'+
-        '<td></td>'+
-        '<td></td>'+
-        '<td></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c4+' onClick="t4_deleted(this.id)">-</button></td>'+
         '</tr>'
 
@@ -409,8 +406,6 @@ function addRow_t5(){
         '<td><input type="text" name="t5_coT['+c5+']" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
         '<td><input type="number" name="t5_cs['+c5+']" id="t5_cs'+c5+'" class="form-control" step="0.01" value="0" readonly></td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre['+c5+']" id="t5_pre'+c5+'" class="form-control" step="0.01"></td>'+
-        '<td></td>'+
-        '<td></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">-</button></td>'+
         '</tr>'
 

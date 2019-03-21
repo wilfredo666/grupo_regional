@@ -171,6 +171,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         <td><input type="text" name="costop[<?php echo $i;?>]" id="costop<?php echo $i;?>" readonly class="form-control" value="<?php echo $row[8];?>"></td>
                                         <td><input type="number" name="cs[<?php echo $i;?>]" id="cs<?php echo $i;?>" class="form-control" step="0.01" value="0" readonly></td>
                                         <td><input type="text" name="precioC[<?php echo $i;?>]" id="precioC<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" step="0.01" value="<?php echo $row[9];?>"></td>
+                                        <td><button type="button" class="btn btn-danger" id='<?php echo $i;?>' onClick="t1_deleted(<?php echo $i;?>)">-</button></td>
                                         </tr>
                                         <?php
                                     }
@@ -271,7 +272,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         while($row3=mysqli_fetch_array($servicios)){
                                             $i3=$i3+1;
                                         ?>
-                                        <tr id="tablita3">
+                                        <tr>
                                             <td><input type="text" name="t3_ser[<?php echo $i3;?>]" id="t3_ser<?php echo $i3;?>" class="form-control" value="<?php echo $row3[2];?>"></td>
                                             <td><input type="text" name="t3_nom[<?php echo $i3;?>]" id="t3_nom<?php echo $i3;?>" class="form-control" value="<?php echo $row3[3];?>"></td>
                                             <td><input type="number" name="t3_dia[0<?php echo $i3;?>]" id="t3_dia<?php echo $i3;?>" value="<?php echo $row3[4];?>" onClick="this.select()" onkeyup="t3_subTotal(<?php echo $i3;?>)" class="form-control"></td>
@@ -329,10 +330,8 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             <td><input type="number" value="<?php echo $row4[3];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" class="form-control" name="t4_can[<?php echo $i4;?>]" id="t4_can<?php echo $i4;?>"></td>
                                             <td><input type="number" value="<?php echo $row4[4];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_cos[<?php echo $i4;?>]" id="t4_cos<?php echo $i4;?>" class="form-control" step="0.01"></td>
                                             <td><input type="text" name="t4_coT[<?php echo $i4;?>]" id="t4_coT<?php echo $i4;?>" value="<?php echo $row4[5];?>" class="form-control" readonly></td>
+                                            <td><input type="number" name="t4_cs[<?php echo $i4;?>]" id="t4_cs<?php echo $i4;?>" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" value="<?php echo $row4[6];?>" onClick="this.select()" onkeyup="t4_subTotal(<?php echo $i4;?>)" name="t4_pre[<?php echo $i4;?>]" id="t4_pre<?php echo $i4;?>" class="form-control"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
                                             <td><button type="button" class="btn btn-danger" id='<?php echo $i4;?>' onClick="t4_deleted(this.id)">-</button></td>
                                         </tr>
                                         <?php
@@ -342,41 +341,26 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             <th colspan="2"><label>TOTAL</label></th>
                                             <td><label id="t4_costoU">0</label></td>
                                             <td><label id="t4_costoT">0</label></td>
-                                            <td><label id="t4_precioT" style="display:none;">0</label></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><label id="t4_precioT">0</label></td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <!--equipos propios -->
                                 <table class="table table-sm"> 
                                     <thead class="thead-light">
-                                        <tr><th colspan="9">EQUIPOS PROPIOS</th></tr>
+                                        <tr><th colspan="7">EQUIPOS PROPIOS</th></tr>
                                         <tr>
                                             <th scope="col">DETALLE</th>
                                             <th scope="col">CANTIDAD</th>
                                             <th scope="col">COSTO UNITARIO</th>
                                             <th scope="col">COSTO TOTAL</th>
-                                            <th scope="col">PRECIO COTIZADO SIN F.E.E</th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th scope="col">COSTO SUGERIGO</th>
+                                            <th scope="col">PRECIO COTIZADO SIN F.E.E.</th>
+                                            <th scope="col"><button type="button" class="btn btn-success" onclick="addRow_t5()">+</button></th>
                                         </tr>
                                     </thead>
                                     <tbody>             
-                                        <tr  id="tablita5">
-                                            <td><input type="text" name="t5_det[0]" id="t5_det0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_can[0]" id="t5_can0" class="form-control"></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_coU[0]" id="t5_coU0" class="form-control" step="0.01"></td>
-                                            <td><input type="number" name="t5_coT[0]" id="t5_coT0" value="0" class="form-control" readonly></td>
-                                            <td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal(0)" name="t5_pre[0]" id="t5_pre0" class="form-control" step="0.01"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td scope="col"><button type="button" class="btn btn-success" onclick="addRow_t5()">+</button></td>
-                                        </tr>
                                         <?php
                                         $i5=0;
                                         $sql5="select * from equipo_propio_atl where id_hoja_costos_atl=$id_hoja_costos";
@@ -384,28 +368,24 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         while($row5=mysqli_fetch_array($equipos)){
                                             $i5=$i5+1;
                                         ?>
-                                        <tr  id="tablita5">
+                                        <tr>
                                             <td><input type="text" name="t5_det[<?php echo $i5;?>]" id="t5_det<?php echo $i5;?>" class="form-control" value="<?php echo $row5[2];?>"></td>
                                             <td><input type="number" value="<?php echo $row5[3];?>" onClick="this.select()" onkeyup="t5_subTotal(<?php echo $i5;?>)" name="t5_can[<?php echo $i5;?>]" id="t5_can<?php echo $i5;?>" class="form-control"></td>
                                             <td><input type="number" value="<?php echo $row5[4];?>" onClick="this.select()" onkeyup="t5_subTotal(<?php echo $i5;?>)" name="t5_coU[<?php echo $i5;?>]" id="t5_coU<?php echo $i5;?>" class="form-control" step="0.01"></td>
                                             <td><input type="number" name="t5_coT[<?php echo $i5;?>]" id="t5_coT<?php echo $i5;?>" value="<?php echo $row5[5];?>" class="form-control" readonly></td>
+                                            <td><input type="number" name="t5_cs[<?php echo $i5;?>]" id="t5_cs<?php echo $i5;?>" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" value="<?php echo $row5[6];?>" onClick="this.select()" onkeyup="t5_subTotal(<?php echo $i5;?>)" name="t5_pre[<?php echo $i5;?>]" id="t5_pre<?php echo $i5;?>" class="form-control" step="0.01"></td>
-                                            <td></td>
-                                            <td></td>
                                             <td scope="col"><button type="button" class="btn btn-danger" id='<?php echo $i5;?>' onClick="t5_deleted(this.id)">-</button></td></td>
                                     </tr>
                                 <?php
                                         }
                                 ?>
-                                <tr>
+                                <tr id="tablita5">
                                     <th colspan="2">TOTAL</th>
                                     <td><label id="t5_costoU">0</label></td>
                                     <td><label id="t5_costoT">0</label></td>
+                                    <td></td>
                                     <td><label id="t5_precioT">0</label></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                 </tr>
                                 </tbody>
                             </table>
