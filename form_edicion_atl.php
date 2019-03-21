@@ -185,7 +185,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         </td>';
                                         echo '<td><input type="number" name="time['.$i.']" id="time'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" onClick="this.select();" class="form-control" value="'.$row[5].'"></td>';
                                         echo '<td><input type="number" name="nrop['.$i.']" id="nrop'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" onClick="this.select();" class="form-control" value="'.$row[6].'"></td>';
-                                        echo '<td><input type="text" name="tasa[0]" id="tasa0" onkeyup="actualizarCostoTotal('.$i.')" readonly class="form-control" value="'.$row[7].'"></td>';
+                                        echo '<td><input type="text" name="tasa[0]" id="tasa'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" readonly class="form-control" value="'.$row[7].'"></td>';
                                         echo '<td><input type="text" name="costop['.$i.']" id="costop'.$i.'" readonly class="form-control" value="'.$row[8].'"></td>';
                                         echo '<td><input type="text" name="precioC['.$i.']" id="precioC'.$i.'" onkeyup="actualizarCostoTotal('.$i.')" onClick="this.select();" class="form-control" step="0.01" value="'.$row[9].'"></td>';
                                         echo '</tr>';
