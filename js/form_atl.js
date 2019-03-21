@@ -217,7 +217,6 @@ function addRow_t2(){
         '<td><input type="text" class="form-control" name="t2_tot['+c2+']" id="t2_tot'+c2+'" readonly></td>'+
         '<td><input type="number" name="t2_cs['+c2+']" id="t2_cs'+c2+'" class="form-control" step="0.01" value="0" readonly></td>'+
         '<td><input type="number" name="t2_pre['+c2+']" id="t2_pre'+c2+'" onkeyup="t2_subTotal('+c2+')" value="0" class="form-control" step="0.01"></td>'+
-        '<td></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c2+' onClick="t2_deleted('+c2+')">-</button></td>'+
         '</tr>'
 

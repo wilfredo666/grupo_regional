@@ -161,13 +161,13 @@ $usuario=$_GET['id'];
                                         </tr>
                                         <tr>
                                             <th scope="col">MATERIALES</th>
-                                            <th scope="col"><label>NOMBRE DEL PROVEEDOR</label></th>
-                                            <th scope="col"><label>CANTIDAD ESTIMADA</label></th>
-                                            <th scope="col"><label>COSTO UNITARIO</label></th>
-                                            <th scope="col"><label>DOCUMENTO</label></th>
-                                            <th scope="col"><label>COSTO TOTAL ESTIMADO</label></th>
+                                            <th scope="col">NOMBRE DEL PROVEEDOR</th>
+                                            <th scope="col">CANTIDAD ESTIMADA</th>
+                                            <th scope="col">COSTO UNITARIO</th>
+                                            <th scope="col">DOCUMENTO</th>
+                                            <th scope="col">COSTO TOTAL ESTIMADO</th>
                                             <th scope="col">COSTO SUGERIGO</th>
-                                            <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
+                                            <th scope="col">PRECIO COTIZADO SIN F.E.E.</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -186,7 +186,7 @@ $usuario=$_GET['id'];
                                             <td><input type="number" name="t2_cs[0]" id="t2_cs0" class="form-control" step="0.01" value="0" readonly></td>
                                             <td><input type="number" onkeyup="t2_subTotal(0)" name="t2_pre[0]" id="t2_pre0" value="0" class="form-control" onClick="this.select();" step="0.01"></td>
                                             <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td><!---->
+                                            <td><button type="button" class="btn btn-success" onclick="addRow_t2();">+</button></td>
                                         </tr>
                                         <tr id="tablita2">
                                             <th colspan="5">TOTAL</th>
@@ -204,19 +204,17 @@ $usuario=$_GET['id'];
                                         <tr>
                                             <th colspan="2"><label>SERVICIOS CONTRATADOS</label></th>
                                             <th colspan="8"><label>COSTO ESTIMADO DE SERVICIOS</label></th>
-                                            <th></th>
                                         </tr>
                                         <tr>
-                                            <th scope="col"><label>SERVICIOS CONTRATADOS</label></th>
-                                            <th scope="col"><label>NOMBRE DEL PROVEEDOR</label></th>
-                                            <th scope="col"><label>DIAS</label></th>
-                                            <th scope="col"><label>CANTIDAD ESTIMADA</label></th>
-                                            <th scope="col"><label>COSTO UNITARIO</label></th>
-                                            <th scope="col"><label>TIPO O FORMA</label></th>
-                                            <th scope="col"><label>TOTAL COSTO PROGRAMADO</label></th>
+                                            <th scope="col">SERVICIOS CONTRATADOS</th>
+                                            <th scope="col">NOMBRE DEL PROVEEDOR</th>
+                                            <th scope="col">DIAS</label></th>
+                                            <th scope="col">CANTIDAD ESTIMADA</th>
+                                            <th scope="col">COSTO UNITARIO</th>
+                                            <th scope="col">TIPO O FORMA</th>
+                                            <th scope="col">TOTAL COSTO PROGRAMADO</th>
                                             <th scope="col">COSTO SUGERIGO</th>
-                                            <th scope="col"><label>PRECIO COTIZADO SIN F.E.E.</label></th>
-                                            <th></th>
+                                            <th scope="col">PRECIO COTIZADO SIN F.E.E.</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -242,8 +240,8 @@ $usuario=$_GET['id'];
                                             <th colspan="6"><label>TOTAL</label></th>
                                             <td><label  id="t3_costoT">0</label></td>
                                             <td></td>
-                                            <td><label id="t3_precioT">0</label></td>
                                             <td></td>
+                                            <td><label id="t3_precioT">0</label></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -251,8 +249,8 @@ $usuario=$_GET['id'];
                                     <!--PRODUCTOS/EQUIPOS PROPIOS DE GRUPO REGIONAL-->
                                     <!--productos de taller-->
                                     <thead class="thead-light">
-                                        <tr><th colspan="10"><h2>3) PRODUCTOS / EQUIPOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
-                                        <tr><th colspan="10">PRODUCTOS PROPIOS DE TALLER</th></tr>
+                                        <tr><th colspan="7"><h2>3) PRODUCTOS / EQUIPOS PROPIOS DE GRUPO REGIONAL</h2></th></tr>
+                                        <tr><th colspan="7">PRODUCTOS PROPIOS DE TALLER</th></tr>
                                         <tr>
                                             <th scope="col">PRODUCTOS TERMINADOS DE TALLER</th>
                                             <th scope="col">CANTIDAD</th>
@@ -260,10 +258,7 @@ $usuario=$_GET['id'];
                                             <th scope="col">COSTO TOTAL</th>
                                             <th scope="col">COSTO SUGERIGO</th>
                                             <th cope="col">PRECIO COTIZADO SIN F.E.E.</th>
-                                            <th cope="col"></th>
-                                            <th cope="col"></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th cope="col"><button type="button" class="btn btn-success" onclick="addRow_t4()">+</button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -277,7 +272,7 @@ $usuario=$_GET['id'];
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td><button type="button" class="btn btn-success" onclick="addRow_t4()">+</button></td>
+                                            <td></td>
                                         </tr>
                                         <tr id="tablita4">
                                             <th colspan="2"><label>TOTAL</label></th>
