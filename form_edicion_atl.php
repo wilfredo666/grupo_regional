@@ -14,7 +14,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
         <meta charset="utf-8">
         <title>Formulario ATL</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <script type="text/javascript" src="js/form_atl.js"></script>
+        <script type="text/javascript" src="js/form_edicion_atl.js"></script>
         <link href="css/atl.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
@@ -151,7 +151,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     while($row=mysqli_fetch_array($personal_directo)){
                                         $i=$i+1;
                                     ?>
-                                        <tr>
+                                        <tr id="fila1<?php echo $i;?>">
                                         <td><select name="staf[<?php echo $i;?>]" onChange= "actualizarTaza(<?php echo $i;?>)" id="staf<?php echo $i;?>" class="form-control">
                                             <option><?php echo $row[2];?></option>
                                             <option>EJECUTIVO DE CUENTAS</option>
@@ -159,7 +159,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             </select>
                                         </td>
                                         <td><input type="text" name="detalle[<?php echo $i;?>]" id="detalle'.$i.'" class="form-control" value="<?php echo $row[3];?>"></td>
-                                        <td><select onChange= "actualizarTaza(<?php echo $i;?>)" name="dayorhour[<?php echo $i;?>]" id="dayorhour<?php echo $i;?>" class="form-control">
+                                        <td><select onChange= "actualizarTaza(<?php echo $i;?>)" name="dayorhour[<?php echo $i;?>]" id="dayorhour<?php echo $i;?>" class="form-control" >
                                             <option><?php echo $row[4];?></option>
                                             <option>DIAS</option>
                                             <option>HORAS</option>
