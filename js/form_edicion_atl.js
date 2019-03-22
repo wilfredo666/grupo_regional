@@ -110,7 +110,7 @@ function actualizarCostoTotal(numer){
     document.getElementById("costop"+numer).value =r;
     totales1();
     //prorrateo(r);
-    //document.getElementById("cs"+numer).value=prorrateo(r); 
+    document.getElementById("cs"+numer).value=prorrateo(r); 
 }
 function addRow(){
     
