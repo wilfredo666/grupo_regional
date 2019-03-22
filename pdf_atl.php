@@ -93,7 +93,7 @@ while($row1=mysqli_fetch_array($per_directo)){
         $pdf->Cell(95,6,$row1[2],'LR');
         $pdf->Cell(12,6,$row1[5],'R',0,'C');
         $pdf->Cell(18,6,$row1[6],'R',0,'C');
-        $pdf->Cell(35,6,$row1[9]/$row1[6]/$row1[5],'R',0,'C');
+        $pdf->Cell(35,6,number_format($row1[9]/$row1[6]/$row1[5],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row1[9],'R',0,'C');
         $pdf->Ln();
         $t_cos_tot1=$t_cos_tot1+$row1[9];   
@@ -106,7 +106,7 @@ while($row2=mysqli_fetch_array($materiles)){
         $pdf->Cell(95,6,$row2[2],'LR');
         $pdf->Cell(12,6,'','C');
         $pdf->Cell(18,6,$row2[4],'LR',0,'C');
-        $pdf->Cell(35,6,$row2[8]/$row2[4],'R',0,'C');
+        $pdf->Cell(35,6,number_format($row2[8]/$row2[4],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row2[8],'R',0,'C');
         $pdf->Ln();
         $t_cos_tot2=$t_cos_tot2+$row2[8];   
@@ -118,7 +118,7 @@ while($row3=mysqli_fetch_array($servicios)){
         $pdf->Cell(95,6,$row3[2],'LR');
         $pdf->Cell(12,6,$row3[4],'',0,'C');
         $pdf->Cell(18,6,$row3[5],'LR',0,'C');
-        $pdf->Cell(35,6,$row3[9]/$row3[5],'R',0,'C');
+        $pdf->Cell(35,6,number_format($row3[9]/$row3[5],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row3[9],'R',0,'C');
         $pdf->Ln();
         $t_cos_tot3=$t_cos_tot3+$row3[9];
@@ -131,7 +131,7 @@ while($row4=mysqli_fetch_array($productos)){
         $pdf->Cell(95,6,$row4[2],'LR');
         $pdf->Cell(12,6,'','C');
         $pdf->Cell(18,6,$row4[3],'LR',0,'C');
-        $pdf->Cell(35,6,$row4[6]/$row4[3],'R',0,'C');
+        $pdf->Cell(35,6,number_format($row4[6]/$row4[3],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row4[6],'R',0,'C');
         $pdf->Ln();
         $t_cos_tot4=$t_cos_tot4+$row4[5];   
@@ -143,7 +143,7 @@ while($row5=mysqli_fetch_array($equipos)){
         $pdf->Cell(95,6,$row5[2],'LR');
         $pdf->Cell(12,6,'','C');
         $pdf->Cell(18,6,$row5[3],'LR',0,'C');
-        $pdf->Cell(35,6,$row5[6]/$row5[3],'R',0,'C');
+        $pdf->Cell(35,6,number_format($row5[6]/$row5[3],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row5[6],'R',0,'C');
         $pdf->Ln();
         $t_cos_tot5=$t_cos_tot5+$row5[5];   
@@ -155,7 +155,7 @@ $pdf->SetX(135);
 $pdf->Cell(35,6,'Subtotal = ',1,0,"C");
 $pdf->SetX(170);
 if($atl[2]=="EXTERNO"){
-    $pdf->Cell(30,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5,1,1,"C");
+    $pdf->Cell(30,6,number_format($t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5,2,".",""),1,1,"C");
 }else{
     $pdf->Cell(30,6,$cos_totales[13],1,1,"C");
 }
@@ -167,7 +167,7 @@ $pdf->SetX(135);
 $pdf->Cell(35,6,'Total = ',1,0,"C");
 $pdf->SetX(170);
 if($atl[2]=="EXTERNO"){
-    $pdf->Cell(30,6,$t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+$cos_totales[16],1,1,"C");
+    $pdf->Cell(30,6,number_format($t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+$cos_totales[16],2,".",""),1,1,"C");
 }else{
     $pdf->Cell(30,6,$cos_totales[13],1,1,"C");
 }
