@@ -160,7 +160,7 @@ function totales1(){
     
 
     var i;
-    for(i=1;i<IDT1;i++){
+    for(i=0;i<IDT1;i++){
         if($("#time"+i).length)
             acTime+= parseInt($("#time"+i).val());
         if($("#nrop"+i).length)
@@ -616,7 +616,7 @@ function ActualizacionRapida() {
             //BUSCANDO ID MAXIMO CON ATRIBUTO DE REFERENCIA  
             //CREACCION DE ALGORITMO DE RECORRIDO HASTA LA DETECCION DE ERROR
             var x;
-            for(x=1;x<=15;x++){
+            for(x=0;x<=15;x++){
             if(!($("#staf"+x).length))
                 break;
             }

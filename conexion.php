@@ -65,7 +65,7 @@ function ultimo_codigo_proyecto_btl2(){
 function reporte_atl(){
     global $con;
     global $empleado;
-    $sql="SELECT id_hoja_costos, codigo_hoja_costos, nombre, nombre_proyecto, fecha_hora_creacion, nombre_usuario, estado, fecha_inicio, fecha_fin, fecha_facturacion, costo_programado_proyecto, costo_estimado_proyecto from hoja_costos_atl JOIN usuario ON hoja_costos_atl.id_usuario=usuario.id_usuario JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo JOIN costos_totales_atl ON hoja_costos_atl.id_hoja_costos=costos_totales_atl.id_hoja_costos_atl";
+    $sql="SELECT id_hoja_costos, codigo_hoja_costos, nombre, nombre_proyecto, fecha_hora_creacion, nombre_usuario, estado, fecha_inicio, fecha_fin, fecha_facturacion, costo_programado_proyecto, costo_estimado_proyecto,diferencia from hoja_costos_atl JOIN usuario ON hoja_costos_atl.id_usuario=usuario.id_usuario JOIN cliente ON hoja_costos_atl.cliente=cliente.codigo JOIN costos_totales_atl ON hoja_costos_atl.id_hoja_costos=costos_totales_atl.id_hoja_costos_atl";
     $r_atl=mysqli_query($con,$sql);
     while($campo=mysqli_fetch_array($r_atl)){
         echo '<tr>';
@@ -79,6 +79,7 @@ function reporte_atl(){
         echo '<td>'.$campo[9].'</td>';
         echo '<td>'.$campo[11].'</td>';
         echo '<td>'.$campo[10].'</td>';
+        echo '<td>'.$campo[12].'</td>';
         echo '<td><a href="pdf_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
         echo '<td><a href="form_edicion_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-warning">Editar</button></td>';
         echo '<td><a href="eli_hoja_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-danger">Eliminar</button></td>';

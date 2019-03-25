@@ -18,7 +18,7 @@ $empleado=$_GET['id'];
                    <!--tabla ATL-->
                     <thead>
                         <tr class="table-success">
-                            <th colspan="13" style="text-align:center">Eventos - ATL</th>
+                            <th colspan="14" style="text-align:center">Eventos - ATL</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -31,6 +31,7 @@ $empleado=$_GET['id'];
                             <th>Fecha de facturacion</th>
                             <th>Monto presupuestado</th>
                             <th>Monto cotizado</th>
+                            <th>Diferencia</th>
                             <th></th>
                             <th></th>
                             <th></th>

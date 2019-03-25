@@ -4,7 +4,7 @@ include 'modal_generar_codigo_atl.php';
 $usuario=$_GET['id'];
 $id_hoja_costos=$_GET['id_hoja_costos'];
 /*consulta datos hoja de costos*/
-$consulta_atl="select  nombre, codigo_hoja_costos, correo_cliente, nombre_proyecto, fecha_inicio, fecha_fin, tiempo_credito, tipo_proyecto from hoja_costos_atl JOIN cliente ON  hoja_costos_atl.cliente=cliente.codigo where id_hoja_costos=$id_hoja_costos";
+$consulta_atl="select  nombre, codigo_hoja_costos, correo_cliente, nombre_proyecto, fecha_inicio, fecha_fin, tiempo_credito, tipo_proyecto,codigo from hoja_costos_atl JOIN cliente ON  hoja_costos_atl.cliente=cliente.codigo where id_hoja_costos=$id_hoja_costos";
 $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
 /*consulta */
 ?>
@@ -23,7 +23,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
+        <form action="actualizar_form_atl.php?id=<?php echo $usuario;?>&id_hoja_costos=<?php echo $id_hoja_costos;?>" id="form1" name="form1" method="post">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
@@ -36,7 +36,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                         <div class="input-group-text">Cliente:</div>
                                     </div>
                                     <select name="cliente" id="select3" class="form-control">
-                                        <option value=""><?php echo $atl[0];?></option>
+                                        <option value=<?php echo $atl[8];?>><?php echo $atl[0];?></option>
                                         <?php mostrar_cliente();?>                                    
                                     </select>
                                 </div>
@@ -110,7 +110,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Fecha de facturacion:</div>
                                     </div>
-                                    <input type="date" class="form-control" name="fecha_facturacion" id="">
+                                    <input type="date" class="form-control" name="fecha_facturacion" id="fecha_facturacion">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -118,7 +118,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Numero de factura:</div>
                                     </div>
-                                    <input type="text" class="form-control" name="num_factura" id="">
+                                    <input type="text" class="form-control" name="num_factura" id="num_factura">
                                 </div>
                             </div>
                         </div>
@@ -149,31 +149,31 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     $sql="select * from personal_directo_atl where id_hoja_costos_atl=$id_hoja_costos";
                                     $personal_directo=mysqli_query($con,$sql);
                                     while($row=mysqli_fetch_array($personal_directo)){
-                                        $i=$i+1;
                                     ?>
                                         <tr id="fila1<?php echo $i;?>">
-                                        <td><select name="staf[<?php echo $i;?>]" onChange= "actualizarTaza(<?php echo $i;?>)" id="staf<?php echo $i;?>" class="form-control">
+                                        <td><select name="staf[]" onChange= "actualizarTaza(<?php echo $i;?>)" id="staf<?php echo $i;?>" class="form-control">
                                             <option><?php echo $row[2];?></option>
                                             <option>EJECUTIVO DE CUENTAS</option>
                                             <option>ENCARGADO LOGISTICO</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" name="detalle[<?php echo $i;?>]" id="detalle'.$i.'" class="form-control" value="<?php echo $row[3];?>"></td>
-                                        <td><select onChange= "actualizarTaza(<?php echo $i;?>)" name="dayorhour[<?php echo $i;?>]" id="dayorhour<?php echo $i;?>" class="form-control" >
+                                        <td><input type="text" name="detalle[]" id="detalle'.$i.'" class="form-control" value="<?php echo $row[3];?>"></td>
+                                        <td><select onChange= "actualizarTaza(<?php echo $i;?>)" name="dayorhour[]" id="dayorhour<?php echo $i;?>" class="form-control" >
                                             <option><?php echo $row[4];?></option>
                                             <option>DIAS</option>
                                             <option>HORAS</option>
                                             </select>
                                         </td>
-                                        <td><input type="number" name="time[<?php echo $i;?>]" id="time<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" value="<?php echo $row[5];?>"></td>
-                                        <td><input type="number" name="nrop[<?php echo $i;?>]" id="nrop<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" value="<?php echo $row[6];?>"></td>
-                                        <td><input type="text" name="tasa[<?php echo $i;?>]" id="tasa<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" readonly class="form-control" value="<?php echo $row[7];?>"></td>
-                                        <td><input type="text" name="costop[<?php echo $i;?>]" id="costop<?php echo $i;?>" readonly class="form-control" value="<?php echo $row[8];?>"></td>
-                                        <td><input type="number" name="cs[<?php echo $i;?>]" id="cs<?php echo $i;?>" class="form-control" step="0.01" value="0" readonly></td>
-                                        <td><input type="text" name="precioC[<?php echo $i;?>]" id="precioC<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" step="0.01" value="<?php echo $row[9];?>"></td>
+                                        <td><input type="number" name="time[]" id="time<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" value="<?php echo $row[5];?>"></td>
+                                        <td><input type="number" name="nrop[]" id="nrop<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" value="<?php echo $row[6];?>"></td>
+                                        <td><input type="text" name="tasa[]" id="tasa<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" readonly class="form-control" value="<?php echo $row[7];?>"></td>
+                                        <td><input type="text" name="costop[]" id="costop<?php echo $i;?>" readonly class="form-control" value="<?php echo $row[8];?>"></td>
+                                        <td><input type="number" name="cs[]" id="cs<?php echo $i;?>" class="form-control" step="0.01" value="0" readonly></td>
+                                        <td><input type="text" name="precioC[]" id="precioC<?php echo $i;?>" onkeyup="actualizarCostoTotal(<?php echo $i;?>)" onClick="this.select();" class="form-control" step="0.01" value="<?php echo $row[9];?>"></td>
                                         <td><button type="button" class="btn btn-danger" id='<?php echo $i;?>' onClick="t1_deleted(<?php echo $i;?>)">-</button></td>
                                         </tr>
                                         <?php
+                                        $i=$i+1;
                                     }
                                     ?>
                                     <tr id="tablita1">
@@ -217,18 +217,18 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             $i2=$i2+1;
                                         ?>
                                         <tr>
-                                            <td><input type="text" name="t2_mat[<?php echo $i2;?>]" id="t2_mat<?php echo $i2;?>" class="form-control" value="<?php echo $row2[2];?>"></td>
-                                            <td><input type="text" name="t2_nom[<?php echo $i2;?>]" id="t2_nom<?php echo $i2;?>" class="form-control" value="<?php echo $row2[3];?>"></td>
-                                            <td><input type="number" name="t2_can[<?php echo $i2;?>]" id="t2_can<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" onClick="this.select()" value="<?php echo $row2[4];?>" class="form-control" step="0.01"></td>
-                                            <td><input type="number" name="t2_cos[<?php echo $i2;?>]"id="t2_cos<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" onClick="this.select()" value="<?php echo $row2[5];?>" class="form-control" step="0.01"></td>
-                                            <td><select name="t2_doc[<?php echo $i2;?>]" id="t2_doc<?php echo $i2;?>" onchange="t2_subTotal(<?php echo $i2;?>)" class="form-control">
+                                            <td><input type="text" name="t2_mat[]" id="t2_mat<?php echo $i2;?>" class="form-control" value="<?php echo $row2[2];?>"></td>
+                                            <td><input type="text" name="t2_nom[]" id="t2_nom<?php echo $i2;?>" class="form-control" value="<?php echo $row2[3];?>"></td>
+                                            <td><input type="number" name="t2_can[]" id="t2_can<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" onClick="this.select()" value="<?php echo $row2[4];?>" class="form-control" step="0.01"></td>
+                                            <td><input type="number" name="t2_cos[]"id="t2_cos<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" onClick="this.select()" value="<?php echo $row2[5];?>" class="form-control" step="0.01"></td>
+                                            <td><select name="t2_doc[]" id="t2_doc<?php echo $i2;?>" onchange="t2_subTotal(<?php echo $i2;?>)" class="form-control">
                                                 <option><?php echo $row2[6];?></option>
                                                 <option>FACTURA</option>
                                                 <option>RECIBO</option>
                                                 </select></td>
-                                            <td><input type="text" class="form-control" name="t2_tot[<?php echo $i2;?>]" id="t2_tot<?php echo $i2;?>" value="<?php echo $row2[7];?>" readonly></td>
-                                            <td><input type="number" name="cs[<?php echo $i2;?>]" id="cs<?php echo $i2;?>" class="form-control" step="0.01" value="0" readonly></td>
-                                            <td><input type="number" name="t2_pre[<?php echo $i2;?>]" id="t2_pre<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" value="<?php echo $row2[8];?>" class="form-control" step="0.01"></td>
+                                            <td><input type="text" class="form-control" name="t2_tot[]" id="t2_tot<?php echo $i2;?>" value="<?php echo $row2[7];?>" readonly></td>
+                                            <td><input type="number" name="cs[]" id="cs<?php echo $i2;?>" class="form-control" step="0.01" value="0" readonly></td>
+                                            <td><input type="number" name="t2_pre[]" id="t2_pre<?php echo $i2;?>" onkeyup="t2_subTotal(<?php echo $i2;?>)" value="<?php echo $row2[8];?>" class="form-control" step="0.01"></td>
                                             <td><button type="button" class="btn btn-danger" id='<?php echo $i2;?>' onClick="t2_deleted(<?php echo $i2;?>)">-</button></td>
                                         </tr>
                                         <?php
