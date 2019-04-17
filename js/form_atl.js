@@ -112,8 +112,8 @@ function addRow(){
     var fila = '<tr id="fila1'+c+'">'+ 
         '<td>'+
         '<select onChange="actualizarTaza('+c+')" class="form-control"  name="staf[]" id="staf'+c+'" >'+
-        '<option>EJECUTIVO DE CUENTAS</option>'+
-        '<option>ENCARGADO LOGISTICO</option>'+
+        '<option>SUPERVISOR</option>'+
+        '<option>SOPORTE LOGISTICO</option>'+
         '</select>'+
         '</td>'+  
         '<td><input type="text" class="form-control" name="detalle[]" id="detalle'+c+'" ></td>'+
@@ -591,11 +591,11 @@ function prorrateo(costo){
     var pro=tot_costos2/tot_costos1*parseFloat(costo)+parseFloat(costo)+tot_costos3
     return pro.toFixed(2);
 }
-function resticcion(){
+/*function resticcion(){
     if (document.getElementById('diferencia').value<0){
         alert ("Su proyecto se encuentra en perdida, verificar porfavor!!")
         return false
         }
-}
+}*/
 function prueba(){
 }

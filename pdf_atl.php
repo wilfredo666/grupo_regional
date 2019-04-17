@@ -134,7 +134,7 @@ while($row4=mysqli_fetch_array($productos)){
         $pdf->Cell(35,6,number_format($row4[6]/$row4[3],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row4[6],'R',0,'C');
         $pdf->Ln();
-        $t_cos_tot4=$t_cos_tot4+$row4[5];   
+        $t_cos_tot4=$t_cos_tot4+$row4[6];   
     }
 }
 /*equipos propios*/
@@ -146,7 +146,7 @@ while($row5=mysqli_fetch_array($equipos)){
         $pdf->Cell(35,6,number_format($row5[6]/$row5[3],2,".",""),'R',0,'C');
         $pdf->Cell(30,6,$row5[6],'R',0,'C');
         $pdf->Ln();
-        $t_cos_tot5=$t_cos_tot5+$row5[5];   
+        $t_cos_tot5=$t_cos_tot5+$row5[6];   
     }
 }
 

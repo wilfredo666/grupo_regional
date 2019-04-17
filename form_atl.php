@@ -17,7 +17,7 @@ $usuario=$_GET['id'];
         <div class="container-fluid bg-success">
             <h1>HOJA DE COSTO DE OPERACIONES - ATL</h1>
         </div>
-        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post" onsubmit=" return resticcion()">
+        <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
             <div class="container-fluid">
                 <div class="row">
                     <!--formulario parte 1-->
@@ -66,7 +66,8 @@ $usuario=$_GET['id'];
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Fecha de inicio del proyecto:</div>
                                     </div>
-                                    <input type="date" class="form-control" name="fecha_inicio" id="date" readonly>
+                                    <input type="date" class="form-control" name="fecha_inicio" id="date">
+                                    <input type="date" class="form-control" name="fecha_aprobacion" id="date3" hidden="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -92,7 +93,7 @@ $usuario=$_GET['id'];
                                     </div>
                                     <select class="form-control" name="exoin" id="exoin" onchange="costosExternos()">
                                         <option>EXTERNO</option>
-                                        <option>INTERNO</option>
+                                        <!--<option>INTERNO</option>-->
                                     </select>
                                 </div>
                             </div>
@@ -141,7 +142,7 @@ $usuario=$_GET['id'];
                                         <td></td>-->
                                     </tr>
                                     <tr id="tablita1">
-                                        <th colspan="3" >SOPORTE LOGISTICO</th>
+                                        <th colspan="3" >TOTAL</th>
                                         <td id="totalTi">0</td>
                                         <td id="totalCa">0</td>
                                         <td id="totalTa">0</td>

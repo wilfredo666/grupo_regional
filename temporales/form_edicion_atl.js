@@ -48,7 +48,7 @@ var IDT1=0;
 var IDT2=0;
 var IDT3=0;
 var IDT4=0;
-var IDT5=0;
+
 function activacoma(nStr){
     nStr += '';
     var x = nStr.split('.');
@@ -205,13 +205,10 @@ function t2_subTotal(u){
 function actualizarTotalT2(){
     var acCosto=0;
     var acPrecio=0;
-    var i;
-    for(i=0;i<IDT2;i++){
-        if($("#t2_tot"+i).length)
-            acCosto+= parseFloat($("#t2_tot"+i).val());
-        if($("#t2_pre"+i).length)
-            acPrecio+= parseFloat($("#t2_pre"+i).val());
-        
+    var i =0;
+    for(i=0;i<=c2;i++){
+        acCosto+= parseFloat(t2_costoTotal[i]);
+        acPrecio+= parseFloat(t2_precio[i]);
     }
     document.getElementById("t2_costoT").innerHTML= acCosto.toFixed(2);
     document.getElementById("t2_precioT").innerHTML= acPrecio.toFixed(2);
@@ -220,29 +217,29 @@ function actualizarTotalT2(){
 
 function addRow_t2(){
     
-    var fila = '<tr id="fila2'+IDT2+'">'+
-        '<td><input type="text" name="t2_mat[]"  id="t2_mat'+IDT2+'" class="form-control"></td>'+
-        '<td><input type="text" name="t2_nom[]" id="t2_nom'+IDT2+'" class="form-control"></td>'+
-        '<td><input type="number" name="t2_can[]" id="t2_can'+IDT2+'" onkeyup="t2_subTotal('+IDT2+')" onClick="this.select()" value="0" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t2_cos[]"id="t2_cos'+IDT2+'" onkeyup="t2_subTotal('+IDT2+')" onClick="this.select()" value="0" class="form-control" step="0.01"></td>'+
-        '<td><select name="t2_doc[]" id="t2_doc'+IDT2+'" onchange="t2_subTotal('+IDT2+')" class="form-control">'+
+    var fila = '<tr id="fila2'+c2+'">'+
+        '<td><input type="text" name="t2_mat[]"  id="t2_mat'+c2+'" class="form-control"></td>'+
+        '<td><input type="text" name="t2_nom[]" id="t2_nom'+c2+'" class="form-control"></td>'+
+        '<td><input type="number" name="t2_can[]" id="t2_can'+c2+'" onkeyup="t2_subTotal('+c2+')" onClick="this.select()" value="0" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" name="t2_cos[]"id="t2_cos'+c2+'" onkeyup="t2_subTotal('+c2+')" onClick="this.select()" value="0" class="form-control" step="0.01"></td>'+
+        '<td><select name="t2_doc[]" id="t2_doc'+c2+'" onchange="t2_subTotal('+c2+')" class="form-control">'+
         '<option>FACTURA</option>'+
         '<option>RECIBO</option>'+
         '</select></td>'+
-        '<td><input type="text" class="form-control" name="t2_tot[]" id="t2_tot'+IDT2+'" readonly></td>'+
-        '<td><input type="number" name="t2_cs[]" id="t2_cs'+IDT2+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" name="t2_pre[]" id="t2_pre'+IDT2+'" onkeyup="t2_subTotal('+IDT2+')" value="0" class="form-control" step="0.01"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT2+' onClick="t2_deleted('+IDT2+')">-</button></td>'+
+        '<td><input type="text" class="form-control" name="t2_tot[]" id="t2_tot'+c2+'" readonly></td>'+
+        '<td><input type="number" name="t2_cs[]" id="t2_cs'+c2+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" name="t2_pre[]" id="t2_pre'+c2+'" onkeyup="t2_subTotal('+c2+')" value="0" class="form-control" step="0.01"></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+c2+' onClick="t2_deleted('+c2+')">-</button></td>'+
         '</tr>'
 
     $('#tablita2').before(fila);
     actualizarTotalT2();
-    IDT2=IDT2+1;
+    c2=c2+1;
 }
 function t2_deleted(d)
 {
-    $("#t2_tot"+d).val(0);
-    $("#t2_pre"+d).val(0);
+    t2_costoTotal[d]=0
+    t2_precio[d]=0
     actualizarTotalT2();
 
     $("#fila2"+d).remove();
@@ -278,50 +275,45 @@ function t3_subTotal(o){
 }
 
 function actualizarTotalT3(){
-    var i;
     var acCosto=0;
     var acPrecio=0;
-    for(i=0;i<IDT3;i++){
-        if($("#t3_tot"+i).length)
-            acCosto+= parseFloat($("#t3_tot"+i).val());
-        if($("#t3_pre"+i).length)
-            acPrecio+= parseFloat($("#t3_pre"+i).val());
-        
+    var i =0;
+    for(i=0;i<=c3;i++){
+        acCosto+= parseFloat(t3_costoTotal[i]);
+        acPrecio+= parseFloat(t3_precio[i]);
     }
     document.getElementById("t3_costoT").innerHTML= acCosto.toFixed(2);
     document.getElementById("t3_precioT").innerHTML= acPrecio.toFixed(2);
     costosExternos();
-
 }
 function addRow_t3(){
     
-    var fila = '<tr id="fila3'+IDT3+'">'+
-        '<td><input type="text" name="t3_ser[]" id="t3_ser'+IDT3+'" class="form-control"></td>'+
-        '<td><input type="text" name="t3_nom[]" id="t3_nom'+IDT3+'" class="form-control"></td>'+
-        '<td><input type="number" name="t3_dia[]" id="t3_dia'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t3_can[]" id="t3_can'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t3_cos[]" id="t3_cos'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><select name="t3_tip[]" id="t3_tip'+IDT3+'" onChange="t3_subTotal('+IDT3+')" class="form-control">'+
+    var fila = '<tr id="fila3'+c3+'">'+
+        '<td><input type="text" name="t3_ser[]" id="t3_ser'+c3+'" class="form-control"></td>'+
+        '<td><input type="text" name="t3_nom[]" id="t3_nom'+c3+'" class="form-control"></td>'+
+        '<td><input type="number" name="t3_dia[]" id="t3_dia'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" name="t3_can[]" id="t3_can'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" name="t3_cos[]" id="t3_cos'+c3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control" step="0.01"></td>'+
+        '<td><select name="t3_tip[]" id="t3_tip'+c3+'" onChange="t3_subTotal('+c3+')" class="form-control">'+
         '<option>FACTURA</option>'+
         '<option>RECIBO</option>'+
         '<option>SIN IMPUESTO</option>'+
         '<option>ALQUILER SIN RECIBO</option>'+
         '</select></td>'+
-        '<td><input type="text" name="t3_tot[]" id="t3_tot'+IDT3+'" value="0" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t3_cs[]" id="t3_cs'+IDT3+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" name="t3_pre[]" value="0" id="t3_pre'+IDT3+'" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT3+' onClick="t3_deleted('+IDT3+')">-</button></td>'+
+        '<td><input type="text" name="t3_tot[]" id="t3_tot'+c3+'" class="form-control" readonly></td>'+
+        '<td><input type="number" name="t3_cs[]" id="t3_cs'+c3+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" name="t3_pre[]" value="0" id="t3_pre'+c3+'" onClick="this.select()" onkeyup="t3_subTotal('+c3+')" class="form-control" step="0.01"></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+c3+' onClick="t3_deleted('+c3+')">-</button></td>'+
         '</tr>'
 
     $('#tablita3').before(fila);
-    /*IDT3=IDT3+1;*/
-    actualizarTotalT3(IDT3);
-    IDT3=IDT3+1;
+    actualizarTotalT3(c3);
+    c3=c3+1;
 }
 function t3_deleted(d)
 {
-    $("#t3_tot"+d).val(0);
-    $("#t3_pre"+d).val(0);
+    t3_costoTotal[d]=0
+    t3_precio[d]=0
     actualizarTotalT3();
 
     $("#fila3"+d).remove();
@@ -346,15 +338,11 @@ function actualizarTotalT4(){
     var acCosto=0;
     var acPrecio=0;
     var acUnitario=0;
-    var i;
-    for(i=0;i<=IDT4;i++){
-        if($("#t4_coT"+i).length)
-            acCosto+= parseFloat($("#t4_coT"+i).val());
-        if($("#t4_pre"+i).length)
-            acPrecio+= parseFloat($("#t4_pre"+i).val());
-        if($("#t4_cos"+i).length)
-            acUnitario+= parseFloat($("#t4_cos"+i).val());
-        
+    var i =0;
+    for(i=0;i<=c4;i++){
+        acCosto+= parseFloat(t4_costoTotal[i]);
+        acPrecio+= parseFloat(t4_precio[i]);
+        acUnitario+=parseFloat(t4_costoUnitario[i]);
     }
     //acCosto = acCosto);
     //acPrecio = acPrecio);
@@ -366,25 +354,25 @@ function actualizarTotalT4(){
 
 function addRow_t4(){
     
-    var fila = '<tr id="fila4'+IDT4+'">'+
-        '<td><input type="text" name="t4_pro[]" id="t4_pro'+IDT4+'" class="form-control"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" class="form-control" name="t4_can[]" id="t4_can'+IDT4+'" step="0.01"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" name="t4_cos['+IDT4+']" id="t4_cos'+IDT4+'" class="form-control" step="0.01"></td>'+
-        '<td><input type="text" name="t4_coT[]" id="t4_coT'+IDT4+'" value="0" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t4_cs[]" id="t4_cs'+IDT4+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" name="t4_pre[]" id="t4_pre'+IDT4+'" class="form-control"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT4+' onClick="t4_deleted(this.id)">-</button></td>'+
+    var fila = '<tr id="fila4'+c4+'">'+
+        '<td><input type="text" name="t4_pro[]" id="t4_pro'+c4+'" class="form-control"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" class="form-control" name="t4_can[]" id="t4_can'+c4+'" step="0.01"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_cos['+c4+']" id="t4_cos'+c4+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="text" name="t4_coT[]" id="t4_coT'+c4+'" class="form-control" readonly></td>'+
+        '<td><input type="number" name="t4_cs[]" id="t4_cs'+c4+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+c4+')" name="t4_pre[]" id="t4_pre'+c4+'" class="form-control"></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+c4+' onClick="t4_deleted(this.id)">-</button></td>'+
         '</tr>'
 
     $('#tablita4').before(fila);
-    actualizarTotalT4(IDT4);
-    IDT4=IDT4+1;
+    actualizarTotalT4(c4);
+    c4=c4+1;
 }
 function t4_deleted(d)
 {
-    $("#t4_coT"+d).val(0)
-    $("#t4_pre"+d).val(0)
-    $("#t4_coU"+d).val(0)
+    t4_costoTotal[d]=0;
+    t4_precio[d]=0;
+    t4_costoUnitario[d]=0;
     actualizarTotalT4();
 
     $("#fila4"+d).remove();
@@ -411,14 +399,10 @@ function actualizarTotalT5(){
     var acPrecio=0;
     var acUnitario=0;
     var i =0;
-    for(i=0;i<=IDT5;i++){
-        if($("#t5_coT"+i).length)
-            acCosto+= parseFloat($("#t5_coT"+i).val());
-        if($("#t5_pre"+i).length)
-            acPrecio+= parseFloat($("#t5_pre"+i).val());
-        if($("#t5_cos"+i).length)
-            acUnitario+= parseFloat($("#t5_coU"+i).val());
-        
+    for(i=0;i<=c5;i++){
+        acCosto+= parseFloat(t5_costoTotal[i]);
+        acPrecio+= parseFloat(t5_precio[i]);
+        acUnitario+=parseFloat(t5_costoUnitario[i]);
     }
     //acCosto = acCosto);
     //acPrecio = acPrecio);
@@ -430,28 +414,25 @@ function actualizarTotalT5(){
 
 function addRow_t5(){
     
-    var fila = '<tr id="fila5'+IDT5+'">'+
-        '<td><input type="text" name="t5_pro[]" id="t5_pro'+IDT5+'" class="form-control"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+IDT5+')" class="form-control" name="t5_can[]" id="t5_can'+IDT5+'" step="0.01"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+IDT5+')" name="t5_coU[]" id="t5_coU'+IDT5+'" class="form-control" step="0.01"></td>'+
-        '<td><input type="text" name="t5_coT[]" id="t5_coT'+IDT5+'" value="0" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t5_cs[]" id="t5_cs'+IDT5+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+IDT5+')" name="t5_pre[]" id="t5_pre'+IDT5+'" class="form-control" step="0.01"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT5+' onClick="t5_deleted(this.id)">-</button></td>'+
+    var fila = '<tr id="fila5'+c5+'">'+
+        '<td><input type="text" name="t5_pro[]" id="t5_pro'+c5+'" class="form-control"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can[]" id="t5_can'+c5+'" step="0.01"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_coU[]" id="t5_coU'+c5+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="text" name="t5_coT[]" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
+        '<td><input type="number" name="t5_cs[]" id="t5_cs'+c5+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_pre[]" id="t5_pre'+c5+'" class="form-control" step="0.01"></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted(this.id)">-</button></td>'+
         '</tr>'
 
     $('#tablita5').before(fila);
-    actualizarTotalT5(IDT5);
-    IDT5=IDT5+1;
+    actualizarTotalT5(c5);
+    c5=c5+1;
 }
 function t5_deleted(d)
 {
     t5_costoTotal[d]=0;
     t5_precio[d]=0;
     t5_costoUnitario[d]=0;
-    $("#t5_coT"+d).val(0)
-    $("#t5_pre"+d).val(0)
-    $("#t5_cos"+d).val(0)
     actualizarTotalT5();
 
     $("#fila5"+d).remove();
@@ -635,45 +616,11 @@ function ActualizacionRapida() {
             //BUSCANDO ID MAXIMO CON ATRIBUTO DE REFERENCIA  
             //CREACCION DE ALGORITMO DE RECORRIDO HASTA LA DETECCION DE ERROR
             var x;
-            for(x=1;x<=15;x++){
+            for(x=0;x<=15;x++){
             if(!($("#staf"+x).length))
                 break;
             }
             IDT1=x;
             totales1();
-
-            var z;
-            for(z=1;z<=15;z++){
-            if(!($("#t2_tot"+z).length))
-                break;
-            }
-            IDT2=z;
-            actualizarTotalT2();
-
-            var y;
-            for(y=1;y<=15;y++){
-            if(!($("#t3_tot"+y).length))
-                break;
-            }
-            IDT3=y;
-            actualizarTotalT3();
-
-            var v;
-            for(v=1;v<=15;v++){
-            if(!($("#t4_coT"+v).length))
-                break;
-            }
-            IDT4=v;
-            actualizarTotalT4();
-
-            var l;
-            for(l=1;l<=15;l++){
-            if(!($("#t5_costoT"+l).length))
-                break;
-            }
-            IDT5=l;
-            actualizarTotalT5();
-
-
 }
 window.onload = ActualizacionRapida;

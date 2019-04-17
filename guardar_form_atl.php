@@ -14,8 +14,9 @@ $fecha_fin=$_POST['fecha_fin'];
 $tiempo_credito=$_POST['tiempo_credito'];
 $tipo_proyecto=$_POST['exoin'];
 $usuario=$_GET['id'];
+$fecha_aprobacion=$_POST['fecha_aprobacion'];
 
-$consulta_guardar="insert into hoja_costos_atl(codigo_hoja_costos,cliente,correo_cliente,fecha_inicio,tiempo_credito,nombre_proyecto,fecha_fin,tipo_proyecto,id_usuario,estado) values('$cod_proyecto','$cliente','$email_cliente','$fecha_inicio','$tiempo_credito','$nom_proyecto','$fecha_fin','$tipo_proyecto','$usuario',1)";
+$consulta_guardar="insert into hoja_costos_atl(codigo_hoja_costos,cliente,correo_cliente,fecha_inicio,tiempo_credito,nombre_proyecto,fecha_fin,tipo_proyecto,id_usuario,estado,fecha_aprobacion) values('$cod_proyecto','$cliente','$email_cliente','$fecha_inicio','$tiempo_credito','$nom_proyecto','$fecha_fin','$tipo_proyecto','$usuario',1,'$fecha_aprobacion')";
 mysqli_query($con,$consulta_guardar);
 
 /*recuperando el ultimo registro de hoja de costos*/
@@ -77,14 +78,14 @@ if($t4_coT[0]>0){
 }
 
 /*equipos propios*/
-$t5_det=$_POST['t5_det'];
+$t5_pro=$_POST['t5_pro'];
 $t5_can=$_POST['t5_can'];
 $t5_coU=$_POST['t5_coU'];
 $t5_coT=$_POST['t5_coT'];
 $t5_pre=$_POST['t5_pre'];
-if($t5_can[0]>0){
-    for($i=0;$i<sizeof($t5_det);$i++){
-        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t5_det[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
+if($t5_coT[0]>0){
+    for($i=0;$i<sizeof($t5_pro);$i++){
+        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t5_pro[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
     }  
 }
 /*costos*/

@@ -26,5 +26,5 @@ function fecha_actual(){
     if(m<10){
         m='0'+m; //agrega cero si el menor de 10 
     }
-    $('#date').val(y+"-"+m+"-"+d)
+    $('#date3').val(y+"-"+m+"-"+d)
 }
