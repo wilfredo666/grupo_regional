@@ -69,7 +69,7 @@ function convertToFloat(v){
 function actualizarTaza(numero){
     var staff = document.getElementById("staf"+numero).value;
     var dayHour = document.getElementById("dayorhour"+numero).value;
-    if (staff=="EJECUTIVO DE CUENTAS") {
+    if (staff=="SUPERVISOR") {
         if (dayHour=="DIAS")
             tasaPresupuestada=tasaEjecutivo*8; 
         if (dayHour=="HORAS")
@@ -79,7 +79,7 @@ function actualizarTaza(numero){
         vTasa[numero]=tasaPresupuestada.toFixed(2);
         document.getElementById("tasa"+numero).value =tasaPresupuestada.toFixed(2); 
     }
-    if (staff=="ENCARGADO LOGISTICO") {
+    if (staff=="SOPORTE LOGISTICO") {
         if (dayHour=="DIAS")
             tasaPresupuestada=tasaEncargado*8;
         if (dayHour=="HORAS")

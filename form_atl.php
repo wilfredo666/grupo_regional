@@ -38,7 +38,7 @@ $usuario=$_GET['id'];
 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text">Codigo de proyecto:</div>
+                                        <div class="input-group-text" title="fsdfsdf">Codigo de proyecto:</div>
                                     </div>
                                     <input name="cod_proyecto" type="text" class="form-control" id="form_codigo">
                                     <button data-backdrop="static" type="button" class="btn btn-primary" data-toggle="modal" data-target="#generar_codigo_proyecto_atl">Generar</button>
@@ -317,11 +317,8 @@ $usuario=$_GET['id'];
                             <table class="table table-sm">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th colspan="3"><h5>COSTO DE VALOR AGREGADO</h5></th>
-                                    </tr>
-                                    <tr>
-                                        <th>COSTO PROGRAMADO DEL PROYECTO</th>
-                                        <th>COSTO ESTIMADO DEL PROYECTO</th>
+                                        <th>COSTO DEL PROYECTO</th>
+                                        <th>COTIZACION PARA CLIENTE</th>
                                         <th>DIFERENCIA</th>
                                     </tr>
                                 </thead>
@@ -335,12 +332,9 @@ $usuario=$_GET['id'];
                 </tbody>
             <thead class="thead-light">
                 <tr>
-                    <th colspan="3"><h5>COSTO INDIRECTOS DE OPERACIONES</h5></th>
-                </tr>
-                <tr>
-                    <th>COSTO ACUMULADO PROGRAMADO</th>
+                    <th>TOTAL EN ITEMS</th>
                     <th>TASA DE APLICACIÓN</th>
-                    <th>COSTO PROGRAMADO DE COSTOS INDIRECTOS</th>
+                    <th>TOTAL ITEMS * TASA</th>
                 </tr>
             </thead>
             <tbody>
@@ -422,17 +416,14 @@ $usuario=$_GET['id'];
 <div class="row" id="botones">
     <div class="col-sm-4"></div>
     <div class="col-sm-6">
-        <input type="submit" value="Guardar" class="btn btn-info">
+        <input type="submit" value="Guardar" class="btn btn-info" title="echoo asi" data-toggle="tooltip">
         <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"></a>
-        <input type="hidden" value="prueba" onclick="resticcion()">
+        <!--<input type="hidden" value="prueba" onclick="resticcion()">-->
     </div>
     <div class="col-sm-2"></div>
 </div>           
 </div>
 </form>
-<script>
-
-</script>
 <script type="text/javascript" src="js/form_atl.js"></script>
 <script src="js/jquery-3.3.1.js"></script>
 <script src="bootstrap/js/bootstrap.js"></script>

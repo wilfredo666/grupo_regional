@@ -338,7 +338,7 @@ WebRTC
 style="display:none" --- para ocultarlo y que no ocupe espacio
 style="visibility:hidden" --- para no mostrarlo pero ocupa espacio
 hidden="" --- para ocultarlo y que no ocupe espac
-
+tooltip de boostrap para elegantes avisos al pasar el mouse
 
 
 
