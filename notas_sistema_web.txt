@@ -354,8 +354,8 @@ tooltip de boostrap para elegantes avisos al pasar el mouse
 12/04/19
 Cambios sugeridos por Paola y Francisco
 
-- COSTO ESTIMADO DEL PROYECTO -----> cotiz final
-- COSTO PROGRAMADO DEL PROYECTO ----> costo sugerido del proyecto
+- COSTO ESTIMADO DEL PROYECTO -----> cotiz final *
+- COSTO PROGRAMADO DEL PROYECTO ----> costo sugerido del proyecto *
 - eliminar el fee programado
 - eliminar los campos; costo sigerido, sin fee del apartado 3
 - poner aviso de registrado con exito
