@@ -15,7 +15,7 @@ function mostrar_cliente(){
     $sql="select * from cliente";
     $cliente=mysqli_query($con,$sql);
     while($fila=mysqli_fetch_array($cliente)){
-        echo '<option value='.$fila['codigo'].'>'.$fila['nombre'].'</option>';
+        echo '<option value='.$fila['codigo'].'-'.$fila['dias_credito'].'>'.$fila['nombre'].'</option>';
     }
 }
 function mostrar_ciudad(){

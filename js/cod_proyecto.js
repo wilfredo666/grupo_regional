@@ -6,8 +6,8 @@ function codigo_proyecto(){
         ini=4,
         fin=6,
         ultimo_codigo_str2=ultimo_codigo_str.substring(fin);
-    /*alert(ultimo_codigo_str2);*/
-    codigo=$('#area').val()+$('#ciudad').val()+$('#cliente').val()+ultimo_codigo_str2;
+    cod_cliente=$('#cliente_mod').val().split("-")
+    codigo=$('#area_mod').val()+$('#ciudad_mod').val()+cod_cliente[0]+ultimo_codigo_str2;
     $('#codigo').val(codigo)
     /*aqui lleva el valor a form_x.php*/
     $('#form_codigo').val(codigo)

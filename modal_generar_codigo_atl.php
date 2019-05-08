@@ -19,19 +19,19 @@
                         <form>
                             <div class="form-group">
                                 <label for="" class="col-form-label">Area</label>
-                                <select name="" id="area" class="form-control" onchange="codigo_proyecto()">
+                                <select name="" id="area_mod" class="form-control" onchange="codigo_proyecto()">
                                     <?php mostrar_centro_costos(); ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label" value="ciudad">Ciudad</label>
-                                <select name="" id="ciudad" class="form-control" onchange="codigo_proyecto()">
+                                <select name="" id="ciudad_mod" class="form-control" onchange="codigo_proyecto()">
                                     <?php mostrar_ciudad(); ?>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="" class="col-form-label">Cliente</label>
-                                <select name="" id="cliente" class="form-control" onchange="codigo_proyecto()">
+                                <select name="" id="cliente_mod" class="form-control" onchange="codigo_proyecto()">
                                     <?php mostrar_cliente(); ?>
                                 </select>
                                 <?php ultimo_codigo_proyecto_atl(); ?>
