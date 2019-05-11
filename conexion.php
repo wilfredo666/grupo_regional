@@ -34,6 +34,14 @@ function mostrar_centro_costos(){
         echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
     }
 }
+function mostrar_proveedor(){
+    global $con;
+    $sql="select * from proveedor";
+    $proveedor=mysqli_query($con,$sql);
+    while($fila=mysqli_fetch_array($proveedor)){
+        echo '<option value='.$fila[0].'>'.$fila[1].'</option>';
+    }
+}
 function ultimo_codigo_proyecto_atl(){
     global $con;
     $sql="SELECT codigo_hoja_costos FROM hoja_costos_atl WHERE id_hoja_costos=(SELECT MAX(id_hoja_costos) FROM hoja_costos_atl WHERE codigo_hoja_costos <> '')";

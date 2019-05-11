@@ -94,7 +94,6 @@ $usuario=$_GET['id'];
                                     </div>
                                     <select class="form-control" name="exoin" id="exoin" onchange="costosExternos()">
                                         <option>EXTERNO</option>
-                                        <!--<option>INTERNO</option>-->
                                     </select>
                                 </div>
                             </div>

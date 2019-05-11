@@ -13,7 +13,7 @@ function dias_credito_manual(){
     document.getElementById("tiempoPr").value=document.getElementById("number").value
 }//tiempo de credito a tiempo programado (manualmente)
 function costosExternos(){
-    
+
     var total_item = 0;
     var costo_indirecto=0;
     var te1=0;
@@ -29,7 +29,7 @@ function costosExternos(){
     var fee2=0;
     var cot_cliente=0;
     var diferencia=0;
-    
+
     var t1_costoT = document.getElementById("totalCo").innerHTML //t1: total - costo total programado de mod
     var t3_costoT = document.getElementById("t3_costoT").innerHTML //t3: total - costo total
     var t4_costoT = document.getElementById("t4_costoT").innerHTML //t4: total - costo total
@@ -40,7 +40,7 @@ function costosExternos(){
     // total en items
     total_item = parseFloat(t1_costoT)+parseFloat(t3_costoT)+parseFloat(t4_costoT)
     document.getElementById("costoAp").value=total_item.toFixed(2)
-     //costo indirecto
+    //costo indirecto
     costo_indirecto = (total_item*tasaAplicacion).toFixed(2)
     document.getElementById("costoPd").value=costo_indirecto
     //costo financiero   
@@ -64,7 +64,7 @@ function costosExternos(){
     //diferencia
     diferencia=parseFloat(cot_cliente)-parseFloat(costo_proyecto)
     document.getElementById("diferencia").value=diferencia.toFixed(2)
-    }//calculos que se muestran en el lado derecho de la planilla
+}//calculos que se muestran en el lado derecho de la planilla
 function dias_credito(){
     dias_cliente=$('#cliente').val().split("-")
     $('#number').val(dias_cliente[1])//tiempo de credito (en dias)
@@ -74,8 +74,8 @@ function prorrateo(costo_item){
     var item_costo=costo_item.toFixed(2)
     var total_item2=parseFloat(document.getElementById("costoAp").value)
     var pro=parseFloat(total_item2)+
-                    parseFloat(document.getElementById("costoPd").value)+
-                    parseFloat(document.getElementById("costoTo").value)
+        parseFloat(document.getElementById("costoPd").value)+
+        parseFloat(document.getElementById("costoTo").value)
     var pro2=(parseFloat(pro)/0.84).toFixed(2)//total de items + costos indirectos + impuestos
     var pro3=(parseFloat(item_costo)/parseFloat(total_item2))*parseFloat(pro2)
     return pro3.toFixed(2)
@@ -308,6 +308,49 @@ function actualizarTotalT4(){
     costosExternos();    
 }
 
+//**************************** t5 = modal - items orden de compra ************************
+
+var c5 = 0;
+var t5_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - costo total
+
+function addRow_t5(){
+    //valores de input
+    var fila = '<tr id="fila5'+c5+'">'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can[]" id="t5_can'+c5+'" step="0.01"></td>'+
+        '<td><input type="text" name="t5_pro[]" id="t5_pro'+c5+'" class="form-control"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_cos['+c5+']" id="t5_cos'+c5+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="text" name="t5_coT[]" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted('+c5+')">-</button></td>'+
+        '</tr>'
+
+    $('#tablita5').before(fila);
+    /*actualizarTotalT4(c4);*/
+    c5=c5+1;
+}//agregar fila
+function t5_deleted(d){
+    t5_costoTotal[d]=0
+    actualizarTotalT5();
+    $("#fila5"+d).remove();
+}//eliminar fila
+function t5_subTotal(e){
+    var oc_ca = parseFloat(document.getElementById("t5_can"+e).value)//cantidad
+    var oc_co = parseFloat(document.getElementById("t5_cos"+e).value)//costo unitario
+    //costo total
+    var oc_costoT = oc_ca*oc_co;
+    document.getElementById("t5_coT"+e).value =  oc_costoT.toFixed(2);
+    t5_costoTotal[e]=oc_costoT.toFixed(2);
+    actualizarTotalT5();
+}
+function actualizarTotalT5(){
+    var acCosto=0;
+    var i =0;
+    for(i=0;i<=c5;i++){
+        acCosto+= parseFloat(t5_costoTotal[i]);
+    }
+    document.getElementById("t5_costoT").innerHTML= acCosto.toFixed(2)
+}
+
+
 function prueba(numero){
-    return numero.toFixed(2)
+    alert ("eso es")
 }

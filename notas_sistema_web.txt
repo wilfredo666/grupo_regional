@@ -108,20 +108,8 @@ fecha proyecto - fecha de evento
 total ejecutado --- es el costo real del proyecyo una vez terminado el proyecto---llenado por contabilidad
 *letra roja en caso de ser negativo
 
-/*datos iniciales - hoja de costos*/
-$cliente=$_POST['cliente'];
-$email_cliente=$_POST['email_cliente'];
-$cod_proyecto=$_POST['cod_proyecto'];
-$nom_proyecto=$_POST['nom_proyecto'];
-$fecha_inicio=$_POST['fecha_inicio'];
-$fecha_fin=$_POST['fecha_fin'];
-$tiempo_credito=$_POST['tiempo_credito'];
-$tipo_proyecto=$_POST['exoin'];
-$usuario=$_GET['id'];
 
-$consulta_guardar="insert into hoja_costos_atl(codigo_hoja_costos,cliente,correo_cliente,fecha_inicio,tiempo_credito,nombre_proyecto,fecha_fin,tipo_proyecto,id_usuario,estado) values('$cod_proyecto','$cliente','$email_cliente','$fecha_inicio','$tiempo_credito','$nom_proyecto','$fecha_fin','$tipo_proyecto','$usuario',1)";
-mysqli_query($con,$consulta_guardar);
-
+-----------------------------------------------
 /*recuperando el ultimo registro de hoja de costos*/
 $ultimo_registro=mysqli_fetch_row(mysqli_query($con,"SELECT MAX(id_hoja_costos) FROM hoja_costos_atl"));
 
@@ -181,14 +169,14 @@ if($t4_coT[0]>0){
 }
 
 /*equipos propios*/
-$t5_det=$_POST['t5_det'];
+$t5_pro=$_POST['t5_pro'];
 $t5_can=$_POST['t5_can'];
 $t5_coU=$_POST['t5_coU'];
 $t5_coT=$_POST['t5_coT'];
 $t5_pre=$_POST['t5_pre'];
-if($t5_can[0]>0){
-    for($i=0;$i<sizeof($t5_det);$i++){
-        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t5_det[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
+if($t5_coT[0]>0){
+    for($i=0;$i<sizeof($t5_pro);$i++){
+        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t5_pro[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
     }  
 }
 /*costos*/
@@ -221,136 +209,8 @@ $consulta_guardar2="insert into costos_totales_atl(id_hoja_costos_atl,costo_prog
 diferencia,costo_acumulado_programado,tas_apliacacion,costo_programado_costos_indirectos,tiempo_programado,tasa_fiannciera,total_programado_financiero,fee_programado,fee_variable,costo_total_proyecto_ejcutado,costo_total_proyecto_feevariable,fee_ejecutado,fee_feevariable,costo_total_proyecto_mas_feeejecutado,costo_total_proyecto_mas_impuestos_ejecutado,costo_total_proyecto_mas_impuestos_feevariable)values('$ultimo_registro[0]','$costoVA','$costoED','$diferencia','$costoAp','$tasaDa','$costoPd','$tiempoPr','$tasaFi','$costoTo','$feeP','$feeV','$totalE1','$totalF1','$totalE2','$totalF2','$totalE3','$totalE4','$totalF4')";
 
 mysqli_query($con,$consulta_guardar2);
-
-header("location: menu.php?id=$usuario");
-
 ------------------------------------------------
 
-/*personal directo que interviene en la operacion*/
-$detalle=$_POST['staf'];
-$nom_personal=$_POST['detalle'];
-$tiempo=$_POST['dayorhour'];
-$t_programado=$_POST['time'];
-$cant_personas=$_POST['nrop'];
-$t_presupuestaria=$_POST['tasa'];
-$tot_pro_mod=$_POST['costop'];
-$pre_cot_sin_fee=$_POST['precioC'];
-if ($tot_pro_mod[0]>0){
-            echo "el total de filas";
-    echo "</br>";
-    for($i=0;$i<sizeof($detalle);$i++){
-        echo $i;
-        echo "</br>";
-/*        mysqli_query($con,"insert into personal_directo_atl(id_hoja_costos_atl,detalle,nombre_personal,tiempo,tiempo_programado,cantidad_personas,tasa_presupuestaria,costo_total_programado,precio_cotizado_sin_fee) values('$ultimo_registro[0]','$detalle[$i]','$nom_personal[$i]','$tiempo[$i]','$t_programado[$i]','$cant_personas[$i]','$t_presupuestaria[$i]','$tot_pro_mod[$i]','$pre_cot_sin_fee[$i]')");*/
-    }
-    echo "el indice de un array";
-    echo "</br>";
-    echo key($pre_cot_sin_fee);
-    echo "</br>";
-    echo "el valor del ultimo elemento de un array";
-    echo "</br>";
-    echo end($pre_cot_sin_fee);
-    echo "</br>";
-    echo "el valor maximo de un array";
-    echo "</br>";
-    echo max($pre_cot_sin_fee);
-    echo "</br>";
-    function endKey( $array ){
-
-    //Aquí utilizamos end() para poner el puntero
-    //en el último elemento, no para devolver su valor
-    end( $array );
-
-    return key( $array );
-
-}
-
-echo endKey( $pre_cot_sin_fee); 
-    echo "....";
-    echo "</br>";
-    end($pre_cot_sin_fee);
-    echo key($pre_cot_sin_fee);
-    reset($pre_cot_sin_fee);
-}
-
---------------------
-/*personal directo que interviene en la operacion*/
-$detalle=$_POST['staf'];
-$nom_personal=$_POST['detalle'];
-$tiempo=$_POST['dayorhour'];
-$t_programado=$_POST['time'];
-$cant_personas=$_POST['nrop'];
-$t_presupuestaria=$_POST['tasa'];
-$tot_pro_mod=$_POST['costop'];
-$pre_cot_sin_fee=$_POST['precioC'];
-if ($tot_pro_mod[0]>0){
-    echo "total de items:"." ".sizeof($detalle);
-    echo "</br>";
-    for($i=0;$i<sizeof($detalle);$i++){
-        echo "indice de recorrido";
-        echo "</br>";
-        echo $i;
-        echo "</br>";
-        echo "nombre de personal";
-        echo "</br>";
-        echo $nom_personal[$i];
-        echo "</br>";
-        echo "clave del item: ".key($nom_personal);
-        echo "</br>";
-    }
-}
-
---------------------
-'<tr id="fila1'+c+'">'+ 
-        '<td>'+
-        '<select onChange="actualizarTaza('+c+')" class="form-control"  name="staf['+c+']" id="staf'+c+'" >'+
-        '<option>EJECUTIVO DE CUENTAS</option>'+
-        '<option>ENCARGADO LOGISTICO</option>'+
-        '</select>'+
-        '</td>'+  
-        '<td><input type="text" class="form-control" name="detalle['+c+']" id="detalle'+c+'" ></td>'+
-        '<td><select class="form-control" onChange= "actualizarTaza('+c+')" name="dayorhour['+c+']" id="dayorhour'+c+'" >'+
-        '<option>SELECCIONAR</option>'+
-        '<option>DIAS</option>'+
-        '<option>HORAS</option>'+
-        '</select></td>'+
-        '<td><input type="number" class="form-control" name="time['+c+']" id="time'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();" step="0.01"></td>'+
-        '<td><input type="number" class="form-control" name="nrop['+c+']" id="nrop'+c+'" value ="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();" step="0.01"></td>'+
-        '<td><input type="text" class="form-control" name="tasa['+c+']" id="tasa'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" readonly></td>'+
-        '<td><input type="text" class="form-control" name="costop[]" id="costop'+c+'" value="0" readonly></td>'+
-        '<td><input type="number" name="cs['+c+']" id="cs'+c+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="text" class="form-control" name="precioC['+c+']" id="precioC'+c+'" value="0" onkeyup="actualizarCostoTotal('+c+')" onClick="this.select();"></td>'+
-        '<td><button type="button" class="btn btn-danger" onclick="t1_deleted('+c+')" id='+c+' >-</button></td>'+
-        '</tr>'
-
-onsubmit=" return resticcion()"
-
-Hola queridos colegas, necesito hacer una presentacion en tiempo real donde se vaya mostrando en pantalla los resultados de un cronograma de partidos durante el transcurso del dia, que software usan o como se logra eso?
-Alguien sabe que programa o como es que se hace una presentacion donde se va mostrando en tiempo real lo que se ponga
-
-Websocket
-WebRTC
-
-
-
-
-
-style="display:none" --- para ocultarlo y que no ocupe espacio
-style="visibility:hidden" --- para no mostrarlo pero ocupa espacio
-hidden="" --- para ocultarlo y que no ocupe espac
-tooltip de boostrap para elegantes avisos al pasar el mouse
-
-
-
-
-
-
-
-
-
-
-
-----------
 12/04/19
 Cambios sugeridos por Paola y Francisco
 
