@@ -13,14 +13,10 @@ $atl=mysqli_fetch_array(mysqli_query($con,"select nombre, nombre_proyecto, tipo_
 $cos_totales=mysqli_fetch_array(mysqli_query($con,"select * from costos_totales_atl where id_hoja_costos_atl=$id_hoja_costos_atl"));
 /*consulta - personal directo que interviene en la operacion*/
 $per_directo=mysqli_query($con,"select * from personal_directo_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
-/*consulta - materiales que interviene en la operacion*/
-$materiles=mysqli_query($con,"select * from materiales_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
-/*consulta - servicios que interviene en la operacion*/
+/*consulta - materiales/servicios que interviene en la operacion*/
 $servicios=mysqli_query($con,"select * from servicios_contratados_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
-/*consulta - productos propios de taller*/
+/*consulta - productos/equipos propios de taller*/
 $productos=mysqli_query($con,"select * from producto_propio_taller_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
-/*consulta - equipos propios*/
-$equipos=mysqli_query($con,"select * from equipo_propio_atl where id_hoja_costos_atl=$id_hoja_costos_atl");
 /*fecha*/
 setlocale(LC_ALL, "es_ES");
 $fe=strftime("Fecha: %A %d de %B del %Y");
@@ -50,8 +46,7 @@ class PDF extends FPDF{
         $this->SetFont('Arial','I',8);
         $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');*/
     }
-    function ImprovedTable($cabecera)
-    {
+    function ImprovedTable($cabecera){
         // Anchuras de las columnas
         $w = array(95, 12, 18, 35,30);
         // Cabeceras
@@ -100,19 +95,7 @@ while($row1=mysqli_fetch_array($per_directo)){
     }
 }
 
-/*meteriales*/
-while($row2=mysqli_fetch_array($materiles)){
-    if($row2[8]!=0){
-        $pdf->Cell(95,6,$row2[2],'LR');
-        $pdf->Cell(12,6,'','C');
-        $pdf->Cell(18,6,$row2[4],'LR',0,'C');
-        $pdf->Cell(35,6,number_format($row2[8]/$row2[4],2,".",""),'R',0,'C');
-        $pdf->Cell(30,6,$row2[8],'R',0,'C');
-        $pdf->Ln();
-        $t_cos_tot2=$t_cos_tot2+$row2[8];   
-    }
-}
-/*servicios*/
+/*materiales/servicios que interviene en la operacion*/
 while($row3=mysqli_fetch_array($servicios)){
     if($row3[9]!=0){
         $pdf->Cell(95,6,$row3[2],'LR');
@@ -125,28 +108,16 @@ while($row3=mysqli_fetch_array($servicios)){
     }
 
 }
-/*productos propios*/
+/*productos/equipos propios de taller*/
 while($row4=mysqli_fetch_array($productos)){
     if($row4[5]!=0){
         $pdf->Cell(95,6,$row4[2],'LR');
         $pdf->Cell(12,6,'','C');
         $pdf->Cell(18,6,$row4[3],'LR',0,'C');
-        $pdf->Cell(35,6,number_format($row4[6]/$row4[3],2,".",""),'R',0,'C');
-        $pdf->Cell(30,6,$row4[6],'R',0,'C');
+        $pdf->Cell(35,6,$row4[4],'R',0,'C');
+        $pdf->Cell(30,6,$row4[5],'R',0,'C');
         $pdf->Ln();
-        $t_cos_tot4=$t_cos_tot4+$row4[6];   
-    }
-}
-/*equipos propios*/
-while($row5=mysqli_fetch_array($equipos)){
-    if($row5[5]!=0){
-        $pdf->Cell(95,6,$row5[2],'LR');
-        $pdf->Cell(12,6,'','C');
-        $pdf->Cell(18,6,$row5[3],'LR',0,'C');
-        $pdf->Cell(35,6,number_format($row5[6]/$row5[3],2,".",""),'R',0,'C');
-        $pdf->Cell(30,6,$row5[6],'R',0,'C');
-        $pdf->Ln();
-        $t_cos_tot5=$t_cos_tot5+$row5[6];   
+        $t_cos_tot4=$t_cos_tot4+$row4[5];   
     }
 }
 
@@ -160,14 +131,14 @@ if($atl[2]=="EXTERNO"){
     $pdf->Cell(30,6,$cos_totales[13],1,1,"C");
 }
 $pdf->SetX(135);
-$pdf->Cell(35,6,'F.E.E.('.$cos_totales[12].'%) = ',1,0,"C");
+$pdf->Cell(35,6,'F.E.E.('.$cos_totales[9].'%) = ',1,0,"C");
 $pdf->SetX(170);
-$pdf->Cell(30,6,$cos_totales[16],1,1,"C");
+$pdf->Cell(30,6,$cos_totales[10],1,1,"C");
 $pdf->SetX(135);
 $pdf->Cell(35,6,'Total = ',1,0,"C");
 $pdf->SetX(170);
 if($atl[2]=="EXTERNO"){
-    $pdf->Cell(30,6,number_format($t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+$cos_totales[16],2,".",""),1,1,"C");
+    $pdf->Cell(30,6,number_format($t_cos_tot1+$t_cos_tot2+$t_cos_tot3+$t_cos_tot4+$t_cos_tot5+$cos_totales[10],2,".",""),1,1,"C");
 }else{
     $pdf->Cell(30,6,$cos_totales[13],1,1,"C");
 }

@@ -57,11 +57,27 @@ $t4_can=$_POST['t4_can'];
 $t4_cos=$_POST['t4_cos'];
 $t4_coT=$_POST['t4_coT'];
 $t4_pre=$_POST['t4_pre'];
-if($t4_coT[0]>0){
+if($t4_can[0]>0){
     for($i=0;$i<sizeof($t4_pro);$i++){
         mysqli_query($con,"insert into producto_propio_taller_atl(id_hoja_costos_atl,descripcion_producto,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$ultimo_registro[0]','$t4_pro[$i]','$t4_can[$i]','$t4_cos[$i]','$t4_coT[$i]','$t4_pre[$i]')");
     }
 }
+/*costos*/
+$costoAp=$_POST['costoAp'];//total en items
+$tasaDa=$_POST['tasaDa'];//tasa de aplicacion
+$costoPd=$_POST['costoPd'];//costo indirecto
+$tiempoPr=$_POST['tiempoPr'];//tiempo programado
+$tasaFi=$_POST['tasaFi'];//tasa financiera
+$costoTo=$_POST['costoTo'];//costo financiero
+$totalE1=$_POST['totalE1'];//total cotizacion sin fee
+$feeV=$_POST['feeV'];//fee
+$totalF2=$_POST['totalF2'];//fee de total cotizacion sin fee
+$costoED=$_POST['costoED'];//cotizacion para cliente
+$diferencia=$_POST['diferencia'];//diferencia entre: cotizacion para cliente && costo del proyecto
+$costoVA=$_POST['costoVA'];//costo del proyecto
 
+$consulta_guardar2="insert into costos_totales_atl(id_hoja_costos_atl,total_item,tasa_aplicacion,costo_indirecto,tiempo_programado,tasa_financiera,costo_financiero,total_sin_fee,fee,fee_cot_sin_fee,cotizacion_cliente,diferencia,costo_proyecto)values('$ultimo_registro[0]','$costoAp','$tasaDa','$costoPd','$tiempoPr','$tasaFi','$costoTo','$totalE1','$feeV','$totalF2','$costoED','$diferencia','$costoVA')";
+
+mysqli_query($con,$consulta_guardar2);
 header("location: menu.php?id=$usuario");
 ?>

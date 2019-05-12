@@ -18,7 +18,7 @@ $empleado=$_GET['id'];
                    <!--tabla ATL-->
                     <thead>
                         <tr class="table-success">
-                            <th colspan="14" style="text-align:center">Eventos - ATL</th>
+                            <th colspan="14" style="text-align:center">Eventos</th>
                         </tr>
                         <tr class="table-active">
                             <th>Codigo Proyecto</th>
@@ -29,8 +29,8 @@ $empleado=$_GET['id'];
                             <th>Fecha de inicio</th>
                             <th>Fecha de conclucion</th>
                             <th>Fecha de facturacion</th>
-                            <th>Monto presupuestado</th>
-                            <th>Monto cotizado</th>
+                            <th>Costo del proyecto</th>
+                            <th>Cotizacion</th>
                             <th>Diferencia</th>
                             <th></th>
                             <th></th>
@@ -102,9 +102,7 @@ $empleado=$_GET['id'];
         <div class="container">
             <div class="row">
                 <div class="col-sm-4"></div>
-                        <div class="col-sm-6"><a href="menu.php?id=<?php echo $empleado; ?>">
-                            <input name="salir" type="button" value="Salir" class="btn btn-info">
-                        </a>
+                        <div class="col-sm-6"><input name="button" type="button" class="btn btn-info" onclick="window.close();" value="Salir"/>
                         </div>
                         <div class="col-sm-2"></div>
             </div>

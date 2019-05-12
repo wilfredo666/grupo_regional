@@ -200,7 +200,7 @@ $usuario=$_GET['id'];
 
             <!-------------------------formulario parte 2--------------------------------->
 
-                    <div class="col-3">
+                    <div class="col-3" style='display:scroll;position:fixed;right:0px;'>
                 <table class="table table-sm">
                     <thead class="thead-light">
                         <tr>
@@ -268,8 +268,7 @@ $usuario=$_GET['id'];
             <div class="col-sm-4"></div>
             <div class="col-sm-6">
                 <input type="submit" value="Guardar" class="btn btn-info" title="echoo asi" data-toggle="tooltip">
-                <a href="menu.php?id=<?php echo $usuario; ?>"><input name="salir" type="button" value="Salir" class="btn btn-info"></a>
-                <!--<input type="hidden" value="prueba" onclick="resticcion()">-->
+                <input name="button" type="button" class="btn btn-info" onclick="window.close();" value="Salir"/>
             </div>
             <div class="col-sm-2"></div>
 </div>           
