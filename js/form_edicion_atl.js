@@ -1,75 +1,126 @@
-//Variables tablita 1 
-//Ejecutivo de cuenta -> Hora: 30     Dia:240
-//Encargado logistico -> Hora: 26     Dia: 208
-var tasaEjecutivo = 30; //valor en horas
-var tasaEncargado = 26; //valor en horas
-var tasaPresupuestada = 0;
-var c=0;
-var vTasa = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var vCosto = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var vPre = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var vCant = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var vTip = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+// variables globales
+var tasaAplicacion = 0.14;//tasa de aplicacion
+var tasFinanciera = 0.054;//tasa financiera
 
-// Variables tablita 2
-//Solamente habilitado factura, por tanto:
-//Costo total estimado = cantidad *c/u * 0.87
-var c2=0;
-var t2_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var t2_precio = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+// funciones globales
+function calcular(){
 
-//Variables tablita 3
-// dias * cantidad * c/u * tipooForma
-//Factura = *0.87
-//Recibo = *1.18
-//Sin impuesto = *1 
-// Alquiler sin recibo = *1.19 
-
-var t3_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var t3_precio = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var c3 = 0;
-//variables tablita 4
-var c4 = 0;
-var t4_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var t4_precio = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
-var t4_costoUnitario = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-//variables tablita 5
-var c5 = 0;
-var t5_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var t5_precio = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; 
-var t5_costoUnitario = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-
-var tasaAplicacion = 0.17;
-//t2_subTotal(0);
-//actualizarTaza(0);
-
-
-var IDT1=0;
-var IDT2=0;
-var IDT3=0;
-var IDT4=0;
-var IDT5=0;
-function activacoma(nStr){
-    nStr += '';
-    var x = nStr.split('.');
-    var x1 = x[0];
-    var x2 = x.length > 1 ? '.' + x[1] : '';
-    var rgx = /(\d+)(\d{3})/;
-    while (rgx.test(x1)) {
-        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-    }
-    return x1 + x2;
 }
+function inicio(){
+    document.getElementById("tasaDa").value=tasaAplicacion
+    document.getElementById("tasaFi").value=tasFinanciera
+}//valores que se cargan a cargar la pagina
+function dias_credito_manual(){
+    document.getElementById("tiempoPr").value=document.getElementById("number").value
+}//tiempo de credito a tiempo programado (manualmente)
+function costosExternos(){
 
-function convertToFloat(v){
-    var nuevo="";
-    var res;
-    var i;
-    for( i=0; i<v.length;i++)
-        if(v[i]!=',')
-            nuevo +=v[i];
-    res = parseFloat(nuevo).toFixed(2);
-    return res;   
+    var total_item = 0;
+    var costo_indirecto=0;
+    var te1=0;
+    var tiempoP=0;
+    var costo_financiero=0;
+    var cf1=0;
+    var cf2=0;
+    var costo_proyecto=0;
+    var tot_item_sin_fee=0;
+    var fee=0;
+    var fee_de_cot=0;
+    var cot_mas_fee=0;
+    var fee2=0;
+    var cot_cliente=0;
+    var diferencia=0;
+
+    var t1_costoT = document.getElementById("totalCo").innerHTML //t1: total - costo total programado de mod
+    var t3_costoT = document.getElementById("t3_costoT").innerHTML //t3: total - costo total
+    var t4_costoT = document.getElementById("t4_costoT").innerHTML //t4: total - costo total
+    var t1_precioT = document.getElementById("totalPr").innerHTML //t1: total - precio cotizado sin fee
+    var t3_precioT = document.getElementById("t3_precioT").innerHTML //t3: total - precio cotizado sin fee
+    fee=document.getElementById("feeV").value//F.E.E.
+    tiempoP=document.getElementById("tiempoPr").value//tiempo programado
+    // total en items
+    total_item = parseFloat(t1_costoT)+parseFloat(t3_costoT)+parseFloat(t4_costoT)
+    document.getElementById("costoAp").value=total_item.toFixed(2)
+    //costo indirecto
+    costo_indirecto = (total_item*tasaAplicacion).toFixed(2)
+    document.getElementById("costoPd").value=costo_indirecto
+    //costo financiero   
+    cf1=total_item+parseFloat(costo_indirecto)
+    cf2=((tiempoP/100)*tasFinanciera).toFixed(3)
+    costo_financiero=(cf2*cf1).toFixed(2)
+    document.getElementById("costoTo").value=costo_financiero
+    //total cotizacion sin fee
+    tot_item_sin_fee=parseFloat(t1_precioT)+parseFloat(t3_precioT)+parseFloat(t4_costoT)
+    document.getElementById("totalE1").value=tot_item_sin_fee.toFixed(2)
+    //F.E.E. de cotizacion sin fee
+    fee_de_cot=(tot_item_sin_fee/100)*fee
+    document.getElementById("totalF2").value=fee_de_cot.toFixed(2)
+    //costo del proyecto
+    fee2=(((parseFloat(total_item)+parseFloat(costo_indirecto)+parseFloat(costo_financiero))/100)*fee).toFixed(2)
+    costo_proyecto=((parseFloat(total_item)+parseFloat(costo_indirecto)+parseFloat(costo_financiero))+parseFloat(fee2))/0.84
+    document.getElementById("costoVA").value=costo_proyecto.toFixed(2)
+    //cotizacion para el cliente
+    cot_cliente=parseFloat(tot_item_sin_fee)+parseFloat(fee_de_cot)
+    document.getElementById("costoED").value=cot_cliente.toFixed(2)
+    //diferencia
+    diferencia=parseFloat(cot_cliente)-parseFloat(costo_proyecto)
+    document.getElementById("diferencia").value=diferencia.toFixed(2)
+}//calculos que se muestran en el lado derecho de la planilla
+function dias_credito(){
+    dias_cliente=$('#cliente').val().split("-")
+    $('#number').val(dias_cliente[1])//tiempo de credito (en dias)
+    $('#tiempoPr').val(dias_cliente[1])
+}//tiempo de credito de los clientes
+
+//**************************** t1 = personal que interviene en la operacion ************************
+
+var c=0;
+var tasaEjecutivo = 30; //Ejecutivo de cuenta - valor en horas
+var tasaEncargado = 26; //Encargado logistico - valor en horas
+var tasaPresupuestada = 0;
+var vTip = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - tiempo programado
+var vCant = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - cantidad de personas
+var vTasa = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - tasa presupuestaria
+var vCosto = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - costo programado de mod
+var vPre = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - precio cotizado sin fee
+
+function addRow(){
+    
+    var fila = '<tr id="fila1'+IDT1+'">'+ 
+        '<td>'+
+        '<select onChange="actualizarTaza('+IDT1+')" class="form-control"  name="staf[]" id="staf'+IDT1+'" >'+
+        '<option>EJECUTIVO DE CUENTAS</option>'+
+        '<option>ENCARGADO LOGISTICO</option>'+
+        '</select>'+
+        '</td>'+  
+        '<td><input type="text" class="form-control" name="detalle[]" id="detalle'+IDT1+'" ></td>'+
+        '<td><select class="form-control" onChange= "actualizarTaza('+IDT1+')" name="dayorhour[]" id="dayorhour'+IDT1+'" >'+
+        '<option>SELECCIONAR</option>'+
+        '<option>DIAS</option>'+
+        '<option>HORAS</option>'+
+        '</select></td>'+
+        '<td><input type="number" class="form-control" name="time[]" id="time'+IDT1+'" value="0" onkeyup="actualizarCostoTotal('+IDT1+')" onClick="this.select();" step="0.01"></td>'+
+        '<td><input type="number" class="form-control" name="nrop[]" id="nrop'+IDT1+'" value ="0" onkeyup="actualizarCostoTotal('+IDT1+')" onClick="this.select();" step="0.01"></td>'+
+        '<td><input type="text" class="form-control" name="tasa[]" id="tasa'+IDT1+'" value="0" onkeyup="actualizarCostoTotal('+IDT1+')" readonly></td>'+
+        '<td><input type="text" class="form-control" name="costop[]" id="costop'+IDT1+'" value="0" readonly></td>'+
+        '<td><input type="number" name="cs[]" id="cs'+IDT1+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="text" class="form-control" name="precioC[]" id="precioC'+IDT1+'" value="0" onkeyup="actualizarCostoTotal('+IDT1+')" onClick="this.select();"></td>'+
+        '<td><button type="button" class="btn btn-danger" onclick="t1_deleted('+IDT1+')" id='+IDT1+' >-</button></td>'+
+        '</tr>'
+    $('#tablita1').before(fila);
+    actualizarTaza(IDT1);
+    IDT1=IDT1+1;
+}
+function t1_deleted(d){
+    $("#time"+d).val(0);
+    $("#nrop"+d).val(0);
+    $("#tasa"+d).val(0);
+    $("#costop"+d).val(0);
+    $("#precioC"+d).val(0);
+    totales1();
+
+    $("#fila1"+d).remove();
+    //c1=c1-1;
 }
 function actualizarTaza(numero){
     var staff = document.getElementById("staf"+numero).value;
@@ -112,53 +163,12 @@ function actualizarCostoTotal(numer){
     //prorrateo(r);
     document.getElementById("cs"+numer).value=prorrateo(r); 
 }
-function addRow(){
-    
-    var fila = '<tr id="fila1'+IDT1+'">'+ 
-        '<td>'+
-        '<select onChange="actualizarTaza('+IDT1+')" class="form-control"  name="staf[]" id="staf'+IDT1+'" >'+
-        '<option>EJECUTIVO DE CUENTAS</option>'+
-        '<option>ENCARGADO LOGISTICO</option>'+
-        '</select>'+
-        '</td>'+  
-        '<td><input type="text" class="form-control" name="detalle[]" id="detalle'+IDT1+'" ></td>'+
-        '<td><select class="form-control" onChange= "actualizarTaza('+IDT1+')" name="dayorhour[]" id="dayorhour'+IDT1+'" >'+
-        '<option>SELECCIONAR</option>'+
-        '<option>DIAS</option>'+
-        '<option>HORAS</option>'+
-        '</select></td>'+
-        '<td><input type="number" class="form-control" name="time[]" id="time'+IDT1+'" value="0" onkeyup="actualizarCostoTotal('+IDT1+')" onClick="this.select();" step="0.01"></td>'+
-        '<td><input type="number" class="form-control" name="nrop[]" id="nrop'+IDT1+'" value ="0" onkeyup="actualizarCostoTotal('+IDT1+')" onClick="this.select();" step="0.01"></td>'+
-        '<td><input type="text" class="form-control" name="tasa[]" id="tasa'+IDT1+'" value="0" onkeyup="actualizarCostoTotal('+IDT1+')" readonly></td>'+
-        '<td><input type="text" class="form-control" name="costop[]" id="costop'+IDT1+'" value="0" readonly></td>'+
-        '<td><input type="number" name="cs[]" id="cs'+IDT1+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="text" class="form-control" name="precioC[]" id="precioC'+IDT1+'" value="0" onkeyup="actualizarCostoTotal('+IDT1+')" onClick="this.select();"></td>'+
-        '<td><button type="button" class="btn btn-danger" onclick="t1_deleted('+IDT1+')" id='+IDT1+' >-</button></td>'+
-        '</tr>'
-    $('#tablita1').before(fila);
-    actualizarTaza(IDT1);
-    IDT1=IDT1+1;
-}
-function t1_deleted(d)
-{
-    $("#time"+d).val(0);
-    $("#nrop"+d).val(0);
-    $("#tasa"+d).val(0);
-    $("#costop"+d).val(0);
-    $("#precioC"+d).val(0);
-    totales1();
-
-    $("#fila1"+d).remove();
-    //c1=c1-1;
-}
 function totales1(){
     var acTime=0
     var acCant=0
     var acTasa=0
     var acCosto=0
     var acPrecio=0
-    
-
     var i;
     for(i=0;i<IDT1;i++){
         if($("#time"+i).length)
@@ -181,71 +191,43 @@ function totales1(){
 
 }
 
+//**************************** t3 = materiales / servicios que intervienen en la operacion ************************
 
-function t2_subTotal(u){
-    var ca = parseFloat(document.getElementById("t2_can"+u).value)
-    var co = parseFloat(document.getElementById("t2_cos"+u).value)
-    var pre = parseFloat(document.getElementById("t2_pre"+u).value)
-    var doc = document.getElementById("t2_doc"+u).value
-    var costoT =0;
-    if(doc=="FACTURA")
-        costoT=0.87;
-    if(doc=="RECIBO")
-        costoT=1.09;
-    costoT= costoT*ca*co;
-    t2_costoTotal[u]=costoT.toFixed(2);
-    t2_precio[u] = pre.toFixed(2);
+var c3 = 0;
+var t3_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - costo total
+var t3_precio = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - precio cotizado sin fee
 
-    costoT = costoT.toFixed(2);
-    document.getElementById("t2_tot"+u).value =  costoT;
-    actualizarTotalT2();
-    document.getElementById("t2_cs"+u).value=prorrateo(costoT)
-}
-
-function actualizarTotalT2(){
-    var acCosto=0;
-    var acPrecio=0;
-    var i;
-    for(i=0;i<IDT2;i++){
-        if($("#t2_tot"+i).length)
-            acCosto+= parseFloat($("#t2_tot"+i).val());
-        if($("#t2_pre"+i).length)
-            acPrecio+= parseFloat($("#t2_pre"+i).val());
-        
-    }
-    document.getElementById("t2_costoT").innerHTML= acCosto.toFixed(2);
-    document.getElementById("t2_precioT").innerHTML= acPrecio.toFixed(2);
-    costosExternos();
-}
-
-function addRow_t2(){
+function addRow_t3(){
     
-    var fila = '<tr id="fila2'+IDT2+'">'+
-        '<td><input type="text" name="t2_mat[]"  id="t2_mat'+IDT2+'" class="form-control"></td>'+
-        '<td><input type="text" name="t2_nom[]" id="t2_nom'+IDT2+'" class="form-control"></td>'+
-        '<td><input type="number" name="t2_can[]" id="t2_can'+IDT2+'" onkeyup="t2_subTotal('+IDT2+')" onClick="this.select()" value="0" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t2_cos[]"id="t2_cos'+IDT2+'" onkeyup="t2_subTotal('+IDT2+')" onClick="this.select()" value="0" class="form-control" step="0.01"></td>'+
-        '<td><select name="t2_doc[]" id="t2_doc'+IDT2+'" onchange="t2_subTotal('+IDT2+')" class="form-control">'+
+    var fila = '<tr id="fila3'+IDT3+'">'+
+        '<td><input type="text" name="t3_ser[]" id="t3_ser'+IDT3+'" class="form-control"></td>'+
+        '<td><input type="text" name="t3_nom[]" id="t3_nom'+IDT3+'" class="form-control"></td>'+
+        '<td><input type="number" name="t3_dia[]" id="t3_dia'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" name="t3_can[]" id="t3_can'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" name="t3_cos[]" id="t3_cos'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
+        '<td><select name="t3_tip[]" id="t3_tip'+IDT3+'" onChange="t3_subTotal('+IDT3+')" class="form-control">'+
         '<option>FACTURA</option>'+
         '<option>RECIBO</option>'+
+        '<option>SIN IMPUESTO</option>'+
+        '<option>ALQUILER SIN RECIBO</option>'+
         '</select></td>'+
-        '<td><input type="text" class="form-control" name="t2_tot[]" id="t2_tot'+IDT2+'" readonly></td>'+
-        '<td><input type="number" name="t2_cs[]" id="t2_cs'+IDT2+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" name="t2_pre[]" id="t2_pre'+IDT2+'" onkeyup="t2_subTotal('+IDT2+')" value="0" class="form-control" step="0.01"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT2+' onClick="t2_deleted('+IDT2+')">-</button></td>'+
+        '<td><input type="text" name="t3_tot[]" id="t3_tot'+IDT3+'" value="0" class="form-control" readonly></td>'+
+        '<td><input type="number" name="t3_cs[]" id="t3_cs'+IDT3+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" name="t3_pre[]" value="0" id="t3_pre'+IDT3+'" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+IDT3+' onClick="t3_deleted('+IDT3+')">-</button></td>'+
         '</tr>'
 
-    $('#tablita2').before(fila);
-    actualizarTotalT2();
-    IDT2=IDT2+1;
+    $('#tablita3').before(fila);
+    /*IDT3=IDT3+1;*/
+    actualizarTotalT3(IDT3);
+    IDT3=IDT3+1;
 }
-function t2_deleted(d)
-{
-    $("#t2_tot"+d).val(0);
-    $("#t2_pre"+d).val(0);
-    actualizarTotalT2();
+function t3_deleted(d){
+    $("#t3_tot"+d).val(0);
+    $("#t3_pre"+d).val(0);
+    actualizarTotalT3();
 
-    $("#fila2"+d).remove();
+    $("#fila3"+d).remove();
     //c1=c1-1;
 }
 function t3_subTotal(o){
@@ -276,7 +258,6 @@ function t3_subTotal(o){
     actualizarTotalT3();
     document.getElementById("t3_cs"+o).value=prorrateo(costoT)
 }
-
 function actualizarTotalT3(){
     var i;
     var acCosto=0;
@@ -293,38 +274,36 @@ function actualizarTotalT3(){
     costosExternos();
 
 }
-function addRow_t3(){
+
+//**************************** t4 = productos / equipos propios de grupo regional ************************
+
+var c4 = 0;
+var t4_costoTotal = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - costo total
+var t4_costoUnitario = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];//array - costo unitario
+
+function addRow_t4(){
     
-    var fila = '<tr id="fila3'+IDT3+'">'+
-        '<td><input type="text" name="t3_ser[]" id="t3_ser'+IDT3+'" class="form-control"></td>'+
-        '<td><input type="text" name="t3_nom[]" id="t3_nom'+IDT3+'" class="form-control"></td>'+
-        '<td><input type="number" name="t3_dia[]" id="t3_dia'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t3_can[]" id="t3_can'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><input type="number" name="t3_cos[]" id="t3_cos'+IDT3+'" value="0" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><select name="t3_tip[]" id="t3_tip'+IDT3+'" onChange="t3_subTotal('+IDT3+')" class="form-control">'+
-        '<option>FACTURA</option>'+
-        '<option>RECIBO</option>'+
-        '<option>SIN IMPUESTO</option>'+
-        '<option>ALQUILER SIN RECIBO</option>'+
-        '</select></td>'+
-        '<td><input type="text" name="t3_tot[]" id="t3_tot'+IDT3+'" value="0" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t3_cs[]" id="t3_cs'+IDT3+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" name="t3_pre[]" value="0" id="t3_pre'+IDT3+'" onClick="this.select()" onkeyup="t3_subTotal('+IDT3+')" class="form-control" step="0.01"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT3+' onClick="t3_deleted('+IDT3+')">-</button></td>'+
+    var fila = '<tr id="fila4'+IDT4+'">'+
+        '<td><input type="text" name="t4_pro[]" id="t4_pro'+IDT4+'" class="form-control"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" class="form-control" name="t4_can[]" id="t4_can'+IDT4+'" step="0.01"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" name="t4_cos['+IDT4+']" id="t4_cos'+IDT4+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="text" name="t4_coT[]" id="t4_coT'+IDT4+'" value="0" class="form-control" readonly></td>'+
+        '<td><input type="number" name="t4_cs[]" id="t4_cs'+IDT4+'" class="form-control" step="0.01" value="0" readonly></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" name="t4_pre[]" id="t4_pre'+IDT4+'" class="form-control"></td>'+
+        '<td><button type="button" class="btn btn-danger" id='+IDT4+' onClick="t4_deleted(this.id)">-</button></td>'+
         '</tr>'
 
-    $('#tablita3').before(fila);
-    /*IDT3=IDT3+1;*/
-    actualizarTotalT3(IDT3);
-    IDT3=IDT3+1;
+    $('#tablita4').before(fila);
+    actualizarTotalT4(IDT4);
+    IDT4=IDT4+1;
 }
-function t3_deleted(d)
-{
-    $("#t3_tot"+d).val(0);
-    $("#t3_pre"+d).val(0);
-    actualizarTotalT3();
+function t4_deleted(d){
+    $("#t4_coT"+d).val(0)
+    $("#t4_pre"+d).val(0)
+    $("#t4_coU"+d).val(0)
+    actualizarTotalT4();
 
-    $("#fila3"+d).remove();
+    $("#fila4"+d).remove();
     //c1=c1-1;
 }
 function t4_subTotal(e){
@@ -341,7 +320,6 @@ function t4_subTotal(e){
     actualizarTotalT4();
     document.getElementById("t4_cs"+e).value=prorrateo(costoT)
 }
-
 function actualizarTotalT4(){
     var acCosto=0;
     var acPrecio=0;
@@ -364,99 +342,6 @@ function actualizarTotalT4(){
     costosExternos();    
 }
 
-function addRow_t4(){
-    
-    var fila = '<tr id="fila4'+IDT4+'">'+
-        '<td><input type="text" name="t4_pro[]" id="t4_pro'+IDT4+'" class="form-control"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" class="form-control" name="t4_can[]" id="t4_can'+IDT4+'" step="0.01"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" name="t4_cos['+IDT4+']" id="t4_cos'+IDT4+'" class="form-control" step="0.01"></td>'+
-        '<td><input type="text" name="t4_coT[]" id="t4_coT'+IDT4+'" value="0" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t4_cs[]" id="t4_cs'+IDT4+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t4_subTotal('+IDT4+')" name="t4_pre[]" id="t4_pre'+IDT4+'" class="form-control"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT4+' onClick="t4_deleted(this.id)">-</button></td>'+
-        '</tr>'
-
-    $('#tablita4').before(fila);
-    actualizarTotalT4(IDT4);
-    IDT4=IDT4+1;
-}
-function t4_deleted(d)
-{
-    $("#t4_coT"+d).val(0)
-    $("#t4_pre"+d).val(0)
-    $("#t4_coU"+d).val(0)
-    actualizarTotalT4();
-
-    $("#fila4"+d).remove();
-    //c1=c1-1;
-}
-function t5_subTotal(a){
-    var ca = parseFloat(document.getElementById("t5_can"+a).value)
-    var co = parseFloat(document.getElementById("t5_coU"+a).value)
-    var pre = parseFloat(document.getElementById("t5_pre"+a).value)
-    var costoT = ca*co;
-    t5_costoUnitario[a]=co.toFixed(2);
-    t5_costoTotal[a]=costoT.toFixed(2);
-    t5_precio[a] = pre.toFixed(2);
-
-    costoT = costoT.toFixed(2)
-    document.getElementById("t5_coT"+a).value =  costoT; 
-    actualizarTotalT5();
-    document.getElementById("t5_cs"+a).value=prorrateo(costoT)
-    document.getElementById("t3_cs"+a).value=prorrateo(costoT)
-}
-
-function actualizarTotalT5(){
-    var acCosto=0;
-    var acPrecio=0;
-    var acUnitario=0;
-    var i =0;
-    for(i=0;i<=IDT5;i++){
-        if($("#t5_coT"+i).length)
-            acCosto+= parseFloat($("#t5_coT"+i).val());
-        if($("#t5_pre"+i).length)
-            acPrecio+= parseFloat($("#t5_pre"+i).val());
-        if($("#t5_cos"+i).length)
-            acUnitario+= parseFloat($("#t5_coU"+i).val());
-        
-    }
-    //acCosto = acCosto);
-    //acPrecio = acPrecio);
-    document.getElementById("t5_costoU").innerHTML= acUnitario.toFixed(2)
-    document.getElementById("t5_costoT").innerHTML= acCosto.toFixed(2)
-    document.getElementById("t5_precioT").innerHTML= acPrecio.toFixed(2)
-    costosExternos();    
-}
-
-function addRow_t5(){
-    
-    var fila = '<tr id="fila5'+IDT5+'">'+
-        '<td><input type="text" name="t5_pro[]" id="t5_pro'+IDT5+'" class="form-control"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+IDT5+')" class="form-control" name="t5_can[]" id="t5_can'+IDT5+'" step="0.01"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+IDT5+')" name="t5_coU[]" id="t5_coU'+IDT5+'" class="form-control" step="0.01"></td>'+
-        '<td><input type="text" name="t5_coT[]" id="t5_coT'+IDT5+'" value="0" class="form-control" readonly></td>'+
-        '<td><input type="number" name="t5_cs[]" id="t5_cs'+IDT5+'" class="form-control" step="0.01" value="0" readonly></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+IDT5+')" name="t5_pre[]" id="t5_pre'+IDT5+'" class="form-control" step="0.01"></td>'+
-        '<td><button type="button" class="btn btn-danger" id='+IDT5+' onClick="t5_deleted(this.id)">-</button></td>'+
-        '</tr>'
-
-    $('#tablita5').before(fila);
-    actualizarTotalT5(IDT5);
-    IDT5=IDT5+1;
-}
-function t5_deleted(d)
-{
-    t5_costoTotal[d]=0;
-    t5_precio[d]=0;
-    t5_costoUnitario[d]=0;
-    $("#t5_coT"+d).val(0)
-    $("#t5_pre"+d).val(0)
-    $("#t5_cos"+d).val(0)
-    actualizarTotalT5();
-
-    $("#fila5"+d).remove();
-    //c1=c1-1;
-}
 
 function costosExternos(){
     //costos indirectos de operaciones
@@ -607,28 +492,11 @@ function costosExternos(){
     inicio()
 
 }
-function inicio(){
-    /*$('#tasaDa').text(tasaAplicacion);*/
-    document.getElementById("tasaDa").value=tasaAplicacion
-    /*$("#tasaFi").text("0.05%")*/ // tasa financiera(onLoad)
-    document.getElementById("tasaFi").value="0.05";
-    //$("#feeV").val("10%");
-}
-/*agregados por wilfredo*/
-function prorrateo(costo){
-    var tot_costos1=parseFloat(document.getElementById("totalCo").innerHTML)+parseFloat(document.getElementById("t2_costoT").innerHTML)+parseFloat(document.getElementById("t3_costoT").innerHTML)+parseFloat(document.getElementById("t4_costoT").innerHTML)+parseFloat(document.getElementById("t5_costoT").innerHTML)
-    var tot_costos3=parseFloat(document.getElementById("totalE4").value)-parseFloat(document.getElementById("totalE3").value)
-    var tot_costos2=parseFloat(document.getElementById("costoPd").value)+parseFloat(document.getElementById("costoTo").value)
-    var pro=tot_costos2/tot_costos1*parseFloat(costo)+parseFloat(costo)+tot_costos3
-    return pro.toFixed(2);
-}
 function resticcion(){
     if (document.getElementById('diferencia').value<0){
         alert ("Su proyecto se encuentra en perdida, verificar porfavor!!")
         return false
         }
-}
-function prueba(){
 }
 
 function ActualizacionRapida() {

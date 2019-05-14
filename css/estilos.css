@@ -6,7 +6,7 @@
 	box-sizing:border-box;
 }
 body{
-	background-image:url(../imagenes/fondo.jpg);
+	background-image:url(../imagenes/membretado.jpg);
 	background-size:100%;
 	display:flex;
 	min-height:100vh;

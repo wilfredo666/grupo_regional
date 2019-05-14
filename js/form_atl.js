@@ -79,7 +79,7 @@ function prorrateo(costo_item){
     var pro2=(parseFloat(pro)/0.84).toFixed(2)//total de items + costos indirectos + impuestos
     var pro3=(parseFloat(item_costo)/parseFloat(total_item2))*parseFloat(pro2)
     return pro3.toFixed(2)
-}
+}//prorrateo
 
 //**************************** t1 = personal que interviene en la operacion ************************
 
@@ -318,7 +318,7 @@ function addRow_t5(){
     var fila = '<tr id="fila5'+c5+'">'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can[]" id="t5_can'+c5+'" step="0.01"></td>'+
         '<td><input type="text" name="t5_pro[]" id="t5_pro'+c5+'" class="form-control"></td>'+
-        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_cos['+c5+']" id="t5_cos'+c5+'" class="form-control" step="0.01"></td>'+
+        '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_cos[]" id="t5_cos'+c5+'" class="form-control" step="0.01"></td>'+
         '<td><input type="text" name="t5_coT[]" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted('+c5+')">-</button></td>'+
         '</tr>'

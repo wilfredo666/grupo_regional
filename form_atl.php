@@ -19,7 +19,7 @@ $usuario=$_GET['id'];
         <form action="guardar_form_atl.php?id=<?php echo $usuario;?>" id="form1" name="form1" method="post">
             <div class="container-fluid">
                 <div class="row">
-            <!-------------------------formulario parte 1--------------------------------->
+                    <!-------------------------formulario parte 1--------------------------------->
 
                     <div class="col-9">
 
@@ -99,9 +99,9 @@ $usuario=$_GET['id'];
                             </div>
                         </div>
                         <br>
-                        
+
                         <!--tablas para la insercion de datos a calcular-->
-                        
+
                         <div class="row">
 
                             <!--PERSONAL DIRECTO QUE INTERVIENE EN LA OPERACION-->
@@ -145,10 +145,10 @@ $usuario=$_GET['id'];
                                 <thead class="thead-light">
                                     <tr><th colspan="10"><h2>2) MATERIALES / SERVICIOS QUE INTERVIENEN EN LA OPERACION</h2></th>
                                     </tr>
-                                    <tr>
-                                        <th scope="col">DETALLES</th>
-                                        <th scope="col">NOMBRE DEL PROVEEDOR</th>
-                                        <th scope="col">DIAS</label></th>
+                                <tr>
+                                <th scope="col">DETALLES</th>
+                                <th scope="col">NOMBRE DEL PROVEEDOR</th>
+                                <th scope="col">DIAS</label></th>
                                 <th scope="col">CANTIDAD</th>
                                 <th scope="col">COSTO UNITARIO</th>
                                 <th scope="col">DOCUMENTO</th>
@@ -190,17 +190,17 @@ $usuario=$_GET['id'];
                             <tr id="tablita4">
                                 <th>TOTAL</th>
                                 <th></th>
-                                <td><label id="t4_costoU">0</label></td>
-                                <td><label id="t4_costoT">0</label></td>    
+                                <td id="t4_costoU">0</td>
+                                <td id="t4_costoT">0</td>    
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                    </div>
+            </div>
 
             <!-------------------------formulario parte 2--------------------------------->
 
-                    <div class="col-3" style='display:scroll;position:fixed;right:0px;'>
+            <div class="col-3" style='display:scroll;position:fixed;right:0px;'>
                 <table class="table table-sm">
                     <thead class="thead-light">
                         <tr>
@@ -254,24 +254,24 @@ $usuario=$_GET['id'];
                     <tbody>
                         <tr>
                             <td class="text-center"><input type="number" value="0" class="form-control" id="costoED" name="costoED" step="0.01" readonly></td>
-                            <td class="text-center"><input type="number" value="0" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly min="0"></td>
+                            <td class="text-center"><input type="number" value="0" class="form-control" id="diferencia" name="diferencia" step="0.01" readonly></td>
                             <td><input type="number" value="0" class="form-control" id="costoVA" name="costoVA" step="0.01" readonly></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-                </div>
+            </div>
 
         <!--bloque de botones-->
 
         <div class="row" id="botones">
             <div class="col-sm-4"></div>
             <div class="col-sm-6">
-                <input type="submit" value="Guardar" class="btn btn-info" title="echoo asi" data-toggle="tooltip">
+                <input type="submit" value="Guardar" class="btn btn-info">
                 <input name="button" type="button" class="btn btn-info" onclick="window.close();" value="Salir"/>
             </div>
             <div class="col-sm-2"></div>
-</div>           
+        </div>           
         </div>
     </form>
 <script type="text/javascript" src="js/form_atl.js"></script>

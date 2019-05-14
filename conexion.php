@@ -10,6 +10,14 @@ header("Content-Type: text/html;charset=utf-8");
 else{
     echo 'Conexion satisfactoria';
 }*/
+function mostrar_hoja_costos_atl(){
+    global $con;
+    $sql="select * from hoja_costos_atl";
+    $hoja_atl=mysqli_query($con,$sql);
+    while($fila=mysqli_fetch_array($hoja_atl)){
+        echo '<option value='.$fila[0].'>'.$fila[6].'</option>';
+    }
+}
 function mostrar_cliente(){
     global $con;
     $sql="select * from cliente";
@@ -31,6 +39,14 @@ function mostrar_centro_costos(){
     $sql="select * from centro_costos";
     $ciudad=mysqli_query($con,$sql);
     while($fila=mysqli_fetch_array($ciudad)){
+        echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
+    }
+}
+function mostrar_centro_costos_interno(){
+    global $con;
+    $sql="select * from centro_costos_interno";
+    $centro_costos_interno=mysqli_query($con,$sql);
+    while($fila=mysqli_fetch_array($centro_costos_interno)){
         echo '<option value='.$fila[1].'>'.$fila[2].'</option>';
     }
 }
@@ -107,6 +123,9 @@ function reporte_atl(){
         echo '<td><a href="eli_hoja_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
         echo '</tr>';
     }
+}
+function reporte_orden_compra(){
+    
 }
 /*datos insertados atl*/
 

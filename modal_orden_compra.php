@@ -2,7 +2,6 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <title></title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <body>
@@ -16,7 +15,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="guardar_orden_compra.php?id=<?php echo $usuario;?>" method="post">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="input-group">
@@ -33,13 +32,15 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">Codigo:</div>
                                         </div>
-                                        <input name="codigo" type="text" class="form-control" id="form_codigo" title="Insertar codigo de proyecto o de centro de costos">
-                                        <select name="ciudad" id="ciudad" class="form-control" title="Elegir la ciudad de origen del proyecto o compra interna">
-                                           <option value="-">Seleccionar</option>
-                                            <option value="LPZ">LPZ</option>
-                                            <option value="CBBA">CBBA</option>
-                                            <option value="SCZ">SCZ</option>
+                                        <select name="codigo" class="form-control" id="form_codigo" title="Insertar codigo de proyecto o de centro de costos">
+                                        <optgroup label="Centro de Costos">
+                                            <?php mostrar_centro_costos_interno();?>
+                                        </optgroup>
+                                        <optgroup label="Proyecto">
+                                            <?php mostrar_hoja_costos_atl();?>
+                                        </optgroup>
                                         </select>
+                            
                                     </div>
                                     <P></P>
                                 </div>
