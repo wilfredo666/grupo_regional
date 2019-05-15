@@ -25,14 +25,14 @@ $usuario=$_GET['id'];
                             <th>Proveedor</th>
                             <th>Responsable:</th>
                             <th>Fecha generada</th>
-                            <th>Importe</th>
+                            <th></th>
                             <th><button data-backdrop="static" type="button" class="btn btn-primary" data-toggle="modal" data-target="#nuevo_orden_compra">Nuevo</button></th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php /*reporte_orden_compra();*/ ?>
+                        <?php reporte_orden_compra(); ?>
                     </tbody>
                 </table>
             </div>

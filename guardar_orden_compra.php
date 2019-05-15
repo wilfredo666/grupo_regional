@@ -21,9 +21,10 @@ $costo_total=$_POST['t5_coT'];
 
 if ($cantidad[0]>0){
     for($i=0;$i<sizeof($detalle);$i++){
-        mysqli_query($con,"insert into personal_directo_atl(id_ordenCompra,cantidad,descripcion,costo_unitario,total) values('$ultimo_registro[0]','$cantidad[$i]','$detalle[$i]','$costo_unitario[$i]','$costo_total[$i]')");
+        mysqli_query($con,"insert into detalle_ordencompra(id_ordenCompra,cantidad,descripcion,costo_unitario,total) values('$ultimo_registro[0]','$cantidad[$i]','$detalle[$i]','$costo_unitario[$i]','$costo_total[$i]')");
     }
 }
 
 header("location: orden_compra.php?id=$usuario");
+
 ?>

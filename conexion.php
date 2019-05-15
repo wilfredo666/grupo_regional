@@ -125,7 +125,28 @@ function reporte_atl(){
     }
 }
 function reporte_orden_compra(){
-    
+    global $con;
+    global $empleado;
+    $sql="SELECT id_ordenCompra,
+    cod_ordenCompra,
+    nombre,
+    nombre_usuario, 
+    fecha_hora_creacion
+    from orden_compra
+    JOIN proveedor ON orden_compra.id_proveedor=proveedor.id_proveedor
+    JOIN usuario ON orden_compra.id_empleado=usuario.id_usuario";
+    $r_ordenCompra=mysqli_query($con,$sql);
+    while($campo=mysqli_fetch_array($r_ordenCompra)){
+        echo '<tr>';
+        echo '<td>'.$campo[1].'</td>';
+        echo '<td>'.$campo[2].'</td>';
+        echo '<td>'.$campo[3].'</td>';
+        echo '<td>'.$campo[4].'</td>';
+        echo '<td><a href="orden_compra_pdf.php?id_ordenCompra='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
+        echo '<td><a href="form_edicion_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-warning">Editar</button></td>';
+        echo '<td><a href="eli_orden_compra.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
+        echo '</tr>';
+    }
 }
 /*datos insertados atl*/
 
