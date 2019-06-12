@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2019 a las 14:52:28
+-- Tiempo de generación: 12-06-2019 a las 22:20:23
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.0.23
 
@@ -53,6 +53,53 @@ INSERT INTO `centro_costos` (`id_centro_costos`, `prefijo`, `grupo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `centro_costos_interno`
+--
+
+CREATE TABLE `centro_costos_interno` (
+  `id_centro_costos_interno` int(11) NOT NULL,
+  `codigo` varchar(10) NOT NULL,
+  `descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `centro_costos_interno`
+--
+
+INSERT INTO `centro_costos_interno` (`id_centro_costos_interno`, `codigo`, `descripcion`) VALUES
+(1, '1000000000', 'GERENCIA GENERAL'),
+(2, '1010000000', 'COORDINADOR REGIONAL CBBA'),
+(3, '1020000000', 'COORDINADOR REGIONAL SCZ'),
+(4, '1030000000', 'COORDINADOR REGIONAL LPZ'),
+(5, '1100000000', 'GERENCIA ADMINISTRATIVA FINANCIERA'),
+(6, '1110000000', 'JEFATURA DE PLANIFICACION Y CONTROL'),
+(7, '1120000000', 'JEFATURA DE CONTABILIDAD'),
+(8, '1130000000', 'JEFATURA DE GESTION HUMANA'),
+(9, '1200000000', 'GERENCIA DE COMERCIALIZACION'),
+(10, '1210000000', 'COORDINADOR COMERCIAL CBBA'),
+(11, '1220000000', 'COORDINADOR COMERCIAL SCZ'),
+(12, '1230000000', 'COORDINADOR COMERCIAL LPZ'),
+(13, '2000000000', 'GERENCIA OPERACIONES SCZ'),
+(14, '2100000000', 'JEFATURA REGIONAL SCZ'),
+(15, '2110000000', 'EJECUTIVO DE CUENTAS REGIONAL SCZ'),
+(16, '2300000000', 'JEFATURA TALLER REGIONAL SCZ'),
+(17, '2310000000', 'TALLER REGIONAL SCZ'),
+(18, '3000000000', 'GERENCIA OPERACIONES LPZ'),
+(19, '3100000000', 'JEFATURA REGIONAL LPZ'),
+(20, '3110000000', 'EJECUTIVO DE CUENTAS REGIONAL LPZ'),
+(21, '3300000000', 'JEFATURA TALLER REGIONAL LPZ'),
+(22, '3310000000', 'TALLER REGIONAL LPZ'),
+(23, '4000000000', 'GERENCIA DE OPERACIONES CBBA'),
+(24, '4100000000', 'JEFATURA REGIONAL CBBA'),
+(25, '4110000000', 'EJECUTIVO DE CUENTAS REGIONAL CBBA'),
+(26, '4300000000', 'JEFATURA TALLER REGIONAL CBBA'),
+(27, '4310000000', 'TALLER REGIONAL CBBA'),
+(28, '6000000000', 'CUENTA TRANSITORIA'),
+(29, '7000000000', 'GASTOS FINANCIEROS');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ciudad`
 --
 
@@ -83,113 +130,27 @@ INSERT INTO `ciudad` (`id_ciudad`, `nom_ciudad`) VALUES
 
 CREATE TABLE `cliente` (
   `codigo` varchar(3) NOT NULL,
-  `nombre` varchar(50) NOT NULL
+  `nombre` varchar(50) NOT NULL,
+  `dias_credito` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`codigo`, `nombre`) VALUES
-('01', 'TIGO'),
-('02', 'UNILEVER'),
-('03', 'MATADERO FRIGORIFICO SCZ S.A.'),
-('04', 'KIMBERLY'),
-('05', 'LUIS GUTIERREZ'),
-('06', 'SERGIO ABASTOFLOR'),
-('07', 'AGREGADOS GERARDO/MIRIAM PARDO'),
-('08', 'UPAL'),
-('09', 'VG PRESENTACIONES'),
-('10', 'COMERCIAL ITIENDA S.R.L.'),
-('11', 'FEDERACION BOLIVIANA DE GOLF'),
-('12', 'ENRRIQUE CAMACHO'),
-('13', 'CBN'),
-('14', 'IMCRUZ'),
-('15', 'MARIO KISEN'),
-('16', 'SOFIA LTDA'),
-('17', 'ALICORP'),
-('18', 'D&M'),
-('19', 'WILSON'),
-('20', 'COMERCIAL IPORRE'),
-('21', 'MANJAR DE ORO'),
-('22', 'MAD CENTER'),
-('23', 'DAHER'),
-('24', 'LA HERRADURA'),
-('25', 'HIPERMARCAS'),
-('26', 'PUBLICARTE'),
-('27', 'SACI'),
-('28', 'MADISA'),
-('29', 'GUIDO SALVATIERRA ZABALA'),
-('30', 'COMPANEX'),
-('31', 'VADIKO'),
-('32', 'ASTRIX'),
-('33', 'EMSERSO'),
-('34', 'IASA'),
-('35', 'FAGAL'),
-('36', 'FONDO DE LA COMUNIDAD'),
-('37', 'BATA'),
-('38', 'ARCOR'),
-('39', 'ALEJANDRO BAKIR (BAGAPOS)'),
-('40', 'PROYECTOS INMOBILIARIOS EL DORAL S.A.'),
-('41', 'CIMAL'),
-('42', 'IMCRUZ'),
-('43', 'FACTORY'),
-('44', 'JEFATURA ATL'),
-('45', 'JEFATURA BTL'),
-('46', ''),
-('47', 'RELEVANT COMMS LTDA'),
-('48', 'BNB'),
-('49', 'RIVERO'),
-('50', 'OLIVA'),
-('51', 'BUGGY'),
-('52', 'GALINDO'),
-('53', 'EL CORTIJO'),
-('54', 'ROJAS'),
-('55', 'TROPICAL TOURS LTDA'),
-('56', 'REMAX'),
-('57', 'BCO. MERCANTIL SANTA CRUZ'),
-('58', 'LINK GROUP'),
-('59', 'TECHO'),
-('60', 'FUMIMASTER'),
-('61', ''),
-('62', 'JUAN MERCADO'),
-('63', 'ITACAMBA'),
-('64', 'BIS OVERSEAS'),
-('65', 'SIGMA'),
-('66', 'AIDISA BOLIVIA'),
-('67', 'HOTEL CBBA'),
-('68', 'MASIVOS SRL'),
-('69', 'ANGELA SANCHEZ'),
-('70', 'BAT BOLIVIA S.A.'),
-('71', 'DANIEL CHAIN'),
-('72', 'HUAWEI'),
-('73', 'AUTOKORP'),
-('74', 'AGROINCO'),
-('75', 'EXPOCRUZ'),
-('76', 'PROTEC (JUAN HINOJOSA)'),
-('77', 'TRIPLEX LTDA'),
-('78', 'KENIA'),
-('79', 'ALEJANDRO'),
-('80', 'OPAL'),
-('81', 'EMACRUZ (PATRICIO REYNALDO DESPUSE)'),
-('82', 'INSTITUTO ARGENTINO (WALTER TELL)'),
-('83', 'BCO. BISA'),
-('84', 'COLEGIO DE ARQUITECTOS DE SANTA CRUZ'),
-('85', 'CHINGA DECORACIONES S.R.L.'),
-('86', 'PANCARTA'),
-('87', 'METALTELA LTDA'),
-('88', 'CODESUR / MINISTERIO DE DEPORTES'),
-('89', 'FUTURO VIRTUAL'),
-('90', 'EDUARDO OROZCO'),
-('91', 'ADRIANA QUIROGA'),
-('92', 'MARCELA MOLINA'),
-('93', 'CARRASCO'),
-('94', 'PELUQUERIA (PARTICULAR)'),
-('95', 'KETAL'),
-('96', 'LA OPTICA'),
-('97', 'POLY PLAST S.R.L.'),
-('98', 'BCO. PRODEM'),
-('99', 'JOSE MARIA GALVAN');
+INSERT INTO `cliente` (`codigo`, `nombre`, `dias_credito`) VALUES
+('01', 'TIGO', 30),
+('02', 'UNILEVER', 30),
+('04', 'KIMBERLY', 30),
+('08', 'UPAL', 0),
+('09', 'CARMAX', 20),
+('13', 'CBN', 120),
+('16', 'SOFIA LTDA', 0),
+('38', 'ARCOR', 0),
+('63', 'ITACAMBA', 45),
+('66', 'AIDISA BOLIVIA', 30),
+('68', 'GLADIMAR', 0),
+('72', 'HUAWEI', 30);
 
 -- --------------------------------------------------------
 
@@ -294,33 +255,26 @@ CREATE TABLE `costos_proyecto_btl2` (
 CREATE TABLE `costos_totales_atl` (
   `id_costos_totales` int(11) NOT NULL,
   `id_hoja_costos_atl` int(11) NOT NULL,
-  `costo_programado_proyecto` decimal(10,2) NOT NULL,
-  `costo_estimado_proyecto` decimal(10,2) NOT NULL,
-  `diferencia` decimal(10,2) NOT NULL,
-  `costo_acumulado_programado` decimal(10,2) NOT NULL,
-  `tas_apliacacion` decimal(10,2) NOT NULL,
-  `costo_programado_costos_indirectos` decimal(10,2) NOT NULL,
+  `total_item` decimal(10,2) NOT NULL,
+  `tasa_aplicacion` decimal(10,2) NOT NULL,
+  `costo_indirecto` decimal(10,2) NOT NULL,
   `tiempo_programado` int(5) NOT NULL,
-  `tasa_fiannciera` decimal(10,2) NOT NULL,
-  `total_programado_financiero` decimal(10,2) NOT NULL,
-  `fee_programado` decimal(10,2) NOT NULL,
-  `fee_variable` decimal(10,2) NOT NULL,
-  `costo_total_proyecto_ejcutado` decimal(10,2) NOT NULL,
-  `costo_total_proyecto_feevariable` decimal(10,2) NOT NULL,
-  `fee_ejecutado` decimal(10,2) NOT NULL,
-  `fee_feevariable` decimal(10,2) NOT NULL,
-  `costo_total_proyecto_mas_feeejecutado` decimal(10,2) NOT NULL,
-  `costo_total_proyecto_mas_impuestos_ejecutado` decimal(10,2) NOT NULL,
-  `costo_total_proyecto_mas_impuestos_feevariable` decimal(10,2) NOT NULL
+  `tasa_financiera` decimal(10,3) NOT NULL,
+  `costo_financiero` decimal(10,2) NOT NULL,
+  `total_sin_fee` decimal(10,2) NOT NULL,
+  `fee` decimal(10,2) NOT NULL,
+  `fee_cot_sin_fee` decimal(10,2) NOT NULL,
+  `cotizacion_cliente` decimal(10,2) NOT NULL,
+  `diferencia` decimal(10,2) NOT NULL,
+  `costo_proyecto` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `costos_totales_atl`
 --
 
-INSERT INTO `costos_totales_atl` (`id_costos_totales`, `id_hoja_costos_atl`, `costo_programado_proyecto`, `costo_estimado_proyecto`, `diferencia`, `costo_acumulado_programado`, `tas_apliacacion`, `costo_programado_costos_indirectos`, `tiempo_programado`, `tasa_fiannciera`, `total_programado_financiero`, `fee_programado`, `fee_variable`, `costo_total_proyecto_ejcutado`, `costo_total_proyecto_feevariable`, `fee_ejecutado`, `fee_feevariable`, `costo_total_proyecto_mas_feeejecutado`, `costo_total_proyecto_mas_impuestos_ejecutado`, `costo_total_proyecto_mas_impuestos_feevariable`) VALUES
-(8, 20, '13628.17', '12988.80', '2247.03', '8751.78', '0.17', '1487.80', 30, '0.05', '167.38', '10.00', '10.00', '10406.96', '14432.00', '1040.70', '1443.20', '11447.66', '13628.17', '15875.20'),
-(25, 37, '8155.87', '10912.36', '2756.49', '5009.84', '0.17', '851.67', 30, '0.05', '95.81', '15.00', '0.00', '5957.33', '10912.36', '893.60', '0.00', '6850.93', '8155.87', '10912.36');
+INSERT INTO `costos_totales_atl` (`id_costos_totales`, `id_hoja_costos_atl`, `total_item`, `tasa_aplicacion`, `costo_indirecto`, `tiempo_programado`, `tasa_financiera`, `costo_financiero`, `total_sin_fee`, `fee`, `fee_cot_sin_fee`, `cotizacion_cliente`, `diferencia`, `costo_proyecto`) VALUES
+(1, 9, '1020.00', '0.14', '142.80', 30, '0.050', '18.60', '1950.00', '10.00', '195.00', '2145.00', '597.93', '1547.07');
 
 -- --------------------------------------------------------
 
@@ -383,6 +337,30 @@ CREATE TABLE `datos_laborales` (
 
 INSERT INTO `datos_laborales` (`id_datos_laborales`, `ci_empleado`, `telefono_corporativo`, `correo_corporativo`, `cargo`, `afp_entidad`, `nua`, `cod_delta`, `sucursal`, `id_centro_costos`, `tipo_contrato`, `fecha_ingreso`, `fecha_retiro`, `motivo`, `haber_basico`, `cuenta_bcp`, `cuenta_mercantil`) VALUES
 (1, '7904767', 0, 'sistemas@gruporegional.com', 'Encargado de sistemas', '', 0, 0, '', 0, '', '0000-00-00', '0000-00-00', '', '3151.25', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalle_ordencompra`
+--
+
+CREATE TABLE `detalle_ordencompra` (
+  `id_detalle` int(11) NOT NULL,
+  `id_ordenCompra` int(11) NOT NULL,
+  `cantidad` int(5) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `costo_unitario` decimal(10,2) NOT NULL,
+  `documento` varchar(10) NOT NULL,
+  `total` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `detalle_ordencompra`
+--
+
+INSERT INTO `detalle_ordencompra` (`id_detalle`, `id_ordenCompra`, `cantidad`, `descripcion`, `costo_unitario`, `documento`, `total`) VALUES
+(10, 6, 1, 'Algo', '80.00', 'FACTURA', '80.00'),
+(18, 13, 1, 'd', '100.00', 'FACTURA', '100.00');
 
 -- --------------------------------------------------------
 
@@ -501,16 +479,16 @@ CREATE TABLE `hoja_costos_atl` (
   `id_usuario` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `fecha_facturacion` date NOT NULL,
-  `numero_factura` varchar(10) COLLATE utf8_unicode_ci NOT NULL
+  `numero_factura` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `fecha_aprobacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `hoja_costos_atl`
 --
 
-INSERT INTO `hoja_costos_atl` (`id_hoja_costos`, `codigo_hoja_costos`, `cliente`, `correo_cliente`, `fecha_inicio`, `tiempo_credito`, `nombre_proyecto`, `fecha_fin`, `tipo_proyecto`, `fecha_hora_creacion`, `id_usuario`, `estado`, `fecha_facturacion`, `numero_factura`) VALUES
-(20, '4111010007', '01', 'tigo@correo.com', '2019-03-07', 30, 'convencion de Tigo', '2019-03-30', 'EXTERNO', '2019-03-07 21:17:12', 3, 1, '0000-00-00', ''),
-(37, '4211010008', '01', 'tigo@correo.com', '2019-03-11', 30, 'btl movil fuerza de ventas', '0000-00-00', 'EXTERNO', '2019-03-11 19:20:33', 3, 1, '0000-00-00', '');
+INSERT INTO `hoja_costos_atl` (`id_hoja_costos`, `codigo_hoja_costos`, `cliente`, `correo_cliente`, `fecha_inicio`, `tiempo_credito`, `nombre_proyecto`, `fecha_fin`, `tipo_proyecto`, `fecha_hora_creacion`, `id_usuario`, `estado`, `fecha_facturacion`, `numero_factura`, `fecha_aprobacion`) VALUES
+(9, '4101010010', '01', 'unilever@correo.com', '2019-05-12', 30, 'prueba', '2019-05-14', 'EXTERNO', '2019-05-21 20:51:05', 3, 1, '2019-05-22', 'f-1254', '2019-05-12');
 
 -- --------------------------------------------------------
 
@@ -636,6 +614,30 @@ CREATE TABLE `materiales_taller` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `orden_compra`
+--
+
+CREATE TABLE `orden_compra` (
+  `id_ordenCompra` int(11) NOT NULL,
+  `cod_ordenCompra` varchar(30) NOT NULL,
+  `id_proveedor` int(11) NOT NULL,
+  `id_empleado` int(11) NOT NULL,
+  `fecha_hora_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dias_credito_oc` int(11) NOT NULL,
+  `ciudad_oc` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `orden_compra`
+--
+
+INSERT INTO `orden_compra` (`id_ordenCompra`, `cod_ordenCompra`, `id_proveedor`, `id_empleado`, `fecha_hora_creacion`, `dias_credito_oc`, `ciudad_oc`) VALUES
+(6, '1210000000', 1, 3, '2019-05-24 15:51:39', 25, 'CBBA'),
+(13, '1000000000', 1, 3, '2019-05-24 20:52:05', 0, 'LPZ');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `personal_directo_atl`
 --
 
@@ -657,9 +659,7 @@ CREATE TABLE `personal_directo_atl` (
 --
 
 INSERT INTO `personal_directo_atl` (`id_personal_directo`, `id_hoja_costos_atl`, `detalle`, `nombre_personal`, `tiempo`, `tiempo_programado`, `cantidad_personas`, `tasa_presupuestaria`, `costo_total_programado`, `precio_cotizado_sin_fee`) VALUES
-(26, 20, 'EJECUTIVO DE CUENTAS', 'jimena', 'HORAS', 6, 1, '30.00', '180.00', '550.00'),
-(27, 20, 'ENCARGADO LOGISTICO', 'carlos', 'HORAS', 6, 2, '26.00', '312.00', '560.00'),
-(45, 37, 'EJECUTIVO DE CUENTAS', 'jimena', 'HORAS', 4, 1, '30.00', '120.00', '550.00');
+(15, 9, 'SOPORTE LOGISTICO', 'b', 'DIAS', 2, 2, '208.00', '832.00', '1500.00');
 
 -- --------------------------------------------------------
 
@@ -762,6 +762,36 @@ CREATE TABLE `producto_propio_taller_atl` (
   `precio_cotizado_sin_fee` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `producto_propio_taller_atl`
+--
+
+INSERT INTO `producto_propio_taller_atl` (`id_producto_propio_taller`, `id_hoja_costos_atl`, `descripcion_producto`, `cantidad`, `costo_unitario`, `costo_total`, `precio_cotizado_sin_fee`) VALUES
+(5, 9, 'roler', 1, '20.00', '20.00', '0.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedor`
+--
+
+CREATE TABLE `proveedor` (
+  `id_proveedor` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `nit` varchar(30) NOT NULL,
+  `direccion` varchar(100) NOT NULL,
+  `num_contactos` varchar(50) NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `nit`, `direccion`, `num_contactos`, `estado`) VALUES
+(1, 'CHURRASQUERIA LAS BRASAS', '2860986018', 'Av. Melchor Urquidi', '71747540', 1),
+(2, 'ACRICOLOR GRAFICA S.R.L.', '166208027', 'Av. Blanco Galindo Esq. Beijing Edif. Ribepar', '4-4425976', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -820,13 +850,7 @@ CREATE TABLE `servicios_contratados_atl` (
 --
 
 INSERT INTO `servicios_contratados_atl` (`id_servicios_contratados`, `id_hoja_costos_atl`, `descripcion_servicios`, `nombre_proveedor`, `tiempo`, `cantidad`, `costo_unitario`, `tipo_documento`, `costo_total_programado`, `precio_cotizado_sin_fee`) VALUES
-(7, 20, 'alquiler de sala comercial cine center quillacollo', 'cine center', '1', 1, '1400.00', 'FACTURA', '1218.00', '1442.00'),
-(8, 20, 'proyector de 300 lumenes', 'mediterraneo', '1', 1, '650.00', 'FACTURA', '565.50', '1500.00'),
-(9, 20, 'equipo de sonido (2 parlantes, consola, 2 microfon', 'mediterraneo', '1', 1, '1624.00', 'FACTURA', '1412.88', '2800.00'),
-(16, 37, 'alquiler de pantalla', 'mediterraneo', '1', 1, '3000.00', 'FACTURA', '2610.00', '4500.00'),
-(17, 37, 'eventual', 'gr', '1', 1, '75.00', 'RECIBO', '88.76', '0.00'),
-(18, 37, 'perifoneo con m.', 'gr', '1', 1, '70.00', 'FACTURA', '60.90', '1603.17'),
-(19, 37, 'hora loca', 'star p.', '1', 1, '1800.00', 'RECIBO', '2130.18', '4259.19');
+(12, 9, 'a', 'b', '1', 2, '252.00', 'FACTURA', '438.48', '600.00');
 
 -- --------------------------------------------------------
 
@@ -892,6 +916,12 @@ ALTER TABLE `centro_costos`
   ADD PRIMARY KEY (`id_centro_costos`);
 
 --
+-- Indices de la tabla `centro_costos_interno`
+--
+ALTER TABLE `centro_costos_interno`
+  ADD PRIMARY KEY (`id_centro_costos_interno`);
+
+--
 -- Indices de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
@@ -952,6 +982,13 @@ ALTER TABLE `costos_totales_taller`
 ALTER TABLE `datos_laborales`
   ADD PRIMARY KEY (`id_datos_laborales`),
   ADD KEY `ci_empleado` (`ci_empleado`);
+
+--
+-- Indices de la tabla `detalle_ordencompra`
+--
+ALTER TABLE `detalle_ordencompra`
+  ADD PRIMARY KEY (`id_detalle`),
+  ADD KEY `id_ordenCompra` (`id_ordenCompra`);
 
 --
 -- Indices de la tabla `empleado`
@@ -1031,6 +1068,14 @@ ALTER TABLE `materiales_taller`
   ADD PRIMARY KEY (`id_materiales_taller`);
 
 --
+-- Indices de la tabla `orden_compra`
+--
+ALTER TABLE `orden_compra`
+  ADD PRIMARY KEY (`id_ordenCompra`),
+  ADD KEY `id_empleado` (`id_empleado`),
+  ADD KEY `id_proveedor` (`id_proveedor`);
+
+--
 -- Indices de la tabla `personal_directo_atl`
 --
 ALTER TABLE `personal_directo_atl`
@@ -1061,6 +1106,12 @@ ALTER TABLE `personal_interno_directo_btl`
 ALTER TABLE `producto_propio_taller_atl`
   ADD PRIMARY KEY (`id_producto_propio_taller`),
   ADD KEY `id_hoja_costos_atl` (`id_hoja_costos_atl`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`id_proveedor`);
 
 --
 -- Indices de la tabla `servicios_btl2`
@@ -1105,6 +1156,12 @@ ALTER TABLE `centro_costos`
   MODIFY `id_centro_costos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
+-- AUTO_INCREMENT de la tabla `centro_costos_interno`
+--
+ALTER TABLE `centro_costos_interno`
+  MODIFY `id_centro_costos_interno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
@@ -1144,7 +1201,7 @@ ALTER TABLE `costos_proyecto_btl2`
 -- AUTO_INCREMENT de la tabla `costos_totales_atl`
 --
 ALTER TABLE `costos_totales_atl`
-  MODIFY `id_costos_totales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_costos_totales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `costos_totales_taller`
@@ -1159,6 +1216,12 @@ ALTER TABLE `datos_laborales`
   MODIFY `id_datos_laborales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `detalle_ordencompra`
+--
+ALTER TABLE `detalle_ordencompra`
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT de la tabla `equipos_materiales_btl2`
 --
 ALTER TABLE `equipos_materiales_btl2`
@@ -1168,7 +1231,7 @@ ALTER TABLE `equipos_materiales_btl2`
 -- AUTO_INCREMENT de la tabla `equipo_propio_atl`
 --
 ALTER TABLE `equipo_propio_atl`
-  MODIFY `id_equipo_propio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_equipo_propio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `equipo_propio_btl`
@@ -1186,7 +1249,7 @@ ALTER TABLE `equipo_propio_taller`
 -- AUTO_INCREMENT de la tabla `hoja_costos_atl`
 --
 ALTER TABLE `hoja_costos_atl`
-  MODIFY `id_hoja_costos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_hoja_costos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_costos_btl`
@@ -1210,7 +1273,7 @@ ALTER TABLE `hoja_costos_taller`
 -- AUTO_INCREMENT de la tabla `materiales_atl`
 --
 ALTER TABLE `materiales_atl`
-  MODIFY `id_materiales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_materiales` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `materiales_btl`
@@ -1225,10 +1288,16 @@ ALTER TABLE `materiales_taller`
   MODIFY `id_materiales_taller` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `orden_compra`
+--
+ALTER TABLE `orden_compra`
+  MODIFY `id_ordenCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `personal_directo_atl`
 --
 ALTER TABLE `personal_directo_atl`
-  MODIFY `id_personal_directo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_personal_directo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_directo_taller`
@@ -1252,7 +1321,13 @@ ALTER TABLE `personal_interno_directo_btl`
 -- AUTO_INCREMENT de la tabla `producto_propio_taller_atl`
 --
 ALTER TABLE `producto_propio_taller_atl`
-  MODIFY `id_producto_propio_taller` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_producto_propio_taller` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios_btl2`
@@ -1264,7 +1339,7 @@ ALTER TABLE `servicios_btl2`
 -- AUTO_INCREMENT de la tabla `servicios_contratados_atl`
 --
 ALTER TABLE `servicios_contratados_atl`
-  MODIFY `id_servicios_contratados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_servicios_contratados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios_contratados_taller`
@@ -1301,6 +1376,12 @@ ALTER TABLE `datos_laborales`
   ADD CONSTRAINT `datos_laborales_ibfk_1` FOREIGN KEY (`ci_empleado`) REFERENCES `empleado` (`ci`);
 
 --
+-- Filtros para la tabla `detalle_ordencompra`
+--
+ALTER TABLE `detalle_ordencompra`
+  ADD CONSTRAINT `detalle_ordencompra_ibfk_1` FOREIGN KEY (`id_ordenCompra`) REFERENCES `orden_compra` (`id_ordenCompra`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `equipo_propio_atl`
 --
 ALTER TABLE `equipo_propio_atl`
@@ -1324,6 +1405,13 @@ ALTER TABLE `hoja_costos_atl`
 --
 ALTER TABLE `materiales_atl`
   ADD CONSTRAINT `materiales_atl_ibfk_1` FOREIGN KEY (`id_hoja_costos_atl`) REFERENCES `hoja_costos_atl` (`id_hoja_costos`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `orden_compra`
+--
+ALTER TABLE `orden_compra`
+  ADD CONSTRAINT `orden_compra_ibfk_2` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `orden_compra_ibfk_3` FOREIGN KEY (`id_empleado`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `personal_directo_atl`
