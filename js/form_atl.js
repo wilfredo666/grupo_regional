@@ -1,6 +1,7 @@
 // variables globales
 var tasaAplicacion = 0.14;//tasa de aplicacion
 var tasFinanciera = 0.054;//tasa financiera
+
 // funciones globales
 function calcular(){
 
@@ -116,7 +117,7 @@ function addRow(){
         '<td><button type="button" class="btn btn-danger" onclick="t1_deleted('+c+')" id='+c+' >-</button></td>'+
         '</tr>'
     $('#tablita1').before(fila);
-    /*actualizarTaza(c);*/
+    actualizarTaza(c);
     c=c+1;
 }//agragar fila
 function t1_deleted(d){
@@ -318,13 +319,20 @@ function addRow_t5(){
     var fila = '<tr id="fila5'+c5+'">'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" class="form-control" name="t5_can[]" id="t5_can'+c5+'" step="0.01"></td>'+
         '<td><input type="text" name="t5_pro[]" id="t5_pro'+c5+'" class="form-control"></td>'+
+        '<td>'+
+        '<select onChange="t5_subTotal('+c5+')" class="form-control"  name="t5_documento[]" id="t5_documento'+c5+'" >'+
+        '<option value="FACTURA">FACTURA</option>'+
+        '<option value="RECIBO">RECIBO</option>'+
+        '</select>'+'</td>'+
         '<td><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_cos[]" id="t5_cos'+c5+'" class="form-control" step="0.01"></td>'+
+        
+        '<td hidden=""><input type="number" value="0" onClick="this.select()" onkeyup="t5_subTotal('+c5+')" name="t5_cos2[]" id="t5_cos2'+c5+'" class="form-control" step="0.01"></td>'+
+        
         '<td><input type="text" name="t5_coT[]" id="t5_coT'+c5+'" class="form-control" readonly></td>'+
         '<td><button type="button" class="btn btn-danger" id='+c5+' onClick="t5_deleted('+c5+')">-</button></td>'+
         '</tr>'
 
     $('#tablita5').before(fila);
-    /*actualizarTotalT4(c4);*/
     c5=c5+1;
 }//agregar fila
 function t5_deleted(d){
@@ -335,8 +343,17 @@ function t5_deleted(d){
 function t5_subTotal(e){
     var oc_ca = parseFloat(document.getElementById("t5_can"+e).value)//cantidad
     var oc_co = parseFloat(document.getElementById("t5_cos"+e).value)//costo unitario
+        var oc_co2=0;
+    var oc_doc = document.getElementById("t5_documento"+e).value//documento
+    var oc_costoT=0;
     //costo total
-    var oc_costoT = oc_ca*oc_co;
+    if(oc_doc=="RECIBO"){
+        oc_co2 = oc_co/0.845;
+       }else{
+        oc_co2 = oc_ca*oc_co;
+       }
+    document.getElementById("t5_cos2"+e).value=oc_co2.toFixed(2);//costo unitario 2, con documento
+    oc_costoT = oc_ca*oc_co2;
     document.getElementById("t5_coT"+e).value =  oc_costoT.toFixed(2);
     t5_costoTotal[e]=oc_costoT.toFixed(2);
     actualizarTotalT5();

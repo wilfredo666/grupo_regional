@@ -4,7 +4,7 @@ include 'modal_generar_codigo_atl.php';
 $usuario=$_GET['id'];
 $id_hoja_costos=$_GET['id_hoja_costos'];
 /*consulta datos hoja de costos*/
-$consulta_atl="select  nombre, codigo_hoja_costos, correo_cliente, nombre_proyecto, fecha_inicio, fecha_fin, tiempo_credito, tipo_proyecto from hoja_costos_atl JOIN cliente ON  hoja_costos_atl.cliente=cliente.codigo where id_hoja_costos=$id_hoja_costos";
+$consulta_atl="select  nombre, codigo_hoja_costos, correo_cliente, nombre_proyecto, fecha_inicio, fecha_fin, tiempo_credito, tipo_proyecto, fecha_facturacion, numero_factura from hoja_costos_atl JOIN cliente ON  hoja_costos_atl.cliente=cliente.codigo where id_hoja_costos=$id_hoja_costos";
 $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
 /*consulta */
 ?>
@@ -35,10 +35,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Cliente:</div>
                                     </div>
-                                    <select name="cliente" id="select3" class="form-control">
-                                        <option value=""><?php echo $atl[0];?></option>
-                                        <?php mostrar_cliente();?>                                    
-                                    </select>
+                                    <input type="text" name="cliente" id="cliente"class="form-control" value="<?php echo $atl[0];?>" readonly>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -109,7 +106,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Fecha de facturacion:</div>
                                     </div>
-                                    <input type="date" class="form-control" name="fecha_facturacion" id="">
+                                    <input type="date" class="form-control" name="fecha_facturacion" id="" value="<?php echo $atl[8];?>">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -117,7 +114,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">Numero de factura:</div>
                                     </div>
-                                    <input type="text" class="form-control" name="num_factura" id="">
+                                    <input type="text" class="form-control" name="num_factura" id="" value="<?php echo $atl[9];?>">
                                 </div>
                             </div>
                         </div>
@@ -157,7 +154,7 @@ $atl=mysqli_fetch_row(mysqli_query($con, $consulta_atl));
                                             <option>SOPORTE LOGISTICO</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" name="detalle[]" id="detalle'.$i.'" class="form-control" value="<?php echo $row[3];?>"></td>
+                                        <td><input type="text" name="detalle[]" id="detalle<?php echo $i;?>" class="form-control" value="<?php echo $row[3];?>"></td>
                                         <td><select onChange= "actualizarTaza(<?php echo $i;?>)" name="dayorhour[]" id="dayorhour<?php echo $i;?>" class="form-control" >
                                             <option><?php echo $row[4];?></option>
                                             <option>DIAS</option>

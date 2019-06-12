@@ -33,7 +33,7 @@ $empleado=$_GET['id'];
                             <th>Cotizacion</th>
                             <th>Diferencia</th>
                             <th></th>
-                            <th></th>
+                            <th><a href="rep_eventos_exel.php"><input type="button" class="btn btn-success" value="Descargar"></th>
                             <th></th>
                         </tr>
                     </thead>

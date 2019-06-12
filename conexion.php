@@ -1,5 +1,6 @@
 <?php
 $con=mysqli_connect("localhost", "root", "", "grupo_regional");
+/*$con=mysqli_connect("mysqlcluster25","costos","Admin123","grupo_regional");*/
 $empleado=$_GET['id'];
 mysqli_query($con,"SET charset 'utf8'");
 mysqli_set_charset($con,'utf-8');
@@ -15,7 +16,7 @@ function mostrar_hoja_costos_atl(){
     $sql="select * from hoja_costos_atl";
     $hoja_atl=mysqli_query($con,$sql);
     while($fila=mysqli_fetch_array($hoja_atl)){
-        echo '<option value='.$fila[0].'>'.$fila[6].'</option>';
+        echo '<option value='.$fila[1].'>'.$fila[6].'</option>';
     }
 }
 function mostrar_cliente(){
@@ -143,8 +144,8 @@ function reporte_orden_compra(){
         echo '<td>'.$campo[3].'</td>';
         echo '<td>'.$campo[4].'</td>';
         echo '<td><a href="orden_compra_pdf.php?id_ordenCompra='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-primary">PDF</button></a></td>';
-        echo '<td><a href="form_edicion_atl.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-warning">Editar</button></td>';
-        echo '<td><a href="eli_orden_compra.php?id_hoja_costos='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
+        echo '<td><a href="#"><button type="button" class="btn btn-warning">Editar</button></td>';
+        echo '<td><a href="eli_orden_compra.php?id_ordenCompra='.$campo[0].'&id='.$empleado.'"><button type="button" class="btn btn-danger">Eliminar</button></td>';
         echo '</tr>';
     }
 }

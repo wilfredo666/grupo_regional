@@ -33,7 +33,7 @@ echo $usuario;
 echo $fecha_facturacion;
 echo $num_factura;*/
 
-$consulta_guardar="update hoja_costos_atl set codigo_hoja_costos='$cod_proyecto',cliente='$cliente',correo_cliente='$email_cliente',fecha_inicio='$fecha_inicio',tiempo_credito='$tiempo_credito',nombre_proyecto='$nom_proyecto',fecha_fin='$fecha_fin',tipo_proyecto='$tipo_proyecto',fecha_facturacion='$fecha_facturacion',numero_factura='$num_factura' where id_hoja_costos='$id_hoja_costos'";
+$consulta_guardar="update hoja_costos_atl set codigo_hoja_costos='$cod_proyecto',correo_cliente='$email_cliente',fecha_inicio='$fecha_inicio',tiempo_credito='$tiempo_credito',nombre_proyecto='$nom_proyecto',fecha_fin='$fecha_fin',tipo_proyecto='$tipo_proyecto',fecha_facturacion='$fecha_facturacion',numero_factura='$num_factura' where id_hoja_costos='$id_hoja_costos'";
 mysqli_query($con,$consulta_guardar);
 /*nota.- el id usuario no se cambia porque debe permanecer con el que se creo*/
 
@@ -54,22 +54,8 @@ if (sizeof($detalle)>0){
     }
 }
 
-/*materiales que intervienen en la operacion*/
-$t2_mat=$_POST['t2_mat'];
-$t2_nom=$_POST['t2_nom'];
-$t2_can=$_POST['t2_can'];
-$t2_cos=$_POST['t2_cos'];
-$t2_doc=$_POST['t2_doc'];
-$t2_tot=$_POST['t2_tot'];
-$t2_pre=$_POST['t2_pre'];
-if(sizeof($t2_mat)>0){
-    mysqli_query($con,"delete from materiales_atl where id_hoja_costos_atl='$id_hoja_costos'");
-    for($i=0;$i<sizeof($t2_mat);$i++){
-        mysqli_query($con,"insert into materiales_atl(id_hoja_costos_atl,descripcion_material,nombre_proveedor,cantidad_estimada,costo_unitario,tipo_documento,costo_total_estimado,precio_cotizado_sin_fee)values('$id_hoja_costos','$t2_mat[$i]','$t2_nom[$i]','$t2_can[$i]','$t2_cos[$i]','$t2_doc[$i]','$t2_tot[$i]','$t2_pre[$i]')");
-    }
-}
 
-/*servicios que intervienen en la operacion*/
+/*materiales/servicios que intervienen en la operacion*/
 $t3_ser=$_POST['t3_ser'];
 $t3_nom=$_POST['t3_nom'];
 $t3_dia=$_POST['t3_dia'];
@@ -85,60 +71,47 @@ if(sizeof($t3_ser)>0){
     } 
 }
 
-/*productos propios de taller*/
+/*productos/equipos propios de taller*/
 $t4_pro=$_POST['t4_pro'];
 $t4_can=$_POST['t4_can'];
 $t4_cos=$_POST['t4_cos'];
 $t4_coT=$_POST['t4_coT'];
-$t4_pre=$_POST['t4_pre'];
 if(sizeof($t4_pro)>0){
     mysqli_query($con,"delete from producto_propio_taller_atl where id_hoja_costos_atl='$id_hoja_costos'");
     for($i=0;$i<sizeof($t4_pro);$i++){
-        mysqli_query($con,"insert into producto_propio_taller_atl(id_hoja_costos_atl,descripcion_producto,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$id_hoja_costos','$t4_pro[$i]','$t4_can[$i]','$t4_cos[$i]','$t4_coT[$i]','$t4_pre[$i]')");
+        mysqli_query($con,"insert into producto_propio_taller_atl(id_hoja_costos_atl,descripcion_producto,cantidad,costo_unitario,costo_total)values('$id_hoja_costos','$t4_pro[$i]','$t4_can[$i]','$t4_cos[$i]','$t4_coT[$i]')");
     }
 }
 
-/*equipos propios*/
-$t5_det=$_POST['t5_det'];
-$t5_can=$_POST['t5_can'];
-$t5_coU=$_POST['t5_coU'];
-$t5_coT=$_POST['t5_coT'];
-$t5_pre=$_POST['t5_pre'];
-if(sizeof($t5_det)>0){
-    mysqli_query($con,"delete from equipo_propio_atl where id_hoja_costos_atl='$id_hoja_costos'");
-    for($i=0;$i<sizeof($t5_det);$i++){
-        mysqli_query($con,"insert into equipo_propio_atl(id_hoja_costos_atl,descripcion_equipo,cantidad,costo_unitario,costo_total,precio_cotizado_sin_fee)values('$id_hoja_costos','$t5_det[$i]','$t5_can[$i]','$t5_coU[$i]','$t5_coT[$i]','$t5_pre[$i]')");
-    }  
-}
 
 /*costos*/
-/*costo de valor agregado*/
-$costoVA=$_POST['costoVA'];
-$costoED=$_POST['costoED'];
-$diferencia=$_POST['diferencia'];
-/*costos indirectos de operaciones*/
-$costoAp=$_POST['costoAp'];
-$tasaDa=$_POST['tasaDa'];
-$costoPd=$_POST['costoPd'];
-/*costo financiero*/
-$tiempoPr=$_POST['tiempoPr'];
-$tasaFi=$_POST['tasaFi'];
-$costoTo=$_POST['costoTo'];
+$costoAp=$_POST['costoAp'];//total en items
+$tasaDa=$_POST['tasaDa'];//tasa de aplicacion
+$costoPd=$_POST['costoPd'];//costo indirecto
+$tiempoPr=$_POST['tiempoPr'];//tiempo programado
+$tasaFi=$_POST['tasaFi'];//tasa financiera
+$costoTo=$_POST['costoTo'];//costo financiero
+$totalE1=$_POST['totalE1'];//total cotizacion sin fee
+$feeV=$_POST['feeV'];//fee
+$totalF2=$_POST['totalF2'];//fee de total cotizacion sin fee
+$costoED=$_POST['costoED'];//cotizacion para cliente
+$diferencia=$_POST['diferencia'];//diferencia entre: cotizacion para cliente && costo del proyecto
+$costoVA=$_POST['costoVA'];//costo del proyecto
 
-$feeP=$_POST['feeP'];
-$feeV=$_POST['feeV'];
-
-$totalE1=$_POST['totalE1'];
-$totalF1=$_POST['totalF1'];
-$totalE2=$_POST['totalE2'];
-$totalF2=$_POST['totalF2'];
-$totalE3=$_POST['totalE3'];
-$totalE4=$_POST['totalE4'];
-$totalF4=$_POST['totalF4'];
-
-
-$consulta_guardar2="update costos_totales_atl set costo_programado_proyecto='$costoVA',costo_estimado_proyecto='$costoED',
-diferencia='$diferencia',costo_acumulado_programado='$costoAp',tas_apliacacion='$tasaDa',costo_programado_costos_indirectos='$costoPd',tiempo_programado='$tiempoPr',tasa_fiannciera='$tasaFi',total_programado_financiero='$costoTo',fee_programado='$feeP',fee_variable='$feeV',costo_total_proyecto_ejcutado='$totalE1',costo_total_proyecto_feevariable='$totalF1',fee_ejecutado='$totalE2',fee_feevariable='$totalF2',costo_total_proyecto_mas_feeejecutado='$totalE3',costo_total_proyecto_mas_impuestos_ejecutado='$totalE4',costo_total_proyecto_mas_impuestos_feevariable='$totalF4' where id_hoja_costos_atl='$id_hoja_costos'";
+$consulta_guardar2="update costos_totales_atl set costo_programado_proyecto='$costoVA',
+total_item='$costoAp',
+tasa_aplicacion='$tasaDa',
+costo_indirecto='$costoPd',
+tiempo_programado='$tiempoPr',
+tasa_financiera='$tasaFi',
+costo_financiero='$costoTo',
+total_sin_fee='$totalE1',
+total_programado_financiero='$costoTo',
+fee='$feeV',
+fee_cot_sin_fee='$totalF2',
+cotizacion_cliente='$costoED',
+diferencia='$diferencia',
+costo_proyecto='$costoVA' where id_hoja_costos_atl='$id_hoja_costos'";
 
 mysqli_query($con,$consulta_guardar2);
 
