@@ -98,7 +98,7 @@ $costoED=$_POST['costoED'];//cotizacion para cliente
 $diferencia=$_POST['diferencia'];//diferencia entre: cotizacion para cliente && costo del proyecto
 $costoVA=$_POST['costoVA'];//costo del proyecto
 
-$consulta_guardar2="update costos_totales_atl set costo_programado_proyecto='$costoVA',
+$consulta_guardar2="update costos_totales_atl set
 total_item='$costoAp',
 tasa_aplicacion='$tasaDa',
 costo_indirecto='$costoPd',
@@ -106,7 +106,6 @@ tiempo_programado='$tiempoPr',
 tasa_financiera='$tasaFi',
 costo_financiero='$costoTo',
 total_sin_fee='$totalE1',
-total_programado_financiero='$costoTo',
 fee='$feeV',
 fee_cot_sin_fee='$totalF2',
 cotizacion_cliente='$costoED',

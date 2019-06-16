@@ -184,7 +184,7 @@ function totales1(){
     document.getElementById("totalTa").innerHTML = acTasa.toFixed(2);
     document.getElementById("totalCo").innerHTML = acCosto.toFixed(2);
     document.getElementById("totalPr").innerHTML = acPrecio.toFixed(2);
-/*    costosExternos();*/
+    costosExternos();
 
 }
 
